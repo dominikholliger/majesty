@@ -26,6 +26,11 @@ import javafx.stage.Stage;
 public class App_View extends View<App_Model> {
     Menu menuFile;
     Menu menuFileLanguage;
+    
+    Menu menuGame;
+    Menu menuGameServer;
+    
+    
     Menu menuHelp;
     
     Label lblNumber;
@@ -33,8 +38,7 @@ public class App_View extends View<App_Model> {
 
 	public App_View(Stage stage, App_Model model) {
         super(stage, model);
-        stage.setTitle("JavaFX Application Template");
-        
+        stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
         ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
     }
 
@@ -48,6 +52,12 @@ public class App_View extends View<App_Model> {
 	    menuFile = new Menu(t.getString("program.menu.file"));
 	    menuFileLanguage = new Menu(t.getString("program.menu.file.language"));
 	    menuFile.getItems().add(menuFileLanguage);
+
+	    menuGame = new Menu(t.getString("program.menu.game"));
+	    menuGameServer = new Menu(t.getString("program.menu.game.server"));
+	    menuGame.getItems().add(menuGameServer);
+	    
+	    
 	    
        for (Locale locale : sl.getLocales()) {
            MenuItem language = new MenuItem(locale.getLanguage());
@@ -60,7 +70,7 @@ public class App_View extends View<App_Model> {
         }
 	    
         menuHelp = new Menu(t.getString("program.menu.help"));
-	    menuBar.getMenus().addAll(menuFile, menuHelp);
+	    menuBar.getMenus().addAll(menuFile,menuGame, menuHelp);
 		
 		GridPane root = new GridPane();
 		root.add(menuBar, 0, 0);
@@ -76,7 +86,7 @@ public class App_View extends View<App_Model> {
         btnClick.setMinWidth(200);
         root.add(btnClick, 0, 2);
 		
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 500,500);
         scene.getStylesheets().add(
                 getClass().getResource("app.css").toExternalForm());
         return scene;
@@ -88,6 +98,8 @@ public class App_View extends View<App_Model> {
 	        // The menu entries
 	       menuFile.setText(t.getString("program.menu.file"));
 	       menuFileLanguage.setText(t.getString("program.menu.file.language"));
+	       menuGame.setText(t.getString("program.menu.game"));
+	       menuGameServer.setText(t.getString("program.menu.game.server"));
            menuHelp.setText(t.getString("program.menu.help"));
 	        
 	        // Other controls
