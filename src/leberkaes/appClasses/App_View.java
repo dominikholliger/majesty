@@ -1,5 +1,6 @@
 package leberkaes.appClasses;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.logging.Logger;
 
@@ -7,6 +8,7 @@ import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.View;
 import leberkaes.commonClasses.Translator;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -115,4 +117,24 @@ public class App_View extends View<App_Model> {
 	        // Other controls
            btnClick.setText(t.getString("button.clickme"));
 	    }
+
+	public Scene showSettings() {
+		GridPane root = new GridPane();
+		
+		lblNumber = new Label();
+        lblNumber.setText(Integer.toString(model.getValue()));
+        lblNumber.setMinWidth(200);
+        lblNumber.setAlignment(Pos.BASELINE_CENTER);
+        root.add(lblNumber, 0, 1);
+        
+     
+        Scene scene = new Scene(root, 500,500);
+        scene.getStylesheets().add(
+                getClass().getResource("app.css").toExternalForm());
+        return scene;
+		
+		
+		
+	}
+		
 }

@@ -29,6 +29,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
         view.GameServerSettings.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
             	 serviceLocator.getLogger().info("GameServer - settings clicked");
+            	 serverSettings();
             }
         });
         
@@ -59,5 +60,13 @@ public class App_Controller extends Controller<App_Model, App_View> {
         String newText = Integer.toString(model.getValue());        
 
         view.lblNumber.setText(newText);        
+    }
+    
+    public void serverSettings() {
+    	//
+    	// Server Settings 
+    	view.showSettings();
+    	
+    	
     }
 }
