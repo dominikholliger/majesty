@@ -2,9 +2,13 @@ package leberkaes.appClasses;
 
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.Controller;
+import leberkaes.settingsWindows.WebValidator_Controller;
+import leberkaes.settingsWindows.WebValidator_Model;
+import leberkaes.settingsWindows.WebValidator_View;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 /**
@@ -29,7 +33,13 @@ public class App_Controller extends Controller<App_Model, App_View> {
         view.GameServerSettings.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
             	 serviceLocator.getLogger().info("GameServer - settings clicked");
-            	 serverSettings();
+        		 Stage optionsStage = new Stage();
+        	     // Initialize the option MVC components
+        		WebValidator_Model oModel = new WebValidator_Model();
+        		WebValidator_View oView = new WebValidator_View(optionsStage, oModel);
+        	    new WebValidator_Controller(oModel, oView);
+       	        // Display the options window
+       	        oView.start();
             }
         });
         
