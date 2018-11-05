@@ -30,7 +30,9 @@ public class App_View extends View<App_Model> {
     Menu menuGame;
     Menu menuGameServer;
     
-    
+    MenuItem GameServerStart;
+    MenuItem GameServerSettings; 
+
     Menu menuHelp;
     
     Label lblNumber;
@@ -55,8 +57,12 @@ public class App_View extends View<App_Model> {
 
 	    menuGame = new Menu(t.getString("program.menu.game"));
 	    menuGameServer = new Menu(t.getString("program.menu.game.server"));
+	    GameServerStart = new MenuItem("program.menu.game.server.start");
+	    GameServerSettings = new MenuItem("program.menu.game.server.settings");
+
 	    menuGame.getItems().add(menuGameServer);
-	    
+	    menuGameServer.getItems().add(GameServerStart);
+	    menuGameServer.getItems().add(GameServerSettings);
 	    
 	    
        for (Locale locale : sl.getLocales()) {
@@ -101,6 +107,10 @@ public class App_View extends View<App_Model> {
 	       menuGame.setText(t.getString("program.menu.game"));
 	       menuGameServer.setText(t.getString("program.menu.game.server"));
            menuHelp.setText(t.getString("program.menu.help"));
+           GameServerStart.setText(t.getString("program.menu.game.server.start"));
+   	       GameServerSettings.setText(t.getString("program.menu.game.server.settings"));
+           
+           
 	        
 	        // Other controls
            btnClick.setText(t.getString("button.clickme"));
