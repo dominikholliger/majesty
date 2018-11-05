@@ -1,4 +1,4 @@
-package ch.fhnw.richards.lecture04.jat_v2.abstractClasses;
+package leberkaes.abstractClasses;
 
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code

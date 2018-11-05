@@ -1,7 +1,7 @@
-package ch.fhnw.richards.lecture04.jat_v2.splashScreen;
+package leberkaes.splashScreen;
 
-import ch.fhnw.richards.lecture04.jat_v2.JavaFX_App_Template;
-import ch.fhnw.richards.lecture04.jat_v2.abstractClasses.Controller;
+import leberkaes.jat2.JavaFX_App_Template;
+import leberkaes.abstractClasses.Controller;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;

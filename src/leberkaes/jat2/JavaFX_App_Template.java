@@ -1,11 +1,11 @@
-package ch.fhnw.richards.lecture04.jat_v2;
+package leberkaes.jat2;
 
-import ch.fhnw.richards.lecture04.jat_v2.appClasses.App_Controller;
-import ch.fhnw.richards.lecture04.jat_v2.appClasses.App_Model;
-import ch.fhnw.richards.lecture04.jat_v2.appClasses.App_View;
-import ch.fhnw.richards.lecture04.jat_v2.splashScreen.Splash_Controller;
-import ch.fhnw.richards.lecture04.jat_v2.splashScreen.Splash_Model;
-import ch.fhnw.richards.lecture04.jat_v2.splashScreen.Splash_View;
+import leberkaes.appClasses.App_Controller;
+import leberkaes.appClasses.App_Model;
+import leberkaes.appClasses.App_View;
+import leberkaes.splashScreen.Splash_Controller;
+import leberkaes.splashScreen.Splash_Model;
+import leberkaes.splashScreen.Splash_View;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;

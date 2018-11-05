@@ -1,11 +1,11 @@
-package ch.fhnw.richards.lecture04.jat_v2.commonClasses;
+package leberkaes.commonClasses;
 
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-import ch.fhnw.richards.lecture04.jat_v2.ServiceLocator;
+import leberkaes.jat2.ServiceLocator;
 
 public class Translator {
     private ServiceLocator sl = ServiceLocator.getServiceLocator();

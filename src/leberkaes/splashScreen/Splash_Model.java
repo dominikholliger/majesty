@@ -1,14 +1,14 @@
-package ch.fhnw.richards.lecture04.jat_v2.splashScreen;
+package leberkaes.splashScreen;
 
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import ch.fhnw.richards.lecture04.jat_v2.ServiceLocator;
-import ch.fhnw.richards.lecture04.jat_v2.abstractClasses.Model;
-import ch.fhnw.richards.lecture04.jat_v2.commonClasses.Configuration;
-import ch.fhnw.richards.lecture04.jat_v2.commonClasses.Translator;
+import leberkaes.jat2.ServiceLocator;
+import leberkaes.abstractClasses.Model;
+import leberkaes.commonClasses.Configuration;
+import leberkaes.commonClasses.Translator;
 import javafx.concurrent.Task;
 
 /**

@@ -1,4 +1,4 @@
-package ch.fhnw.richards.lecture04.jat_v2.commonClasses;
+package leberkaes.commonClasses;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,7 +9,7 @@ import java.util.Enumeration;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-import ch.fhnw.richards.lecture04.jat_v2.ServiceLocator;
+import leberkaes.jat2.ServiceLocator;
 
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code

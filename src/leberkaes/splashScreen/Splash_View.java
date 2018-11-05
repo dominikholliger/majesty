@@ -1,7 +1,7 @@
-package ch.fhnw.richards.lecture04.jat_v2.splashScreen;
+package leberkaes.splashScreen;
 
 
-import ch.fhnw.richards.lecture04.jat_v2.abstractClasses.View;
+import leberkaes.abstractClasses.View;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;

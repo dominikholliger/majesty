@@ -1,7 +1,7 @@
-package ch.fhnw.richards.lecture04.jat_v2.appClasses;
+package leberkaes.appClasses;
 
-import ch.fhnw.richards.lecture04.jat_v2.ServiceLocator;
-import ch.fhnw.richards.lecture04.jat_v2.abstractClasses.Model;
+import leberkaes.jat2.ServiceLocator;
+import leberkaes.abstractClasses.Model;
 
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code

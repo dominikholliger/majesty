@@ -1,4 +1,4 @@
-package ch.fhnw.richards.lecture04.jat_v2.splashScreen;
+package leberkaes.splashScreen;
 
 import javafx.application.Preloader;
 import javafx.scene.Scene;

@@ -1,11 +1,11 @@
-package ch.fhnw.richards.lecture04.jat_v2.appClasses;
+package leberkaes.appClasses;
 
 import java.util.Locale;
 import java.util.logging.Logger;
 
-import ch.fhnw.richards.lecture04.jat_v2.ServiceLocator;
-import ch.fhnw.richards.lecture04.jat_v2.abstractClasses.View;
-import ch.fhnw.richards.lecture04.jat_v2.commonClasses.Translator;
+import leberkaes.jat2.ServiceLocator;
+import leberkaes.abstractClasses.View;
+import leberkaes.commonClasses.Translator;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

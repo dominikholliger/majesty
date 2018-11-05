@@ -1,10 +1,10 @@
-package ch.fhnw.richards.lecture04.jat_v2;
+package leberkaes.jat2;
 
 import java.util.Locale;
 import java.util.logging.Logger;
 
-import ch.fhnw.richards.lecture04.jat_v2.commonClasses.Configuration;
-import ch.fhnw.richards.lecture04.jat_v2.commonClasses.Translator;
+import leberkaes.commonClasses.Configuration;
+import leberkaes.commonClasses.Translator;
 
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code

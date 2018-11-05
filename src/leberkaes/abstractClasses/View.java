@@ -1,4 +1,4 @@
-package ch.fhnw.richards.lecture04.jat_v2.abstractClasses;
+package leberkaes.abstractClasses;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;

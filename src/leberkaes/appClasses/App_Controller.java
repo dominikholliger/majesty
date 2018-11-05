@@ -1,7 +1,7 @@
-package ch.fhnw.richards.lecture04.jat_v2.appClasses;
+package leberkaes.appClasses;
 
-import ch.fhnw.richards.lecture04.jat_v2.ServiceLocator;
-import ch.fhnw.richards.lecture04.jat_v2.abstractClasses.Controller;
+import leberkaes.jat2.ServiceLocator;
+import leberkaes.abstractClasses.Controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
