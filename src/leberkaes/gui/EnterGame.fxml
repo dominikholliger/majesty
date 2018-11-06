@@ -1,0 +1,31 @@
+/** 
+ * @author Sebrina Pedrossi
+ */
+ 
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="414.0" text="Spiel beitreten" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="317.0" prefWidth="461.0">
+         <children>
+            <ImageView fitHeight="316.0" fitWidth="600.0" layoutY="1.0" opacity="0.3" preserveRatio="true">
+               <image>
+                  <Image url="@../Downloads/OneDrive-2018-11-06/majesty-start.jpg" />
+               </image>
+            </ImageView>
+            <Text fx:id="textPlayername" layoutX="170.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spielername" />
+            <TextField fx:id="textinputPlayername" layoutX="124.0" layoutY="149.0" />
+            <TextField fx:id="textinputipserver" layoutX="124.0" layoutY="210.0" />
+            <Text fx:id="textipserver" layoutX="151.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IP-Adresse Server" />
+            <Button layoutX="161.0" layoutY="254.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="96.0" text="START" />
+         </children>
+      </AnchorPane>
+   </content>
+</TitledPane>
+
