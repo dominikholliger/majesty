@@ -26,12 +26,6 @@ public class WebValidator_Controller {
 		this.model = model;
 		this.view = view;
 
-		// ChangeListener for the text-property of the web address
-		view.txtIpAddress.textProperty().addListener(
-				// Parameters of any PropertyChangeListener
-				(observable, oldValue, newValue) -> {
-					validateWebAddress(newValue);
-				});
 
 		// ChangeListener for the text-property of the port number
 		view.txtPort.textProperty().addListener(
@@ -45,7 +39,6 @@ public class WebValidator_Controller {
 		});
 		
 		view.btnSave.setOnAction((event) -> {
-			config.setLocalOption("WebServer", view.txtIpAddress.getText());
 			config.setLocalOption("Port", view.txtPort.getText());
 			view.stop();
 		});
@@ -58,12 +51,6 @@ public class WebValidator_Controller {
 	private void validateWebAddress(String newValue) {
 		boolean valid = model.isValidWebAddress(newValue);
 		
-		// Change text color
-		if (valid) {
-			view.txtIpAddress.setStyle("-fx-text-inner-color: green;");
-		} else {
-			view.txtIpAddress.setStyle("-fx-text-inner-color: red;");
-		}
 
 		// Save result
 		webAddressValid = valid;
@@ -97,7 +84,7 @@ public class WebValidator_Controller {
 	 * text controls
 	 */
 	private void enableDisableButton() {
-		boolean valid = webAddressValid & portValid;
+		boolean valid = portValid;
 		view.btnSave.setDisable(!valid);
 	}
 }
