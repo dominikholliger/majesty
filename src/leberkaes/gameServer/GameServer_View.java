@@ -61,7 +61,7 @@ public class GameServer_View {
 	
 	protected void updateClients() {
 		StringBuffer sb = new StringBuffer();
-		for (Client c : model.clients) {
+		for (Game_Client c : model.clients) {
 			sb.append(c.toString());
 			sb.append("\n");
 		}

@@ -10,7 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class GameServer_Model {
-	protected final ObservableList<Client> clients = FXCollections.observableArrayList();
+	protected final ObservableList<Game_Client> clients = FXCollections.observableArrayList();
 
 	private final Logger logger = Logger.getLogger("");
 	private ServerSocket listener;
@@ -43,7 +43,7 @@ public class GameServer_Model {
 
 	public void stopServer() {
 		logger.info("Stop all clients");
-		for (Client c : clients) c.stop();
+		for (Game_Client c : clients) c.stop();
 
 		logger.info("Stop server");
 		stop = true;
@@ -58,7 +58,7 @@ public class GameServer_Model {
 
 	public void broadcast(ChatMsg outMsg) {
 		logger.info("Broadcasting message to clients");
-		for (Client c : clients) {
+		for (Game_Client c : clients) {
 			c.send(outMsg);
 		}
 	}
