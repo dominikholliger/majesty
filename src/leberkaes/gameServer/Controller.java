@@ -3,10 +3,10 @@ package leberkaes.gameServer;
 import javafx.collections.ListChangeListener;
 
 public class Controller {
-	private Model model;
-	private View view;
+	private GameServer_Model model;
+	private GameServer_View view;
 
-	public Controller(Model model, View view) {
+	public Controller(GameServer_Model model, GameServer_View view) {
 		this.model = model;
 		this.view = view;
 

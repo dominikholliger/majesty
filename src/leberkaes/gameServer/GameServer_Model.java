@@ -5,11 +5,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Logger;
 
-import ch.fhnw.richards.lecture11_chatLab.v3_commons.ChatMsg;
+import leberkaes.commonClasses.ChatMsg;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Model {
+public class GameServer_Model {
 	protected final ObservableList<Client> clients = FXCollections.observableArrayList();
 
 	private final Logger logger = Logger.getLogger("");

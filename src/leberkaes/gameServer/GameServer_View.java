@@ -11,9 +11,9 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
-public class View {
+public class GameServer_View {
 	protected Stage stage;
-	private Model model;
+	private GameServer_Model model;
 
 	// Top controls
 	Label lblPort = new Label("Port");
@@ -24,7 +24,7 @@ public class View {
 	// Client area
 	TextArea txtClientArea = new TextArea();
 	
-	public View(Stage stage, Model model) {
+	public GameServer_View(Stage stage, GameServer_Model model) {
 		this.stage = stage;
 		this.model = model;
 		

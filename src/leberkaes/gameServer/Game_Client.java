@@ -3,16 +3,16 @@ package leberkaes.gameServer;
 import java.io.IOException;
 import java.net.Socket;
 
-import ch.fhnw.richards.lecture11_chatLab.v3_commons.ChatMsg;
-import ch.fhnw.richards.lecture11_chatLab.v3_commons.JoinMsg;
-import ch.fhnw.richards.lecture11_chatLab.v3_commons.Message;
+import leberkaes.commonClasses.ChatMsg;
+import leberkaes.commonClasses.JoinMsg;
+import leberkaes.commonClasses.Message;
 
-public class Client {
+public class Game_Client {
 	private Socket socket;
 	private String name = "<new>";
-	private Model model;
+	private GameServer_Model model;
 
-	protected Client(Model model, Socket socket) {
+	protected Game_Client(GameServer_Model model, Socket socket) {
 		this.model = model;
 		this.socket = socket;
 
@@ -25,7 +25,7 @@ public class Client {
 					if (msg instanceof ChatMsg) {				
 						model.broadcast((ChatMsg) msg);
 					} else if (msg instanceof JoinMsg) {
-						Client.this.name = ((JoinMsg) msg).getName();
+						Game_Client.this.name = ((JoinMsg) msg).getName();
 					}
 				}
 			}
