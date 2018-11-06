@@ -2,11 +2,11 @@ package leberkaes.gameServer;
 
 import javafx.collections.ListChangeListener;
 
-public class Controller {
+public class GameServer_Controller {
 	private GameServer_Model model;
 	private GameServer_View view;
 
-	public Controller(GameServer_Model model, GameServer_View view) {
+	public GameServer_Controller(GameServer_Model model, GameServer_View view) {
 		this.model = model;
 		this.view = view;
 

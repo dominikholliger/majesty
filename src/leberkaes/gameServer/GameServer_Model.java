@@ -26,7 +26,7 @@ public class GameServer_Model {
 					while (!stop) {
 						try {
 							Socket socket = listener.accept();
-							Client client = new Client(Model.this, socket);
+							Game_Client client = new Game_Client(GameServer_Model.this, socket);
 							clients.add(client);
 						} catch (Exception e) {
 							logger.info(e.toString());
