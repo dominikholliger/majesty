@@ -51,7 +51,7 @@ public class GameServer_View {
 		stage.setTitle("SimpleChat Server");
 	}
 	
-	protected void start() {
+	public void start() {
 		stage.show();
 		
 		// Prevent resizing below initial size

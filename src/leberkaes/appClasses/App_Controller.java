@@ -2,7 +2,9 @@ package leberkaes.appClasses;
 
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.Controller;
+import leberkaes.gameServer.GameServer_Controller;
 import leberkaes.gameServer.GameServer_Model;
+import leberkaes.gameServer.GameServer_View;
 import leberkaes.settingsWindows.WebValidator_Controller;
 import leberkaes.settingsWindows.WebValidator_Model;
 import leberkaes.settingsWindows.WebValidator_View;
@@ -33,9 +35,9 @@ public class App_Controller extends Controller<App_Model, App_View> {
         	     // Initialize the option MVC components
             	GameServer_Model serverModel = new GameServer_Model();
             	GameServer_View serverView = new GameServer_View(optionsStage, serverModel);
-        	    new WebValidator_Controller(serverModel, serverView);
+        	    new GameServer_Controller(serverModel, serverView);
        	        // Display the options window
-       	        oView.start();
+        	    serverView.start();
             }
         });
         view.GameServerSettings.setOnAction(new EventHandler<ActionEvent>() {
