@@ -23,8 +23,6 @@ public class WebValidator_View {
     private WebValidator_Model model;
     private Stage stage;
 
-    protected Label lblIpAddress = new Label(t.getString("options.address"));
-    protected TextField txtIpAddress = new TextField();
     protected Label lblPort = new Label(t.getString("options.port"));
     protected TextField txtPort = new TextField();
     protected Button btnCancel = new Button(t.getString("options.cancel"));
@@ -39,10 +37,9 @@ public class WebValidator_View {
         HBox root = new HBox();
         Region spacer1 = new Region();
         Region spacer2 = new Region();
-        root.getChildren().addAll(lblIpAddress, txtIpAddress, spacer1, lblPort, txtPort, spacer2, btnCancel, btnSave);
+        root.getChildren().addAll(lblPort, txtPort, spacer2, btnCancel, btnSave);
 
         // Get current values
-        txtIpAddress.setText(config.getOption("WebServer"));
         txtPort.setText(config.getOption("Port"));
         
         Scene scene = new Scene(root);
