@@ -2,6 +2,9 @@ package leberkaes.appClasses;
 
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.Controller;
+import leberkaes.gameClient.GameClient_Controller;
+import leberkaes.gameClient.GameClient_Model;
+import leberkaes.gameClient.GameClient_View;
 import leberkaes.gameServer.GameServer_Controller;
 import leberkaes.gameServer.GameServer_Model;
 import leberkaes.gameServer.GameServer_View;
@@ -52,7 +55,18 @@ public class App_Controller extends Controller<App_Model, App_View> {
        	        oView.start();
             }
         });
-        
+        view.GameClientStart.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent t) {
+            	 serviceLocator.getLogger().info("GameClient - started");
+        		 Stage optionsStage = new Stage();
+        	     // Initialize the option MVC components
+        		GameClient_Model gModel = new GameClient_Model();
+        		GameClient_View gView = new GameClient_View(optionsStage, gModel);
+        	    new GameClient_Controller(gModel, gView);
+       	        // Display the options window
+       	        gView.start();
+            }
+        });
         
         // register ourselves to listen for button clicks
         view.btnClick.setOnAction(new EventHandler<ActionEvent>() {
