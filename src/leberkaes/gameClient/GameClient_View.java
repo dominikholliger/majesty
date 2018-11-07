@@ -66,7 +66,7 @@ public class GameClient_View {
 		stage.setTitle("SimpleChat Client");
 	}
 	
-	protected void start() {
+	public void start() {
 		stage.show();
 		
 		// Prevent resizing below initial size
