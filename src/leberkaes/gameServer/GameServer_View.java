@@ -1,5 +1,7 @@
 package leberkaes.gameServer;
 
+import java.util.logging.Logger;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,16 +12,22 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import leberkaes.commonClasses.Configuration;
+import leberkaes.commonClasses.Translator;
+import leberkaes.jat2.ServiceLocator;
 
 public class GameServer_View {
 	protected Stage stage;
 	private GameServer_Model model;
-
+	ServiceLocator sl = ServiceLocator.getServiceLocator();
+	Logger logger = sl.getLogger();
+	Translator t = sl.getTranslator();
+	Configuration config = sl.getConfiguration();
+	
 	// Top controls
-	Label lblPort = new Label("Port");
+	Label lblPort = new Label("Port: "+config.getOption("Port"));
 	TextField txtPort = new TextField();
 	Region topSpacer = new Region();
-	Button btnStart = new Button("Start");
 	
 	// Client area
 	TextArea txtClientArea = new TextArea();
@@ -28,14 +36,7 @@ public class GameServer_View {
 		this.stage = stage;
 		this.model = model;
 		
-		// Prevent labels and button from shrinking below their preferred size
-		lblPort.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
-		btnStart.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
-		
-		// Set sizes for top TextFields
-		txtPort.setMinWidth(60); txtPort.setPrefWidth(60);
-		
-		HBox topBox = new HBox(lblPort, txtPort, topSpacer, btnStart);
+		HBox topBox = new HBox(topSpacer);
 		topBox.getStyleClass().add("hbox"); // Class for styling
 		HBox.setHgrow(topSpacer,  Priority.ALWAYS);
 		
@@ -48,7 +49,7 @@ public class GameServer_View {
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-		stage.setTitle("SimpleChat Server");
+		stage.setTitle("Majesty Game Server");
 	}
 	
 	public void start() {
