@@ -34,6 +34,7 @@ public class App_View extends View<App_Model> {
     
     MenuItem GameServerStart;
     MenuItem GameServerSettings; 
+    MenuItem GameClientStart;
 
     Menu menuHelp;
     
@@ -61,8 +62,10 @@ public class App_View extends View<App_Model> {
 	    menuGameServer = new Menu(t.getString("program.menu.game.server"));
 	    GameServerStart = new MenuItem("program.menu.game.server.start");
 	    GameServerSettings = new MenuItem("program.menu.game.server.settings");
-
+	    GameClientStart = new MenuItem("program.menu.game.client.start");
+	    
 	    menuGame.getItems().add(menuGameServer);
+	    menuGame.getItems().add(GameClientStart);
 	    menuGameServer.getItems().add(GameServerStart);
 	    menuGameServer.getItems().add(GameServerSettings);
 	    
@@ -95,14 +98,12 @@ public class App_View extends View<App_Model> {
         root.add(btnClick, 0, 2);
 		
         Scene scene = new Scene(root, 500,500);
-        scene.getStylesheets().add(
-                getClass().getResource("app.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
         return scene;
 	}
 	
 	   protected void updateTexts() {
 	       Translator t = ServiceLocator.getServiceLocator().getTranslator();
-	        
 	        // The menu entries
 	       menuFile.setText(t.getString("program.menu.file"));
 	       menuFileLanguage.setText(t.getString("program.menu.file.language"));
@@ -111,16 +112,12 @@ public class App_View extends View<App_Model> {
            menuHelp.setText(t.getString("program.menu.help"));
            GameServerStart.setText(t.getString("program.menu.game.server.start"));
    	       GameServerSettings.setText(t.getString("program.menu.game.server.settings"));
-           
-           
-	        
 	        // Other controls
            btnClick.setText(t.getString("button.clickme"));
 	    }
 
 	public Scene showSettings() {
 		GridPane root = new GridPane();
-		
 		lblNumber = new Label();
         lblNumber.setText(Integer.toString(model.getValue()));
         lblNumber.setMinWidth(200);
@@ -130,7 +127,7 @@ public class App_View extends View<App_Model> {
      
         Scene scene = new Scene(root, 500,500);
         scene.getStylesheets().add(
-                getClass().getResource("app.css").toExternalForm());
+        getClass().getResource("app.css").toExternalForm());
         return scene;
 		
 		
