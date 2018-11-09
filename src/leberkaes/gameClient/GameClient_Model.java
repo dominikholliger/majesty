@@ -65,6 +65,9 @@ public class GameClient_Model {
 			}
 	}
 
+	
+	
+	
 	public void sendMessage(String message) {
 		logger.info("Send message");
 		Message msg = new ChatMsg(name, message);
