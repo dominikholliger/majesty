@@ -16,7 +16,7 @@
          <children>
             <ImageView fitHeight="316.0" fitWidth="600.0" layoutY="1.0" opacity="0.3" preserveRatio="true">
                <image>
-                  <Image url="@../Downloads/OneDrive-2018-11-06/majesty-start.jpg" />
+                  <Image leberkaes.GUIsources/majesty-start.jpg />
                </image>
             </ImageView>
             <ToggleButton fx:id="toggletwo" layoutX="115.0" layoutY="42.0" mnemonicParsing="false" text="Zwei Spieler" />

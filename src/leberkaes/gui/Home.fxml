@@ -20,14 +20,14 @@
          <children>
             <ImageView fitHeight="326.0" fitWidth="600.0" layoutX="21.0" layoutY="89.0" preserveRatio="true">
                <image>
-                  <Image url="@../Downloads/OneDrive-2018-11-06/majesty-start.jpg" />
+                  <Image leberkaes.GUIsources/majesty-start.jpg />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="66.0" layoutX="21.0" layoutY="339.0" opacity="0.63" stroke="WHITE" strokeType="INSIDE" width="600.0" />
             <Button layoutX="78.0" layoutY="347.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="141.0" text="Neues Spiel starten" />
             <ImageView fitHeight="86.0" fitWidth="61.0" layoutX="549.0" layoutY="342.0" preserveRatio="true">
                <image>
-                  <Image url="@../Downloads/OneDrive-2018-11-06/setting.png" />
+                  <Image leberkaes.GUIsources/setting.png />
                </image>
             </ImageView>
             <Button layoutX="416.0" layoutY="347.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="95.0" text="Highscores" />
