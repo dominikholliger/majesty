@@ -18,14 +18,12 @@ public class WebValidator_Controller {
 	Configuration config = sl.getConfiguration();
 	
 	// Validity checks for the two text fields
-	private boolean webAddressValid = false;
 	private boolean portValid = false;
 
 	public WebValidator_Controller(WebValidator_Model model,
 			WebValidator_View view) {
 		this.model = model;
 		this.view = view;
-
 
 		// ChangeListener for the text-property of the port number
 		view.txtPort.textProperty().addListener(
@@ -44,20 +42,6 @@ public class WebValidator_Controller {
 		});
 	}
 
-	/**
-	 * Two options: numeric (IPv4) or symbolic (e.g., www.fhnw.ch). In either
-	 * case, we split on the periods.
-	 */
-	private void validateWebAddress(String newValue) {
-		boolean valid = model.isValidWebAddress(newValue);
-		
-
-		// Save result
-		webAddressValid = valid;
-
-		// Enable or disable button, as appropriate
-		enableDisableButton();
-	}
 
 	/**
 	 * Must be an integer 1-65535
