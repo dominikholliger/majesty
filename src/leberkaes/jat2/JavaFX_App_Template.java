@@ -1,13 +1,16 @@
 package leberkaes.jat2;
 
-import leberkaes.appClasses.App_Controller;
-import leberkaes.appClasses.App_Model;
-import leberkaes.appClasses.App_View;
-import leberkaes.splashScreen.Splash_Controller;
-import leberkaes.splashScreen.Splash_Model;
-import leberkaes.splashScreen.Splash_View;
+import leberkaes.gui.EnterGame.EnterGameView;
+import leberkaes.gui.home.HomeView;
+import leberkaes.splashScreen.*;
+
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -20,7 +23,8 @@ import javafx.stage.Stage;
 public class JavaFX_App_Template extends Application {
     private static JavaFX_App_Template mainProgram; // singleton
     private Splash_View splashView;
-    private App_View view;
+    private HomeView view;
+    private Stage appStage;
 
     private ServiceLocator serviceLocator; // resources, after initialization
 
@@ -84,16 +88,15 @@ public class JavaFX_App_Template extends Application {
      * Splash_Controller, which means that it is on the JavaFX Application
      * Thread, which means that it is allowed to work with GUI components.
      * http://docs.oracle.com/javafx/2/threads/jfxpub-threads.htm
+     * @throws Exception 
      */
-    public void startApp() {
-        Stage appStage = new Stage();
+    public void startApp() throws Exception {
+        appStage = new Stage();
 
         // Initialize the application MVC components. Note that these components
         // can only be initialized now, because they may depend on the
         // resources initialized by the splash screen
-        App_Model model = new App_Model();
-        view = new App_View(appStage, model);
-        new App_Controller(model, view);
+        view = new HomeView();
 
         // Resources are now initialized
         serviceLocator = ServiceLocator.getServiceLocator();
@@ -103,8 +106,9 @@ public class JavaFX_App_Template extends Application {
         splashView.stop();
         splashView = null;
 
-        view.start();
+        view.start(appStage);
     }
+ 
 
     /**
      * The stop method is the opposite of the start method. It provides an
@@ -120,7 +124,7 @@ public class JavaFX_App_Template extends Application {
         serviceLocator.getConfiguration().save();
         if (view != null) {
             // Make the view invisible
-            view.stop();
+            //view.stop();
         }
 
         // More cleanup code as needed
