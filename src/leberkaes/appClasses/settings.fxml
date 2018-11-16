@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leberkaes.appClasses.App_Controller">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.7">
+               <image>
+                  <Image url="leberkaes.GUIsources/majesty-start.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="back" layoutX="497.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBackClicked"  />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="296.0" layoutX="42.0" layoutY="33.0" opacity="0.8" stroke="WHITE" strokeType="INSIDE" width="200.0" />
+            <RadioButton fx:id="germanoption" layoutX="59.0" layoutY="200.0" mnemonicParsing="false" selected="true" onAction="#handleGermanClicked"/>
+            <RadioButton fx:id="englishoption" disable="true" layoutX="149.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleEnglishClicked" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -7,9 +9,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leberkaes.gui.GameBoard.GameBoardController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="691.0" prefWidth="1049.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
          <children>
             <ImageView fx:id="player2icon" fitHeight="70.0" fitWidth="70.0" layoutX="23.0" layoutY="443.0" preserveRatio="true">
                <image>
@@ -32,7 +34,7 @@
                </image>
             </ImageView>
             <Text fx:id="player1name" layoutX="35.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1" />
-            <Text fx:id="player2name" layoutX="35.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2" />
+            <Text fx:id="player2name" layoutX="35.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2" />
             <ImageView fx:id="cardback" fitHeight="120.0" fitWidth="120.0" layoutX="674.0" layoutY="34.0" preserveRatio="true">
                <image>
                   <Image url="leberkaes.GUIsources/Back1.jpg" />
@@ -105,9 +107,155 @@
                         <Image url="leberkaes.GUIsources/SideA8.jpg" />
                      </image>
                   </ImageView>
+                   <Text fx:id="p1GRAIN" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p1BARELL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p1POTION" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p1KEY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p1SHIELD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p1CUTLERY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p1SWORD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p1HOSPITAL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p2GRAIN" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p2BARELL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p2POTION" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p2KEY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p2SHIELD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p2CUTLERY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p2SWORD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="p2HOSPITAL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="30.0" />
+                     </GridPane.margin>
+                  </Text>
                </children>
             </GridPane>
+            <Text fx:id="player1points" layoutX="116.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <Text fx:id="player2points" layoutX="116.0" layoutY="502.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <Ellipse fill="#4dff5c" layoutX="26.0" layoutY="414.0" radiusX="7.0" radiusY="7.0" stroke="#4dff5c" strokeType="INSIDE" />
+            <Ellipse fill="#4dff5c" layoutX="25.0" layoutY="434.0" radiusX="7.0" radiusY="7.0" stroke="#4dff5c" strokeType="INSIDE" />
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="chatWindow" layoutX="803.0" prefHeight="516.0" prefWidth="246.0" style="-fx-border-color: black;">
+         <children>
+            <ScrollBar fx:id="scrollbar" layoutX="227.0" layoutY="4.0" orientation="VERTICAL" prefHeight="509.0" prefWidth="17.0" />
+         </children>
+      </AnchorPane>
+      <TextArea fx:id="chatTextArea" layoutX="3.0" layoutY="519.0" prefHeight="167.0" prefWidth="798.0" />
    </children>
 </Pane>
