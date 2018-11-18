@@ -15,6 +15,7 @@ public class GameServer_Model {
 	private final Logger logger = Logger.getLogger("");
 	private ServerSocket listener;
 	private volatile boolean stop = false;
+	
 
 	public void startServer(int port) {
 		logger.info("Start server");
