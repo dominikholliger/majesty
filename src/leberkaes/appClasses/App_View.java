@@ -1,5 +1,6 @@
 package leberkaes.appClasses;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.logging.Logger;
 
@@ -7,6 +8,7 @@ import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.View;
 import leberkaes.commonClasses.Translator;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,6 +28,14 @@ import javafx.stage.Stage;
 public class App_View extends View<App_Model> {
     Menu menuFile;
     Menu menuFileLanguage;
+    
+    Menu menuGame;
+    Menu menuGameServer;
+    
+    MenuItem GameServerStart;
+    MenuItem GameServerSettings; 
+    MenuItem GameClientStart;
+
     Menu menuHelp;
     
     Label lblNumber;
@@ -33,8 +43,7 @@ public class App_View extends View<App_Model> {
 
 	public App_View(Stage stage, App_Model model) {
         super(stage, model);
-        stage.setTitle("JavaFX Application Template");
-        
+        stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
         ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
     }
 
@@ -48,6 +57,18 @@ public class App_View extends View<App_Model> {
 	    menuFile = new Menu(t.getString("program.menu.file"));
 	    menuFileLanguage = new Menu(t.getString("program.menu.file.language"));
 	    menuFile.getItems().add(menuFileLanguage);
+
+	    menuGame = new Menu(t.getString("program.menu.game"));
+	    menuGameServer = new Menu(t.getString("program.menu.game.server"));
+	    GameServerStart = new MenuItem("program.menu.game.server.start");
+	    GameServerSettings = new MenuItem("program.menu.game.server.settings");
+	    GameClientStart = new MenuItem("program.menu.game.client.start");
+	    
+	    menuGame.getItems().add(menuGameServer);
+	    menuGame.getItems().add(GameClientStart);
+	    menuGameServer.getItems().add(GameServerStart);
+	    menuGameServer.getItems().add(GameServerSettings);
+	    
 	    
        for (Locale locale : sl.getLocales()) {
            MenuItem language = new MenuItem(locale.getLanguage());
@@ -60,7 +81,7 @@ public class App_View extends View<App_Model> {
         }
 	    
         menuHelp = new Menu(t.getString("program.menu.help"));
-	    menuBar.getMenus().addAll(menuFile, menuHelp);
+	    menuBar.getMenus().addAll(menuFile,menuGame, menuHelp);
 		
 		GridPane root = new GridPane();
 		root.add(menuBar, 0, 0);
@@ -76,21 +97,41 @@ public class App_View extends View<App_Model> {
         btnClick.setMinWidth(200);
         root.add(btnClick, 0, 2);
 		
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(
-                getClass().getResource("app.css").toExternalForm());
+        Scene scene = new Scene(root, 500,500);
+        scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
         return scene;
 	}
 	
 	   protected void updateTexts() {
 	       Translator t = ServiceLocator.getServiceLocator().getTranslator();
-	        
 	        // The menu entries
 	       menuFile.setText(t.getString("program.menu.file"));
 	       menuFileLanguage.setText(t.getString("program.menu.file.language"));
+	       menuGame.setText(t.getString("program.menu.game"));
+	       menuGameServer.setText(t.getString("program.menu.game.server"));
            menuHelp.setText(t.getString("program.menu.help"));
-	        
+           GameServerStart.setText(t.getString("program.menu.game.server.start"));
+   	       GameServerSettings.setText(t.getString("program.menu.game.server.settings"));
 	        // Other controls
            btnClick.setText(t.getString("button.clickme"));
 	    }
+
+	public Scene showSettings() {
+		GridPane root = new GridPane();
+		lblNumber = new Label();
+        lblNumber.setText(Integer.toString(model.getValue()));
+        lblNumber.setMinWidth(200);
+        lblNumber.setAlignment(Pos.BASELINE_CENTER);
+        root.add(lblNumber, 0, 1);
+        
+     
+        Scene scene = new Scene(root, 500,500);
+        scene.getStylesheets().add(
+        getClass().getResource("app.css").toExternalForm());
+        return scene;
+		
+		
+		
+	}
+		
 }
