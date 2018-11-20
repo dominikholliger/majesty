@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leberkaes.appClasses.App_Controller">
+   <children>
+      <AnchorPane prefHeight="350.0" prefWidth="500.0">
+         <children>
+            <ImageView fitHeight="326.0" fitWidth="600.0" layoutX="0.0" layoutY="0.0" preserveRatio="true">
+               <image>
+                  <Image url="leberkaes.GUIsources/majesty-start.jpg" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="66.0" layoutX="21.0" layoutY="339.0" opacity="0.63" stroke="WHITE" strokeType="INSIDE" width="600.0" />
+            <Button fx:id="newGame" layoutX="78.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleNewGameButtonClicked" prefHeight="44.0" prefWidth="141.0" text="Neues Spiel starten" />
+            <Button fx:id="settings" layoutX="522.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleSettingsButtonClicked" prefHeight="64.0" prefWidth="74.0">
+               <graphic>
+                  <ImageView fitHeight="86.0" fitWidth="61.0" preserveRatio="true">
+                     <image>
+                        <Image url="leberkaes.GUIsources/setting.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="highscore" layoutX="416.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleHighscoreButtonClicked" prefHeight="44.0" prefWidth="95.0" text="Highscores" />
+            <Button fx:id="enterGame" layoutX="264.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleEnterGameButtonclicked" prefHeight="44.0" prefWidth="114.0" text="Spiel beitreten" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
+

@@ -32,10 +32,8 @@ public class GameServer_Model {
 						} catch (Exception e) {
 							logger.info(e.toString());
 						}
-<<<<<<< HEAD
 						// Spiel starten?->Trigger
-=======
->>>>>>> branch 'master' of https://github.com/dominikholliger/majesty.git
+
 					}
 				}
 			};
