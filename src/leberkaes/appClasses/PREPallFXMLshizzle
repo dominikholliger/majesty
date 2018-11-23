@@ -1,0 +1,83 @@
+Home
+@FXML private Button newGame;
+@FXML private Button settings;
+@FXML private Button highscore;
+@FXML private Button enterGame;
+
+
+Highscore
+@FXML private TableView highscoretable;
+@FXML private TableColumn rankcolumn;
+@FXML private TableColumn playernamecolumn;
+@FXML private TableColumn highscorecolumn;
+@FXML private Button back;
+
+Settings
+@FXML private Button back;
+@FXML private RadioButton germanoption;
+@FXML private RadioButton englishoption;
+
+
+EnterGame
+@FXML private Button enterGame;
+@FXML private Text textPlayername;
+@FXML private TextField textinputPlayername;
+@FXML private TextField textinputipserver;
+@FXML private Text textipserver;
+
+
+StartNewGame
+@FXML private Text textPlayername;
+@FXML private TextField textinputPlayername;
+@FXML private TextField textinputipserver;
+@FXML private Text textipserver;
+@FXML private ToggleButton toggletwo;
+@FXML private ToggleButton togglefour;
+@FXML private Button startGame;
+
+
+GameBoard
+@FXML private Text player1name;
+@FXML private Text player2name;
+@FXML private ImageView cardback;
+@FXML private ImageView stackplace1;
+@FXML private ImageView stackplace2;
+@FXML private ImageView stackplace3;
+@FXML private ImageView stackplace4;
+@FXML private ImageView stackplace5;
+@FXML private ImageView stackplace6;
+
+@FXML private Text p1GRAIN;
+@FXML private Text p2GRAIN;
+@FXML private Text p1BARELL;
+@FXML private Text p2BARELL;
+@FXML private Text p1POTION;
+@FXML private Text p2POTION;
+@FXML private Text p1KEY;
+@FXML private Text p2KEY;
+@FXML private Text p1SHIELD;
+@FXML private Text p2SHIELD;
+@FXML private Text p1CUTLERY;
+@FXML private Text p2CUTLERY;
+@FXML private Text p1SWORD;
+@FXML private Text p1SWORD;
+@FXML private Text p1HOSPITAL;
+@FXML private Text p2HOSPITAL;
+
+@FXML private Text player1points;
+@FXML private Text player2points;
+
+@FXML private Ellipse player1active;
+@FXML private Ellipse player2active;
+
+@FXML private AnchorPane chatWindow;
+@FXML private TextArea chatTextArea;
+
+
+
+
+
+
+
+
+

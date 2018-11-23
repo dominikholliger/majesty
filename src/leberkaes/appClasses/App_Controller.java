@@ -2,20 +2,8 @@ package leberkaes.appClasses;
 
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.Controller;
-import leberkaes.gameClient.GameClient_Controller;
-import leberkaes.gameClient.GameClient_Model;
-import leberkaes.gameClient.GameClient_View;
-import leberkaes.gameServer.GameServer_Controller;
-import leberkaes.gameServer.GameServer_Model;
-import leberkaes.gameServer.GameServer_View;
-import leberkaes.settingsWindows.WebValidator_Controller;
-import leberkaes.settingsWindows.WebValidator_Model;
-import leberkaes.settingsWindows.WebValidator_View;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 
