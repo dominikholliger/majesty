@@ -10,7 +10,7 @@ import leberkaes.commonClasses.CardType.type;
 public class Player {
 
 	public String name;
-	public boolean active;
+	public boolean active; // Wars
 
 	public int score;
 	public int meeple;
@@ -41,33 +41,65 @@ public class Player {
 		locations[7] = new Location(type.HOSPITAL);
 
 	}
-	
-	public void addCard(CharacterCard c, int i) {
-		this.locations[i].characters.add(c);
+
+	public void makeMove(CharacterCard c, int location) {
+		
+		//this.locations[location].addCard(c);
+
+		Location l = this.locations[location];
+		l.addCard(c);
+		this.score += this.getCoins(l);
+		System.out.println("Geld bekommen");
 		
 	}
 
 	public void killCard(CharacterCard c) {
-			
+
 	}
 
 	public CharacterCard reviveCard() {
 		return null;
 
 	}
-	
-	/** Split-Card Handling fehlt**/
-	public int getValidLocations(CharacterCard c) {
-		int position = 0;
-		for (int i = 0; i<locations.length;i++) {
-			if ((c.getCardType1() == locations[i].getType()) || (c.getCardType1() == locations[i].getType())){
-				position = i;
-			}
-				
+
+	public int getCoins(Location l) {
+		int cards;
+		int coinEffect;
+		int coinSum = 0;
+		
+		
+		
+		for (int i = 0; i < 6; i++) {
+			System.out.println(this.locations[i]);
+			cards = this.locations[i].getCardCount();
+			System.out.println(cards);
+			
+			type t = this.locations[i].getType();
+			coinEffect = l.getEffect(t);
+			System.out.println(coinEffect);
+			
+			coinSum += cards * coinEffect;
+			System.out.println(coinSum);
+			
+			
 			
 		}
-		return position;
+		return coinSum;
 		
+
+	}
+
+	/** Split-Card Handling fehlt **/
+	public int getLocation(CharacterCard c) {
+		int position = 0;
+		for (int i = 0; i < locations.length; i++) {
+			if ((c.getCardType1() == locations[i].getType()) || (c.getCardType2() == locations[i].getType())) {
+				position = i;
+			}
+
+		}
+		return position;
+
 	}
 
 	@Override
