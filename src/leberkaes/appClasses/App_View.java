@@ -48,6 +48,14 @@ public class App_View extends View<App_Model> {
 		}
 		return _SettingsCtrl; 
 	}
+	
+	private dummyFXMLControllerHighscore _HighscoreCtrl;
+	public dummyFXMLControllerHighscore get_HighscoreCtrl() {
+		if(_HighscoreCtrl == null) {
+			_HighscoreCtrl = new dummyFXMLControllerHighscore();
+		}
+		return _HighscoreCtrl; 
+	}
 
 	protected Parent parent;
 
@@ -119,5 +127,20 @@ public class App_View extends View<App_Model> {
 		Scene scene = new Scene(parent, 500,500);
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
 		super.getStage().setScene(scene);	
+	}
+	
+	public void showHighscore() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Highscore.fxml"));
+		loader.setController(get_HighscoreCtrl());
+		try {
+			parent = loader.load();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		Scene scene = new Scene(parent, 500,500);
+		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		super.getStage().setScene(scene);
 	}
 }

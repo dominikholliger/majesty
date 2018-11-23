@@ -27,6 +27,7 @@ public class dummyFXMLControllerHome {
 	 */
 	
 	private App_Controller _MvcCtrl;
+	
 	public App_Controller get_MvcCtrl() {
 		return _MvcCtrl;
 	}
@@ -43,16 +44,12 @@ public class dummyFXMLControllerHome {
 	@FXML protected void handleSettingsButtonClicked(ActionEvent event) throws Exception{
 		//TODO was passiert wenn der knopf gedrueckt wird 
 		//settings-Fenster oeffnet sich, nichts uebergeben
-		//ShowSettingsView settings = new ShowSettingsView();
-		//Stage s = new Stage();
-		//settings.start(s);
 		get_MvcCtrl().serverSettings();
 	}
+	
 	@FXML protected void handleHighscoreButtonClicked(ActionEvent event) throws Exception{
 		// Highscore-Fenster oeffnet sich, nichts wird uebergeben
-		//ShowHighscoresView highscores = new ShowHighscoresView();
-		//Stage s = new Stage();
-		//highscores.start(s);
+		get_MvcCtrl().goToHighscore();
 		
 	}
 	@FXML protected void handleEnterGameButtonclicked(ActionEvent event) throws Exception{

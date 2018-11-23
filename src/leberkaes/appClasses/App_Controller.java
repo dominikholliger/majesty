@@ -62,4 +62,10 @@ public class App_Controller extends Controller<App_Model, App_View> {
     	view.get_Ctrl().set_MvcCtrl(this);
     	view.showHome();
     }
+    
+    public void goToHighscore() {
+    	view.get_HighscoreCtrl().set_MvcCtrl(this);
+    	view.showHighscore();
+    }
+    
 }

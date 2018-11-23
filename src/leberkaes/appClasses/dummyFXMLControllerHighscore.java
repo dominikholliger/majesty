@@ -3,7 +3,7 @@ package leberkaes.appClasses;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class dummyFXMLControllerSettings {
+public class dummyFXMLControllerHighscore {
 	private App_Controller _MvcCtrl;
 	
 	public App_Controller get_MvcCtrl() {
@@ -16,12 +16,6 @@ public class dummyFXMLControllerSettings {
 	@FXML protected void handleBackClicked(ActionEvent event) throws Exception {
 		get_MvcCtrl().goToHome();
 	}
-	
-	@FXML protected void handleGermanClicked(ActionEvent event) throws Exception {
-		
-	}
-	
-	@FXML protected void handleEnglishClicked(ActionEvent event) throws Exception {
-		
-	}
+
+
 }
