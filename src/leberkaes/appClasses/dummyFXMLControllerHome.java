@@ -37,7 +37,6 @@ public class dummyFXMLControllerHome {
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
 		// Nur ein Beispiel einer Mapping Methode
-		get_MvcCtrl().Juhu("BBBB");
 	}
 	
 	
@@ -47,7 +46,7 @@ public class dummyFXMLControllerHome {
 		//ShowSettingsView settings = new ShowSettingsView();
 		//Stage s = new Stage();
 		//settings.start(s);
-		
+		get_MvcCtrl().serverSettings();
 	}
 	@FXML protected void handleHighscoreButtonClicked(ActionEvent event) throws Exception{
 		// Highscore-Fenster oeffnet sich, nichts wird uebergeben

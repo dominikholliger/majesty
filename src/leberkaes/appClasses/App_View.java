@@ -28,33 +28,41 @@ import javafx.stage.Stage;
  * @author Brad Richards
  */
 public class App_View extends View<App_Model> {
-    
-    /**
-     * Per Lazy Loading die ein DummyKontroller Objekt erstellen und per Getter zur verfügung Stellen
-     * wird für den FXML Loader gebraucht.
-     */
-    private dummyFXMLControllerHome _Ctrl;
+
+	/**
+	 * Per Lazy Loading die ein DummyKontroller Objekt erstellen und per Getter zur verfügung Stellen
+	 * wird für den FXML Loader gebraucht.
+	 */
+	private dummyFXMLControllerHome _Ctrl;
 	public dummyFXMLControllerHome get_Ctrl() {
-    		if(_Ctrl == null) {
-    			_Ctrl = new dummyFXMLControllerHome();
-    		}
-    		return _Ctrl;    	
-    }
-    
-    protected Parent parent;
-    
+		if(_Ctrl == null) {
+			_Ctrl = new dummyFXMLControllerHome();
+		}
+		return _Ctrl;    	
+	}
+
+	private dummyFXMLControllerSettings _SettingsCtrl;
+	public dummyFXMLControllerSettings get_SettingsCtrl() {
+		if(_SettingsCtrl == null) {
+			_SettingsCtrl = new dummyFXMLControllerSettings();
+		}
+		return _SettingsCtrl; 
+	}
+
+	protected Parent parent;
+
 	public App_View(Stage stage, App_Model model) {
-        super(stage, model);
-        stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
-        ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
-        
-    }
+		super(stage, model);
+		stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
+		ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
+
+	}
 
 	@Override
 	protected Scene create_GUI() {
-	    ServiceLocator sl = ServiceLocator.getServiceLocator();  
-	    Logger logger = sl.getLogger();
-	    Translator t = sl.getTranslator();
+		ServiceLocator sl = ServiceLocator.getServiceLocator();  
+		Logger logger = sl.getLogger();
+		Translator t = sl.getTranslator();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
 		loader.setController(get_Ctrl());
 		try {
@@ -63,16 +71,16 @@ public class App_View extends View<App_Model> {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-	    
+
 		Scene scene = new Scene(parent, 500,500);
-        scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
-        return scene;
+		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		return scene;
 	}
-	
-	   protected void updateTexts() {
-	       Translator t = ServiceLocator.getServiceLocator().getTranslator();
-	        // The menu entries
-/*	       menuFile.setText(t.getString("program.menu.file"));
+
+	protected void updateTexts() {
+		Translator t = ServiceLocator.getServiceLocator().getTranslator();
+		// The menu entries
+		/*	       menuFile.setText(t.getString("program.menu.file"));
 	       menuFileLanguage.setText(t.getString("program.menu.file.language"));
 	       menuGame.setText(t.getString("program.menu.game"));
 	       menuGameServer.setText(t.getString("program.menu.game.server"));
@@ -81,13 +89,35 @@ public class App_View extends View<App_Model> {
    	       GameServerSettings.setText(t.getString("program.menu.game.server.settings"));
 	        // Other controls
            btnClick.setText(t.getString("button.clickme"));*/
-	    }
-
-   public void showSettings() {
-//	public Scene showSettings() {
-		
-		
-		
 	}
-		
+
+	public void showSettings() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
+		loader.setController(get_SettingsCtrl());
+		try {
+			parent = loader.load();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		Scene scene = new Scene(parent, 500,500);
+		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		super.getStage().setScene(scene);		
+	}	
+
+	public void showHome() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+		loader.setController(get_Ctrl());
+		try {
+			parent = loader.load();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		Scene scene = new Scene(parent, 500,500);
+		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		super.getStage().setScene(scene);	
+	}
 }
