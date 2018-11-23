@@ -40,18 +40,20 @@ public class App_Controller extends Controller<App_Model, App_View> {
         serviceLocator = ServiceLocator.getServiceLocator();        
         serviceLocator.getLogger().info("Application controller initialized");
     }
-    
-	public void Juhu(String msg) {
-		System.out.println(msg);
-	}    
-    
-    
-    
+ 
     public void serverSettings() {
-    	//
-    	// Server Settings 
-    	view.showSettings();
-    	
-    	
+    	view.get_SettingsCtrl().set_MvcCtrl(this);
+    	view.showSettings();  	
     }
+    
+    public void goToHome() {
+    	view.get_Ctrl().set_MvcCtrl(this);
+    	view.showHome();
+    }
+    
+    public void goToHighscore() {
+    	view.get_HighscoreCtrl().set_MvcCtrl(this);
+    	view.showHighscore();
+    }
+    
 }
