@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.View;
 import leberkaes.commonClasses.Translator;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -40,11 +41,14 @@ public class App_View extends View<App_Model> {
     
     Label lblNumber;
     Button btnClick;
-
+    
+    protected Parent parent;
+    
 	public App_View(Stage stage, App_Model model) {
         super(stage, model);
         stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
         ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
+        
     }
 
 	@Override
@@ -53,6 +57,7 @@ public class App_View extends View<App_Model> {
 	    Logger logger = sl.getLogger();
 	    Translator t = sl.getTranslator();
 	    
+	    /**
 	    MenuBar menuBar = new MenuBar();
 	    menuFile = new Menu(t.getString("program.menu.file"));
 	    menuFileLanguage = new Menu(t.getString("program.menu.file.language"));
@@ -96,8 +101,15 @@ public class App_View extends View<App_Model> {
         btnClick.setText(t.getString("button.clickme"));
         btnClick.setMinWidth(200);
         root.add(btnClick, 0, 2);
-		
-        Scene scene = new Scene(root, 500,500);
+		**/
+	    
+	    try {
+			parent = FXMLLoader.load(getClass().getResource("Home.fxml"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        Scene scene = new Scene(parent, 500,500);
         scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
         return scene;
 	}
