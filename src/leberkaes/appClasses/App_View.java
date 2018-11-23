@@ -28,26 +28,15 @@ import javafx.stage.Stage;
  * @author Brad Richards
  */
 public class App_View extends View<App_Model> {
-    Menu menuFile;
-    Menu menuFileLanguage;
     
-    Menu menuGame;
-    Menu menuGameServer;
-    
-    MenuItem GameServerStart;
-    MenuItem GameServerSettings; 
-    MenuItem GameClientStart;
-
-    Menu menuHelp;
-    
-    Label lblNumber;
-    Button btnClick;
-    
-    private testController _Ctrl;
-
-	public testController get_Ctrl() {
+    /**
+     * Per Lazy Loading die ein DummyKontroller Objekt erstellen und per Getter zur verfügung Stellen
+     * wird für den FXML Loader gebraucht.
+     */
+    private dummyFXMLControllerHome _Ctrl;
+	public dummyFXMLControllerHome get_Ctrl() {
     		if(_Ctrl == null) {
-    			_Ctrl = new testController();
+    			_Ctrl = new dummyFXMLControllerHome();
     		}
     		return _Ctrl;    	
     }
@@ -66,60 +55,8 @@ public class App_View extends View<App_Model> {
 	    ServiceLocator sl = ServiceLocator.getServiceLocator();  
 	    Logger logger = sl.getLogger();
 	    Translator t = sl.getTranslator();
-	    
-	    /**
-	    MenuBar menuBar = new MenuBar();
-	    menuFile = new Menu(t.getString("program.menu.file"));
-	    menuFileLanguage = new Menu(t.getString("program.menu.file.language"));
-	    menuFile.getItems().add(menuFileLanguage);
-
-	    menuGame = new Menu(t.getString("program.menu.game"));
-	    menuGameServer = new Menu(t.getString("program.menu.game.server"));
-	    GameServerStart = new MenuItem("program.menu.game.server.start");
-	    GameServerSettings = new MenuItem("program.menu.game.server.settings");
-	    GameClientStart = new MenuItem("program.menu.game.client.start");
-	    
-	    menuGame.getItems().add(menuGameServer);
-	    menuGame.getItems().add(GameClientStart);
-	    menuGameServer.getItems().add(GameServerStart);
-	    menuGameServer.getItems().add(GameServerSettings);
-	    
-	    
-       for (Locale locale : sl.getLocales()) {
-           MenuItem language = new MenuItem(locale.getLanguage());
-           menuFileLanguage.getItems().add(language);
-           language.setOnAction( event -> {
-				sl.getConfiguration().setLocalOption("Language", locale.getLanguage());
-                sl.setTranslator(new Translator(locale.getLanguage()));
-                updateTexts();
-            });
-        }
-	    
-        menuHelp = new Menu(t.getString("program.menu.help"));
-	    menuBar.getMenus().addAll(menuFile,menuGame, menuHelp);
-		
-		GridPane root = new GridPane();
-		root.add(menuBar, 0, 0);
-		
-		lblNumber = new Label();
-        lblNumber.setText(Integer.toString(model.getValue()));
-        lblNumber.setMinWidth(200);
-        lblNumber.setAlignment(Pos.BASELINE_CENTER);
-        root.add(lblNumber, 0, 1);
-        
-        btnClick = new Button();
-        btnClick.setText(t.getString("button.clickme"));
-        btnClick.setMinWidth(200);
-        root.add(btnClick, 0, 2);
-		**/
-	    
-	    
-
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
-		
-		//testController ctrl = new testController();
 		loader.setController(get_Ctrl());
-		
 		try {
 			parent = loader.load();
 		} catch (IOException e1) {
@@ -127,17 +64,6 @@ public class App_View extends View<App_Model> {
 			e1.printStackTrace();
 		}
 	    
-	    
-/*	    try {
-	    	URL bla = getClass().getResource("Home.fxml");
-	    	parent = FXMLLoader.load(bla);
-			//parent = FXMLLoader.load(getClass().getResource("Home.fxml"));
-	    } catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-*/   
 		Scene scene = new Scene(parent, 500,500);
         scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
         return scene;
@@ -146,7 +72,7 @@ public class App_View extends View<App_Model> {
 	   protected void updateTexts() {
 	       Translator t = ServiceLocator.getServiceLocator().getTranslator();
 	        // The menu entries
-	       menuFile.setText(t.getString("program.menu.file"));
+/*	       menuFile.setText(t.getString("program.menu.file"));
 	       menuFileLanguage.setText(t.getString("program.menu.file.language"));
 	       menuGame.setText(t.getString("program.menu.game"));
 	       menuGameServer.setText(t.getString("program.menu.game.server"));
@@ -154,22 +80,11 @@ public class App_View extends View<App_Model> {
            GameServerStart.setText(t.getString("program.menu.game.server.start"));
    	       GameServerSettings.setText(t.getString("program.menu.game.server.settings"));
 	        // Other controls
-           btnClick.setText(t.getString("button.clickme"));
+           btnClick.setText(t.getString("button.clickme"));*/
 	    }
 
-	public Scene showSettings() {
-		GridPane root = new GridPane();
-		lblNumber = new Label();
-        lblNumber.setText(Integer.toString(model.getValue()));
-        lblNumber.setMinWidth(200);
-        lblNumber.setAlignment(Pos.BASELINE_CENTER);
-        root.add(lblNumber, 0, 1);
-        
-     
-        Scene scene = new Scene(root, 500,500);
-        scene.getStylesheets().add(
-        getClass().getResource("app.css").toExternalForm());
-        return scene;
+   public void showSettings() {
+//	public Scene showSettings() {
 		
 		
 		
