@@ -1,6 +1,7 @@
 package leberkaes.appClasses;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Locale;
 import java.util.logging.Logger;
 
@@ -41,6 +42,15 @@ public class App_View extends View<App_Model> {
     
     Label lblNumber;
     Button btnClick;
+    
+    private testController _Ctrl;
+
+	public testController get_Ctrl() {
+    		if(_Ctrl == null) {
+    			_Ctrl = new testController();
+    		}
+    		return _Ctrl;    	
+    }
     
     protected Parent parent;
     
@@ -103,13 +113,32 @@ public class App_View extends View<App_Model> {
         root.add(btnClick, 0, 2);
 		**/
 	    
-	    try {
-			parent = FXMLLoader.load(getClass().getResource("Home.fxml"));
-		} catch (IOException e) {
+	    
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+		
+		//testController ctrl = new testController();
+		loader.setController(get_Ctrl());
+		
+		try {
+			parent = loader.load();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	    
+	    
+/*	    try {
+	    	URL bla = getClass().getResource("Home.fxml");
+	    	parent = FXMLLoader.load(bla);
+			//parent = FXMLLoader.load(getClass().getResource("Home.fxml"));
+	    } catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        Scene scene = new Scene(parent, 500,500);
+		
+*/   
+		Scene scene = new Scene(parent, 500,500);
         scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
         return scene;
 	}

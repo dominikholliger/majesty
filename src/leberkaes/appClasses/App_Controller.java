@@ -32,8 +32,11 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
     public App_Controller(App_Model model, App_View view) {
         super(model, view);
-
-        // register ourselves to listen for our menu item clicks
+        
+        view.get_Ctrl().set_MvcCtrl(this);
+        
+        
+        /*// register ourselves to listen for our menu item clicks
         view.GameServerStart.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
             	serviceLocator.getLogger().info("GameServer - start requested");
@@ -78,12 +81,15 @@ public class App_Controller extends Controller<App_Model, App_View> {
                 buttonClick();
             }
         });
-
+*/
         // register ourselves to handle window-closing event
         view.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                Platform.exit();
+                
+            	System.out.println();
+            	
+            	Platform.exit();
             }
         });
         
@@ -91,6 +97,10 @@ public class App_Controller extends Controller<App_Model, App_View> {
         serviceLocator = ServiceLocator.getServiceLocator();        
         serviceLocator.getLogger().info("Application controller initialized");
     }
+    
+public void Juhu(String msg) {
+	System.out.println(msg);
+}    
     
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
 		//StartNewGameView newgame = new StartNewGameView();
