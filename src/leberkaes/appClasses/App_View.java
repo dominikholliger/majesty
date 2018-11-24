@@ -80,7 +80,7 @@ public class App_View extends View<App_Model> {
 			e1.printStackTrace();
 		}
 
-		Scene scene = new Scene(parent, 500,500);
+		Scene scene = new Scene(parent, 600,400);
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
 		return scene;
 	}
@@ -109,7 +109,7 @@ public class App_View extends View<App_Model> {
 			e1.printStackTrace();
 		}
 
-		Scene scene = new Scene(parent, 500,500);
+		Scene scene = new Scene(parent, 600,400);
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
 		super.getStage().setScene(scene);		
 	}	
@@ -124,7 +124,7 @@ public class App_View extends View<App_Model> {
 			e1.printStackTrace();
 		}
 
-		Scene scene = new Scene(parent, 500,500);
+		Scene scene = new Scene(parent, 600, 400);
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
 		super.getStage().setScene(scene);	
 	}
@@ -139,7 +139,7 @@ public class App_View extends View<App_Model> {
 			e1.printStackTrace();
 		}
 
-		Scene scene = new Scene(parent, 500,500);
+		Scene scene = new Scene(parent, 600,400);
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
 		super.getStage().setScene(scene);
 	}
