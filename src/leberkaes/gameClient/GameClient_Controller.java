@@ -31,4 +31,9 @@ public void goToEnterGame() {
 	view.get_EnterGameCtrl().set_GMvcCtrl(this);
 	view.showEnterGame();
 }
+
+public void goToGameBoard() {
+	view.get_GameBoardCtrl().set_GMvcCtrl(this);
+	view.showGameBoard();
+}
 }

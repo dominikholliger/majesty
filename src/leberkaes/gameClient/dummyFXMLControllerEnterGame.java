@@ -10,12 +10,13 @@ public class dummyFXMLControllerEnterGame {
 	public static GameClient_Controller get_GMvcCtrl() {
 		return _GMvcCtrl;
 	}
+	@SuppressWarnings("static-access")
 	public void set_GMvcCtrl(GameClient_Controller _GMvcCtrl) {
 		this._GMvcCtrl = _GMvcCtrl;
 	}
 
 	@FXML protected void handleEnterGameClicked(ActionEvent event) throws Exception {
-		// TODO get_GMvcCtrl().goToGameBoard();
+		get_GMvcCtrl().goToGameBoard();
 	}
 	
 	

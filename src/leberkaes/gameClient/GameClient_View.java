@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import leberkaes.abstractClasses.View;
+import leberkaes.appClasses.dummyFXMLControllerHighscore;
 import leberkaes.appClasses.dummyFXMLControllerHome;
 import leberkaes.commonClasses.Translator;
 import leberkaes.jat2.ServiceLocator;
@@ -39,10 +40,34 @@ public class GameClient_View extends View<GameClient_Model>{
 		}
 		return _EnterGameCtrl;    	
 	}
+	
+	private dummyFXMLControllerGameBoard _GameBoardCtrl;
+	public dummyFXMLControllerGameBoard get_GameBoardCtrl() {
+		if(_GameBoardCtrl == null) {
+			_GameBoardCtrl = new dummyFXMLControllerGameBoard();
+		}
+		return _GameBoardCtrl; 
+	}
 
 	public void showEnterGame() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("EnterGame.fxml"));
 		loader.setController(get_EnterGameCtrl());
+		try {
+			parent = loader.load();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		Scene scene = new Scene(parent, 600,400);
+		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		super.getStage().setScene(scene);	
+
+	}
+	
+	public void showGameBoard() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
+		loader.setController(get_GameBoardCtrl());
 		try {
 			parent = loader.load();
 		} catch (IOException e1) {
