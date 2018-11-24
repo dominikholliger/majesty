@@ -8,7 +8,7 @@ public class GameClient_Controller {
 		this.model = model;
 		this.view = view;
 		
-		view.btnConnect.setOnAction( event -> {
+		/*view.btnConnect.setOnAction( event -> {
 			view.btnConnect.setDisable(true);
 			String ipAddress = view.txtIpAddress.getText();
 			int port = Integer.parseInt(view.txtPort.getText());
@@ -23,6 +23,12 @@ public class GameClient_Controller {
 		model.newestMessage.addListener( (o, oldValue, newValue) -> {
 			if (!newValue.isEmpty()) // Ignore empty messages
 				view.txtChatArea.appendText(newValue + "\n");
-		} );
+		} );*/
 	}
+	
+
+public void goToEnterGame() {
+	view.get_EnterGameCtrl().set_GMvcCtrl(this);
+	view.showEnterGame();
+}
 }

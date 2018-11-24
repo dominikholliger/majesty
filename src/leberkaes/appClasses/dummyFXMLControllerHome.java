@@ -2,7 +2,6 @@ package leberkaes.appClasses;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
 
 public class dummyFXMLControllerHome {
 	
@@ -53,9 +52,7 @@ public class dummyFXMLControllerHome {
 		
 	}
 	@FXML protected void handleEnterGameButtonclicked(ActionEvent event) throws Exception{
-		//EnterGameView entergame = new EnterGameView();
-		//Stage s = new Stage();
-		//entergame.start(s);
+		leberkaes.gameClient.dummyFXMLControllerEnterGame.get_GMvcCtrl().goToEnterGame();
 		
 	}	
 	

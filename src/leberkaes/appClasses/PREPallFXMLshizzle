@@ -14,8 +14,8 @@ Highscore
 
 Settings
 @FXML private Button back;
-@FXML private RadioButton germanoption;
-@FXML private RadioButton englishoption;
+@FXML private ToggleButton germanoption;
+@FXML private ToggleButton englishoption;
 
 
 EnterGame
