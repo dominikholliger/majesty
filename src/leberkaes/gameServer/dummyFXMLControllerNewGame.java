@@ -19,7 +19,7 @@ public class dummyFXMLControllerNewGame {
 		}
 
 		@FXML protected void handleStartGameClicked(ActionEvent event) throws Exception {
-			get_GMvcCtrl().goToGameBoard();
+			get_NMvcCtrl().goToGameBoard();
 		}
 	}
 

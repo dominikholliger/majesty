@@ -1,4 +1,5 @@
 package leberkaes.gameServer;
+import leberkaes.abstractClasses.Controller;
 import leberkaes.commonClasses.Configuration;
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.commonClasses.Configuration;
@@ -11,7 +12,7 @@ import javafx.collections.ListChangeListener;
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
 
-public class GameServer_Controller {
+public class GameServer_Controller extends Controller<GameServer_Model, GameServer_View>{
 	private GameServer_Model model;
 	private GameServer_View view;
 	ServiceLocator sl = ServiceLocator.getServiceLocator();

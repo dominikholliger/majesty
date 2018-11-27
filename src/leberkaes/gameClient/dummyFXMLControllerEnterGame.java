@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 public class dummyFXMLControllerEnterGame {
 	private static GameClient_Controller _GMvcCtrl;
 
-	public static GameClient_Controller get_GMvcCtrl() {
+	public GameClient_Controller get_GMvcCtrl() {
 		
 		return _GMvcCtrl;
 	}
