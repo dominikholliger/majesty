@@ -1,12 +1,15 @@
 package leberkaes.gameClient;
 
-public class GameClient_Controller {
-	private GameClient_Model model;
-	private GameClient_View view;
+import leberkaes.abstractClasses.Controller;
+
+public class GameClient_Controller extends Controller<GameClient_Model, GameClient_View> {
+	
 	
 	public GameClient_Controller(GameClient_Model model, GameClient_View view) {
-		this.model = model;
-		this.view = view;
+		super(model, view);
+        // D.Holliger:
+        // Vorbereiten für die Kommunikation Controller vs DummyController FXML
+        view.get_EnterGameCtrl().set_GMvcCtrl(this);
 		
 		/*view.btnConnect.setOnAction( event -> {
 			view.btnConnect.setDisable(true);

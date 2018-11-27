@@ -6,25 +6,15 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import leberkaes.abstractClasses.View;
-import leberkaes.appClasses.dummyFXMLControllerHighscore;
-import leberkaes.appClasses.dummyFXMLControllerHome;
 import leberkaes.commonClasses.Translator;
 import leberkaes.jat2.ServiceLocator;
 
-public class GameClient_View extends View<GameClient_Model>{
-	protected Stage stage;
+public class GameClient_View extends View<GameClient_Model> {
+	/*protected Stage stage;
 	protected Scene scene;
-	private GameClient_Model model;
+	private GameClient_Model model;*/
 
 
 	public GameClient_View(Stage stage, GameClient_Model model) {

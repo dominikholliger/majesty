@@ -40,6 +40,14 @@ public class App_View extends View<App_Model> {
 	@FXML private ToggleButton germanoption;
 	@FXML private ToggleButton englishoption;
 
+	public App_View(Stage stage, App_Model model) {
+		super(stage, model);
+		stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
+		ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
+
+	}
+	
+	
 	/**
 	 * Per Lazy Loading die ein DummyKontroller Objekt erstellen und per Getter zur verfügung Stellen
 	 * wird für den FXML Loader gebraucht.
@@ -70,12 +78,7 @@ public class App_View extends View<App_Model> {
 
 	protected Parent parent;
 
-	public App_View(Stage stage, App_Model model) {
-		super(stage, model);
-		stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
-		ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
-
-	}
+	
 
 	@Override
 	protected Scene create_GUI() {

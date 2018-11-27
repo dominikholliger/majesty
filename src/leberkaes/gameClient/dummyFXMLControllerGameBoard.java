@@ -1,7 +1,5 @@
 package leberkaes.gameClient;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 
 public class dummyFXMLControllerGameBoard {
 	private static GameClient_Controller _GMvcCtrl;
@@ -14,9 +12,7 @@ public class dummyFXMLControllerGameBoard {
 			this._GMvcCtrl = _GMvcCtrl;
 		}
 		
-		/*@FXML protected void handleBackClicked(ActionEvent event) throws Exception {
-			get_MvcCtrl().goToHome();
-		}*/
+		
 
 
 	

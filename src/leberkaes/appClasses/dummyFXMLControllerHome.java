@@ -2,6 +2,11 @@ package leberkaes.appClasses;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.stage.Stage;
+import leberkaes.gameClient.GameClient_Controller;
+import leberkaes.gameClient.GameClient_Model;
+import leberkaes.gameClient.GameClient_View;
+import leberkaes.gameClient.dummyFXMLControllerEnterGame;
 
 public class dummyFXMLControllerHome {
 	
@@ -37,6 +42,7 @@ public class dummyFXMLControllerHome {
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
 		// Nur ein Beispiel einer Mapping Methode
+		//TODO
 	}
 	
 	
@@ -52,8 +58,10 @@ public class dummyFXMLControllerHome {
 		
 	}
 	@FXML protected void handleEnterGameButtonclicked(ActionEvent event) throws Exception{
+		// Hier hackt es: Es soll ein GameMvc-Controller angesprochen werden (get_GMvcCtrl)
+		// ABER: Diesen gibt es gar noch nicht, weil es das gesamte GameClient-MVC noch nicht gibt!
+		// Wie kann ich diesen ansprechen ud zuvor das GameClientMVC aufbauen?
 		leberkaes.gameClient.dummyFXMLControllerEnterGame.get_GMvcCtrl().goToEnterGame();
-		
 	}	
 	
 	public String Hallo() {

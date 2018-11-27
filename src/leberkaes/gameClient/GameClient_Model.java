@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.logging.Logger;
 
+import leberkaes.abstractClasses.Model;
 import leberkaes.commonClasses.ChatMsg;
 import leberkaes.commonClasses.JoinMsg;
 import leberkaes.commonClasses.Message;
@@ -15,12 +16,13 @@ import javafx.beans.property.SimpleStringProperty;
  * is *identical* to the current contents of the SimpleStringProperty, then there is no
  * change, and the new (duplicate) message is not displayed.
  */
-public class GameClient_Model {
+public class GameClient_Model extends Model{
 	protected SimpleStringProperty newestMessage = new SimpleStringProperty();
 
 	private Logger logger = Logger.getLogger("");
 	private Socket socket;
 	private String name;
+	
 
 	public void connect(String ipAddress, int Port, String name) {
 		logger.info("Connect");
