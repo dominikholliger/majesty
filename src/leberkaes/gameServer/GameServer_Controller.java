@@ -2,14 +2,15 @@ package leberkaes.gameServer;
 import leberkaes.abstractClasses.Controller;
 import leberkaes.commonClasses.Configuration;
 import leberkaes.jat2.ServiceLocator;
-import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.WindowEvent;
 
 public class GameServer_Controller extends Controller<GameServer_Model, GameServer_View>{
@@ -43,4 +44,6 @@ public class GameServer_Controller extends Controller<GameServer_Model, GameServ
         });
 		
 	}
+	
+	
 }

@@ -3,6 +3,7 @@ package leberkaes.gameServer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import leberkaes.gameClient.GameClient_Controller;
+import leberkaes.gameClient.GameClient_View;
 
 public class dummyFXMLControllerNewGame {
 
@@ -20,6 +21,7 @@ public class dummyFXMLControllerNewGame {
 
 		@FXML protected void handleStartGameClicked(ActionEvent event) throws Exception {
 			// get_NMvcCtrl().goToGameBoard();
+			
 		}
 		
 		@FXML protected void handleTwoPlayersClicked(ActionEvent event) throws Exception {
