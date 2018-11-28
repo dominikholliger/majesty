@@ -61,6 +61,7 @@ public class dummyFXMLControllerHome {
 		// Wie kann ich diesen ansprechen und zuvor das GameClientMVC aufbauen?
 		
 		App_Controller.createGameClientMVC();
+		
 	}
 	
 	

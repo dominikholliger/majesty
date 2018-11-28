@@ -22,6 +22,7 @@ public class GameClient_View extends View<GameClient_Model> {
 		stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
 		scene = create_GUI();
 		stage.setScene(scene);
+		stage.show();
 		ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
 
 	}
