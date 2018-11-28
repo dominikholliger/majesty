@@ -37,13 +37,13 @@ public class dummyFXMLControllerHome {
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
 		// Nur ein Beispiel einer Mapping Methode
-		// TODO gleicher Fehler wie unten bei Zeile 61ff
-		//leberkaes.gameServer.GameServer_View.showNewGame();
+		// gleicher Fehler wie unten bei Zeile 61ff
+		App_Controller.createGameServerMVC();
 	}
 	
 	
 	@FXML protected void handleSettingsButtonClicked(ActionEvent event) throws Exception{
-		//TODO was passiert wenn der knopf gedrueckt wird 
+		//was passiert wenn der knopf gedrueckt wird 
 		//settings-Fenster oeffnet sich, nichts uebergeben
 		get_MvcCtrl().serverSettings();
 	}

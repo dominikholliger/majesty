@@ -12,11 +12,7 @@ import leberkaes.commonClasses.Translator;
 import leberkaes.jat2.ServiceLocator;
 
 public class GameClient_View extends View<GameClient_Model> {
-	/*protected Stage stage;
-	protected Scene scene;
-	private GameClient_Model model;*/
 	
-
 	public GameClient_View(Stage stage, GameClient_Model model) {
 		super(stage, model);
 		stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
@@ -53,23 +49,26 @@ public class GameClient_View extends View<GameClient_Model> {
 		}
 
 		Scene scene = new Scene(parent, 600,400);
-		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 		super.getStage().setScene(scene);	
 
 	}
+	
 	
 	public void showGameBoard() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
 		loader.setController(get_GameBoardCtrl());
 		try {
 			parent = loader.load();
+			
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
-		Scene scene = new Scene(parent, 600,400);
-		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		scene.setRoot(parent);
+		
+		//Scene scene = new Scene(parent, 600,400);
+		scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 		super.getStage().setScene(scene);	
 
 	}
@@ -100,7 +99,7 @@ public class GameClient_View extends View<GameClient_Model> {
 		}
 
 		Scene scene = new Scene(parent, 600,400);
-		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 		return scene;
 	}
 }

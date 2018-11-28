@@ -8,29 +8,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import leberkaes.abstractClasses.View;
-import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
+import leberkaes.gameClient.dummyFXMLControllerGameBoard;
 import leberkaes.jat2.ServiceLocator;
 
 public class GameServer_View extends View<GameServer_Model>{
-	protected Stage stage;
-	private GameServer_Model model;
-	ServiceLocator sl = ServiceLocator.getServiceLocator();
-	Logger logger = sl.getLogger();
-	Translator t = sl.getTranslator();
-	Configuration config = sl.getConfiguration();
-	
-	/*// Top controls
-	Label lblPort = new Label("Port: "+config.getOption("Port"));
-	TextField txtPort = new TextField();
-	Region topSpacer = new Region();
-	
-	// Client area
-	TextArea txtClientArea = new TextArea();*/
 	
 	public GameServer_View(Stage stage, GameServer_Model model) {
 		super(stage, model);
 		stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
+		scene = create_GUI();
+		stage.setScene(scene);
+		stage.show();
 		ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
 
 	}
@@ -43,7 +32,14 @@ public class GameServer_View extends View<GameServer_Model>{
 		return _NewGameCtrl;    	
 	}
 	
-	protected Parent parent;
+	private dummyFXMLControllerGameBoard _GameBoardCtrl;
+	public dummyFXMLControllerGameBoard get_GameBoardCtrl() {
+		if(_GameBoardCtrl == null) {
+			_GameBoardCtrl = new dummyFXMLControllerGameBoard();
+		}
+		return _GameBoardCtrl; 
+	}
+	
 	
 	public void showNewGame() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("NewGame.fxml"));
@@ -57,7 +53,7 @@ public class GameServer_View extends View<GameServer_Model>{
 		}
 
 		Scene scene = new Scene(parent, 600,400);
-		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 		super.getStage().setScene(scene);	
 
 	}
@@ -79,6 +75,8 @@ public class GameServer_View extends View<GameServer_Model>{
 		// txtClientArea.setText(sb.toString());
 	}
 	
+	protected Parent parent;
+	
 	protected Scene create_GUI() {
 		ServiceLocator sl = ServiceLocator.getServiceLocator();  
 		Logger logger = sl.getLogger();
@@ -93,7 +91,7 @@ public class GameServer_View extends View<GameServer_Model>{
 		}
 
 		Scene scene = new Scene(parent, 600,400);
-		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 		return scene;
 	}
 }

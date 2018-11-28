@@ -1,4 +1,4 @@
-package leberkaes.gameServer;
+/*package leberkaes.gameServer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -98,7 +98,7 @@ public class GameBoard {
 			players.add(new Player(name));
 			
 	}
-	/** Diese Methode erzeugt die Spiel-Karten **/
+	*//** Diese Methode erzeugt die Spiel-Karten **//*
 	public void createStandardCards(back b, type t, int count) {
 
 		if (b == back.GREEN) {
@@ -116,7 +116,7 @@ public class GameBoard {
 		}
 	}
 
-	/** Diese Methode erzeugt aus den Karten das Deck mit welchem gespielt wird **/
+	*//** Diese Methode erzeugt aus den Karten das Deck mit welchem gespielt wird **//*
 	public void createDeck() {
 
 		deck = new Stack<CharacterCard>();
@@ -129,11 +129,11 @@ public class GameBoard {
 		switch (players) {
 		case 2: {
 
-			/*
-			 * 2Spieler Nimm nur die obersten 6 Karten vom grünen Stapel, leg sie in der
-			 * Tischmitte aus und packe dann den restlichen grünen Stapel ungesehen zurück
+			
+			 * 2Spieler Nimm nur die obersten 6 Karten vom grï¿½nen Stapel, leg sie in der
+			 * Tischmitte aus und packe dann den restlichen grï¿½nen Stapel ungesehen zurï¿½ck
 			 * in die Schachtel.
-			 */
+			 
 
 			for (int i = 0; i < 6; i++) {
 				this.openDeck[i] = greenCards.pop();
@@ -145,19 +145,19 @@ public class GameBoard {
 		}
 
 		case 3: {
-			/*
-			 * 3Spieler Gibt die ersten 19 Karten ungesehen zurück und lege dann die ersten
+			
+			 * 3Spieler Gibt die ersten 19 Karten ungesehen zurï¿½ck und lege dann die ersten
 			 * 6 Karten wie in unserem Beispiel in der Tischmitte aus.
-			 */
+			 
 
 			break;
 
 		}
 		case 4: {
-			/*
-			 * Gib die ersten 7 Karten ungesehen zurück in die Schachtel. Dann lege die
+			
+			 * Gib die ersten 7 Karten ungesehen zurï¿½ck in die Schachtel. Dann lege die
 			 * ersten 6 Karten wie in unserem Beispiel in der Tischmitte aus.
-			 */
+			 
 			for (int i = 0; i <= 6; i++) {
 				greenCards.pop();
 			}
@@ -205,7 +205,7 @@ public class GameBoard {
 
 	}
 	
-	/** Player herausfinden, Kartentypen prüfen? Karten P0sition bestimmmen?**/
+	*//** Player herausfinden, Kartentypen prï¿½fen? Karten P0sition bestimmmen?**//*
 	public void playCard(CharacterCard c) {
 		
 		int i= players.get(this.activePlayerIndex).getValidLocations(c);
@@ -239,3 +239,4 @@ public class GameBoard {
 	}
 
 }
+*/

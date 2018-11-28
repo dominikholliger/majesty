@@ -9,7 +9,7 @@ public class dummyFXMLControllerNewGame {
 	
 		private GameServer_Controller _NMvcCtrl;
 
-		public GameClient_Controller get_NMvcCtrl() {
+		public GameServer_Controller get_NMvcCtrl() {
 			return _NMvcCtrl;
 		}
 		
@@ -19,7 +19,15 @@ public class dummyFXMLControllerNewGame {
 		}
 
 		@FXML protected void handleStartGameClicked(ActionEvent event) throws Exception {
-			get_NMvcCtrl().goToGameBoard();
+			// get_NMvcCtrl().goToGameBoard();
+		}
+		
+		@FXML protected void handleTwoPlayersClicked(ActionEvent event) throws Exception {
+			// TODO
+		}
+		
+		@FXML protected void handleFourPlayersClicked(ActionEvent event) throws Exception {
+			// TODO
 		}
 	}
 

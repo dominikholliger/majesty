@@ -5,6 +5,9 @@ import leberkaes.abstractClasses.Controller;
 import leberkaes.gameClient.GameClient_Controller;
 import leberkaes.gameClient.GameClient_Model;
 import leberkaes.gameClient.GameClient_View;
+import leberkaes.gameServer.GameServer_Controller;
+import leberkaes.gameServer.GameServer_Model;
+import leberkaes.gameServer.GameServer_View;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
@@ -43,6 +46,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
         
         serviceLocator = ServiceLocator.getServiceLocator();        
         serviceLocator.getLogger().info("Application controller initialized");
+        
     }
  
     public void serverSettings() {
@@ -68,5 +72,16 @@ public class App_Controller extends Controller<App_Model, App_View> {
          view = new GameClient_View(appStage, model);
          new GameClient_Controller(model, view);
     }
+    
+    public static void createGameServerMVC(){
+   	 Stage appStage = new Stage();
+   	 final GameServer_View view;
+   	 
+   	GameServer_Model model = new GameServer_Model();
+        view = new GameServer_View(appStage, model);
+        new GameServer_Controller(model, view);
+   }
+
+	
     
 }
