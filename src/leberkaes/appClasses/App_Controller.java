@@ -2,8 +2,12 @@ package leberkaes.appClasses;
 
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.Controller;
+import leberkaes.gameClient.GameClient_Controller;
+import leberkaes.gameClient.GameClient_Model;
+import leberkaes.gameClient.GameClient_View;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 
@@ -54,6 +58,15 @@ public class App_Controller extends Controller<App_Model, App_View> {
     public void goToHighscore() {
     	view.get_HighscoreCtrl().set_MvcCtrl(this);
     	view.showHighscore();
+    }
+    
+    public static void createGameClientMVC(){
+    	 Stage appStage = new Stage();
+    	 final GameClient_View view;
+    	 
+    	 GameClient_Model model = new GameClient_Model();
+         view = new GameClient_View(appStage, model);
+         new GameClient_Controller(model, view);
     }
     
 }

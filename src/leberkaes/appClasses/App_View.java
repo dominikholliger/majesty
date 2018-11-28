@@ -8,6 +8,9 @@ import java.util.logging.Logger;
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.View;
 import leberkaes.commonClasses.Translator;
+import leberkaes.gameClient.GameClient_Controller;
+import leberkaes.gameClient.GameClient_Model;
+import leberkaes.gameClient.GameClient_View;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -111,7 +114,6 @@ public class App_View extends View<App_Model> {
 		
 	}
 	
-	
 
 	public void showSettings() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
@@ -162,5 +164,14 @@ public class App_View extends View<App_Model> {
 		Scene scene = new Scene(parent, 600, 400);
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
 		super.getStage().setScene(scene);	
+	}
+	
+	public static void createGameClientMVC(){
+		Stage appStage = new Stage();
+		final GameClient_View view;
+		
+		GameClient_Model model = new GameClient_Model();
+	    view = new GameClient_View(appStage, model);
+	    new GameClient_Controller(model, view);
 	}
 }

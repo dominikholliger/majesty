@@ -15,11 +15,13 @@ public class GameClient_View extends View<GameClient_Model> {
 	/*protected Stage stage;
 	protected Scene scene;
 	private GameClient_Model model;*/
-
+	
 
 	public GameClient_View(Stage stage, GameClient_Model model) {
 		super(stage, model);
 		stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
+		scene = create_GUI();
+		stage.setScene(scene);
 		ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
 
 	}
