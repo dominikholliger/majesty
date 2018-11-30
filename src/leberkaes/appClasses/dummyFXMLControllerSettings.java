@@ -24,7 +24,6 @@ public class dummyFXMLControllerSettings {
 	}
 	
 	@FXML protected void handleBackClicked(ActionEvent event) throws Exception {
-		get_MvcCtrl().goToHome();
 	}
 	
 	@FXML private Button newGame;

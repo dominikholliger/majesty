@@ -16,7 +16,19 @@ public class GameServer_Model extends Model {
 	private final Logger logger = Logger.getLogger("");
 	private ServerSocket listener;
 	private volatile boolean stop = false;
+	private GameBoard gameBoard;
+	private int numberOfPLayers;
+	private boolean bSide;
+	private boolean meeple;
 	
+
+	public void setbSide(boolean bSide) {
+		this.bSide = bSide;
+	}
+
+	public void setNumberOfPLayers(int numberOfPLayers) {
+		this.numberOfPLayers = numberOfPLayers;
+	}
 
 	public void startServer(int port) {
 		logger.info("Start server");
@@ -65,5 +77,9 @@ public class GameServer_Model extends Model {
 		for (Game_Client c : clients) {
 			c.send(outMsg);
 		}
+	}
+	public void createGameboard() {
+		this.gameBoard = new GameBoard(numberOfPLayers);
+		
 	}
 }

@@ -93,7 +93,7 @@ public class JavaFX_App_Template extends Application {
         // resources initialized by the splash screen
         App_Model model = new App_Model();
         view = new App_View(appStage, model);
-        new App_Controller(model, view);
+
 
         // Resources are now initialized
         serviceLocator = ServiceLocator.getServiceLocator();

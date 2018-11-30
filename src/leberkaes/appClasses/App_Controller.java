@@ -2,17 +2,13 @@ package leberkaes.appClasses;
 
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.Controller;
-import leberkaes.gameClient.GameClient_Controller;
-import leberkaes.gameClient.GameClient_Model;
-import leberkaes.gameClient.GameClient_View;
-import leberkaes.gameServer.GameServer_Controller;
 import leberkaes.gameServer.GameServer_Model;
 import leberkaes.gameServer.GameServer_View;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-
 
 
 /**
@@ -28,8 +24,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
     public App_Controller(App_Model model, App_View view) {
         super(model, view);
         // D.Holliger:
-        // Vorbereiten fÃ¼r die Kommunikation Controller vs DummyController FXML
-        view.get_Ctrl().set_MvcCtrl(this);
+        // Vorbereiten für die Kommunikation Controller vs DummyController FXML
+//        view.get_Ctrl().set_MvcCtrl(this);
         
         
         // register ourselves to handle window-closing event
@@ -46,42 +42,44 @@ public class App_Controller extends Controller<App_Model, App_View> {
         
         serviceLocator = ServiceLocator.getServiceLocator();        
         serviceLocator.getLogger().info("Application controller initialized");
-        
-    }
- 
-    public void serverSettings() {
-    	view.get_SettingsCtrl().set_MvcCtrl(this);
-    	view.showSettings();  	
     }
     
-    public void goToHome() {
-    	view.get_Ctrl().set_MvcCtrl(this);
-    	view.showHome();
-    }
+	public void Juhu(String msg) {
+		System.out.println(msg);
+	}    
     
-    public void goToHighscore() {
-    	view.get_HighscoreCtrl().set_MvcCtrl(this);
-    	view.showHighscore();
-    }
-    
-    public static void createGameClientMVC(){
-    	 Stage appStage = new Stage();
-    	 final GameClient_View view;
-    	 
-    	 GameClient_Model model = new GameClient_Model();
-         view = new GameClient_View(appStage, model);
-         new GameClient_Controller(model, view);
-    }
-    
-    public static void createGameServerMVC(){
-   	 Stage appStage = new Stage();
-   	 final GameServer_View view;
-   	 
+    @FXML
+    public void handleNewGameButtonClicked(){
+    System.out.println("new game button");
+   	Stage appStage = new Stage();
    	GameServer_Model model = new GameServer_Model();
-        view = new GameServer_View(appStage, model);
-        new GameServer_Controller(model, view);
-   }
-
-	
+    GameServer_View view = new GameServer_View(appStage, model);
+    view.start();
+   	 
+   	 
+     
+    }
     
+    @FXML
+    public void handleSettingsButtonClicked(){
+    	System.out.println("settings button clicked");
+    }
+    
+    @FXML
+    public void handleHighscoreButtonClicked(){
+    	System.out.println("highscore button clicked");
+    }
+    
+    @FXML
+    public void handleEnterGameButtonclicked(){
+    	System.out.println("game button clicked");
+    }
+    
+    public void serverSettings() {
+    	//
+    	// Server Settings 
+    	view.showSettings();
+    	
+    	
+    }
 }

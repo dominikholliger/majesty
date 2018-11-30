@@ -1,4 +1,4 @@
-/*package leberkaes.gameServer;
+package leberkaes.gameServer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,47 +22,6 @@ public class GameBoard {
 	private Stack<CharacterCard> deck = new Stack<CharacterCard>();
 	private CharacterCard[] openDeck = new CharacterCard[6];
 	
-	
-	//Dies ist eine TestMain-Methode
-	public static void main(String[] args) {
-
-		GameBoard g = new GameBoard(4);
-		g.addPlayer("Dani");
-		g.addPlayer("Sebi");
-		g.addPlayer("Dodi");
-		
-		g.setActivePLayer();
-		
-		System.out.println(g.players.get(g.activePlayerIndex));
-		CharacterCard c = g.takeCard(5);
-		System.out.println(c);
-		g.playCard(c);
-		System.out.println(c);
-		System.out.println(g.players.get(g.activePlayerIndex));
-		
-		g.nextPlayer();
-		System.out.println(g.players.get(g.activePlayerIndex));
-		c = g.takeCard(4);
-		System.out.println(c);
-		g.playCard(c);
-		System.out.println(c);
-		
-		
-		System.out.println(g.players.get(0));
-		System.out.println(g.players.get(1));
-		System.out.println(g.players.get(2));
-		
-		
-		
-	//	System.out.println(g.toString());
-		
-		
-		
-
-		
-		
-	}
-	//__________________________________________
 	
 	public GameBoard(int numOfP) {
 		
@@ -98,7 +57,7 @@ public class GameBoard {
 			players.add(new Player(name));
 			
 	}
-	*//** Diese Methode erzeugt die Spiel-Karten **//*
+	/** Diese Methode erzeugt die Spiel-Karten **/
 	public void createStandardCards(back b, type t, int count) {
 
 		if (b == back.GREEN) {
@@ -116,7 +75,7 @@ public class GameBoard {
 		}
 	}
 
-	*//** Diese Methode erzeugt aus den Karten das Deck mit welchem gespielt wird **//*
+	/** Diese Methode erzeugt aus den Karten das Deck mit welchem gespielt wird **/
 	public void createDeck() {
 
 		deck = new Stack<CharacterCard>();
@@ -130,10 +89,10 @@ public class GameBoard {
 		case 2: {
 
 			
-			 * 2Spieler Nimm nur die obersten 6 Karten vom gr�nen Stapel, leg sie in der
-			 * Tischmitte aus und packe dann den restlichen gr�nen Stapel ungesehen zur�ck
-			 * in die Schachtel.
-			 
+			/*  2Spieler Nimm nur die obersten 6 Karten vom gr�nen Stapel, leg sie in der
+			  Tischmitte aus und packe dann den restlichen gr�nen Stapel ungesehen zur�ck
+			  in die Schachtel.
+			 */
 
 			for (int i = 0; i < 6; i++) {
 				this.openDeck[i] = greenCards.pop();
@@ -146,18 +105,18 @@ public class GameBoard {
 
 		case 3: {
 			
-			 * 3Spieler Gibt die ersten 19 Karten ungesehen zur�ck und lege dann die ersten
-			 * 6 Karten wie in unserem Beispiel in der Tischmitte aus.
-			 
+			/*  3Spieler Gibt die ersten 19 Karten ungesehen zur�ck und lege dann die ersten
+			  6 Karten wie in unserem Beispiel in der Tischmitte aus.
+			 */
 
 			break;
 
 		}
 		case 4: {
-			
-			 * Gib die ersten 7 Karten ungesehen zur�ck in die Schachtel. Dann lege die
-			 * ersten 6 Karten wie in unserem Beispiel in der Tischmitte aus.
-			 
+			/*
+			  Gib die ersten 7 Karten ungesehen zur�ck in die Schachtel. Dann lege die
+			  ersten 6 Karten wie in unserem Beispiel in der Tischmitte aus.
+			 */
 			for (int i = 0; i <= 6; i++) {
 				greenCards.pop();
 			}
@@ -205,7 +164,7 @@ public class GameBoard {
 
 	}
 	
-	*//** Player herausfinden, Kartentypen pr�fen? Karten P0sition bestimmmen?**//*
+	/** Player herausfinden, Kartentypen pr�fen? Karten P0sition bestimmmen?**/
 	public void playCard(CharacterCard c) {
 		
 		int i= players.get(this.activePlayerIndex).getValidLocations(c);
@@ -239,4 +198,3 @@ public class GameBoard {
 	}
 
 }
-*/
