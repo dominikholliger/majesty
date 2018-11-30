@@ -2,6 +2,8 @@ package leberkaes.appClasses;
 
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.Controller;
+import leberkaes.gameClient.GameClient_Model;
+import leberkaes.gameClient.GameClient_View;
 import leberkaes.gameServer.GameServer_Model;
 import leberkaes.gameServer.GameServer_View;
 import javafx.application.Platform;
@@ -73,6 +75,10 @@ public class App_Controller extends Controller<App_Model, App_View> {
     @FXML
     public void handleEnterGameButtonclicked(){
     	System.out.println("game button clicked");
+    	Stage appStage = new Stage();
+       	GameClient_Model model = new GameClient_Model();
+        GameClient_View view = new GameClient_View(appStage, model);
+        view.start();
     }
     
     public void serverSettings() {
