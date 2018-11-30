@@ -66,7 +66,8 @@ public class GameClient_View extends View<GameClient_Model> {
 			e1.printStackTrace();
 		}
 		scene.setRoot(parent);
-		
+		stage.setHeight(750);
+		stage.setWidth(1000);
 		//Scene scene = new Scene(parent, 600,400);
 		scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 		super.getStage().setScene(scene);	
