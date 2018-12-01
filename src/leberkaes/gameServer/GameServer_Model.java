@@ -39,8 +39,7 @@ public class GameServer_Model {
 							// Maximale Anzahl Spieler erreicht?
 							if((listSize == playerCount) & !gameRunning){
 								// Starten des eigentlichen Spiels
-								ChatMsg messageStart = new ChatMsg("Server","Spiel wird gestartet.");
-								broadcast(messageStart);
+								broadcast(new ChatMsg("Server","Spiel wird gestartet."));
 								logger.info("Die erforderliche Anzahl Spieler sind verbunden, das Spiel wird gestartet.");
 								logger.info("Generieren des initialen Spielbretts...");
 								GameBoard gameboard = new GameBoard(playerCount);
@@ -49,8 +48,7 @@ public class GameServer_Model {
 									ChatMsg msg = new ChatMsg("Server","Spieler "+c.getName()+" dem Gameboard hinzugefügt.");
 									broadcast(msg);
 								}
-								ChatMsg msg = new ChatMsg("Server","Gameboard fertig erstellt.");
-								broadcast(msg);
+								broadcast(new ChatMsg("Server","Gameboard fertig erstellt."));
 								System.out.println(gameboard.toString());
 								gameRunning = true;
 							}
