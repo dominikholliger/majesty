@@ -22,7 +22,7 @@ public class GameServer_Controller {
 		// Settings laden
 		int port = Integer.parseInt(config.getOption("Port"));
 		int playerCount = Integer.parseInt(config.getOption("PlayerCount"));
-		model.startServer(port);
+		model.startServer(port,playerCount);
 		view.stage.setOnCloseRequest(event -> model.stopServer());
 		model.clients.addListener((ListChangeListener) (event -> view.updateClients()));
 	}
