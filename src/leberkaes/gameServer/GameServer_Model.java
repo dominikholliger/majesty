@@ -32,8 +32,6 @@ public class GameServer_Model {
 						} catch (Exception e) {
 							logger.info(e.toString());
 						}
-						// Spiel starten?->Trigger
-
 					}
 				}
 			};
@@ -47,7 +45,6 @@ public class GameServer_Model {
 	public void stopServer() {
 		logger.info("Stop all clients");
 		for (Game_Client c : clients) c.stop();
-
 		logger.info("Stop server");
 		stop = true;
 		if (listener != null) {

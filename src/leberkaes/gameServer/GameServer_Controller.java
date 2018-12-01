@@ -19,7 +19,9 @@ public class GameServer_Controller {
 	public GameServer_Controller(GameServer_Model model, GameServer_View view) {
 		this.model = model;
 		this.view = view;
+		// Settings laden
 		int port = Integer.parseInt(config.getOption("Port"));
+		int playerCount = Integer.parseInt(config.getOption("PlayerCount"));
 		model.startServer(port);
 		view.stage.setOnCloseRequest(event -> model.stopServer());
 		model.clients.addListener((ListChangeListener) (event -> view.updateClients()));
