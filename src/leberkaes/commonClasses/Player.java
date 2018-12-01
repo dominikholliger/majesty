@@ -1,4 +1,4 @@
-package leberkaes.gameServer;
+package leberkaes.commonClasses;
 
 import java.util.Arrays;
 import java.util.Deque;
