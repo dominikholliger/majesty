@@ -11,7 +11,6 @@ import javafx.beans.value.ObservableValue;
 public class GameSettings_Controller {
 	final private GameSettings_Model model;
 	final private GameSettings_View view;
-
 	ServiceLocator sl = ServiceLocator.getServiceLocator();
 	Logger logger = sl.getLogger();
 	Translator t = sl.getTranslator();
@@ -33,8 +32,6 @@ public class GameSettings_Controller {
 				(observable, oldValue, newValue) -> {
 					validatePlayerCountNumber(newValue,"txt");
 				});
-		
-		
 		view.btnCancel.setOnAction((event) -> {
 			view.stop();
 		});
@@ -45,7 +42,8 @@ public class GameSettings_Controller {
 		});
 	}
 	/**
-	 * Must be an integer 1-65535
+	 * Validierung der beiden Settingseingaben (muss jeweils eine gültige Zahl sein,
+	 * ansonsten kann nicht gespeichert werden)
 	 */
 	private void validatePortNumber(String newValue , String obsElement) {
 		boolean valid = model.isValidPortNumber(newValue);
@@ -73,8 +71,6 @@ public class GameSettings_Controller {
 		// Enable or disable button, as appropriate
 		enableDisableButton();
 	}
-	
-	
 	
 	/**
 	 * Enable or disable the Connect button, based on the validity of the two
