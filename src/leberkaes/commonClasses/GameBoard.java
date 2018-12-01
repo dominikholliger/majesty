@@ -11,7 +11,7 @@ import javafx.collections.ObservableList;
 import leberkaes.commonClasses.CharacterCard;
 import leberkaes.commonClasses.CardType.*;
 
-public class GameBoard {
+public class GameBoard implements java.io.Serializable {
 	// Spieler
 	private static int activePlayerIndex;
 	private ArrayList<Player> players;

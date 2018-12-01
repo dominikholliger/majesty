@@ -53,7 +53,7 @@ public class GameServer_Model {
 								System.out.println(gameboard.toString());
 								gameRunning = true;
 								// GameBoard an alle Clients senden
-								
+								broadcastGameBoard(new GameMsg("Server", null));
 							}
 						} catch (Exception e) {
 							logger.info(e.toString());
