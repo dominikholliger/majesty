@@ -17,9 +17,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-
-
-
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code
  * is licensed under the terms of the BSD 3-clause license (see the file
@@ -38,25 +35,17 @@ public class App_Controller extends Controller<App_Model, App_View> {
         // D.Holliger:
         // Vorbereiten für die Kommunikation Controller vs DummyController FXML
         view.get_Ctrl().set_MvcCtrl(this);
-        
-        
         // register ourselves to handle window-closing event
         view.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                
             	System.out.println();
-            	
             	Platform.exit();
             }
         });
-        
-        
         serviceLocator = ServiceLocator.getServiceLocator();        
         serviceLocator.getLogger().info("Application controller initialized");
     }
-    
-    
     
     /**
      * Die einzelnen Events werden an dieser Stelle aus dem Dummy Controller verarbeitet
@@ -90,14 +79,5 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		new GameSettings_Controller(settingsModel, settingsView);
 		settingsView.start();
 	}    
-	
-	
     
-    public void serverSettings() {
-    	//
-    	// Server Settings 
-    	view.showSettings();
-    	
-    	
-    }
 }
