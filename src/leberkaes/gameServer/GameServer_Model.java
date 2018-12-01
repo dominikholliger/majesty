@@ -46,7 +46,11 @@ public class GameServer_Model {
 								GameBoard gameboard = new GameBoard(playerCount);
 								for(Game_Client c : clients){
 									gameboard.addPlayer(c.getName());
+									ChatMsg msg = new ChatMsg("Server","Spieler "+c.getName()+" dem Gameboard hinzugefügt.");
+									broadcast(msg);
 								}
+								ChatMsg msg = new ChatMsg("Server","Gameboard fertig erstellt.");
+								broadcast(msg);
 								System.out.println(gameboard.toString());
 								gameRunning = true;
 							}
