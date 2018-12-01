@@ -8,9 +8,9 @@ import leberkaes.commonClasses.Translator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
-public class WebValidator_Controller {
-	final private WebValidator_Model model;
-	final private WebValidator_View view;
+public class GameSettings_Controller {
+	final private GameSettings_Model model;
+	final private GameSettings_View view;
 
 	ServiceLocator sl = ServiceLocator.getServiceLocator();
 	Logger logger = sl.getLogger();
@@ -20,8 +20,8 @@ public class WebValidator_Controller {
 	// Validity checks for the two text fields
 	private boolean portValid = false;
 
-	public WebValidator_Controller(WebValidator_Model model,
-			WebValidator_View view) {
+	public GameSettings_Controller(GameSettings_Model model,
+			GameSettings_View view) {
 		this.model = model;
 		this.view = view;
 

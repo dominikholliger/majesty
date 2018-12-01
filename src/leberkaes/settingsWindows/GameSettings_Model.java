@@ -1,6 +1,6 @@
 package leberkaes.settingsWindows;
 
-public class WebValidator_Model {
+public class GameSettings_Model {
 	
 	protected boolean isValidPortNumber(String newValue) {
 		boolean valid = true;

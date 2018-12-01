@@ -8,9 +8,9 @@ import leberkaes.gameClient.GameClient_View;
 import leberkaes.gameServer.GameServer_Controller;
 import leberkaes.gameServer.GameServer_Model;
 import leberkaes.gameServer.GameServer_View;
-import leberkaes.settingsWindows.WebValidator_Controller;
-import leberkaes.settingsWindows.WebValidator_Model;
-import leberkaes.settingsWindows.WebValidator_View;
+import leberkaes.settingsWindows.GameSettings_Controller;
+import leberkaes.settingsWindows.GameSettings_Model;
+import leberkaes.settingsWindows.GameSettings_View;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -58,18 +58,40 @@ public class App_Controller extends Controller<App_Model, App_View> {
     
     
     
-    
+    /**
+     * Die einzelnen Events werden an dieser Stelle aus dem Dummy Controller verarbeitet
+     */
 	public void startNewServerProcess() {
+		// Aufrufendes Fenster: Button auf Home-Screen
+		// Diese Methode startet das Server Windows
 		Stage optionsStage = new Stage();
-		// Initialize the option MVC components
 	   	GameServer_Model serverModel = new GameServer_Model();
 	   	GameServer_View serverView = new GameServer_View(optionsStage, serverModel);
 		new GameServer_Controller(serverModel, serverView);
-		// Display the options window
 		serverView.start();
 	}    
-    
-    
+	
+	public void startNewClientProcess() {
+		// Aufrufendes Fenster: Button auf Home-Screen
+		// Diese Methode startet das Client Windows
+		Stage optionsStage = new Stage();
+	   	GameClient_Model clientModel = new GameClient_Model();
+	   	GameClient_View clientView = new GameClient_View(optionsStage, clientModel);
+		new GameClient_Controller(clientModel, clientView);
+		clientView.start();
+	}    
+	
+	public void openSettingWindow() {
+		// Aufrufendes Fenster: Button auf Home-Screen
+		// Diese Methode startet das Setting Windows
+		Stage optionsStage = new Stage();
+	   	GameClient_Model clientModel = new GameClient_Model();
+	   	GameClient_View clientView = new GameClient_View(optionsStage, clientModel);
+		new GameClient_Controller(clientModel, clientView);
+		clientView.start();
+	}    
+	
+	
     
     public void serverSettings() {
     	//

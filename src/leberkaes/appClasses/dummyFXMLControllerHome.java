@@ -36,35 +36,20 @@ public class dummyFXMLControllerHome {
 
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
-		// Server PRozess starten
+		// Server Prozess starten
 		get_MvcCtrl().startNewServerProcess();
 	}
-	
-	
 	@FXML protected void handleSettingsButtonClicked(ActionEvent event) throws Exception{
-		//TODO was passiert wenn der knopf gedrueckt wird 
-		//settings-Fenster oeffnet sich, nichts uebergeben
-		//ShowSettingsView settings = new ShowSettingsView();
-		//Stage s = new Stage();
-		//settings.start(s);
-		
+		// Einstellungen öffnen
+		get_MvcCtrl().openSettingWindow();
 	}
 	@FXML protected void handleHighscoreButtonClicked(ActionEvent event) throws Exception{
 		// Highscore-Fenster oeffnet sich, nichts wird uebergeben
-		//ShowHighscoresView highscores = new ShowHighscoresView();
-		//Stage s = new Stage();
-		//highscores.start(s);
 		
 	}
 	@FXML protected void handleEnterGameButtonclicked(ActionEvent event) throws Exception{
-		//EnterGameView entergame = new EnterGameView();
-		//Stage s = new Stage();
-		//entergame.start(s);
-		
+		// Client Prozess starten
+		get_MvcCtrl().startNewClientProcess();
 	}	
-	
-	public String Hallo() {
-		return "Welt";
-	}
 	
 }

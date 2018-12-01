@@ -14,13 +14,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
-public class WebValidator_View {
+public class GameSettings_View {
 	ServiceLocator sl = ServiceLocator.getServiceLocator();
 	Logger logger = sl.getLogger();
 	Translator t = sl.getTranslator();
 	Configuration config = sl.getConfiguration();
 	
-    private WebValidator_Model model;
+    private GameSettings_Model model;
     private Stage stage;
 
     protected Label lblPort = new Label(t.getString("options.port"));
@@ -28,7 +28,7 @@ public class WebValidator_View {
     protected Button btnCancel = new Button(t.getString("options.cancel"));
     protected Button btnSave = new Button(t.getString("options.save"));
 
-    public WebValidator_View(Stage stage, WebValidator_Model model) {
+    public GameSettings_View(Stage stage, GameSettings_Model model) {
         this.stage = stage;
         this.model = model;
         
