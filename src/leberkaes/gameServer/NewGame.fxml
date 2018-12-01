@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.7">
+               <image>
+                  <Image url="leberkaes.GUIsources/majesty-start.jpg" />
+               </image>
+            </ImageView>
+            <ToggleButton fx:id="toggletwo" layoutX="208.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleTwoPlayersClicked" text="Zwei Spieler" />
+            <ToggleButton fx:id="togglefour" disable="true" layoutX="302.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleFourPlayersClicked" text="Vier Spieler" />
+            <ToggleButton fx:id="aside" layoutX="236.0" layoutY="71.0" mnemonicParsing="false" text="A-Seite" />
+            <ToggleButton fx:id="bside" disable="true" layoutX="299.0" layoutY="71.0" mnemonicParsing="false" text="B-Seite" />
+            <CheckBox fx:id="meepleoption" disable="true" layoutX="226.0" layoutY="114.0" mnemonicParsing="false" text="Mit Meeples spielen" />
+            <CheckBox fx:id="splitcardoption" disable="true" layoutX="226.0" layoutY="145.0" mnemonicParsing="false" text="Mit Split-Cards spielen" />
+            <Text fx:id="textPlayername" layoutX="271.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spielername" />
+            <TextField fx:id="textinputPlayername" layoutX="225.0" layoutY="202.0" />
+            <TextField fx:id="textinputipserver" layoutX="225.0" layoutY="263.0" />
+            <Text fx:id="textipserver" layoutX="252.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IP-Adresse Server" />
+            <Button fx:id="startGame" layoutX="254.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleStartGameClicked" prefHeight="49.0" prefWidth="96.0" text="START" />
+         </children></AnchorPane>
+  </children>
+</Pane>
