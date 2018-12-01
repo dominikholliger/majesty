@@ -27,9 +27,6 @@ import javafx.stage.WindowEvent;
 public class App_Controller extends Controller<App_Model, App_View> {
     ServiceLocator serviceLocator;
     private GameServer_View _GameServerViewInstance;
-    
-    
-    
     public App_Controller(App_Model model, App_View view) {
         super(model, view);
         // D.Holliger:
@@ -46,7 +43,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
         serviceLocator = ServiceLocator.getServiceLocator();        
         serviceLocator.getLogger().info("Application controller initialized");
     }
-    
     /**
      * Die einzelnen Events werden an dieser Stelle aus dem Dummy Controller verarbeitet
      */
@@ -59,7 +55,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		new GameServer_Controller(serverModel, serverView);
 		serverView.start();
 	}    
-	
 	public void startNewClientProcess() {
 		// Aufrufendes Fenster: Button auf Home-Screen
 		// Diese Methode startet das Client Windows
@@ -69,7 +64,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		new GameClient_Controller(clientModel, clientView);
 		clientView.start();
 	}    
-	
 	public void openSettingWindow() {
 		// Aufrufendes Fenster: Button auf Home-Screen
 		// Diese Methode startet das Setting Windows
@@ -79,5 +73,4 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		new GameSettings_Controller(settingsModel, settingsView);
 		settingsView.start();
 	}    
-    
 }
