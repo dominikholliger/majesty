@@ -44,7 +44,10 @@ public class GameServer_Model {
 								logger.info("Die erforderliche Anzahl Spieler sind verbunden, das Spiel wird gestartet.");
 								logger.info("Generieren des initialen Spielbretts...");
 								GameBoard gameboard = new GameBoard(playerCount);
-								gameboard.toString();
+								for(Game_Client c : clients){
+									gameboard.addPlayer(c.getName());
+								}
+								System.out.println(gameboard.toString());
 								gameRunning = true;
 							}
 						} catch (Exception e) {

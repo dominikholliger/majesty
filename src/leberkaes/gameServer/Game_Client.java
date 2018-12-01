@@ -34,6 +34,21 @@ public class Game_Client {
 		t.start();
 	}
 	
+	
+	
+	
+	public Socket getSocket() {
+		return socket;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
 	public void send(ChatMsg msg) {
 		msg.send(socket);
 	}
