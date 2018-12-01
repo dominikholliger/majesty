@@ -36,8 +36,8 @@ public class dummyFXMLControllerHome {
 
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
-		// Nur ein Beispiel einer Mapping Methode
-		get_MvcCtrl().Juhu("BBBB");
+		// Server PRozess starten
+		get_MvcCtrl().startNewServerProcess();
 	}
 	
 	

@@ -29,7 +29,10 @@ import javafx.stage.WindowEvent;
  */
 public class App_Controller extends Controller<App_Model, App_View> {
     ServiceLocator serviceLocator;
-
+    private GameServer_View _GameServerViewInstance;
+    
+    
+    
     public App_Controller(App_Model model, App_View view) {
         super(model, view);
         // D.Holliger:
@@ -53,8 +56,17 @@ public class App_Controller extends Controller<App_Model, App_View> {
         serviceLocator.getLogger().info("Application controller initialized");
     }
     
-	public void Juhu(String msg) {
-		System.out.println(msg);
+    
+    
+    
+	public void startNewServerProcess() {
+		Stage optionsStage = new Stage();
+		// Initialize the option MVC components
+	   	GameServer_Model serverModel = new GameServer_Model();
+	   	GameServer_View serverView = new GameServer_View(optionsStage, serverModel);
+		new GameServer_Controller(serverModel, serverView);
+		// Display the options window
+		serverView.start();
 	}    
     
     
