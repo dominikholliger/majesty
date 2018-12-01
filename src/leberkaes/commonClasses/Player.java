@@ -1,11 +1,10 @@
-package leberkaes.gameServer;
+package leberkaes.commonClasses;
 
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 
 import leberkaes.commonClasses.*;
-import leberkaes.commonClasses.CardType.type;
 
 public class Player {
 
