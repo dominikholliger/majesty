@@ -8,6 +8,10 @@ import java.util.logging.Logger;
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.View;
 import leberkaes.commonClasses.Translator;
+import leberkaes.gameClient.GameClient_Controller;
+import leberkaes.gameClient.GameClient_Model;
+import leberkaes.gameClient.GameClient_View;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -17,6 +21,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -28,7 +34,23 @@ import javafx.stage.Stage;
  * @author Brad Richards
  */
 public class App_View extends View<App_Model> {
+	
+	@FXML private Button newGame;
+	@FXML private Button settings;
+	@FXML private Button highscore;
+	@FXML private Button enterGame;
+	@FXML private Button back;
+	@FXML private ToggleButton germanoption;
+	@FXML private ToggleButton englishoption;
 
+	public App_View(Stage stage, App_Model model) {
+		super(stage, model);
+		stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
+		ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
+
+	}
+	
+	
 	/**
 	 * Per Lazy Loading die ein DummyKontroller Objekt erstellen und per Getter zur verfügung Stellen
 	 * wird für den FXML Loader gebraucht.
@@ -59,12 +81,7 @@ public class App_View extends View<App_Model> {
 
 	protected Parent parent;
 
-	public App_View(Stage stage, App_Model model) {
-		super(stage, model);
-		stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
-		ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
-
-	}
+	
 
 	@Override
 	protected Scene create_GUI() {
@@ -85,19 +102,18 @@ public class App_View extends View<App_Model> {
 		return scene;
 	}
 
-	protected void updateTexts() {
+	public void updateTexts() {
 		Translator t = ServiceLocator.getServiceLocator().getTranslator();
+		
 		// The menu entries
-		/*	       menuFile.setText(t.getString("program.menu.file"));
-	       menuFileLanguage.setText(t.getString("program.menu.file.language"));
-	       menuGame.setText(t.getString("program.menu.game"));
-	       menuGameServer.setText(t.getString("program.menu.game.server"));
-           menuHelp.setText(t.getString("program.menu.help"));
-           GameServerStart.setText(t.getString("program.menu.game.server.start"));
-   	       GameServerSettings.setText(t.getString("program.menu.game.server.settings"));
-	        // Other controls
-           btnClick.setText(t.getString("button.clickme"));*/
+		newGame.setText(t.getString("newGame"));
+		settings.setText(t.getString("settings"));
+		highscore.setText(t.getString("highscore"));
+		enterGame.setText(t.getString("enterGame"));
+		back.setText(t.getString("back"));
+		
 	}
+	
 
 	public void showSettings() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
@@ -108,12 +124,33 @@ public class App_View extends View<App_Model> {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		Scene scene = new Scene(parent, 600,400);
+		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		super.getStage().setScene(scene);	
+		
+		ToggleGroup toggle = new ToggleGroup();
+		germanoption.setToggleGroup(toggle);
+		englishoption.setToggleGroup(toggle);
+	}	
+	
+
+	
+	public void showHighscore() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Highscore.fxml"));
+		loader.setController(get_HighscoreCtrl());
+		try {
+			parent = loader.load();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		Scene scene = new Scene(parent, 600,400);
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
-		super.getStage().setScene(scene);		
-	}	
-
+		super.getStage().setScene(scene);
+	}
+	
 	public void showHome() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
 		loader.setController(get_Ctrl());
@@ -129,18 +166,12 @@ public class App_View extends View<App_Model> {
 		super.getStage().setScene(scene);	
 	}
 	
-	public void showHighscore() {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("Highscore.fxml"));
-		loader.setController(get_HighscoreCtrl());
-		try {
-			parent = loader.load();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		Scene scene = new Scene(parent, 600,400);
-		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
-		super.getStage().setScene(scene);
+	public static void createGameClientMVC(){
+		Stage appStage = new Stage();
+		final GameClient_View view;
+		
+		GameClient_Model model = new GameClient_Model();
+	    view = new GameClient_View(appStage, model);
+	    new GameClient_Controller(model, view);
 	}
 }

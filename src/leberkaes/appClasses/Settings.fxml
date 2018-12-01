@@ -15,10 +15,10 @@
                   <Image url="leberkaes.GUIsources/majesty-start.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="back" layoutX="497.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBackClicked"  text="Zurück"/>
+            <Button fx:id="back" layoutX="497.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBackClicked" text="Zurück" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="296.0" layoutX="42.0" layoutY="33.0" opacity="0.6" stroke="WHITE" strokeType="INSIDE" width="200.0" />
-            <RadioButton fx:id="germanoption" layoutX="59.0" layoutY="200.0" mnemonicParsing="false" selected="true" onAction="#handleGermanClicked" text="Deutsch"/>
-            <RadioButton fx:id="englishoption" layoutX="149.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleEnglishClicked" text="English"/>
+            <ToggleButton fx:id="germanoption" layoutX="59.0" layoutY="118.0" mnemonicParsing="false" onAction="#handleGermanClicked" text="Deutsch" />
+            <ToggleButton fx:id="englishoption" layoutX="142.0" layoutY="118.0" mnemonicParsing="false" onAction="#handleEnglishClicked" text="Englisch" />
          </children>
       </AnchorPane>
    </children>

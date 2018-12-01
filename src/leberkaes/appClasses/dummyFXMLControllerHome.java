@@ -2,7 +2,6 @@ package leberkaes.appClasses;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
 
 public class dummyFXMLControllerHome {
 	
@@ -38,11 +37,13 @@ public class dummyFXMLControllerHome {
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
 		// Nur ein Beispiel einer Mapping Methode
+		// gleicher Fehler wie unten bei Zeile 61ff
+		App_Controller.createGameServerMVC();
 	}
 	
 	
 	@FXML protected void handleSettingsButtonClicked(ActionEvent event) throws Exception{
-		//TODO was passiert wenn der knopf gedrueckt wird 
+		//was passiert wenn der knopf gedrueckt wird 
 		//settings-Fenster oeffnet sich, nichts uebergeben
 		get_MvcCtrl().serverSettings();
 	}
@@ -52,12 +53,17 @@ public class dummyFXMLControllerHome {
 		get_MvcCtrl().goToHighscore();
 		
 	}
+	
+	
 	@FXML protected void handleEnterGameButtonclicked(ActionEvent event) throws Exception{
-		//EnterGameView entergame = new EnterGameView();
-		//Stage s = new Stage();
-		//entergame.start(s);
+		// Hier hackt es: Es soll ein GameMvc-Controller angesprochen werden (get_GMvcCtrl)
+		// ABER: Diesen gibt es gar noch nicht, weil es das gesamte GameClient-MVC noch nicht gibt!
+		// Wie kann ich diesen ansprechen und zuvor das GameClientMVC aufbauen?
 		
-	}	
+		App_Controller.createGameClientMVC();
+		
+	}
+	
 	
 	public String Hallo() {
 		return "Welt";

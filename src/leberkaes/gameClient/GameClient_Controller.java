@@ -1,14 +1,17 @@
 package leberkaes.gameClient;
 
-public class GameClient_Controller {
-	private GameClient_Model model;
-	private GameClient_View view;
+import leberkaes.abstractClasses.Controller;
+
+public class GameClient_Controller extends Controller<GameClient_Model, GameClient_View> {
+	
 	
 	public GameClient_Controller(GameClient_Model model, GameClient_View view) {
-		this.model = model;
-		this.view = view;
+		super(model, view);
+        // D.Holliger:
+        // Vorbereiten für die Kommunikation Controller vs DummyController FXML
+        view.get_EnterGameCtrl().set_GMvcCtrl(this);
 		
-		view.btnConnect.setOnAction( event -> {
+		/*view.btnConnect.setOnAction( event -> {
 			view.btnConnect.setDisable(true);
 			String ipAddress = view.txtIpAddress.getText();
 			int port = Integer.parseInt(view.txtPort.getText());
@@ -23,6 +26,17 @@ public class GameClient_Controller {
 		model.newestMessage.addListener( (o, oldValue, newValue) -> {
 			if (!newValue.isEmpty()) // Ignore empty messages
 				view.txtChatArea.appendText(newValue + "\n");
-		} );
+		} );*/
 	}
+	
+
+public void goToEnterGame() {
+	view.get_EnterGameCtrl().set_GMvcCtrl(this);
+	view.showEnterGame();
+}
+
+public void goToGameBoard() {
+	view.get_GameBoardCtrl().set_GMvcCtrl(this);
+	view.showGameBoard();
+}
 }

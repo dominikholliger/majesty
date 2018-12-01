@@ -5,11 +5,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Logger;
 
+import leberkaes.abstractClasses.Model;
 import leberkaes.commonClasses.ChatMsg;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class GameServer_Model {
+public class GameServer_Model extends Model {
 	protected final ObservableList<Game_Client> clients = FXCollections.observableArrayList();
 
 	private final Logger logger = Logger.getLogger("");
