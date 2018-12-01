@@ -6,6 +6,7 @@ import java.net.Socket;
 import java.util.logging.Logger;
 
 import leberkaes.commonClasses.ChatMsg;
+import leberkaes.commonClasses.GameBoard;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -36,9 +37,14 @@ public class GameServer_Model {
 								listSize = clients.size();
 							}
 							// Maximale Anzahl Spieler erreicht?
-							if((listSize == playerCount) && !gameRunning){
+							if((listSize == playerCount) & !gameRunning){
 								// Starten des eigentlichen Spiels
+								ChatMsg messageStart = new ChatMsg("Server","Spiel wird gestartet.");
+								broadcast(messageStart);
 								logger.info("Die erforderliche Anzahl Spieler sind verbunden, das Spiel wird gestartet.");
+								logger.info("Generieren des initialen Spielbretts...");
+								GameBoard gameboard = new GameBoard(playerCount);
+								gameboard.toString();
 								gameRunning = true;
 							}
 						} catch (Exception e) {
