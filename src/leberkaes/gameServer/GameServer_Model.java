@@ -16,6 +16,7 @@ public class GameServer_Model {
 	private ServerSocket listener;
 	private volatile boolean stop = false;
 	private int listSize;
+	private boolean gameRunning = false;
 
 
 	public void startServer(int port, int playerCount) {
@@ -28,14 +29,17 @@ public class GameServer_Model {
 					while (!stop) {
 						try {
 							// Auf neue Verbindungen warten und ein enstsprechendes Objekt in der Liste anlegen
-							Socket socket = listener.accept();
-							Game_Client client = new Game_Client(GameServer_Model.this, socket);
-							clients.add(client);
-							listSize = clients.size();
+							if(listSize < playerCount) {
+								Socket socket = listener.accept();
+								Game_Client client = new Game_Client(GameServer_Model.this, socket);
+								clients.add(client);
+								listSize = clients.size();
+							}
 							// Maximale Anzahl Spieler erreicht?
-							if(listSize == playerCount){
+							if((listSize == playerCount) && !gameRunning){
 								// Starten des eigentlichen Spiels
-								System.out.println("Das Spiel wird gestartet");
+								logger.info("Die erforderliche Anzahl Spieler sind verbunden, das Spiel wird gestartet.");
+								gameRunning = true;
 							}
 						} catch (Exception e) {
 							logger.info(e.toString());
