@@ -16,52 +16,65 @@ public class GameSettings_Controller {
 	Logger logger = sl.getLogger();
 	Translator t = sl.getTranslator();
 	Configuration config = sl.getConfiguration();
-	
 	// Validity checks for the two text fields
 	private boolean portValid = false;
-
-	public GameSettings_Controller(GameSettings_Model model,
-			GameSettings_View view) {
+	private boolean playerCountValid = false;
+	public GameSettings_Controller(GameSettings_Model model,GameSettings_View view) {
 		this.model = model;
 		this.view = view;
-
 		// ChangeListener for the text-property of the port number
 		view.txtPort.textProperty().addListener(
 				// Parameters of any PropertyChangeListener
 				(observable, oldValue, newValue) -> {
-					validatePortNumber(newValue);
+					validatePortNumber(newValue,"txtPort");
 				});
+		view.txtPlayer.textProperty().addListener(
+				// Parameters of any PropertyChangeListener
+				(observable, oldValue, newValue) -> {
+					validatePlayerCountNumber(newValue,"txt");
+				});
+		
 		
 		view.btnCancel.setOnAction((event) -> {
 			view.stop();
 		});
-		
 		view.btnSave.setOnAction((event) -> {
 			config.setLocalOption("Port", view.txtPort.getText());
+			config.setLocalOption("PlayerCount", view.txtPlayer.getText());
 			view.stop();
 		});
 	}
-
-
 	/**
 	 * Must be an integer 1-65535
 	 */
-	private void validatePortNumber(String newValue) {
+	private void validatePortNumber(String newValue , String obsElement) {
 		boolean valid = model.isValidPortNumber(newValue);
-
 		// Change text color
 		if (valid) {
 			view.txtPort.setStyle("-fx-text-inner-color: green;");
 		} else {
 			view.txtPort.setStyle("-fx-text-inner-color: red;");
 		}
-
 		// Save result
 		portValid = valid;
-
 		// Enable or disable button, as appropriate
 		enableDisableButton();
 	}
+	private void validatePlayerCountNumber(String newValue , String obsElement) {
+		boolean valid = model.isValidPortNumber(newValue);
+		// Change text color
+		if (valid) {
+			view.txtPlayer.setStyle("-fx-text-inner-color: green;");
+		} else {
+			view.txtPlayer.setStyle("-fx-text-inner-color: red;");
+		}
+		// Save result
+		playerCountValid = valid;
+		// Enable or disable button, as appropriate
+		enableDisableButton();
+	}
+	
+	
 	
 	/**
 	 * Enable or disable the Connect button, based on the validity of the two
@@ -69,6 +82,7 @@ public class GameSettings_Controller {
 	 */
 	private void enableDisableButton() {
 		boolean valid = portValid;
-		view.btnSave.setDisable(!valid);
+		boolean valid2 = playerCountValid;
+		view.btnSave.setDisable(!(valid || valid2));
 	}
 }

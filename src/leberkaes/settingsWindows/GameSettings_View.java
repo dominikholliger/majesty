@@ -25,23 +25,22 @@ public class GameSettings_View {
 
     protected Label lblPort = new Label(t.getString("options.port"));
     protected TextField txtPort = new TextField();
+    protected Label lblPlayer = new Label(t.getString("options.playercount"));
+    protected TextField txtPlayer = new TextField();
     protected Button btnCancel = new Button(t.getString("options.cancel"));
     protected Button btnSave = new Button(t.getString("options.save"));
 
     public GameSettings_View(Stage stage, GameSettings_Model model) {
         this.stage = stage;
         this.model = model;
-        
         stage.setTitle(t.getString("options.title"));
-        
         HBox root = new HBox();
         Region spacer1 = new Region();
         Region spacer2 = new Region();
-        root.getChildren().addAll(lblPort, txtPort, spacer2, btnCancel, btnSave);
-
+        root.getChildren().addAll(lblPort, txtPort, spacer2,lblPlayer, txtPlayer, spacer1, btnCancel, btnSave);
         // Get current values
         txtPort.setText(config.getOption("Port"));
-        
+        txtPlayer.setText(config.getOption("PlayerCount"));
         Scene scene = new Scene(root);
         stage.setScene(scene);;
     }
