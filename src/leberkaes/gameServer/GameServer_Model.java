@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import leberkaes.commonClasses.ChatMsg;
 import leberkaes.commonClasses.GameBoard;
+import leberkaes.commonClasses.GameMsg;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -80,7 +81,7 @@ public class GameServer_Model {
 			}
 		}
 	}
-	public void broadcastGameBoard(gameMsg outMsg) {
+	public void broadcastGameBoard(GameMsg outMsg) {
 		logger.info("Broadcasting Gameboard to all clients");
 		for (Game_Client c : clients) {
 			c.send(outMsg);

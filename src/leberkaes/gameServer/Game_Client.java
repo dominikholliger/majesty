@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 import leberkaes.commonClasses.ChatMsg;
+import leberkaes.commonClasses.GameMsg;
 import leberkaes.commonClasses.JoinMsg;
 import leberkaes.commonClasses.Message;
 
@@ -26,6 +27,9 @@ public class Game_Client {
 						model.broadcast((ChatMsg) msg);
 					} else if (msg instanceof JoinMsg) {
 						Game_Client.this.name = ((JoinMsg) msg).getName();
+					} else if (msg instanceof GameMsg) {
+						// Dies muss angepasst werden !!!!!!!!!
+						model.broadcast(new ChatMsg(name,"Test: Spielbrett empfangen"));
 					}
 				}
 			}
@@ -48,11 +52,13 @@ public class Game_Client {
 	}
 
 
-
+	// Überlagerte Methode
 	public void send(ChatMsg msg) {
 		msg.send(socket);
 	}
-
+	public void send(GameMsg msg) {
+		msg.send(socket);
+	}
 	public void stop() {
 		try {
 			socket.close();
