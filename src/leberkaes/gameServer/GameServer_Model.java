@@ -51,6 +51,8 @@ public class GameServer_Model {
 								broadcast(new ChatMsg("Server","Gameboard fertig erstellt."));
 								System.out.println(gameboard.toString());
 								gameRunning = true;
+								// GameBoard an alle Clients senden
+								
 							}
 						} catch (Exception e) {
 							logger.info(e.toString());
@@ -78,7 +80,12 @@ public class GameServer_Model {
 			}
 		}
 	}
-
+	public void broadcastGameBoard(gameMsg outMsg) {
+		logger.info("Broadcasting Gameboard to all clients");
+		for (Game_Client c : clients) {
+			c.send(outMsg);
+		}
+	}
 	public void broadcast(ChatMsg outMsg) {
 		logger.info("Broadcasting message to clients");
 		for (Game_Client c : clients) {
