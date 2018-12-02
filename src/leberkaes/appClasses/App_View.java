@@ -63,7 +63,7 @@ public class App_View extends View<App_Model> {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Scene scene = new Scene(parent, 700,700);
+		Scene scene = new Scene(parent, 600,400);
         scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
         return scene;
 	}

@@ -7,30 +7,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="350.0" prefWidth="700.0">
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <ImageView fitHeight="326.0" fitWidth="600.0" layoutX="0.0" layoutY="0.0" preserveRatio="true">
+            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.7">
                <image>
                   <Image url="leberkaes.GUIsources/majesty-start.jpg" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="66.0" layoutX="21.0" layoutY="339.0" opacity="0.63" stroke="WHITE" strokeType="INSIDE" width="600.0" />
-            <Button fx:id="newGame" layoutX="78.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleNewGameButtonClicked" prefHeight="44.0" prefWidth="141.0" text="Server starten" />
-            <Button fx:id="settings" layoutX="522.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleSettingsButtonClicked" prefHeight="64.0" prefWidth="74.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="66.0" layoutX="11.0" layoutY="277.0" opacity="0.6" stroke="WHITE" strokeType="INSIDE" width="583.0" />
+            <Button fx:id="newGame" layoutX="51.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleNewGameButtonClicked" prefHeight="44.0" prefWidth="141.0" text="Server starten" />
+            <Button fx:id="settings" layoutX="518.0" layoutY="269.0" mnemonicParsing="false" onAction="#handleSettingsButtonClicked" prefHeight="64.0" prefWidth="65.0">
                <graphic>
-                  <ImageView fitHeight="86.0" fitWidth="61.0" preserveRatio="true">
+                  <ImageView fitHeight="64.0" fitWidth="61.0" preserveRatio="true">
                      <image>
                         <Image url="leberkaes.GUIsources/setting.png" />
                      </image>
                   </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="highscore" layoutX="416.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleHighscoreButtonClicked" prefHeight="44.0" prefWidth="95.0" text="Highscores" />
-            <Button fx:id="enterGame" layoutX="264.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleEnterGameButtonclicked" prefHeight="44.0" prefWidth="114.0" text="Client starten" />
+               </graphic></Button>
+            <Button fx:id="highscore" layoutX="408.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleHighscoreButtonClicked" prefHeight="44.0" prefWidth="95.0" text="Highscores" />
+            <Button fx:id="enterGame" layoutX="243.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleEnterGameButtonclicked" prefHeight="44.0" prefWidth="114.0" text="Client starten" />
          </children>
       </AnchorPane>
    </children>
 </Pane>
-
