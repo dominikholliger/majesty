@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.TimeZone;
 
 public class Highscore {
@@ -43,10 +44,29 @@ public class Highscore {
 		} 
 		return this.conn;
 	}
-	public void getHighscore() {
+	public HashMap getHighscore() {
+		HashMap<Integer, String> hmap = new HashMap<Integer, String>();
 		Connection conn = makeConnection();
-		
-		
+		try {
+			Statement stmt = null;
+			String sql = "SELECT * FROM `majesty` order by count desc, timestamp asc LIMIT 100;";
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()){
+				int count = rs.getInt("count");
+		        String name = rs.getString("name");
+		        java.util.Date datetime = new java.util.Date();
+		        datetime = rs.getTime("timestamp");
+		    	java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd.MM.yyyy HH:mm");
+				String dateTimeofEntry = sdf.format(datetime);
+				hmap.put(count,name+" - "+dateTimeofEntry);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return hmap;
 	}
 	public void writeHighscore(String name, int count) {
 		Connection conn = makeConnection();
