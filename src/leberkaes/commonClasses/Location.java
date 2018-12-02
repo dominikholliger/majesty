@@ -8,13 +8,14 @@ import static leberkaes.commonClasses.CardType.type.POTION;
 import static leberkaes.commonClasses.CardType.type.SHIELD;
 import static leberkaes.commonClasses.CardType.type.SWORD;
 
+import java.io.Serializable;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import leberkaes.commonClasses.CardType.*;
 
-public class Location {
+public class Location implements Serializable{
 
 	public type type;
 	public Deque<CharacterCard> characters;

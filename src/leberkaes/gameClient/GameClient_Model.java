@@ -5,8 +5,11 @@ import java.net.Socket;
 import java.util.logging.Logger;
 
 import leberkaes.commonClasses.ChatMsg;
+import leberkaes.commonClasses.GameBoard;
+import leberkaes.commonClasses.GameMsg;
 import leberkaes.commonClasses.JoinMsg;
 import leberkaes.commonClasses.Message;
+import leberkaes.commonClasses.MessageType;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
@@ -27,26 +30,30 @@ public class GameClient_Model {
 		this.name = name;
 		try {
 			socket = new Socket(ipAddress, Port);
-
 			// Create thread to read incoming messages
 			Runnable r = new Runnable() {
 				@Override
 				public void run() {
 					while (true) {
-						ChatMsg msg = (ChatMsg) Message.receive(socket);
-						
-						// If the client is sending the _same_ message as before, we cannot simply
-						// set the property, because this would not be a change, and the change
-						// listener will not trigger. Therefore, we first erase the previous message.
-						// This is a change, but empty messages are ignored by the change-listener
-						newestMessage.set(""); // erase previous message
-						newestMessage.set(msg.getName() + ": " + msg.getContent());
+							Message msgTemp = Message.receive(socket);
+							if(msgTemp.getType() == MessageType.Game) {
+								logger.info("GameMsg angekommen");
+								/**
+								GameMsg msg = (GameMsg) msgTemp;
+								GameBoard gameBoard = msg.extractContent();
+								// Aus Spass kotzen wir das mal auf die Konsole
+								System.out.println(gameBoard.toString());
+								**/
+							} else if (msgTemp.getType() == MessageType.Chat) {
+								ChatMsg msg = (ChatMsg) msgTemp;
+								newestMessage.set(""); // erase previous message
+								newestMessage.set(msg.getName() + ": " + msg.getContent());
+							}
+						}
 					}
-				}
-			};
+				};
 			Thread t = new Thread(r);
 			t.start();
-
 			// Send join message to the server
 			Message msg = new JoinMsg(name);
 			msg.send(socket);

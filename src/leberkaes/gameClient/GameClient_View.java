@@ -1,5 +1,8 @@
 package leberkaes.gameClient;
 
+import java.nio.charset.Charset;
+import java.util.Random;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -48,6 +51,23 @@ public class GameClient_View {
 		
 		HBox topBox = new HBox(lblIpAddress, txtIpAddress, lblPort, txtPort, lblName, txtName, btnConnect);
 		topBox.getStyleClass().add("hbox"); // Class for styling
+		/**
+		 * Für ein bisschen schnelleres debugging...
+		 */
+		Boolean debug = true;
+		if(debug) {
+			txtPort.setText("8082");
+			txtIpAddress.setText("127.0.0.1");
+			String SALTCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+	        StringBuilder salt = new StringBuilder();
+	        Random rnd = new Random();
+	        while (salt.length() < 8) { // length of the random string.
+	            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+	            salt.append(SALTCHARS.charAt(index));
+	        }
+	        String saltStr = salt.toString();
+		    txtName.setText(saltStr);
+		}
 		
 		HBox bottomBox = new HBox(txtChatMessage, btnSend);
 		bottomBox.getStyleClass().add("hbox"); // Class for styling
@@ -63,7 +83,7 @@ public class GameClient_View {
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-		stage.setTitle("SimpleChat Client");
+		stage.setTitle("Game Client");
 	}
 	
 	public void start() {

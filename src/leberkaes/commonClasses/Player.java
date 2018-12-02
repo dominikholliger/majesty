@@ -1,5 +1,6 @@
 package leberkaes.commonClasses;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -7,7 +8,7 @@ import java.util.LinkedList;
 import leberkaes.commonClasses.*;
 import leberkaes.commonClasses.CardType.type;
 
-public class Player {
+public class Player implements Serializable{
 
 	public String name;
 	public boolean active; // Wars

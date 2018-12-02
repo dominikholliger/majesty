@@ -1,8 +1,10 @@
 package leberkaes.commonClasses;
 
+import java.io.Serializable;
+
 import leberkaes.commonClasses.CardType.*;
 
-public class CharacterCard {
+public class CharacterCard implements Serializable{
 	
 	private type cardType1;
 	private type cardType2;

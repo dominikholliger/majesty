@@ -22,7 +22,7 @@ public class GameServer_Model {
 
 
 	public void startServer(int port, int playerCount) {
-		logger.info("Start server");
+		logger.info("Start server game thread");
 		try {
 			listener = new ServerSocket(port, 10, null);
 			Runnable r = new Runnable() {
@@ -53,7 +53,9 @@ public class GameServer_Model {
 								System.out.println(gameboard.toString());
 								gameRunning = true;
 								// GameBoard an alle Clients senden
-								broadcastGameBoard(new GameMsg("Server", null));
+								GameMsg msg =	new GameMsg("Server");
+								msg.fillContentWithObject(gameboard);
+								broadcastGameBoard(msg);
 							}
 						} catch (Exception e) {
 							logger.info(e.toString());
