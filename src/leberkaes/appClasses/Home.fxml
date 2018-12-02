@@ -18,9 +18,9 @@
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="66.0" layoutX="11.0" layoutY="277.0" opacity="0.6" stroke="WHITE" strokeType="INSIDE" width="583.0" />
             <Button fx:id="newGame" layoutX="51.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleNewGameButtonClicked" prefHeight="44.0" prefWidth="141.0" text="Server starten" />
-            <Button fx:id="settings" layoutX="518.0" layoutY="269.0" mnemonicParsing="false" onAction="#handleSettingsButtonClicked" prefHeight="64.0" prefWidth="65.0">
+            <Button fx:id="settings" layoutX="518.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleSettingsButtonClicked" prefHeight="44.0" prefWidth="44.0">
                <graphic>
-                  <ImageView fitHeight="64.0" fitWidth="61.0" preserveRatio="true">
+                  <ImageView fitHeight="44.0" fitWidth="61.0" preserveRatio="true">
                      <image>
                         <Image url="leberkaes.GUIsources/setting.png" />
                      </image>
