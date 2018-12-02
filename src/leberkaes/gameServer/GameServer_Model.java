@@ -13,16 +13,18 @@ import javafx.collections.ObservableList;
 
 public class GameServer_Model {
 	protected final ObservableList<Game_Client> clients = FXCollections.observableArrayList();
+	protected final ObservableList<Game_ClientObjectCom> clientsObjectCom = FXCollections.observableArrayList();
 
 	private final Logger logger = Logger.getLogger("");
 	private ServerSocket listener;
+	private ServerSocket listenerCom;
 	private volatile boolean stop = false;
 	private int listSize;
 	private boolean gameRunning = false;
 
 
 	public void startServer(int port, int playerCount) {
-		logger.info("Start server game thread");
+		logger.info("Start server game thread base communication");
 		try {
 			listener = new ServerSocket(port, 10, null);
 			Runnable r = new Runnable() {
@@ -53,9 +55,7 @@ public class GameServer_Model {
 								System.out.println(gameboard.toString());
 								gameRunning = true;
 								// GameBoard an alle Clients senden
-								GameMsg msg =	new GameMsg("Server");
-								msg.fillContentWithObject(gameboard);
-								broadcastGameBoard(msg);
+								broadcastGameBoard(gameboard);
 							}
 						} catch (Exception e) {
 							logger.info(e.toString());
@@ -70,6 +70,35 @@ public class GameServer_Model {
 		}
 	}
 
+	public void startServerObjectCom(int portObject) {
+		logger.info("Start server game thread object communication");
+		try {
+			listenerCom = new ServerSocket(portObject, 10, null);
+			Runnable r = new Runnable() {
+				@Override
+				public void run() {
+					while (!stop) {
+						try {
+								Socket socket = listenerCom.accept();
+								Game_ClientObjectCom client = new Game_ClientObjectCom(GameServer_Model.this, socket);
+								clientsObjectCom.add(client);
+								System.out.println("Neue Verbindung auf den Object Com Server!");
+						} catch (Exception e) {
+							logger.info(e.toString());
+						}
+					}
+				}
+			};
+			Thread t = new Thread(r, "ServerSocket");
+			t.start();
+		} catch (IOException e) {
+			logger.info(e.toString());
+		}
+	}
+	
+	
+	
+	
 	public void stopServer() {
 		logger.info("Stop all clients");
 		for (Game_Client c : clients) c.stop();
@@ -82,11 +111,18 @@ public class GameServer_Model {
 				// Uninteresting
 			}
 		}
+		if (listenerCom != null) {
+			try {
+				listenerCom.close();
+			} catch (IOException e) {
+				// Uninteresting
+			}
+		}
 	}
-	public void broadcastGameBoard(GameMsg outMsg) {
+	public void broadcastGameBoard(GameBoard outGameBoard) {
 		logger.info("Broadcasting Gameboard to all clients");
-		for (Game_Client c : clients) {
-			c.send(outMsg);
+		for (Game_ClientObjectCom c : clientsObjectCom) {
+			c.send(outGameBoard);
 		}
 	}
 	public void broadcast(ChatMsg outMsg) {

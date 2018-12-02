@@ -14,6 +14,8 @@ public class GameClient_Controller {
 			int port = Integer.parseInt(view.txtPort.getText());
 			String name = view.txtName.getText();
 			model.connect(ipAddress, port, name);
+			// Connect for Object Com
+			model.connectObjectCom(ipAddress, 8083, name);
 		});
 		
 		view.stage.setOnCloseRequest( event -> model.disconnect() );

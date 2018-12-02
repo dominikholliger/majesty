@@ -1,6 +1,7 @@
 package leberkaes.gameClient;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.util.logging.Logger;
 
@@ -23,6 +24,8 @@ public class GameClient_Model {
 
 	private Logger logger = Logger.getLogger("");
 	private Socket socket;
+	private Socket socketObjectCom;
+	private ObjectInputStream inStream = null;
 	private String name;
 
 	public void connect(String ipAddress, int Port, String name) {
@@ -61,6 +64,37 @@ public class GameClient_Model {
 			logger.warning(e.toString());
 		}
 	}
+	
+	// Eine zweite Verbindung für die Objektübertragung
+	public void connectObjectCom(String ipAddress, int Port, String name) {
+		logger.info("Connect to ObjectCom Server");
+		this.name = name;
+		try {
+			socketObjectCom = new Socket(ipAddress, Port);
+			// Create thread to read incoming messages
+			Runnable r = new Runnable() {
+				@Override
+				public void run() {
+					while (true) {
+						try {
+							inStream = new ObjectInputStream(socketObjectCom.getInputStream());
+							GameBoard gameboard = (GameBoard) inStream.readObject();
+							System.out.println("Object received ------ GameBoard -------- = " + gameboard);
+						} catch (IOException | ClassNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+			};
+			Thread t = new Thread(r);
+			t.start();
+		} catch (Exception e) {
+			logger.warning(e.toString());
+		}
+	}
+	
+	
 
 	public void disconnect() {
 		logger.info("Disconnect");

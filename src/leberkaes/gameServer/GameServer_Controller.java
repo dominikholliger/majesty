@@ -23,6 +23,8 @@ public class GameServer_Controller {
 		int port = Integer.parseInt(config.getOption("Port"));
 		int playerCount = Integer.parseInt(config.getOption("PlayerCount"));
 		model.startServer(port,playerCount);
+		// Muss noch aus der Konfig den Port nehmen
+		model.startServerObjectCom(8083);
 		view.stage.setOnCloseRequest(event -> model.stopServer());
 		model.clients.addListener((ListChangeListener) (event -> view.updateClients()));
 	}
