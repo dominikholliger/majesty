@@ -2,6 +2,7 @@ package leberkaes.gameClient;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.logging.Logger;
 
@@ -28,6 +29,9 @@ public class GameClient_Model {
 	private ObjectInputStream inStream = null;
 	private String name;
 
+	
+	
+	
 	public void connect(String ipAddress, int Port, String name) {
 		logger.info("Connect");
 		this.name = name;
@@ -80,6 +84,7 @@ public class GameClient_Model {
 							inStream = new ObjectInputStream(socketObjectCom.getInputStream());
 							GameBoard gameboard = (GameBoard) inStream.readObject();
 							System.out.println("Object received ------ GameBoard -------- = " + gameboard);
+							sendGameBoardToServer(gameboard);
 						} catch (IOException | ClassNotFoundException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -106,7 +111,18 @@ public class GameClient_Model {
 			}
 	}
 
-	
+	public void sendGameBoardToServer(GameBoard gameboard) {
+		logger.info("Sending GameBoard Object.....");
+		try {
+			ObjectOutputStream outputStream = new ObjectOutputStream(socketObjectCom.getOutputStream());
+			System.out.println("Object written ------ GameBoard -------- = " + gameboard);
+			outputStream.writeObject(gameboard);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}	
 	
 	
 	public void sendMessage(String message) {
