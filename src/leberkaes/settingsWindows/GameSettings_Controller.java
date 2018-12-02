@@ -38,9 +38,9 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 				// Parameters of any PropertyChangeListener
 				(observable, oldValue, newValue) -> {
 					validatePortNumber(newValue,"txtPort");
-				});
+				});*/
 		
-		txtPlayer.textProperty().addListener(
+		/*txtPlayer.textProperty().addListener(
 				// Parameters of any PropertyChangeListener
 				(observable, oldValue, newValue) -> {
 					validatePlayerCountNumber(newValue,"txt");
