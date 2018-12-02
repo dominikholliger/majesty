@@ -3,14 +3,19 @@ package leberkaes.settingsWindows;
 import java.util.logging.Logger;
 
 import leberkaes.jat2.ServiceLocator;
+import leberkaes.abstractClasses.Controller;
+import leberkaes.appClasses.App_Model;
+import leberkaes.appClasses.App_View;
 import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
-public class GameSettings_Controller {
-	final private GameSettings_Model model;
-	final private GameSettings_View view;
+public class GameSettings_Controller extends Controller<GameSettings_Model, GameSettings_View>{
+	
 	ServiceLocator sl = ServiceLocator.getServiceLocator();
 	Logger logger = sl.getLogger();
 	Translator t = sl.getTranslator();
@@ -18,28 +23,38 @@ public class GameSettings_Controller {
 	// Validity checks for the two text fields
 	private boolean portValid = false;
 	private boolean playerCountValid = false;
+	
+	@FXML public TextField txtPlayer;
+	@FXML public TextField txtPort;
+	@FXML public Button btnCancel;
+	@FXML public Button btnSave;
+
+	
+	
 	public GameSettings_Controller(GameSettings_Model model,GameSettings_View view) {
-		this.model = model;
-		this.view = view;
+		super(model, view);
 		// ChangeListener for the text-property of the port number
-		view.txtPort.textProperty().addListener(
+		/*txtPort.textProperty().addListener(
 				// Parameters of any PropertyChangeListener
 				(observable, oldValue, newValue) -> {
 					validatePortNumber(newValue,"txtPort");
 				});
-		view.txtPlayer.textProperty().addListener(
+		
+		txtPlayer.textProperty().addListener(
 				// Parameters of any PropertyChangeListener
 				(observable, oldValue, newValue) -> {
 					validatePlayerCountNumber(newValue,"txt");
 				});
-		view.btnCancel.setOnAction((event) -> {
+		
+		btnCancel.setOnAction((event) -> {
 			view.stop();
 		});
-		view.btnSave.setOnAction((event) -> {
+		
+		btnSave.setOnAction((event) -> {
 			config.setLocalOption("Port", view.txtPort.getText());
 			config.setLocalOption("PlayerCount", view.txtPlayer.getText());
 			view.stop();
-		});
+		});*/
 	}
 	/**
 	 * Validierung der beiden Settingseingaben (muss jeweils eine gültige Zahl sein,
@@ -81,4 +96,25 @@ public class GameSettings_Controller {
 		boolean valid2 = playerCountValid;
 		view.btnSave.setDisable(!(valid || valid2));
 	}
+	
+	@FXML private void handleMeepleOption(){
+		
+	}
+	
+	@FXML private void handleSplitCardOption(){
+		
+	}
+	
+	@FXML private void handleChangetxtPort(){
+		
+	}
+	
+	@FXML private void handleStartGameClicked(){
+		
+	}
+	
+	
+	
+	
+	
 }

@@ -1,6 +1,8 @@
 package leberkaes.settingsWindows;
 
-public class GameSettings_Model {
+import leberkaes.abstractClasses.Model;
+
+public class GameSettings_Model extends Model {
 	
 	protected boolean isValidPortNumber(String newValue) {
 		boolean valid = true;

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.7">
+               <image>
+                  <Image url="leberkaes.GUIsources/majesty-start.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtPlayer" layoutX="299.0" layoutY="33.0" prefHeight="27.0" prefWidth="64.0" />
+            <ToggleButton fx:id="aside" layoutX="236.0" layoutY="71.0" mnemonicParsing="false" text="A-Seite" />
+            <ToggleButton fx:id="bside" disable="true" layoutX="299.0" layoutY="71.0" mnemonicParsing="false" text="B-Seite" />
+            <CheckBox fx:id="meepleoption" disable="true" layoutX="226.0" layoutY="114.0" mnemonicParsing="false" onAction="#handleMeepleOption" text="Mit Meeples spielen" />
+            <CheckBox fx:id="splitcardoption" disable="true" layoutX="226.0" layoutY="145.0" mnemonicParsing="false" onAction="#handleSplitCardOption" text="Mit Split-Cards spielen" />
+            <Text fx:id="txtLabelPort" layoutX="272.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat-Port" />
+            <TextField fx:id="txtPort" layoutX="261.0" layoutY="187.0" onInputMethodTextChanged="#handleChangetxtPort" prefHeight="27.0" prefWidth="82.0" />
+            <TextField fx:id="textinputGamePort" layoutX="261.0" layoutY="249.0" prefHeight="27.0" prefWidth="82.0" />
+            <Text fx:id="textGamePort" layoutX="265.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game-Port" />
+            <Button fx:id="btnSave" layoutX="255.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleStartGameClicked" prefHeight="49.0" prefWidth="96.0" text="START" />
+            <ToggleButton fx:id="toggleEnglish" layoutX="233.0" layoutY="291.0" mnemonicParsing="false" text="Englisch" />
+            <ToggleButton fx:id="toggleDeutsch" layoutX="303.0" layoutY="291.0" mnemonicParsing="false" text="Deutsch" />
+            <Text fx:id="txtLabelPlayerNumber" layoutX="204.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anzahl Spieler" />
+         </children></AnchorPane>
+  </children>
+</Pane>
