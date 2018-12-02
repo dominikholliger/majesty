@@ -3,11 +3,13 @@ package leberkaes.gameServer;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.ResultSet;
 import java.util.logging.Logger;
+
 
 import leberkaes.commonClasses.ChatMsg;
 import leberkaes.commonClasses.GameBoard;
-import leberkaes.commonClasses.GameMsg;
+import leberkaes.commonClasses.Highscore;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -22,9 +24,12 @@ public class GameServer_Model {
 	private int listSize;
 	private boolean gameRunning = false;
 
+	
 
 	public void startServer(int port, int playerCount) {
 		logger.info("Start server game thread base communication");
+		Highscore high = new Highscore();
+		high.getHighscore();
 		try {
 			listener = new ServerSocket(port, 10, null);
 			Runnable r = new Runnable() {
@@ -131,4 +136,7 @@ public class GameServer_Model {
 			c.send(outMsg);
 		}
 	}
+	
+
+	
 }
