@@ -27,7 +27,7 @@
                   </ImageView>
                </graphic></Button>
             <Button fx:id="highscore" layoutX="408.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleHighscoreButtonClicked" prefHeight="44.0" prefWidth="95.0" text="Highscores" />
-            <Button fx:id="enterGame" layoutX="243.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleEnterGameButtonclicked" prefHeight="44.0" prefWidth="114.0" text="Client starten" />
+            <Button fx:id="enterGame" layoutX="243.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleEnterGameButtonClicked" prefHeight="44.0" prefWidth="114.0" text="Client starten" />
          </children>
       </AnchorPane>
    </children>

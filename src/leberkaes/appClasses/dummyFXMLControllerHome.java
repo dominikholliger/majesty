@@ -45,11 +45,19 @@ public class dummyFXMLControllerHome {
 	}
 	@FXML protected void handleHighscoreButtonClicked(ActionEvent event) throws Exception{
 		// Highscore-Fenster oeffnet sich, nichts wird uebergeben
+		get_MvcCtrl().openHighscoreWindow();
 		
 	}
-	@FXML protected void handleEnterGameButtonclicked(ActionEvent event) throws Exception{
+	@FXML protected void handleEnterGameButtonClicked(ActionEvent event) throws Exception{
 		// Client Prozess starten
 		get_MvcCtrl().startNewClientProcess();
-	}	
+	}
+	
+	@FXML protected void handleBackClicked(ActionEvent event) throws Exception{
+		// Client Prozess starten
+		get_MvcCtrl().showHomeWindow();
+	}
+	
+	
 	
 }

@@ -8,6 +8,7 @@ import leberkaes.abstractClasses.View;
 import leberkaes.appClasses.App_Model;
 import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -44,7 +45,6 @@ public class GameSettings_View extends View<GameSettings_Model>{
         txtPlayer.setText(config.getOption("PlayerCount"));
         
     }
-    
  
     
     protected Scene create_GUI() {

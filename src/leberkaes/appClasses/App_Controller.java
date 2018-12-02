@@ -11,10 +11,16 @@ import leberkaes.gameServer.GameServer_View;
 import leberkaes.settingsWindows.GameSettings_Controller;
 import leberkaes.settingsWindows.GameSettings_Model;
 import leberkaes.settingsWindows.GameSettings_View;
+
+import java.io.IOException;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 /**
@@ -73,4 +79,63 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		new GameSettings_Controller(settingsModel, settingsView);
 		settingsView.start();
 	}    
+	
+	protected Parent parent;
+	
+	public void openHighscoreWindow(){
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Highscore.fxml"));
+		loader.setController(this);
+		try {
+			parent = loader.load();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		Scene scene = new Scene(parent, 600,400);
+		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		view.getStage().setScene(scene);
+	}
+	
+	public void showHomeWindow(){
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+		loader.setController(this);
+		try {
+			parent = loader.load();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		Scene scene = new Scene(parent, 600,400);
+		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		view.getStage().setScene(scene);
+	}
+	
+	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
+		// Server Prozess starten
+		startNewServerProcess();
+	}
+	@FXML protected void handleSettingsButtonClicked(ActionEvent event) throws Exception{
+		// Einstellungen öffnen
+		openSettingWindow();
+	}
+	@FXML protected void handleHighscoreButtonClicked(ActionEvent event) throws Exception{
+		// Highscore-Fenster oeffnet sich, nichts wird uebergeben
+		openHighscoreWindow();
+		
+	}
+	@FXML protected void handleBackClicked(ActionEvent event) throws Exception{
+		// Client Prozess starten
+		showHomeWindow();
+	}
+	
+	@FXML protected void handleEnterGameButtonClicked(ActionEvent event) throws Exception{
+		// Client Prozess starten
+		startNewClientProcess();
+	}
+	
+	
+	
+	
 }
