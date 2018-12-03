@@ -67,7 +67,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		Stage optionsStage = new Stage();
 	   	GameClient_Model clientModel = new GameClient_Model();
 	   	GameClient_View clientView = new GameClient_View(optionsStage, clientModel);
-		new GameClient_Controller(clientModel, clientView);
 		clientView.start();
 	}    
 	public void openSettingWindow() {
@@ -76,7 +75,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		Stage optionsStage = new Stage();
 	   	GameSettings_Model settingsModel = new GameSettings_Model();
 	   	GameSettings_View settingsView = new GameSettings_View(optionsStage, settingsModel);
-		new GameSettings_Controller(settingsModel, settingsView);
 		settingsView.start();
 	}    
 	

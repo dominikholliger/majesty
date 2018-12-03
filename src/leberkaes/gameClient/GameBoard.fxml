@@ -9,308 +9,77 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="691.0" prefWidth="1049.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="2.0" layoutY="72.0" prefHeight="532.0" prefWidth="804.0" style="-fx-border-color: black;">
-         <children>
-            <Text fx:id="player1name" layoutX="15.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1" />
-            <Text fx:id="player2name" layoutX="15.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2" />
-            <ImageView fx:id="cardback" fitHeight="120.0" fitWidth="120.0" layoutX="674.0" layoutY="34.0" preserveRatio="true">
-               <image>
-                  <Image url="leberkaes.GUIsources/Back1.jpg" />
-               </image>
-            </ImageView>
-            <HBox layoutX="71.0" layoutY="34.0" prefHeight="120.0" prefWidth="588.0">
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <HBox BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="stackplace1" fitHeight="120.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="stackplace2" fitHeight="120.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="stackplace3" fitHeight="120.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="stackplace4" fitHeight="120.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="stackplace5" fitHeight="120.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="stackplace6" fitHeight="120.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="labelplayername" strokeType="OUTSIDE" strokeWidth="0.0" text="Spielername" wrappingWidth="93.89724731445312">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="130.0" />
+                  <Text fx:id="labechatport" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat-Port" wrappingWidth="93.89724731445312">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtChatPort" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="66.0" />
+                  <Text fx:id="labelgameport" strokeType="OUTSIDE" strokeWidth="0.0" text="Game-Port" wrappingWidth="93.89724731445312">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtGamePort" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="66.0" />
+                  <Text fx:id="labelipaddress" strokeType="OUTSIDE" strokeWidth="0.0" text="IP-Addresse" wrappingWidth="93.89724731445312">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtIpAddress" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="114.0" />
+                  <Button fx:id="handleConnectClicked" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleConnectClicked" text="Verbinden" />
                </children>
             </HBox>
-            <GridPane layoutX="68.0" layoutY="174.0" prefHeight="340.0" prefWidth="734.0">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="80.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="80.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="80.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="80.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="80.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="80.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="80.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="80.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="200" minHeight="10.0" prefHeight="90" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="150" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="100" minHeight="0.0" prefHeight="90.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+         </top>
+         <bottom>
+            <HBox BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="loc1" fitHeight="120.0" fitWidth="127.0" preserveRatio="true" GridPane.columnIndex="2">
-                     <image>
-                        <Image url="leberkaes.GUIsources/SideA1.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="loc2" fitHeight="120.0" fitWidth="127.0" preserveRatio="true" GridPane.columnIndex="3">
-                     <image>
-                        <Image url="leberkaes.GUIsources/SideA2.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="loc3" fitHeight="120.0" fitWidth="127.0" preserveRatio="true" GridPane.columnIndex="4">
-                     <image>
-                        <Image url="leberkaes.GUIsources/SideA3.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="loc4" fitHeight="120.0" fitWidth="125.0" preserveRatio="true" GridPane.columnIndex="5">
-                     <image>
-                        <Image url="leberkaes.GUIsources/SideA4.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="loc5" fitHeight="120.0" fitWidth="125.0" preserveRatio="true" GridPane.columnIndex="6">
-                     <image>
-                        <Image url="leberkaes.GUIsources/SideA5.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="loc6" fitHeight="120.0" fitWidth="125.0" preserveRatio="true" GridPane.columnIndex="7">
-                     <image>
-                        <Image url="leberkaes.GUIsources/SideA6.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="loc7" fitHeight="120.0" fitWidth="198.0" preserveRatio="true" GridPane.columnIndex="8">
-                     <image>
-                        <Image url="leberkaes.GUIsources/SideA7.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="loc8" fitHeight="120.0" fitWidth="127.0" preserveRatio="true" GridPane.columnIndex="9">
-                     <image>
-                        <Image url="leberkaes.GUIsources/SideA8.jpg" />
-                     </image>
-                  </ImageView>
-                   <Text fx:id="p1GRAIN" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p1BARELL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p1POTION" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p1KEY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p1SHIELD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p1CUTLERY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p1SWORD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p1HOSPITAL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p2GRAIN" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p2BARELL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p2POTION" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p2KEY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p2SHIELD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p2CUTLERY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p2SWORD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="p2HOSPITAL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <ImageView fx:id="moneybag1" fitHeight="80.0" fitWidth="70.0" preserveRatio="true" GridPane.columnIndex="1">
-                     <image>
-                        <Image url="leberkaes.GUIsources/icon-money-bag.png" />
-                     </image>
-                  </ImageView>
-                  <Text fx:id="player1points" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </Text>
-                  <Text fx:id="player2points" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </Text>
-                  <ImageView fx:id="player1icon" fitHeight="70.0" fitWidth="70.0" preserveRatio="true" GridPane.rowIndex="1">
-                     <image>
-                        <Image url="leberkaes.GUIsources/knight.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="player2icon" fitHeight="70.0" fitWidth="70.0" preserveRatio="true" GridPane.rowIndex="2">
-                     <image>
-                        <Image url="leberkaes.GUIsources/soldier.png" />
-                     </image>
-                  </ImageView>
-                  <Text fx:id="player3points" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="player4points" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                  </Text>
-                  <ImageView fitHeight="70.0" fitWidth="70.0" GridPane.rowIndex="3">
-                     <image>
-                        <Image url="@../Downloads/OneDrive-2018-12-02/queen.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="70.0" fitWidth="70.0" GridPane.rowIndex="4">
-                     <image>
-                        <Image url="@../Downloads/OneDrive-2018-12-02/king.png" />
-                     </image>
-                  </ImageView>
+                  <TextArea fx:id="txtChatMessage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="600.0" promptText="Chat Message" />
+                  <Button fx:id="btnSend" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleSendClicked" text="Senden" />
                </children>
-            </GridPane>
-            <Ellipse fx:id="p1turn" fill="#4dff5c" layoutX="37.0" layoutY="298.0" radiusX="7.0" radiusY="7.0" stroke="#4dff5c" strokeType="INSIDE" />
-            <Ellipse fx:id="p2turn" fill="#4dff5c" layoutX="37.0" layoutY="362.0" radiusX="7.0" radiusY="7.0" stroke="#4dff5c" strokeType="INSIDE" />
-            <Text fx:id="player2name1" layoutX="15.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3" />
-            <Ellipse fx:id="p3turn" fill="#4dff5c" layoutX="40.0" layoutY="425.0" radiusX="7.0" radiusY="7.0" stroke="#4dff5c" strokeType="INSIDE" />
-            <Ellipse fx:id="p4turn" fill="#4dff5c" layoutX="38.0" layoutY="492.0" radiusX="7.0" radiusY="7.0" stroke="#4dff5c" strokeType="INSIDE" />
-            <Text fx:id="player2name11" layoutX="21.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player4" />
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="chatWindow" layoutX="804.0" layoutY="73.0" prefHeight="531.0" prefWidth="246.0" style="-fx-border-color: black;">
-         <children>
-            <ScrollBar fx:id="scrollbar" layoutX="227.0" layoutY="4.0" orientation="VERTICAL" prefHeight="509.0" prefWidth="17.0" />
-         </children>
-      </AnchorPane>
-      <TextArea fx:id="chatTextArea" layoutX="3.0" layoutY="611.0" prefHeight="75.0" prefWidth="801.0" />
-      <Button fx:id="sendmsg" layoutX="833.0" layoutY="635.0" mnemonicParsing="false" text="Senden" />
-      <Text fx:id="labelipaddress" layoutX="27.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IP-Addresse" wrappingWidth="93.89724731445312">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Text fx:id="labechatport" layoutX="272.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat-Port" wrappingWidth="93.89724731445312">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Text fx:id="labelgameport" layoutX="435.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game-Port" wrappingWidth="93.89724731445312">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Text fx:id="labelplayername" layoutX="611.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spielername" wrappingWidth="93.89724731445312">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <TextField fx:id="inputipaddress" layoutX="123.0" layoutY="25.0" prefHeight="27.0" prefWidth="130.0" />
-      <TextField fx:id="inputchatport" layoutX="352.0" layoutY="25.0" prefHeight="27.0" prefWidth="66.0" />
-      <TextField fx:id="inputgameport" layoutX="522.0" layoutY="26.0" prefHeight="27.0" prefWidth="66.0" />
-      <TextField fx:id="inputplayername" layoutX="710.0" layoutY="23.0" prefHeight="27.0" prefWidth="114.0" />
-      <Button fx:id="connect" layoutX="874.0" layoutY="23.0" mnemonicParsing="false" text="Verbinden" />
+            </HBox>
+         </bottom>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="openDeck5" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="openDeck4" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="openDeck3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="openDeck2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="openDeck1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="openDeck0" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="deckBack" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+         </center>
+         <right>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
+               <children>
+                  <TextArea id="txtChatArea" fx:id="chatTextArea" prefWidth="200.0" />
+               </children>
+            </Pane>
+         </right>
+      </BorderPane>
    </children>
 </Pane>

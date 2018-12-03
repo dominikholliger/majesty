@@ -20,11 +20,12 @@ public class GameServer_Controller {
 		this.model = model;
 		this.view = view;
 		// Settings laden
-		int port = Integer.parseInt(config.getOption("Port"));
+		int chatPort = Integer.parseInt(config.getOption("ChatPort"));
+		int gamePort = Integer.parseInt(config.getOption("GamePort"));
 		int playerCount = Integer.parseInt(config.getOption("PlayerCount"));
-		model.startServer(port,playerCount);
+		model.startServer(chatPort,playerCount);
 		// Muss noch aus der Konfig den Port nehmen
-		model.startServerObjectCom(8083);
+		model.startServerObjectCom(gamePort);
 		view.stage.setOnCloseRequest(event -> model.stopServer());
 		model.clients.addListener((ListChangeListener) (event -> view.updateClients()));
 	}

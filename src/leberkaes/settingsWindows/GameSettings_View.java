@@ -1,6 +1,7 @@
 package leberkaes.settingsWindows;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 import leberkaes.jat2.ServiceLocator;
@@ -26,31 +27,25 @@ public class GameSettings_View extends View<GameSettings_Model>{
 	Translator t = sl.getTranslator();
 	Configuration config = sl.getConfiguration();
 	
-    private GameSettings_Model model;
+    //private GameSettings_Model model;
     private Stage stage;
     protected Parent parent;
 
-    protected Label lblPort = new Label(t.getString("options.port"));
-    protected TextField txtPort = new TextField();
-    protected Label lblPlayer = new Label(t.getString("options.playercount"));
-    protected TextField txtPlayer = new TextField();
-    protected Button btnCancel = new Button(t.getString("options.cancel"));
-    protected Button btnSave = new Button(t.getString("options.save"));
+
 
     public GameSettings_View(Stage stage, GameSettings_Model model) {
         super (stage, model);
         stage.setTitle(t.getString("options.title"));
+        
         // Get current values
-        txtPort.setText(config.getOption("Port"));
-        txtPlayer.setText(config.getOption("PlayerCount"));
+        //txtPort.setText(config.getOption("Port"));
+        //txtPlayer.setText(config.getOption("PlayerCount"));
         
     }
  
     
     protected Scene create_GUI() {
-	    ServiceLocator sl = ServiceLocator.getServiceLocator();  
-	    Logger logger = sl.getLogger();
-	    Translator t = sl.getTranslator();
+	    
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
 		loader.setController(new GameSettings_Controller(model, this));
 		try {

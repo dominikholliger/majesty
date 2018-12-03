@@ -17,34 +17,29 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import leberkaes.abstractClasses.View;
+import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.settingsWindows.GameSettings_Controller;
 
 public class GameClient_View extends View <GameClient_Model>{
-	Stage stage;
-	private GameClient_Model model;
+	
+	ServiceLocator sl = ServiceLocator.getServiceLocator();
+	Logger logger = sl.getLogger();
+	Translator t = sl.getTranslator();
+	Configuration config = sl.getConfiguration();
+	
+	private Stage stage;
 	private Parent parent;
-
-	/*// Top controls
-	Label lblIpAddress = new Label("IP Address");
-	TextField txtIpAddress = new TextField();
-	Label lblPort = new Label("Port");
-	TextField txtPort = new TextField();
-	Label lblName = new Label("Name");
-	TextField txtName = new TextField();
-	Button btnConnect = new Button("Connect");
 	
-	// Chat area
-	TextArea txtChatArea = new TextArea();
+	//private GameClient_Model model;
 		
-	// Bottom controls
-	TextField txtChatMessage = new TextField();
-	Button btnSend = new Button("Send");*/
-	
 	public GameClient_View(Stage stage, GameClient_Model model) {
-		super(stage, model);
-		
+		super (stage, model);
+        stage.setTitle(t.getString("options.title"));
+        
+        // Get current values
+        
 		
 		/*// Prevent labels and button from shrinking below their preferred size
 		lblIpAddress.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
@@ -96,11 +91,10 @@ public class GameClient_View extends View <GameClient_Model>{
 	}
 	
 	protected Scene create_GUI() {
-	    ServiceLocator sl = ServiceLocator.getServiceLocator();  
-	    Logger logger = sl.getLogger();
-	    Translator t = sl.getTranslator();
+	    
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
 		loader.setController(new GameClient_Controller(model, this));
+		
 		try {
 			parent = loader.load();
 		} catch (IOException e1) {
@@ -108,16 +102,9 @@ public class GameClient_View extends View <GameClient_Model>{
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(parent, 800, 1000);
-		stage.setScene(scene);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         return scene;
 	}
 	
-	public void start() {
-		stage.show();
-		
-		// Prevent resizing below initial size
-		stage.setMinWidth(stage.getWidth());
-		stage.setMinHeight(stage.getHeight());
-	}
+
 }
