@@ -70,8 +70,29 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 		 * gültige Zahl sein, ansonsten kann nicht gespeichert werden)
 		 */
 	}
-
-	private void validatePortNumber(String newValue, String obsElement) {
+	@FXML
+    public void initialize() {
+		this.txtPlayerCount.setText(config.getOption("PlayerCount"));
+        this.txtChatPort.setText(config.getOption("ChatPort"));
+        this.txtGamePort.setText(config.getOption("GamePort"));
+        
+         txtGamePort.textProperty().addListener((observable, oldValue, newValue) -> {
+       		 validateGamePortNumber(newValue,"txtChatPort"); });
+         txtChatPort.textProperty().addListener((observable, oldValue, newValue) -> {
+        	 validateChatPortNumber(newValue,"txtGamePort"); });
+         
+         txtPlayerCount.textProperty().addListener((observable, oldValue, newValue) -> {
+        	 validatePlayerCountNumber(newValue,"txtPlayerCount"); });
+         
+         if(config.getOption("Meeple").equals("true")) {
+        	 this.meepleOption.setSelected(true);
+ 		}
+ 		
+         
+    }
+	
+	
+	private void validateGamePortNumber(String newValue, String obsElement) {
 		boolean valid = model.isValidPortNumber(newValue);
 		// Change text color
 		if (valid) {
@@ -84,9 +105,24 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 		// Enable or disable button, as appropriate
 		enableDisableButton();
 	}
+	private void validateChatPortNumber(String newValue, String obsElement) {
+		boolean valid = model.isValidPortNumber(newValue);
+		// Change text color
+		if (valid) {
+			this.txtChatPort.setStyle("-fx-text-inner-color: green;");
+		} else {
+			this.txtChatPort.setStyle("-fx-text-inner-color: red;");
+		}
+		// Save result
+		portValid = valid;
+		// Enable or disable button, as appropriate
+		enableDisableButton();
+	}
+	
 
 	private void validatePlayerCountNumber(String newValue, String obsElement) {
-		boolean valid = model.isValidPortNumber(newValue);
+		boolean valid = model.isValidPlayerCountNumber(newValue);
+		
 		// Change text color
 		if (valid) {
 			this.txtPlayerCount.setStyle("-fx-text-inner-color: green;");
@@ -130,7 +166,12 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 		config.setLocalOption("GamePort", this.txtGamePort.getText());
 		config.setLocalOption("ChatPort", this.txtChatPort.getText());
 		config.setLocalOption("PlayerCount", this.txtPlayerCount.getText());
-
+		if(this.meepleOption.isSelected()) {
+			config.setLocalOption("Meeple", "true");
+		}
+		else {
+			config.setLocalOption("Meeple", "false");
+		}
 		view.stop();
 	}
 	@FXML

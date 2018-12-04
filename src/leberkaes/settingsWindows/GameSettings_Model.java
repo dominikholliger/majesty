@@ -17,4 +17,16 @@ public class GameSettings_Model extends Model {
 
 		return valid;
 	}
+
+	public boolean isValidPlayerCountNumber(String newValue) {
+		boolean valid = true;
+		try {
+			int value = Integer.parseInt(newValue);
+			if ( value > 4||value<2||value==3) valid = false;
+		} catch (NumberFormatException e) {
+			// wasn't an integer
+			valid = false;
+		}
+		return valid;
+	}
 }
