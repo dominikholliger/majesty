@@ -52,7 +52,7 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 	@FXML
 	public ImageView deckBack;
 
-	
+
 	//Locations
 	@FXML
 	public ImageView loc1;
@@ -70,10 +70,10 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 	public ImageView loc7;
 	@FXML
 	public ImageView loc8;
-	
-	
-	
-	
+
+
+
+
 	// Bottom Controls (Chat)
 	@FXML
 	public TextArea txtChatMessage;
@@ -83,30 +83,26 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 	// Right controls (Chatlog)
 	@FXML
 	public TextArea txtChatArea;
-	
-		
-	
+
+
+
 	public GameClient_Controller(GameClient_Model model, GameClient_View view) {
 		super(model, view);
-
 		view.getStage().setOnCloseRequest(event -> model.disconnect());
-
 		model.newestMessage.addListener((o, oldValue, newValue) -> {
 			if (!newValue.isEmpty()) // Ignore empty messages
-				this.txtChatArea.appendText(newValue + "\n");
-			
+				System.out.println("Event");
+				//this.txtChatArea.appendText(newValue + "\n");
 		});
-		
-		
 	}
 
-	
-	
+
+
 	@FXML
 	protected void handleSendClicked(ActionEvent event) throws Exception {
-		
+
 		model.sendMessage(this.txtChatMessage.getText());
-		
+
 	}
 
 	@FXML
