@@ -1,6 +1,7 @@
 package leberkaes.gameClient;
 
 import java.io.File;
+import java.util.Random;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -89,15 +90,35 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 	public GameClient_Controller(GameClient_Model model, GameClient_View view) {
 		super(model, view);
 		view.getStage().setOnCloseRequest(event -> model.disconnect());
-		model.newestMessage.addListener((o, oldValue, newValue) -> {
+		
+	/*	model.newestMessage.addListener((o, oldValue, newValue) -> {
 			if (!newValue.isEmpty()) // Ignore empty messages
 				System.out.println("Event");
 				//this.txtChatArea.appendText(newValue + "\n");
-		});
+		});*/
 	}
 
-
-
+	@FXML
+	public void initialize() {
+		
+		//debug initialization
+		this.txtChatPort.setText(config.getOption("ChatPort"));
+		this.txtGamePort.setText(config.getOption("GamePort"));
+		
+		String SALTCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 8) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+	    this.txtName.setText(saltStr);
+	    
+	    this.txtIpAddress.setText("127.0.0.1");
+		
+ 		}
+	
 	@FXML
 	protected void handleSendClicked(ActionEvent event) throws Exception {
 

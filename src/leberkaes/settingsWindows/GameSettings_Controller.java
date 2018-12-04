@@ -66,32 +66,39 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 		 * btnCancel.setOnAction((event) -> { view.stop(); });
 		 * 
 		 * 
-		 * } /** Validierung der beiden Settingseingaben (muss jeweils eine
-		 * gültige Zahl sein, ansonsten kann nicht gespeichert werden)
+		 * } /** Validierung der beiden Settingseingaben (muss jeweils eine gültige
+		 * Zahl sein, ansonsten kann nicht gespeichert werden)
 		 */
 	}
+
 	@FXML
-    public void initialize() {
-		this.txtPlayerCount.setText(config.getOption("PlayerCount"));
-        this.txtChatPort.setText(config.getOption("ChatPort"));
-        this.txtGamePort.setText(config.getOption("GamePort"));
-        
-         txtGamePort.textProperty().addListener((observable, oldValue, newValue) -> {
-       		 validateGamePortNumber(newValue,"txtChatPort"); });
-         txtChatPort.textProperty().addListener((observable, oldValue, newValue) -> {
-        	 validateChatPortNumber(newValue,"txtGamePort"); });
-         
-         txtPlayerCount.textProperty().addListener((observable, oldValue, newValue) -> {
-        	 validatePlayerCountNumber(newValue,"txtPlayerCount"); });
-         
-         if(config.getOption("Meeple").equals("true")) {
-        	 this.meepleOption.setSelected(true);
- 		}
- 		
-         
-    }
-	
-	
+	public void initialize() {
+
+		try {
+			this.txtPlayerCount.setText(config.getOption("PlayerCount"));
+			this.txtChatPort.setText(config.getOption("ChatPort"));
+			this.txtGamePort.setText(config.getOption("GamePort"));
+
+			txtGamePort.textProperty().addListener((observable, oldValue, newValue) -> {
+				validateGamePortNumber(newValue, "txtChatPort");
+			});
+			txtChatPort.textProperty().addListener((observable, oldValue, newValue) -> {
+				validateChatPortNumber(newValue, "txtGamePort");
+			});
+
+			txtPlayerCount.textProperty().addListener((observable, oldValue, newValue) -> {
+				validatePlayerCountNumber(newValue, "txtPlayerCount");
+			});
+
+			if (config.getOption("Meeple").equals("true")) {
+				this.meepleOption.setSelected(true);
+			}
+		} catch (Exception e) {
+			logger.warning("No Configuration Found!!!");;
+		}
+
+	}
+
 	private void validateGamePortNumber(String newValue, String obsElement) {
 		boolean valid = model.isValidPortNumber(newValue);
 		// Change text color
@@ -105,6 +112,7 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 		// Enable or disable button, as appropriate
 		enableDisableButton();
 	}
+
 	private void validateChatPortNumber(String newValue, String obsElement) {
 		boolean valid = model.isValidPortNumber(newValue);
 		// Change text color
@@ -118,11 +126,10 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 		// Enable or disable button, as appropriate
 		enableDisableButton();
 	}
-	
 
 	private void validatePlayerCountNumber(String newValue, String obsElement) {
 		boolean valid = model.isValidPlayerCountNumber(newValue);
-		
+
 		// Change text color
 		if (valid) {
 			this.txtPlayerCount.setStyle("-fx-text-inner-color: green;");
@@ -136,8 +143,8 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 	}
 
 	/**
-	 * Enable or disable the Connect button, based on the validity of the two
-	 * text controls
+	 * Enable or disable the Connect button, based on the validity of the two text
+	 * controls
 	 */
 	private void enableDisableButton() {
 		boolean valid = portValid;
@@ -166,14 +173,14 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 		config.setLocalOption("GamePort", this.txtGamePort.getText());
 		config.setLocalOption("ChatPort", this.txtChatPort.getText());
 		config.setLocalOption("PlayerCount", this.txtPlayerCount.getText());
-		if(this.meepleOption.isSelected()) {
+		if (this.meepleOption.isSelected()) {
 			config.setLocalOption("Meeple", "true");
-		}
-		else {
+		} else {
 			config.setLocalOption("Meeple", "false");
 		}
 		view.stop();
 	}
+
 	@FXML
 	private void handleCancelButtonClicked() {
 
