@@ -36,7 +36,7 @@ public class GameClient_View extends View <GameClient_Model>{
 		
 	public GameClient_View(Stage stage, GameClient_Model model) {
 		super (stage, model);
-        stage.setTitle(t.getString("options.title"));
+        stage.setTitle(t.getString("program.menu.game"));
         
         // Get current values
         
@@ -101,7 +101,7 @@ public class GameClient_View extends View <GameClient_Model>{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Scene scene = new Scene(parent, 800, 1000);
+		Scene scene = new Scene(parent, 1100, 800);
 		scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         return scene;
 	}
