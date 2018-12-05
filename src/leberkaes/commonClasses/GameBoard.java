@@ -14,6 +14,7 @@ import leberkaes.commonClasses.CardType.*;
 public class GameBoard implements java.io.Serializable {
 	// Spieler
 	private static int activePlayerIndex;
+	private int playerCount;
 	private ArrayList<Player> players;
 
 	// Karten
@@ -61,25 +62,28 @@ public class GameBoard implements java.io.Serializable {
 	}
 	// __________________________________________
 
+	
+	
 	public GameBoard(int numOfP) {
-
+		
+		this.playerCount = numOfP;
 		this.players = new ArrayList<Player>();
 
-		createStandardCards(back.GREEN, type.GRAIN, 7);
-		createStandardCards(back.GREEN, type.BARELL, 4);
-		createStandardCards(back.GREEN, type.KEY, 3);
-		createStandardCards(back.GREEN, type.SHIELD, 3);
-		createStandardCards(back.GREEN, type.POTION, 3);
-		createStandardCards(back.GREEN, type.CUTLERY, 2);
-		createStandardCards(back.GREEN, type.SWORD, 2);
+		createCards(back.GREEN, type.GRAIN, null, 7);
+		createCards(back.GREEN, type.BARELL, null, 4);
+		createCards(back.GREEN, type.KEY,null, 3);
+		createCards(back.GREEN, type.SHIELD,null, 3);
+		createCards(back.GREEN, type.POTION, null,3);
+		createCards(back.GREEN, type.CUTLERY,null, 2);
+		createCards(back.GREEN, type.SWORD,null, 2);
 
-		createStandardCards(back.RED, type.GRAIN, 2);
-		createStandardCards(back.RED, type.BARELL, 2);
-		createStandardCards(back.RED, type.KEY, 2);
-		createStandardCards(back.RED, type.SHIELD, 2);
-		createStandardCards(back.RED, type.POTION, 2);
-		createStandardCards(back.RED, type.CUTLERY, 2);
-		createStandardCards(back.RED, type.SWORD, 1);
+		createCards(back.RED, type.GRAIN,null, 2);
+		createCards(back.RED, type.BARELL,null, 2);
+		createCards(back.RED, type.KEY,null, 2);
+		createCards(back.RED, type.SHIELD,null, 2);
+		createCards(back.RED, type.POTION,null, 2);
+		createCards(back.RED, type.CUTLERY,null, 2);
+		createCards(back.RED, type.SWORD,null, 1);
 
 		// TODO createSplitCards();
 
@@ -93,19 +97,19 @@ public class GameBoard implements java.io.Serializable {
 
 	}
 
-	/** Diese Methode erzeugt die Spiel-Karten **/
-	public void createStandardCards(back b, type t, int count) {
-
+	/** Diese Methode erzeugt die Spiel-Karten-Objekte **/
+	public void createCards(back b, type t1, type t2, int count) {
+		
 		if (b == back.GREEN) {
 			for (int i = 1; i <= count; i++) {
-				CharacterCard c = new CharacterCard(t, b);
+				CharacterCard c = new CharacterCard(t1,null, b);
 				this.greenCards.push(c);
 			}
 		}
 
 		if (b == back.RED) {
 			for (int i = 1; i <= count; i++) {
-				CharacterCard c = new CharacterCard(t, b);
+				CharacterCard c = new CharacterCard(t1,null, b);
 				this.redCards.push(c);
 			}
 		}
@@ -116,7 +120,7 @@ public class GameBoard implements java.io.Serializable {
 
 		deck = new Stack<CharacterCard>();
 
-		int players = 2;
+		int players = 2; //Muss noch variabel werden
 
 		Collections.shuffle(greenCards);
 		Collections.shuffle(redCards);
@@ -125,8 +129,8 @@ public class GameBoard implements java.io.Serializable {
 		case 2: {
 
 			/*
-			 * 2Spieler Nimm nur die obersten 6 Karten vom gr�nen Stapel, leg sie in der
-			 * Tischmitte aus und packe dann den restlichen gr�nen Stapel ungesehen zur�ck
+			 * 2Spieler Nimm nur die obersten 6 Karten vom gruenen Stapel, leg sie in der
+			 * Tischmitte aus und packe dann den restlichen gruenen Stapel ungesehen zurueck
 			 * in die Schachtel.
 			 */
 
@@ -186,20 +190,23 @@ public class GameBoard implements java.io.Serializable {
 		}
 
 	}
-
+	
+	
+	
+	//1. Zugbewegung: Karte vom Opendeck entfernen
 	public CharacterCard takeCard(int i) {
-
 		CharacterCard c = openDeck[i];
 		this.updateOpenDeck(i);
 		return c;
 
 	}
-
-	/** Player herausfinden, Kartentypen pr�fen? Karten P0sition bestimmmen? **/
-	public void playCard(CharacterCard c, int destination) {
-
-		Player activePlayer = players.get(GameBoard.activePlayerIndex);
-		activePlayer.makeMove(c, destination);
+	
+	//2. Zugbewegung: Karte in Location legen
+	/** Player herausfinden, Kartentypen pr�fen? Karten Position bestimmmen? **/
+	public void playCard(CharacterCard c, int location) {
+		
+		this.players.get(this.activePlayerIndex).makeMove(c, location);
+		
 	}
 
 	public void updateOpenDeck(int i) {
@@ -214,7 +221,7 @@ public class GameBoard implements java.io.Serializable {
 
 	public CharacterCard[] getOpenDeck() {
 		return openDeck;
-
+		
 	}
 
 	@Override

@@ -19,22 +19,9 @@ public class Location implements Serializable{
 
 	public type type;
 	public Deque<CharacterCard> characters;
-	public HashMap<type, Integer> effects = new HashMap<type, Integer>();
+	public HashMap<type, Integer> coinEffects = new HashMap<type, Integer>();
 
 	
-
-	public int getEffect(type t) {
-		int coins;
-			
-		if (this.effects.containsKey(t)) {
-			coins	= this.effects.get(t);
-			System.out.println("Hat EFFEKT");
-		}else {
-			coins = 0;
-			System.out.println("Hat KEIN EFFEKT");
-		}
-		return coins;
-	}
 
 	public Location(type t) {
 		this.type = t;
@@ -42,42 +29,44 @@ public class Location implements Serializable{
 		this.addCardEffects(t);
 
 	}
+	
+	//Inizialisierung der Karten Effekte auf eigene Karten
 	public void addCardEffects(type t) {
 
 		// A-Side
 		switch (t) {
 		case GRAIN:
-			effects.put(GRAIN, 2);
+			coinEffects.put(GRAIN, 2);
 			break;
 		case BARELL:
-			effects.put(BARELL, 2);
+			coinEffects.put(BARELL, 2);
 			// Auswirkung auf andere
 			break;
 
 		case POTION:
-			effects.put(GRAIN, 2);
-			effects.put(BARELL, 2);
-			effects.put(POTION, 2);
+			coinEffects.put(GRAIN, 2);
+			coinEffects.put(BARELL, 2);
+			coinEffects.put(POTION, 2);
 			break;
 
 		case SHIELD:
-			effects.put(SHIELD, 2);
-			effects.put(SWORD, 2);
-			effects.put(CUTLERY, 2);
+			coinEffects.put(SHIELD, 2);
+			coinEffects.put(SWORD, 2);
+			coinEffects.put(CUTLERY, 2);
 
 			break;
 
 		case SWORD:
-			effects.put(SWORD, 3);
+			coinEffects.put(SWORD, 3);
 
 			break;
 		case CUTLERY:
-			effects.put(CUTLERY, 4);
+			coinEffects.put(CUTLERY, 4);
 
 			// Auswirkung auf andere
 			break;
 		case KEY:
-			effects.put(KEY, 5);
+			coinEffects.put(KEY, 5);
 			// plus meeple
 			break;
 		case HOSPITAL:
@@ -86,6 +75,27 @@ public class Location implements Serializable{
 
 		}
 	}
+	
+	public int getCardCount() {
+		
+		int i = this.characters.size();
+		return i;
+
+	}
+
+	public int getCoinEffect(type t) {
+		int coins;
+			
+		if (this.coinEffects.containsKey(t)) {
+			coins	= this.coinEffects.get(t);
+			System.out.println("Hat EFFEKT");
+		}else {
+			coins = 0;
+			System.out.println("Hat KEIN EFFEKT");
+		}
+		return coins;
+	}
+
 
 	public type getType() {
 		return type;
@@ -104,12 +114,7 @@ public class Location implements Serializable{
 		return "Location [type=" + type + ", building=" + characters + "]";
 	}
 
-	public int getCardCount() {
-		
-		int i = this.characters.size();
-		return i;
 
-	}
 
 
 

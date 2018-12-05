@@ -117,6 +117,9 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 	    
 	    this.txtIpAddress.setText("127.0.0.1");
 		
+	    this.model.createDummyBoard(Integer.parseInt(this.config.getOption("PlayerCount")));
+		
+		
  		}
 	
 	@FXML

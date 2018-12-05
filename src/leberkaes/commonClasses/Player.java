@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import leberkaes.commonClasses.*;
 import leberkaes.commonClasses.CardType.type;
 
-public class Player implements Serializable{
+public class Player implements Serializable {
 
 	public String name;
 	public boolean active; // Wars
@@ -43,15 +43,13 @@ public class Player implements Serializable{
 
 	}
 
+	// 3.Zugbewegung: Ev redundandt?
 	public void makeMove(CharacterCard c, int location) {
-		
-		//this.locations[location].addCard(c);
 
 		Location l = this.locations[location];
 		l.addCard(c);
 		this.score += this.getCoins(l);
-		System.out.println("Geld bekommen");
-		
+
 	}
 
 	public void killCard(CharacterCard c) {
@@ -67,26 +65,18 @@ public class Player implements Serializable{
 		int cards;
 		int coinEffect;
 		int coinSum = 0;
-		
-		
-		
+
 		for (int i = 0; i < 6; i++) {
 			System.out.println(this.locations[i]);
 			cards = this.locations[i].getCardCount();
-			System.out.println(cards);
-			
+
 			type t = this.locations[i].getType();
-			coinEffect = l.getEffect(t);
-			System.out.println(coinEffect);
-			
+			coinEffect = l.getCoinEffect(t);
+
 			coinSum += cards * coinEffect;
-			System.out.println(coinSum);
-			
-			
-			
+
 		}
 		return coinSum;
-		
 
 	}
 

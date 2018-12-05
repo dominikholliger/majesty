@@ -29,9 +29,10 @@ public class GameClient_Model extends Model{
 	private Socket socketObjectCom;
 	private ObjectInputStream inStream = null;
 	private String name;
+	
+	//Dummy Variable für Debugging
+	private GameBoard myDummyGameBoard;
 
-	
-	
 	
 	public void connect(String ipAddress, int Port, String name) {
 		logger.info("Connect");
@@ -135,5 +136,12 @@ public class GameClient_Model extends Model{
 	public String receiveMessage() {
 		logger.info("Receive message");
 		return newestMessage.get();
+	}
+	
+	
+	///Debug Methode um ein Lokales GameBoard zu erstellen.
+	public void createDummyBoard(int i) {
+		this.myDummyGameBoard = new GameBoard(i);
+		logger.info("DummyGameBoard erstellt für "+i+ " Spieler");
 	}
 }
