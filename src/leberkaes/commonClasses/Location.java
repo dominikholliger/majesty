@@ -13,19 +13,21 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Stack;
+
 import leberkaes.commonClasses.CardType.*;
 
 public class Location implements Serializable{
 
-	public type type;
-	public Deque<CharacterCard> characters;
-	public HashMap<type, Integer> coinEffects = new HashMap<type, Integer>();
+	private type type;
+	private Stack<CharacterCard> characters;
+	private HashMap<type, Integer> coinEffects = new HashMap<type, Integer>();
 
 	
 
 	public Location(type t) {
 		this.type = t;
-		this.characters = new LinkedList<CharacterCard>();
+		this.characters = new Stack<CharacterCard>();
 		this.addCardEffects(t);
 
 	}
@@ -97,6 +99,19 @@ public class Location implements Serializable{
 	}
 
 
+	public Stack<CharacterCard> getCharacters() {
+		return characters;
+	}
+
+
+	public HashMap<type, Integer> getCoinEffects() {
+		return coinEffects;
+	}
+
+	public void setCoinEffects(HashMap<type, Integer> coinEffects) {
+		this.coinEffects = coinEffects;
+	}
+
 	public type getType() {
 		return type;
 	}
@@ -106,9 +121,14 @@ public class Location implements Serializable{
 	}
 
 	public void addCard(CharacterCard c) {
-		this.characters.add(c);
+		this.characters.push(c);
 	}
-
+	
+	public CharacterCard removeCard(){
+		return this.characters.pop();
+		
+	}
+	
 	@Override
 	public String toString() {
 		return "Location [type=" + type + ", building=" + characters + "]";
