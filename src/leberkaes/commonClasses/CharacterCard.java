@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import leberkaes.commonClasses.CardType.*;
+import leberkaes.jat2.ServiceLocator;
 
 public class CharacterCard implements Serializable {
 
