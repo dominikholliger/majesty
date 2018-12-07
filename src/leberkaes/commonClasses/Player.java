@@ -135,6 +135,10 @@ public class Player implements Serializable {
 	public Location[] getLocations() {
 		return locations;
 	}
+	
+	public void setScore(int coins) {
+		this.score += coins;
+	}
 
 	@Override
 	public String toString() {

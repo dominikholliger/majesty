@@ -22,8 +22,12 @@ public class Location implements Serializable{
 	private type type;
 	private Stack<CharacterCard> characters;
 	private HashMap<type, Integer> coinEffects = new HashMap<type, Integer>();
-
+	private int finalCoinEffect; //noch implementieren
 	
+
+	public void setFinalCoinEffect(int finalCoinEffect) {
+		this.finalCoinEffect = finalCoinEffect;
+	}
 
 	public Location(type t) {
 		this.type = t;
@@ -39,9 +43,11 @@ public class Location implements Serializable{
 		switch (t) {
 		case GRAIN:
 			coinEffects.put(GRAIN, 2);
+			this.setFinalCoinEffect(10);
 			break;
 		case BARELL:
 			coinEffects.put(BARELL, 2);
+			this.setFinalCoinEffect(11);
 			// Auswirkung auf andere
 			break;
 
@@ -49,30 +55,33 @@ public class Location implements Serializable{
 			coinEffects.put(GRAIN, 2);
 			coinEffects.put(BARELL, 2);
 			coinEffects.put(POTION, 2);
+			this.setFinalCoinEffect(12);
 			break;
 
 		case SHIELD:
 			coinEffects.put(SHIELD, 2);
 			coinEffects.put(SWORD, 2);
 			coinEffects.put(CUTLERY, 2);
-
+			this.setFinalCoinEffect(13);
 			break;
 
 		case SWORD:
 			coinEffects.put(SWORD, 3);
+			this.setFinalCoinEffect(14);
 
 			break;
 		case CUTLERY:
 			coinEffects.put(CUTLERY, 4);
-
+			this.setFinalCoinEffect(15);
 			// Auswirkung auf andere
 			break;
 		case KEY:
 			coinEffects.put(KEY, 5);
+			this.setFinalCoinEffect(16);
 			// plus meeple
 			break;
 		case HOSPITAL:
-			// pro Karte minus 1
+			this.setFinalCoinEffect(-1);
 			break;
 
 		}
@@ -133,6 +142,12 @@ public class Location implements Serializable{
 	public String toString() {
 		return "Location [type=" + type + ", building=" + characters + "]";
 	}
+
+	public int getFinalCoinEffect() {
+		return finalCoinEffect;
+	}
+
+
 
 
 

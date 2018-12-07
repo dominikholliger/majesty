@@ -19,6 +19,7 @@ public class GameBoard implements java.io.Serializable {
 
 	// Spiel
 	private int roundCount;
+	private boolean gameEnd;
 	private boolean bSide;
 	private boolean meeple;
 
@@ -68,12 +69,12 @@ public class GameBoard implements java.io.Serializable {
 
 		// ____________________
 		// debug Karten zum Testen
-	//	createCards(back.GREEN, type.SHIELD, null, 10);
+		// createCards(back.GREEN, type.SHIELD, null, 10);
 		createCards(back.GREEN, type.POTION, null, 10);
-	//	createCards(back.GREEN, type.SWORD, null, 10);
-		//createCards(back.RED, type.SHIELD, null, 10);
+		// createCards(back.GREEN, type.SWORD, null, 10);
+		// createCards(back.RED, type.SHIELD, null, 10);
 		createCards(back.RED, type.POTION, null, 10);
-	//	createCards(back.RED, type.SWORD, null, 10);
+		// createCards(back.RED, type.SWORD, null, 10);
 		// _________________________
 
 		/*
@@ -92,6 +93,7 @@ public class GameBoard implements java.io.Serializable {
 		// TODO createSplitCards();
 
 		createDeck();
+		this.gameEnd = false;
 		this.roundCount = 1;
 
 	}
@@ -104,8 +106,36 @@ public class GameBoard implements java.io.Serializable {
 
 	public void nextRound() {
 		this.roundCount++;
+		if (this.roundCount == 13) {
+			this.finishGame();
+		}
 
 	}
+
+	private void finishGame() {
+		this.gameEnd = true;
+		// Höchste Karte aus allen Locations finden
+
+		for (int i = 0; i < 7; i++) {
+			Player highestScorePlayer = null; // unschön aber egal
+			int tempScore = 0;
+
+			for (Player p : players) {
+				if (tempScore < p.getLocations()[i].getCardCount()) {
+					highestScorePlayer = p;
+				}
+			}
+			highestScorePlayer.setScore(highestScorePlayer.getLocations()[i].getFinalCoinEffect());
+
+		}
+		for (Player p : players) {
+			int count = p.getLocations()[7].getCardCount();
+			int effect = p.getLocations()[7].getFinalCoinEffect();
+			p.setScore(count * effect);
+		}
+	}
+
+	
 
 	public int getRoundCount() {
 		return this.roundCount;
@@ -145,9 +175,9 @@ public class GameBoard implements java.io.Serializable {
 		case 2: {
 
 			/*
-			 * 2Spieler Nimm nur die obersten 6 Karten vom gruenen Stapel, leg
-			 * sie in der Tischmitte aus und packe dann den restlichen gruenen
-			 * Stapel ungesehen zurueck in die Schachtel.
+			 * 2Spieler Nimm nur die obersten 6 Karten vom gruenen Stapel, leg sie in der
+			 * Tischmitte aus und packe dann den restlichen gruenen Stapel ungesehen zurueck
+			 * in die Schachtel.
 			 */
 
 			for (int i = 0; i < 6; i++) {
@@ -161,9 +191,8 @@ public class GameBoard implements java.io.Serializable {
 
 		case 3: {
 			/*
-			 * 3Spieler Gibt die ersten 19 Karten ungesehen zurï¿½ck und lege
-			 * dann die ersten 6 Karten wie in unserem Beispiel in der
-			 * Tischmitte aus.
+			 * 3Spieler Gibt die ersten 19 Karten ungesehen zurï¿½ck und lege dann die
+			 * ersten 6 Karten wie in unserem Beispiel in der Tischmitte aus.
 			 */
 
 			break;
@@ -171,9 +200,8 @@ public class GameBoard implements java.io.Serializable {
 		}
 		case 4: {
 			/*
-			 * Gib die ersten 7 Karten ungesehen zurï¿½ck in die Schachtel. Dann
-			 * lege die ersten 6 Karten wie in unserem Beispiel in der
-			 * Tischmitte aus.
+			 * Gib die ersten 7 Karten ungesehen zurï¿½ck in die Schachtel. Dann lege die
+			 * ersten 6 Karten wie in unserem Beispiel in der Tischmitte aus.
 			 */
 			for (int i = 0; i <= 6; i++) {
 				greenCards.pop();
@@ -205,6 +233,7 @@ public class GameBoard implements java.io.Serializable {
 
 		if (activePlayerIndex + 1 - players.size() == 0) {
 			activePlayerIndex = 0;
+			this.nextRound();
 		} else {
 			activePlayerIndex++;
 		}
@@ -264,30 +293,28 @@ public class GameBoard implements java.io.Serializable {
 	}
 
 	public void attack() {
-			int offense = this.getActivePlayer().getOffenseValue()+1; //Plus 1 da Karte noch nicht gelegt wurde
-			int numOPl = this.playerCount;
-			
-			for(Player p : players){
-				if(!(players.indexOf(p)==this.getActivePlayerIndex())){
-					int defense = p.getDefenseValue();
-					if(offense>=defense){
-						p.killCard();
-					}
+		int offense = this.getActivePlayer().getOffenseValue() + 1; // Plus 1 da Karte noch nicht gelegt wurde
+
+		for (Player p : players) {
+			if (!(players.indexOf(p) == this.getActivePlayerIndex())) {
+				int defense = p.getDefenseValue();
+				if (offense >= defense) {
+					p.killCard();
 				}
-				
 			}
-			
+
+		}
+
 	}
 
 	public void heal() {
-		
+
 		this.getActivePlayer().reviveCard();
-		
-		
+
 	}
-	
-	public Player getActivePlayer(){
+
+	public Player getActivePlayer() {
 		return this.players.get(GameBoard.activePlayerIndex);
-		}
+	}
 
 }
