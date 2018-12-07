@@ -56,20 +56,13 @@ public class dummyFXMLControllerClient {
 	
 	
 	
-	
-	
 	private void validateGamePortNumber(String newValue, String obsElement) {
 		
 		get_MvcCtrl().validateGamePortNumber();
 		
 	}
 
-	@FXML
-	protected void handleSendClicked(ActionEvent event) throws Exception {
-
-	//	model.sendMessage(this.txtChatMessage.getText());
-
-	}
+	
 	private void validateChatPortNumber(String newValue, String obsElement) {
 //		boolean valid = model.isValidPortNumber(newValue);
 //		// Change text color
@@ -110,36 +103,10 @@ public class dummyFXMLControllerClient {
 	}
 
 	@FXML
-	private void handleMeepleOption() {
+	protected void handleSendClicked(ActionEvent event) throws Exception {
 
-	}
+	//	model.sendMessage(this.txtChatMessage.getText());
 
-	@FXML
-	private void handleSplitCardOption() {
-
-	}
-
-	@FXML
-	private void handleChangetxtPort() {
-
-	}
-
-	@FXML
-	private void handleSaveButtonClicked() {
-//		config.setLocalOption("GamePort", this.txtGamePort.getText());
-//		config.setLocalOption("ChatPort", this.txtChatPort.getText());
-//		config.setLocalOption("PlayerCount", this.txtPlayerCount.getText());
-//		if (this.meepleOption.isSelected()) {
-//			config.setLocalOption("Meeple", "true");
-//		} else {
-//			config.setLocalOption("Meeple", "false");
-//		}
-//		view.stop();
-	}
-
-	@FXML
-	private void handleCancelButtonClicked() {
-		//view.stop();
 	}
 
 	@FXML
