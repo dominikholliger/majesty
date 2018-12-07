@@ -94,9 +94,7 @@ public class dummyFXMLControllerClient {
 		get_MvcCtrl().connectToServer();
 	}
 	
-	@FXML
-	public void setGameBoard (){
-		GameBoard g = new GameBoard(2);	
+	public void setGameBoard (GameBoard g){
 		
 			this.openDeck0.setImage(new Image(g.getOpenDeck()[0].getFrontImgURL()));
 			this.openDeck1.setImage(new Image(g.getOpenDeck()[1].getFrontImgURL()));
