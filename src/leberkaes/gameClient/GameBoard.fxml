@@ -88,7 +88,7 @@
                   </HBox>
                   
                   <HBox prefHeight="100.0" prefWidth="200.0" />
-                  <GridPane>
+                  <GridPane fx:id="grid">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />

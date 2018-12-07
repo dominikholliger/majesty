@@ -18,6 +18,8 @@ public class GameBoard implements java.io.Serializable  {
 	private int playerCount;
 	private ArrayList<Player> players;
 
+	
+
 	// Spiel
 	private int roundCount;
 	private boolean gameEnd;
@@ -28,6 +30,9 @@ public class GameBoard implements java.io.Serializable  {
 	private Stack<CharacterCard> greenCards = new Stack<CharacterCard>();
 	private Stack<CharacterCard> redCards = new Stack<CharacterCard>();
 	private Stack<CharacterCard> deck = new Stack<CharacterCard>();
+	
+	
+
 	private CharacterCard[] openDeck = new CharacterCard[6];
 
 	// Dies ist eine TestMain-Methode
@@ -319,6 +324,14 @@ public class GameBoard implements java.io.Serializable  {
 
 	public Player getActivePlayer() {
 		return this.players.get(GameBoard.activePlayerIndex);
+	}
+	
+	public Stack<CharacterCard> getDeck() {
+		return deck;
+	}
+	
+	public ArrayList<Player> getPlayers() {
+		return players;
 	}
 
 }

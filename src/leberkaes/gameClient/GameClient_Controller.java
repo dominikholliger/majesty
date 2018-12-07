@@ -37,7 +37,12 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		// D.Holliger:
         // Vorbereiten für die Kommunikation Controller vs DummyController FXML
         view.get_Ctrl().set_MvcCtrl(this);
+        
+        
+        // TODO Delete if GameBoard comes from Message
         view.get_Ctrl().setGameBoard();
+        
+        
         // register ourselves to handle window-closing event
         view.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override

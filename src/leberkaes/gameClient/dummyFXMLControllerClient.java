@@ -7,6 +7,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import leberkaes.appClasses.App_Controller;
 import leberkaes.commonClasses.GameBoard;
@@ -75,10 +76,25 @@ public class dummyFXMLControllerClient {
 	@FXML
 	public TextArea txtChatMessage;
 	
+	@FXML
+	public GridPane grid;
+	@FXML
+	public TextField p1name;
+	@FXML
+	public TextField p2name;
+	@FXML
+	public TextField p3name;
+	@FXML
+	public TextField p4name;
 	
-
-	
-	
+	@FXML
+	public TextField player1points;
+	@FXML
+	public TextField player2points;
+	@FXML
+	public TextField player3points;
+	@FXML
+	public TextField player4points;
 	
 	
 	private void validateGamePortNumber(String newValue, String obsElement) {
@@ -144,14 +160,39 @@ public class dummyFXMLControllerClient {
 	public void setGameBoard (){
 		GameBoard g = new GameBoard(2);	
 		
+		// set images of open deck and card back of next card to be drawn from stack
 			this.openDeck0.setImage(new Image(g.getOpenDeck()[0].getFrontImgURL()));
 			this.openDeck1.setImage(new Image(g.getOpenDeck()[1].getFrontImgURL()));
 			this.openDeck2.setImage(new Image(g.getOpenDeck()[2].getFrontImgURL()));
 			this.openDeck3.setImage(new Image(g.getOpenDeck()[3].getFrontImgURL()));
 			this.openDeck4.setImage(new Image(g.getOpenDeck()[4].getFrontImgURL()));
 			this.openDeck5.setImage(new Image(g.getOpenDeck()[5].getFrontImgURL()));
+			this.deckBack.setImage(new Image(g.getDeck().peek().getBackImgURL()));
+		
+		// set Playername per Player
+			this.p1name.setText(g.getPlayers().get(0).getName());
+			this.p2name.setText(g.getPlayers().get(1).getName());
+			this.p3name.setText(g.getPlayers().get(2).getName());
+			this.p4name.setText(g.getPlayers().get(3).getName());
 
+		// set Player Score per Player
+			this.player1points.setText(String.valueOf(g.getPlayers().get(0).getScore()));
+			this.player2points.setText(String.valueOf(g.getPlayers().get(1).getScore()));
+			this.player3points.setText(String.valueOf(g.getPlayers().get(2).getScore()));
+			this.player4points.setText(String.valueOf(g.getPlayers().get(3).getScore()));			
 			
+		// get Meeple Count per Player
+			for (int j=0; j<3; j++){
+				g.getPlayers().get(0).getMeeple();
+			}
+			
+			
+			for (int k=0;k<8; k++){
+				// get Number of LocationCards per Location
+				g.getPlayers().get(0).getLocations()[0].getCardCount();
+				
+				
+			}
 			
 			
 		

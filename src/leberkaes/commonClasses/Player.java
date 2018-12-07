@@ -20,7 +20,9 @@ public class Player implements Serializable {
 	private boolean active; // Brauchts das?
 
 	private int score;
+
 	private int meeple;
+
 	private int offense;
 
 	private Location[] locations = new Location[8];
@@ -34,6 +36,7 @@ public class Player implements Serializable {
 		this.createLocations();
 
 	}
+
 
 	private void createLocations() {
 
@@ -138,6 +141,18 @@ public class Player implements Serializable {
 	
 	public void setScore(int coins) {
 		this.score += coins;
+	}
+	
+	public int getScore() {
+		return score;
+	}
+	
+	public int getMeeple() {
+		return meeple;
+	}
+	
+	public String getName() {
+		return name;
 	}
 
 	@Override
