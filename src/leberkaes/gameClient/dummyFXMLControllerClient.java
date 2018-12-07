@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import leberkaes.appClasses.App_Controller;
 import leberkaes.commonClasses.GameBoard;
@@ -80,31 +81,31 @@ public class dummyFXMLControllerClient {
 	@FXML
 	public GridPane grid;
 	@FXML
-	public TextField p1name;
+	public Text p1name;
 	@FXML
-	public TextField p2name;
+	public Text p2name;
 	@FXML
-	public TextField p3name;
+	public Text p3name;
 	@FXML
-	public TextField p4name;
+	public Text p4name;
 	
 	@FXML
-	public TextField player1points;
+	public Text player1points;
 	@FXML
-	public TextField player2points;
+	public Text player2points;
 	@FXML
-	public TextField player3points;
+	public Text player3points;
 	@FXML
-	public TextField player4points;
+	public Text player4points;
 	
 	@FXML
-	public TextField p1meeple;
+	public Text p1meeple;
 	@FXML
-	public TextField p2meeple;
+	public Text p2meeple;
 	@FXML
-	public TextField p3meeple;
+	public Text p3meeple;
 	@FXML
-	public TextField p4meeple;
+	public Text p4meeple;
 	
 	
 	private void validateGamePortNumber(String newValue, String obsElement) {
