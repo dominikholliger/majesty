@@ -69,43 +69,63 @@ public class dummyFXMLControllerClient {
 	public ImageView openDeck1;
 	@FXML
 	public ImageView openDeck0;
-	@FXML
-	public ImageView deckBack;
+	@FXML public ImageView deckBack;
 	
-	@FXML
-	public TextArea chatTextArea;
-	@FXML
-	public TextArea txtChatMessage;
+	@FXML public TextArea chatTextArea;
+	@FXML public TextArea txtChatMessage;
 	
 
-	@FXML
-	public GridPane grid;
-	@FXML
-	public Text p1name;
-	@FXML
-	public Text p2name;
-	@FXML
-	public Text p3name;
-	@FXML
-	public Text p4name;
+	@FXML public GridPane grid;
+	@FXML public Text p1name;
+	@FXML public Text p2name;
+	@FXML public Text p3name;
+	@FXML public Text p4name;
 	
-	@FXML
-	public Text player1points;
-	@FXML
-	public Text player2points;
-	@FXML
-	public Text player3points;
-	@FXML
-	public Text player4points;
+	@FXML public Text player1points;
+	@FXML public Text player2points;
+	@FXML public Text player3points;
+	@FXML public Text player4points;
 	
-	@FXML
-	public Text p1meeple;
-	@FXML
-	public Text p2meeple;
-	@FXML
-	public Text p3meeple;
-	@FXML
-	public Text p4meeple;
+	@FXML public Text p1meeple;
+	@FXML public Text p2meeple;
+	@FXML public Text p3meeple;
+	@FXML public Text p4meeple;
+	
+	@FXML public Text p1GRAIN;
+	@FXML public Text p1BARELL;
+	@FXML public Text p1POTION;
+	@FXML public Text p1SHIELD;
+	@FXML public Text p1SWORD;
+	@FXML public Text p1CUTLERY;
+	@FXML public Text p1KEY;
+	@FXML public Text p1HOSPITAL;
+	
+	@FXML public Text p2GRAIN;
+	@FXML public Text p2BARELL;
+	@FXML public Text p2POTION;
+	@FXML public Text p2SHIELD;
+	@FXML public Text p2SWORD;
+	@FXML public Text p2CUTLERY;
+	@FXML public Text p2KEY;
+	@FXML public Text p2HOSPITAL;
+	
+	@FXML public Text p3GRAIN;
+	@FXML public Text p3BARELL;
+	@FXML public Text p3POTION;
+	@FXML public Text p3SHIELD;
+	@FXML public Text p3SWORD;
+	@FXML public Text p3CUTLERY;
+	@FXML public Text p3KEY;
+	@FXML public Text p3HOSPITAL;
+	
+	@FXML public Text p4GRAIN;
+	@FXML public Text p4BARELL;
+	@FXML public Text p4POTION;
+	@FXML public Text p4SHIELD;
+	@FXML public Text p4SWORD;
+	@FXML public Text p4CUTLERY;
+	@FXML public Text p4KEY;
+	@FXML public Text p4HOSPITAL;
 	
 	
 	private void validateGamePortNumber(String newValue, String obsElement) {
@@ -175,35 +195,75 @@ public class dummyFXMLControllerClient {
 			this.openDeck5.setImage(new Image(g.getOpenDeck()[5].getFrontImgURL()));
 			this.deckBack.setImage(new Image(g.getDeck().peek().getBackImgURL()));
 		
-		// set Playername per Player
-			this.p1name.setText(g.getPlayers().get(0).getName());
-			this.p2name.setText(g.getPlayers().get(1).getName());
-			this.p3name.setText(g.getPlayers().get(2).getName());
-			this.p4name.setText(g.getPlayers().get(3).getName());
+			// get Number of Players in Game
+			int i = g.getPlayers().size();
+			
+			//set Numbers for Player 1 and Player 2
+			if (i<2){
+				this.p1name.setText(g.getPlayers().get(0).getName());
+				this.player1points.setText(String.valueOf(g.getPlayers().get(0).getScore()));
+				this.p1meeple.setText(String.valueOf(g.getPlayers().get(0).getMeeple()));
 
-		// set Player Score per Player
-			this.player1points.setText(String.valueOf(g.getPlayers().get(0).getScore()));
-			this.player2points.setText(String.valueOf(g.getPlayers().get(1).getScore()));
-			this.player3points.setText(String.valueOf(g.getPlayers().get(2).getScore()));
-			this.player4points.setText(String.valueOf(g.getPlayers().get(3).getScore()));			
-			
-		// get Meeple Count per Player
-			
-			for (int j=0; j<3; j++){
-				g.getPlayers().get(0).getMeeple();
+				// get Number of LocationCards for Player 1
+				this.p1GRAIN.setText(String.valueOf(g.getPlayers().get(0).getLocations()[0].getCardCount()));
+				this.p1BARELL.setText(String.valueOf(g.getPlayers().get(0).getLocations()[1].getCardCount()));
+				this.p1POTION.setText(String.valueOf(g.getPlayers().get(0).getLocations()[2].getCardCount()));
+				this.p1SHIELD.setText(String.valueOf(g.getPlayers().get(0).getLocations()[3].getCardCount()));
+				this.p1SWORD.setText(String.valueOf(g.getPlayers().get(0).getLocations()[4].getCardCount()));
+				this.p1CUTLERY.setText(String.valueOf(g.getPlayers().get(0).getLocations()[5].getCardCount()));
+				this.p1KEY.setText(String.valueOf(g.getPlayers().get(0).getLocations()[6].getCardCount()));
+				this.p1HOSPITAL.setText(String.valueOf(g.getPlayers().get(0).getLocations()[7].getCardCount()));
+
+				this.p2name.setText(g.getPlayers().get(1).getName());
+				this.player2points.setText(String.valueOf(g.getPlayers().get(1).getScore()));
+				this.p2meeple.setText(String.valueOf(g.getPlayers().get(0).getMeeple()));
+
+				// get Number of LocationCards for Player 2
+				this.p2GRAIN.setText(String.valueOf(g.getPlayers().get(1).getLocations()[0].getCardCount()));
+				this.p2BARELL.setText(String.valueOf(g.getPlayers().get(1).getLocations()[1].getCardCount()));
+				this.p2POTION.setText(String.valueOf(g.getPlayers().get(1).getLocations()[2].getCardCount()));
+				this.p2SHIELD.setText(String.valueOf(g.getPlayers().get(1).getLocations()[3].getCardCount()));
+				this.p2SWORD.setText(String.valueOf(g.getPlayers().get(1).getLocations()[4].getCardCount()));
+				this.p2CUTLERY.setText(String.valueOf(g.getPlayers().get(1).getLocations()[5].getCardCount()));
+				this.p2KEY.setText(String.valueOf(g.getPlayers().get(1).getLocations()[6].getCardCount()));
+				this.p2HOSPITAL.setText(String.valueOf(g.getPlayers().get(1).getLocations()[7].getCardCount()));
 			}
 			
+			// set Numbers for Player 3
+			if (i<3){
+				this.p3name.setText(g.getPlayers().get(2).getName());
+				this.player3points.setText(String.valueOf(g.getPlayers().get(2).getScore()));
+				this.p3meeple.setText(String.valueOf(g.getPlayers().get(0).getMeeple()));
+
+				// get Number of LocationCards for Player 3
+				this.p3GRAIN.setText(String.valueOf(g.getPlayers().get(2).getLocations()[0].getCardCount()));
+				this.p3BARELL.setText(String.valueOf(g.getPlayers().get(2).getLocations()[1].getCardCount()));
+				this.p3POTION.setText(String.valueOf(g.getPlayers().get(2).getLocations()[2].getCardCount()));
+				this.p3SHIELD.setText(String.valueOf(g.getPlayers().get(2).getLocations()[3].getCardCount()));
+				this.p3SWORD.setText(String.valueOf(g.getPlayers().get(2).getLocations()[4].getCardCount()));
+				this.p3CUTLERY.setText(String.valueOf(g.getPlayers().get(2).getLocations()[5].getCardCount()));
+				this.p3KEY.setText(String.valueOf(g.getPlayers().get(2).getLocations()[6].getCardCount()));
+				this.p3HOSPITAL.setText(String.valueOf(g.getPlayers().get(2).getLocations()[7].getCardCount()));
+			}
 			
-			for (int k=0;k<8; k++){
-				// get Number of LocationCards per Location
-				g.getPlayers().get(0).getLocations()[0].getCardCount();
-				
+			// set Numbers for Player 4
+			if (i<4){
+				this.p4name.setText(g.getPlayers().get(3).getName());
+				this.player4points.setText(String.valueOf(g.getPlayers().get(3).getScore()));			
+				this.p4meeple.setText(String.valueOf(g.getPlayers().get(0).getMeeple()));
+
+				// get Number of LocationCards for Player 4
+				this.p4GRAIN.setText(String.valueOf(g.getPlayers().get(3).getLocations()[0].getCardCount()));
+				this.p4BARELL.setText(String.valueOf(g.getPlayers().get(3).getLocations()[1].getCardCount()));
+				this.p4POTION.setText(String.valueOf(g.getPlayers().get(3).getLocations()[2].getCardCount()));
+				this.p4SHIELD.setText(String.valueOf(g.getPlayers().get(3).getLocations()[3].getCardCount()));
+				this.p4SWORD.setText(String.valueOf(g.getPlayers().get(3).getLocations()[4].getCardCount()));
+				this.p4CUTLERY.setText(String.valueOf(g.getPlayers().get(3).getLocations()[5].getCardCount()));
+				this.p4KEY.setText(String.valueOf(g.getPlayers().get(3).getLocations()[6].getCardCount()));
+				this.p4HOSPITAL.setText(String.valueOf(g.getPlayers().get(3).getLocations()[7].getCardCount()));
 				
 			}
 			
-			
-		
-		
 	}
 
 
