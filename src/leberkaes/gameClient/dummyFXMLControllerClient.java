@@ -162,8 +162,8 @@ public class dummyFXMLControllerClient {
 		get_MvcCtrl().connectToServer();
 	}
 	
-	public void setGameBoard (){
-		GameBoard g = new GameBoard(2);	
+		
+	public void setGameBoard (GameBoard g){
 		
 		// set images of open deck and card back of next card to be drawn from stack
 			this.openDeck0.setImage(new Image(g.getOpenDeck()[0].getFrontImgURL()));

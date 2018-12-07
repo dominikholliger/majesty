@@ -23,7 +23,14 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class GameClient_Model extends Model{
 	protected SimpleStringProperty newestMessage = new SimpleStringProperty();
+	protected SimpleStringProperty moveCounter = new SimpleStringProperty();
 	protected GameBoard actGameBoard = null;
+	private int tmpInt = 0;
+	public GameBoard getActGameBoard() {
+		return actGameBoard;
+	}
+
+
 	private Logger logger = Logger.getLogger("");
 	private Socket socket;
 	private Socket socketObjectCom;
@@ -85,11 +92,9 @@ public class GameClient_Model extends Model{
 						try {
 							inStream = new ObjectInputStream(socketObjectCom.getInputStream());
 							actGameBoard = (GameBoard) inStream.readObject();
+							tmpInt = tmpInt ++;
+							moveCounter.set(String.valueOf(tmpInt));
 							System.out.println("Object received ------ GameBoard -------- ");
-						
-							
-							
-							
 						} catch (IOException | ClassNotFoundException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

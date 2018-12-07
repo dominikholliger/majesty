@@ -39,10 +39,6 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
         view.get_Ctrl().set_MvcCtrl(this);
         
         
-        // TODO Delete if GameBoard comes from Message
-        view.get_Ctrl().setGameBoard();
-        
-        
         // register ourselves to handle window-closing event
         view.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -59,6 +55,11 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		model.newestMessage.addListener((o, oldValue, newValue) -> { 
 			if(!newValue.isEmpty()){
 				view.get_Ctrl().chatTextArea.appendText(newValue + "\n"); 
+			}
+		});
+		model.moveCounter.addListener((o, oldValue, newValue) -> { 
+			if(!newValue.isEmpty()){
+				view.get_Ctrl().setGameBoard(model.getActGameBoard()); 
 			}
 		});
 		view.get_Ctrl().txtGamePort.textProperty().addListener((observable, oldValue, newValue) -> {
