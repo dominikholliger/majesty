@@ -107,41 +107,6 @@ public class dummyFXMLControllerClient {
 	public TextField p4meeple;
 	
 	
-	private void validateGamePortNumber(String newValue, String obsElement) {
-		
-		get_MvcCtrl().validateGamePortNumber();
-		
-	}
-
-	
-	private void validateChatPortNumber(String newValue, String obsElement) {
-//		boolean valid = model.isValidPortNumber(newValue);
-//		// Change text color
-//		if (valid) {
-//			this.txtChatPort.setStyle("-fx-text-inner-color: green;");
-//		} else {
-//			this.txtChatPort.setStyle("-fx-text-inner-color: red;");
-//		}
-//		// Save result
-//		portValid = valid;
-//		// Enable or disable button, as appropriate
-//		enableDisableButton();
-	}
-
-	private void validatePlayerCountNumber(String newValue, String obsElement) {
-//		boolean valid = model.isValidPlayerCountNumber(newValue);
-//
-//		// Change text color
-//		if (valid) {
-//			this.txtPlayerCount.setStyle("-fx-text-inner-color: green;");
-//		} else {
-//			this.txtPlayerCount.setStyle("-fx-text-inner-color: red;");
-//		}
-//		// Save result
-//		playerCountValid = valid;
-//		// Enable or disable button, as appropriate
-//		enableDisableButton();
-	}
 
 
 	/**
