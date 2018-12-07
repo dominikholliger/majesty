@@ -39,7 +39,7 @@
                      </font>
                   </Text>
                   <TextField fx:id="txtIpAddress" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="114.0" />
-                  <Button fx:id="handleConnectClicked" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleConnectClicked" text="Verbinden" />
+                  <Button fx:id="btnConnect" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleConnectClicked" text="Verbinden" />
                </children>
             </HBox>
          </top>
