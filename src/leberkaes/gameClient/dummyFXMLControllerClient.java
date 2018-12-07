@@ -76,6 +76,7 @@ public class dummyFXMLControllerClient {
 	@FXML
 	public TextArea txtChatMessage;
 	
+
 	@FXML
 	public GridPane grid;
 	@FXML
@@ -95,6 +96,15 @@ public class dummyFXMLControllerClient {
 	public TextField player3points;
 	@FXML
 	public TextField player4points;
+	
+	@FXML
+	public TextField p1meeple;
+	@FXML
+	public TextField p2meeple;
+	@FXML
+	public TextField p3meeple;
+	@FXML
+	public TextField p4meeple;
 	
 	
 	private void validateGamePortNumber(String newValue, String obsElement) {
@@ -133,21 +143,17 @@ public class dummyFXMLControllerClient {
 //		enableDisableButton();
 	}
 
+
 	/**
 	 * Enable or disable the Connect button, based on the validity of the two text
 	 * controls
 	 */
-	private void enableDisableButton() {
-//		boolean valid = portValid;
-//		boolean valid2 = playerCountValid;
-//		this.btnSave.setDisable(!(valid || valid2));
-	}
 
 	@FXML
 	protected void handleSendClicked(ActionEvent event) throws Exception {
-
-		//model.sendMessage(this.txtChatMessage.getText());
 		get_MvcCtrl().sendMessage(this.txtChatMessage.getText());
+		// Eingegebene Nachricht löschen
+		this.txtChatMessage.setText("");
 
 	}
 
@@ -156,7 +162,6 @@ public class dummyFXMLControllerClient {
 		get_MvcCtrl().connectToServer();
 	}
 	
-	@FXML
 	public void setGameBoard (){
 		GameBoard g = new GameBoard(2);	
 		
@@ -182,6 +187,7 @@ public class dummyFXMLControllerClient {
 			this.player4points.setText(String.valueOf(g.getPlayers().get(3).getScore()));			
 			
 		// get Meeple Count per Player
+			
 			for (int j=0; j<3; j++){
 				g.getPlayers().get(0).getMeeple();
 			}
