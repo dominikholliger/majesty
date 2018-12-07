@@ -3,6 +3,7 @@ package leberkaes.gameClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -69,6 +70,16 @@ public class dummyFXMLControllerClient {
 	@FXML
 	public ImageView deckBack;
 	
+	@FXML
+	public TextArea chatTextArea;
+	@FXML
+	public TextArea txtChatMessage;
+	
+	
+
+	
+	
+	
 	
 	private void validateGamePortNumber(String newValue, String obsElement) {
 		
@@ -119,7 +130,8 @@ public class dummyFXMLControllerClient {
 	@FXML
 	protected void handleSendClicked(ActionEvent event) throws Exception {
 
-	//	model.sendMessage(this.txtChatMessage.getText());
+		//model.sendMessage(this.txtChatMessage.getText());
+		get_MvcCtrl().sendMessage(this.txtChatMessage.getText());
 
 	}
 
