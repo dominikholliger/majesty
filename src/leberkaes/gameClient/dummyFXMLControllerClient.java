@@ -57,59 +57,14 @@ public class dummyFXMLControllerClient {
 	@FXML
 	public TextArea txtChatMessage;
 	
-	
-	
-	
-	private void validateGamePortNumber(String newValue, String obsElement) {
-		
-		get_MvcCtrl().validateGamePortNumber();
-		
-	}
-
-	
-	private void validateChatPortNumber(String newValue, String obsElement) {
-//		boolean valid = model.isValidPortNumber(newValue);
-//		// Change text color
-//		if (valid) {
-//			this.txtChatPort.setStyle("-fx-text-inner-color: green;");
-//		} else {
-//			this.txtChatPort.setStyle("-fx-text-inner-color: red;");
-//		}
-//		// Save result
-//		portValid = valid;
-//		// Enable or disable button, as appropriate
-//		enableDisableButton();
-	}
-
-	private void validatePlayerCountNumber(String newValue, String obsElement) {
-//		boolean valid = model.isValidPlayerCountNumber(newValue);
-//
-//		// Change text color
-//		if (valid) {
-//			this.txtPlayerCount.setStyle("-fx-text-inner-color: green;");
-//		} else {
-//			this.txtPlayerCount.setStyle("-fx-text-inner-color: red;");
-//		}
-//		// Save result
-//		playerCountValid = valid;
-//		// Enable or disable button, as appropriate
-//		enableDisableButton();
-	}
 
 	/**
 	 * Enable or disable the Connect button, based on the validity of the two text
 	 * controls
 	 */
-	private void enableDisableButton() {
-//		boolean valid = portValid;
-//		boolean valid2 = playerCountValid;
-//		this.btnSave.setDisable(!(valid || valid2));
-	}
 
 	@FXML
 	protected void handleSendClicked(ActionEvent event) throws Exception {
-
-		//model.sendMessage(this.txtChatMessage.getText());
 		get_MvcCtrl().sendMessage(this.txtChatMessage.getText());
 
 	}
