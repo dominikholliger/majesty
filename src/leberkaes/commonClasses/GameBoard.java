@@ -18,6 +18,12 @@ public class GameBoard implements java.io.Serializable  {
 	private int playerCount;
 	private ArrayList<Player> players;
 
+	// Spiel
+	private int roundCount;
+	private boolean gameEnd;
+	private boolean bSide;
+	private boolean meeple;
+
 	// Karten
 	private Stack<CharacterCard> greenCards = new Stack<CharacterCard>();
 	private Stack<CharacterCard> redCards = new Stack<CharacterCard>();
@@ -26,69 +32,70 @@ public class GameBoard implements java.io.Serializable  {
 
 	// Dies ist eine TestMain-Methode
 	public static void main(String[] args) {
-		
 
 		GameBoard g = new GameBoard(2);
 		g.addPlayer("Dani");
 		g.addPlayer("Sebi");
-
-		g.setActivePLayer();
+		g.setActivePlayerIndex(); // Spieler 1 am Zug
 
 		System.out.println(g.players.get(GameBoard.activePlayerIndex));
-		System.out.println(g.toString());
-		
-		
+
 		CharacterCard c = g.takeCard(2);
+		int location = g.players.get(GameBoard.activePlayerIndex).getLocation(c);
+		System.out.println("Gespielte Karte:");
+		System.out.println(c);
+		g.playCard(c, location);
 
-		System.out.println(c);
-		
-		for (int i = 0; i<3; i ++) {
-		g.playCard(c, 0);
-		System.out.println(c);
 		System.out.println(g.players.get(GameBoard.activePlayerIndex));
 
-		g.nextPlayer();
-		System.out.println(g.players.get(GameBoard.activePlayerIndex));
-		c = g.takeCard(4);
-		System.out.println(c);
-		g.playCard(c, 2);
-		}
-		
-		System.out.println();
-		System.out.println(g.players.get(0));
-		System.out.println(g.players.get(1));
-
-		// System.out.println(g.toString());
+		/*
+		 * for (int i = 0; i<3; i ++) { g.playCard(c, 0); System.out.println(c);
+		 * System.out.println(g.players.get(GameBoard.activePlayerIndex));
+		 * 
+		 * g.nextPlayer();
+		 * System.out.println(g.players.get(GameBoard.activePlayerIndex)); c =
+		 * g.takeCard(4); System.out.println(c); g.playCard(c, 2); }
+		 * 
+		 * System.out.println(); System.out.println(g.players.get(0));
+		 * System.out.println(g.players.get(1));
+		 */
 
 	}
 	// __________________________________________
 
-	
-	
 	public GameBoard(int numOfP) {
-		
+
 		this.playerCount = numOfP;
 		this.players = new ArrayList<Player>();
 
-		createCards(back.GREEN, type.GRAIN, null, 7);
-		createCards(back.GREEN, type.BARELL, null, 4);
-		createCards(back.GREEN, type.KEY,null, 3);
-		createCards(back.GREEN, type.SHIELD,null, 3);
-		createCards(back.GREEN, type.POTION, null,3);
-		createCards(back.GREEN, type.CUTLERY,null, 2);
-		createCards(back.GREEN, type.SWORD,null, 2);
+		// ____________________
+		// debug Karten zum Testen
+		// createCards(back.GREEN, type.SHIELD, null, 10);
+		createCards(back.GREEN, type.POTION, null, 10);
+		// createCards(back.GREEN, type.SWORD, null, 10);
+		// createCards(back.RED, type.SHIELD, null, 10);
+		createCards(back.RED, type.POTION, null, 10);
+		// createCards(back.RED, type.SWORD, null, 10);
+		// _________________________
 
-		createCards(back.RED, type.GRAIN,null, 2);
-		createCards(back.RED, type.BARELL,null, 2);
-		createCards(back.RED, type.KEY,null, 2);
-		createCards(back.RED, type.SHIELD,null, 2);
-		createCards(back.RED, type.POTION,null, 2);
-		createCards(back.RED, type.CUTLERY,null, 2);
-		createCards(back.RED, type.SWORD,null, 1);
-
+		/*
+		 * createCards(back.GREEN, type.GRAIN, null, 7); createCards(back.GREEN,
+		 * type.BARELL, null, 4); createCards(back.GREEN, type.KEY,null, 3);
+		 * createCards(back.GREEN, type.SHIELD,null, 3); createCards(back.GREEN,
+		 * type.POTION, null,3); createCards(back.GREEN, type.CUTLERY,null, 2);
+		 * createCards(back.GREEN, type.SWORD,null, 2);
+		 * 
+		 * createCards(back.RED, type.GRAIN,null, 2); createCards(back.RED,
+		 * type.BARELL,null, 2); createCards(back.RED, type.KEY,null, 2);
+		 * createCards(back.RED, type.SHIELD,null, 2); createCards(back.RED,
+		 * type.POTION,null, 2); createCards(back.RED, type.CUTLERY,null, 2);
+		 * createCards(back.RED, type.SWORD,null, 1);
+		 */
 		// TODO createSplitCards();
 
 		createDeck();
+		this.gameEnd = false;
+		this.roundCount = 1;
 
 	}
 
@@ -98,30 +105,69 @@ public class GameBoard implements java.io.Serializable  {
 
 	}
 
+	public void nextRound() {
+		this.roundCount++;
+		if (this.roundCount == 13) {
+			this.finishGame();
+		}
+
+	}
+
+	private void finishGame() {
+		this.gameEnd = true;
+		// Höchste Karte aus allen Locations finden
+
+		for (int i = 0; i < 7; i++) {
+			Player highestScorePlayer = null; // unschön aber egal
+			int tempScore = 0;
+
+			for (Player p : players) {
+				if (tempScore < p.getLocations()[i].getCardCount()) {
+					highestScorePlayer = p;
+				}
+			}
+			highestScorePlayer.setScore(highestScorePlayer.getLocations()[i].getFinalCoinEffect());
+
+		}
+		for (Player p : players) {
+			int count = p.getLocations()[7].getCardCount();
+			int effect = p.getLocations()[7].getFinalCoinEffect();
+			p.setScore(count * effect);
+		}
+	}
+
+	
+
+	public int getRoundCount() {
+		return this.roundCount;
+	}
+
 	/** Diese Methode erzeugt die Spiel-Karten-Objekte **/
 	public void createCards(back b, type t1, type t2, int count) {
-		
+
 		if (b == back.GREEN) {
 			for (int i = 1; i <= count; i++) {
-				CharacterCard c = new CharacterCard(t1,null, b);
+				CharacterCard c = new CharacterCard(t1, null, b);
 				this.greenCards.push(c);
 			}
 		}
 
 		if (b == back.RED) {
 			for (int i = 1; i <= count; i++) {
-				CharacterCard c = new CharacterCard(t1,null, b);
+				CharacterCard c = new CharacterCard(t1, null, b);
 				this.redCards.push(c);
 			}
 		}
 	}
 
-	/** Diese Methode erzeugt aus den Karten das Deck mit welchem gespielt wird **/
+	/**
+	 * Diese Methode erzeugt aus den Karten das Deck mit welchem gespielt wird
+	 **/
 	public void createDeck() {
 
 		deck = new Stack<CharacterCard>();
 
-		int players = 2; //Muss noch variabel werden
+		int players = 2; // Muss noch variabel werden
 
 		Collections.shuffle(greenCards);
 		Collections.shuffle(redCards);
@@ -146,8 +192,8 @@ public class GameBoard implements java.io.Serializable  {
 
 		case 3: {
 			/*
-			 * 3Spieler Gibt die ersten 19 Karten ungesehen zurï¿½ck und lege dann die ersten
-			 * 6 Karten wie in unserem Beispiel in der Tischmitte aus.
+			 * 3Spieler Gibt die ersten 19 Karten ungesehen zurï¿½ck und lege dann die
+			 * ersten 6 Karten wie in unserem Beispiel in der Tischmitte aus.
 			 */
 
 			break;
@@ -174,40 +220,56 @@ public class GameBoard implements java.io.Serializable  {
 
 	}
 
-	public int getActivePlayer() {
+	public int getActivePlayerIndex() {
 		return activePlayerIndex;
 	}
 
-	public void setActivePLayer() {
+	public void setActivePlayerIndex() {
+
 		GameBoard.activePlayerIndex = 0;
+
 	}
 
-	public void nextPlayer() {
+	public void setNextPlayerIndex() {
 
 		if (activePlayerIndex + 1 - players.size() == 0) {
 			activePlayerIndex = 0;
+			this.nextRound();
 		} else {
 			activePlayerIndex++;
 		}
 
 	}
-	
-	
-	
-	//1. Zugbewegung: Karte vom Opendeck entfernen
+
+	// 1. Zugbewegung: Karte vom Opendeck entfernen
 	public CharacterCard takeCard(int i) {
 		CharacterCard c = openDeck[i];
 		this.updateOpenDeck(i);
 		return c;
 
 	}
-	
-	//2. Zugbewegung: Karte in Location legen
-	/** Player herausfinden, Kartentypen prï¿½fen? Karten Position bestimmmen? **/
+
+	// 2. Zugbewegung: Karte in Location legen
+	/**
+	 * Player herausfinden, Kartentypen prï¿½fen? Karten Position bestimmmen?
+	 **/
 	public void playCard(CharacterCard c, int location) {
-		
-		this.players.get(this.activePlayerIndex).makeMove(c, location);
-		
+
+		// Sonderaktion ausführen
+		type type = this.getActivePlayer().getLocations()[location].getType();
+		switch (type) {
+		case SWORD:
+			this.attack();
+			break;
+		case POTION:
+			this.heal();
+			break;
+		default:
+			break;
+		}
+		// Karte Spielen
+		this.getActivePlayer().makeMove(c, location);
+
 	}
 
 	public void updateOpenDeck(int i) {
@@ -222,13 +284,38 @@ public class GameBoard implements java.io.Serializable  {
 
 	public CharacterCard[] getOpenDeck() {
 		return openDeck;
-		
+
 	}
 
 	@Override
 	public String toString() {
 		return "Players:" + players + "GameBoard\n" + "GreenCards=\n" + greenCards + "\n" + "RedCards=\n" + redCards
 				+ "\n" + "Deck=\n" + deck + "\n" + "openDeck=\n" + Arrays.toString(openDeck);
+	}
+
+	public void attack() {
+		int offense = this.getActivePlayer().getOffenseValue() + 1; // Plus 1 da Karte noch nicht gelegt wurde
+
+		for (Player p : players) {
+			if (!(players.indexOf(p) == this.getActivePlayerIndex())) {
+				int defense = p.getDefenseValue();
+				if (offense >= defense) {
+					p.killCard();
+				}
+			}
+
+		}
+
+	}
+
+	public void heal() {
+
+		this.getActivePlayer().reviveCard();
+
+	}
+
+	public Player getActivePlayer() {
+		return this.players.get(GameBoard.activePlayerIndex);
 	}
 
 }

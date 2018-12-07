@@ -5,20 +5,25 @@ import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 
+import com.sun.media.jfxmedia.logging.Logger;
+
 import leberkaes.commonClasses.*;
 import leberkaes.commonClasses.CardType.type;
+import leberkaes.jat2.ServiceLocator;
+import leberkaes.jat2.ServiceLocator;
 
 public class Player implements Serializable {
+	
 
-	public String name;
-	public boolean active; // Wars
+	
+	private String name;
+	private boolean active; // Brauchts das?
 
-	public int score;
-	public int meeple;
-	public int defense;
-	public int offense;
+	private int score;
+	private int meeple;
+	private int offense;
 
-	public Location[] locations = new Location[8];
+	private Location[] locations = new Location[8];
 
 	public Player(String n) {
 		this.name = n;
@@ -46,18 +51,52 @@ public class Player implements Serializable {
 	// 3.Zugbewegung: Ev redundandt?
 	public void makeMove(CharacterCard c, int location) {
 
+		type t = c.getCardType1();
+
 		Location l = this.locations[location];
 		l.addCard(c);
 		this.score += this.getCoins(l);
 
 	}
 
-	public void killCard(CharacterCard c) {
+	public int getDefenseValue() {
+		int defense = this.locations[3].getCardCount();
+		return defense;
+	}
+
+	public int getOffenseValue() {
+		int defense = this.locations[4].getCardCount();
+		return defense;
+	}
+
+	public void killCard() {
+
+		boolean cardFound = false;
+		int i = 0;
+		while (!cardFound) {
+			
+			if (!locations[i].getCharacters().isEmpty()) {
+				CharacterCard c = locations[i].removeCard();
+				this.locations[7].addCard(c);
+				cardFound = true;
+			}
+			if(i==6){
+				cardFound = true;
+				
+			}
+			i++;
+		}
 
 	}
 
-	public CharacterCard reviveCard() {
-		return null;
+	public void reviveCard() {
+
+		// revive card if available and put in correct location
+		if (!this.locations[7].getCharacters().isEmpty()) {
+			CharacterCard c = this.locations[7].removeCard();
+			int loc = this.getLocation(c);
+			this.locations[loc].addCard(c);
+		}
 
 	}
 
@@ -93,10 +132,18 @@ public class Player implements Serializable {
 
 	}
 
+	public Location[] getLocations() {
+		return locations;
+	}
+	
+	public void setScore(int coins) {
+		this.score += coins;
+	}
+
 	@Override
 	public String toString() {
-		return "Player [name=" + name + ", active=" + active + ", score=" + score + ", meeple=" + meeple + ", defense="
-				+ defense + ", offense=" + offense + ", locations=" + Arrays.toString(locations) + "]";
+		return "Player [name=" + name + "\nactive=" + active + "\n score=" + score + "\n meeple=" + meeple
+				+ "\n defense=" + "\n offense=" + offense + "\n locations=" + Arrays.toString(locations) + "]";
 	}
 
 }
