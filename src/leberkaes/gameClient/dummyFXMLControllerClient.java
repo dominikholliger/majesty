@@ -84,6 +84,8 @@ public class dummyFXMLControllerClient {
 	@FXML
 	protected void handleSendClicked(ActionEvent event) throws Exception {
 		get_MvcCtrl().sendMessage(this.txtChatMessage.getText());
+		// Eingegebene Nachricht löschen
+		this.txtChatMessage.setText("");
 
 	}
 
