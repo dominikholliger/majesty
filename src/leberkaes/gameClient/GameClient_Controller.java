@@ -46,11 +46,11 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
         });
         serviceLocator = ServiceLocator.getServiceLocator();        
         serviceLocator.getLogger().info("Application controller initialized");
-		/*
-		 * model.newestMessage.addListener((o, oldValue, newValue) -> { if
-		 * (!newValue.isEmpty()) // Ignore empty messages System.out.println("Event");
-		 * //this.txtChatArea.appendText(newValue + "\n"); });
-		 */
+		
+		model.newestMessage.addListener((o, oldValue, newValue) -> { if
+			(!newValue.isEmpty()) // Ignore empty messages System.out.println("Event");
+			view.get_Ctrl().txtChatArea.appendText(newValue + "\n"); });
+		}
 	}
 
 	@FXML
