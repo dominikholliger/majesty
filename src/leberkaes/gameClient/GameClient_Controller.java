@@ -21,8 +21,9 @@ import leberkaes.gameServer.GameServer_View;
 import leberkaes.jat2.ServiceLocator;
 
 public class GameClient_Controller extends Controller<GameClient_Model, GameClient_View> {
-	 ServiceLocator serviceLocator;
-	
+	ServiceLocator serviceLocator;
+	private boolean gamePortValid = false;
+	private boolean chatPortValid = false;
 	
 	
 	//Logger logger = serviceLocator.getLogger();
@@ -36,7 +37,6 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		// D.Holliger:
         // Vorbereiten für die Kommunikation Controller vs DummyController FXML
         view.get_Ctrl().set_MvcCtrl(this);
-        // register ourselves to handle window-closing event
         view.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
@@ -46,11 +46,20 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
         });
         serviceLocator = ServiceLocator.getServiceLocator();        
         serviceLocator.getLogger().info("Application controller initialized");
-		
-		model.newestMessage.addListener((o, oldValue, newValue) -> { if
-			(!newValue.isEmpty()) // Ignore empty messages System.out.println("Event");
-			view.get_Ctrl().txtChatArea.appendText(newValue + "\n"); });
-		}
+        
+        
+        // Listeners
+		model.newestMessage.addListener((o, oldValue, newValue) -> { 
+			if(!newValue.isEmpty()){
+				view.get_Ctrl().chatTextArea.appendText(newValue + "\n"); 
+			}
+		});
+		view.get_Ctrl().txtGamePort.textProperty().addListener((observable, oldValue, newValue) -> {
+			validateGamePortNumber(newValue, "txtGamePort");
+		});
+		view.get_Ctrl().txtChatPort.textProperty().addListener((observable, oldValue, newValue) -> {
+			validateChatPortNumber(newValue, "txtChatPort");
+		});
 	}
 
 	@FXML
@@ -80,37 +89,61 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 	}
 
 
-	public void validateGamePortNumber() {
-//		// TODO Auto-generated method stub
-//		boolean valid = model.isValidPortNumber(newValue);
-//		// Change text color
-//		if (valid) {
-//			this.txtGamePort.setStyle("-fx-text-inner-color: green;");
-//		} else {
-//			this.txtGamePort.setStyle("-fx-text-inner-color: red;");
-//		}
-//		// Save result
-//		portValid = valid;
-//		// Enable or disable button, as appropriate
-//		enableDisableButton();
+	public void validateGamePortNumber(String newValue, String obsElement) {
+		// TODO Auto-generated method stub
+		boolean valid = model.isValidPortNumber(newValue);
+		// Change text color
+		if (valid) {
+			view.get_Ctrl().txtGamePort.setStyle("-fx-text-inner-color: green;");
+		} else {
+			view.get_Ctrl().txtGamePort.setStyle("-fx-text-inner-color: red;");
+		}
+		// Save result
+		gamePortValid = valid;
+		// Enable or disable button, as appropriate
+		enableDisableButton();
+		
+	}
+	public void validateChatPortNumber(String newValue, String obsElement) {
+		// TODO Auto-generated method stub
+		boolean valid = model.isValidPortNumber(newValue);
+		// Change text color
+		if (valid) {
+			view.get_Ctrl().txtChatPort.setStyle("-fx-text-inner-color: green;");
+		} else {
+			view.get_Ctrl().txtChatPort.setStyle("-fx-text-inner-color: red;");
+		}
+		// Save result
+		chatPortValid = valid;
+		// Enable or disable button, as appropriate
+		enableDisableButton();
 		
 	}
 
 	public void connectToServer() {
-		view.get_Ctrl().txtName.setText("Test");
-
-		
 		// Daten aus GUI auslesen
-//		String name = view.get_Ctrl().txtName.getText();
-//		int chatPort = Integer.parseInt(view.get_Ctrl().txtChatPort.getText());
-//		int gamePort = Integer.parseInt(view.get_Ctrl().txtGamePort.getText());
-//		String ipAddress = 	view.get_Ctrl().txtIpAddress.getText();
+		String name = view.get_Ctrl().txtName.getText();
+		int chatPort = Integer.parseInt(view.get_Ctrl().txtChatPort.getText());
+		int gamePort = Integer.parseInt(view.get_Ctrl().txtGamePort.getText());
+		String ipAddress = 	view.get_Ctrl().txtIpAddress.getText();
 		// Connect for Chat Com
-		//model.connect(ipAddress, chatPort, name);
+		model.connect(ipAddress, chatPort, name);
 		// Connect for Object Com
-		//model.connectObjectCom(ipAddress, gamePort, name);
+		model.connectObjectCom(ipAddress, gamePort, name);
+	}
+
+	public void sendMessage(String messageText) {
+		model.sendMessage(messageText);
 	}
 	
-	
+	/**
+	 * Enable or disable the Connect button, based on the validity of the two text
+	 * controls
+	 */
+	private void enableDisableButton() {
+		boolean valid = gamePortValid;
+		boolean valid2 = chatPortValid;
+		view.get_Ctrl().btnConnect.setDisable(!(valid || valid2));
+	}
 
 }

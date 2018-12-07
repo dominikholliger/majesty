@@ -3,6 +3,7 @@ package leberkaes.gameClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import leberkaes.appClasses.App_Controller;
@@ -51,7 +52,10 @@ public class dummyFXMLControllerClient {
 	public TextField txtIpAddress;
 	@FXML
 	public Button btnConnect;
-	
+	@FXML
+	public TextArea chatTextArea;
+	@FXML
+	public TextArea txtChatMessage;
 	
 	
 	
@@ -105,7 +109,8 @@ public class dummyFXMLControllerClient {
 	@FXML
 	protected void handleSendClicked(ActionEvent event) throws Exception {
 
-	//	model.sendMessage(this.txtChatMessage.getText());
+		//model.sendMessage(this.txtChatMessage.getText());
+		get_MvcCtrl().sendMessage(this.txtChatMessage.getText());
 
 	}
 
