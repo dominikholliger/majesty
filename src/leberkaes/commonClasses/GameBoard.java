@@ -37,6 +37,9 @@ public class GameBoard implements java.io.Serializable  {
 		g.addPlayer("Dani");
 		g.addPlayer("Sebi");
 		g.setActivePlayerIndex(); // Spieler 1 am Zug
+		
+		System.out.println(g.getOpenDeck()[0].getBackImgURL().toString());
+		
 
 		System.out.println(g.players.get(GameBoard.activePlayerIndex));
 
@@ -45,7 +48,7 @@ public class GameBoard implements java.io.Serializable  {
 		System.out.println("Gespielte Karte:");
 		System.out.println(c);
 		g.playCard(c, location);
-
+		
 		System.out.println(g.players.get(GameBoard.activePlayerIndex));
 
 		/*

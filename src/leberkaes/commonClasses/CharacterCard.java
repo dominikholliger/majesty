@@ -14,8 +14,8 @@ public class CharacterCard implements Serializable {
 	private type cardType1;
 	private type cardType2;
 	private back cardBack;
-	private URL backImgURL;
-	private URL frontImgURL;
+	private String backImgURL;
+	private String frontImgURL;
 	private boolean alive;
 
 	public CharacterCard(type t, back b) {
@@ -41,31 +41,31 @@ public class CharacterCard implements Serializable {
 		try {
 			switch (t1) {
 			case GRAIN:
-				frontImgURL = new URL("leberkaes.GUIsources/characters/Orange.jpg");
+				frontImgURL = new String("leberkaes.GUIsources/characters/Orange.jpg");
 				break;
 			case BARELL:
-				frontImgURL = new URL("leberkaes.GUIsources/characters/Brown.jpg");
+				frontImgURL = new String("leberkaes.GUIsources/characters/Brown.jpg");
 				break;
 			case POTION:
-				frontImgURL = new URL("leberkaes.GUIsources/characters/Green.jpg");
+				frontImgURL = new String("leberkaes.GUIsources/characters/Green.jpg");
 				break;
 			case SHIELD:
-				frontImgURL = new URL("leberkaes.GUIsources/characters/Blue.jpg");
+				frontImgURL = new String("leberkaes.GUIsources/characters/Blue.jpg");
 				break;
 			case SWORD:
-				frontImgURL = new URL("leberkaes.GUIsources/characters/Red.jpg");
+				frontImgURL = new String("leberkaes.GUIsources/characters/Red.jpg");
 				break;
 			case CUTLERY:
-				frontImgURL = new URL("leberkaes.GUIsources/characters/Yellow.jpg");
+				frontImgURL = new String("leberkaes.GUIsources/characters/Yellow.jpg");
 				break;
 			case KEY:
-				frontImgURL = new URL("leberkaes.GUIsources/characters/Violet.jpg");
+				frontImgURL = new String("leberkaes.GUIsources/characters/Violet.jpg");
 				break;
 			case HOSPITAL:
 				// No CharacterCard of this type
 				break;
 			}
-		} catch (MalformedURLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -76,11 +76,11 @@ public class CharacterCard implements Serializable {
 		try {
 			switch (b) {
 			case GREEN:
-				backImgURL = new URL("leberkaes.GUIsources/characters/Back 1.jpg");
+				backImgURL = new String("leberkaes.GUIsources/characters/Back 1.jpg");
 			case RED:
-				backImgURL = new URL("leberkaes.GUIsources/characters/Back 2.jpg");
+				backImgURL = new String("leberkaes.GUIsources/characters/Back 2.jpg");
 			}
-		} catch (MalformedURLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -109,11 +109,11 @@ public class CharacterCard implements Serializable {
 				+ alive + "\n";
 	}
 
-	public URL getBackImgURL() {
+	public String getBackImgURL() {
 		return backImgURL;
 	}
 
-	public URL getFrontImgURL() {
+	public String getFrontImgURL() {
 		return frontImgURL;
 	}
 
