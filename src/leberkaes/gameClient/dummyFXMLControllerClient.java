@@ -4,8 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import leberkaes.appClasses.App_Controller;
+import leberkaes.commonClasses.GameBoard;
 
 public class dummyFXMLControllerClient {
 
@@ -51,9 +54,20 @@ public class dummyFXMLControllerClient {
 	public TextField txtIpAddress;
 	@FXML
 	public Button btnConnect;
-	
-	
-	
+	@FXML
+	public ImageView openDeck5;
+	@FXML
+	public ImageView openDeck4;
+	@FXML
+	public ImageView openDeck3;
+	@FXML
+	public ImageView openDeck2;
+	@FXML
+	public ImageView openDeck1;
+	@FXML
+	public ImageView openDeck0;
+	@FXML
+	public ImageView deckBack;
 	
 	
 	private void validateGamePortNumber(String newValue, String obsElement) {
@@ -112,6 +126,24 @@ public class dummyFXMLControllerClient {
 	@FXML
 	protected void handleConnectClicked(ActionEvent event) throws Exception {
 		get_MvcCtrl().connectToServer();
+	}
+	
+	@FXML
+	public void setGameBoard (){
+		GameBoard g = new GameBoard(2);	
+		
+			this.openDeck0.setImage(new Image(g.getOpenDeck()[0].getFrontImgURL()));
+			this.openDeck1.setImage(new Image(g.getOpenDeck()[1].getFrontImgURL()));
+			this.openDeck2.setImage(new Image(g.getOpenDeck()[2].getFrontImgURL()));
+			this.openDeck3.setImage(new Image(g.getOpenDeck()[3].getFrontImgURL()));
+			this.openDeck4.setImage(new Image(g.getOpenDeck()[4].getFrontImgURL()));
+			this.openDeck5.setImage(new Image(g.getOpenDeck()[5].getFrontImgURL()));
+
+			
+			
+			
+		
+		
 	}
 
 
