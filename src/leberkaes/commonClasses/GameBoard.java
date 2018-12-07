@@ -6,12 +6,13 @@ import java.util.Collections;
 import java.util.Scanner;
 import java.util.Stack;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import leberkaes.commonClasses.CharacterCard;
 import leberkaes.commonClasses.CardType.*;
 
-public class GameBoard implements java.io.Serializable {
+public class GameBoard implements java.io.Serializable  {
 	// Spieler
 	private static int activePlayerIndex;
 	private int playerCount;

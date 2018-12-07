@@ -17,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import leberkaes.abstractClasses.View;
+import leberkaes.appClasses.dummyFXMLControllerHome;
 import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
 import leberkaes.jat2.ServiceLocator;
@@ -29,72 +30,33 @@ public class GameClient_View extends View <GameClient_Model>{
 	Translator t = sl.getTranslator();
 	Configuration config = sl.getConfiguration();
 	
+	
+	/**
+     * Per Lazy Loading die ein DummyKontroller Objekt erstellen und per Getter zur verfügung Stellen
+     * wird für den FXML Loader gebraucht.
+     */
+    private dummyFXMLControllerClient _Ctrl;
+	public dummyFXMLControllerClient get_Ctrl() {
+    		if(_Ctrl == null) {
+    			_Ctrl = new dummyFXMLControllerClient();
+    		}
+    		return _Ctrl;    	
+    }
+    
+    protected Parent parent;
 	private Stage stage;
-	private Parent parent;
 	
 	//private GameClient_Model model;
 		
 	public GameClient_View(Stage stage, GameClient_Model model) {
 		super (stage, model);
         stage.setTitle(t.getString("program.menu.game"));
-        
-        // Get current values
-        
-		
-		/*// Prevent labels and button from shrinking below their preferred size
-		lblIpAddress.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
-		lblPort.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
-		lblName.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
-		btnConnect.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
-		btnSend.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
-		
-		// Set sizes for top TextFields
-		txtIpAddress.setMinWidth(150); txtIpAddress.setPrefWidth(150);
-		txtPort.setMinWidth(60); txtPort.setPrefWidth(60);
-		txtName.setMinWidth(150); txtName.setPrefWidth(150);
-		
-		HBox topBox = new HBox(lblIpAddress, txtIpAddress, lblPort, txtPort, lblName, txtName, btnConnect);
-		topBox.getStyleClass().add("hbox"); // Class for styling
-*/		/**
-		 * Für ein bisschen schnelleres debugging...
-		 */
-		/*Boolean debug = true;
-		if(debug) {
-			txtPort.setText("8082");
-			txtIpAddress.setText("127.0.0.1");
-			String SALTCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-	        StringBuilder salt = new StringBuilder();
-	        Random rnd = new Random();
-	        while (salt.length() < 8) { // length of the random string.
-	            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-	            salt.append(SALTCHARS.charAt(index));
-	        }
-	        String saltStr = salt.toString();
-		    txtName.setText(saltStr);
-		}
-		
-		HBox bottomBox = new HBox(txtChatMessage, btnSend);
-		bottomBox.getStyleClass().add("hbox"); // Class for styling
-		HBox.setHgrow(txtChatMessage, Priority.ALWAYS);	
-		
-		BorderPane root = new BorderPane();
-		root.getStyleClass().add("root"); // Class for styling
-		
-		root.setTop(topBox);
-		root.setBottom(bottomBox);
-		root.setCenter(txtChatArea);
-		
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-		stage.setTitle("Game Client");*/
+     
 	}
 	
 	protected Scene create_GUI() {
-	    
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
-		loader.setController(new GameClient_Controller(model, this));
-		
+		loader.setController(get_Ctrl());
 		try {
 			parent = loader.load();
 		} catch (IOException e1) {

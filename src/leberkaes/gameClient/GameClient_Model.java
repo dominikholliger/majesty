@@ -23,14 +23,14 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class GameClient_Model extends Model{
 	protected SimpleStringProperty newestMessage = new SimpleStringProperty();
-
+	protected GameBoard actGameBoard = null;
 	private Logger logger = Logger.getLogger("");
 	private Socket socket;
 	private Socket socketObjectCom;
 	private ObjectInputStream inStream = null;
 	private String name;
 	
-	//Dummy Variable für Debugging
+	//Dummy Variable fÃ¼r Debugging
 	private GameBoard myDummyGameBoard;
 
 	
@@ -84,9 +84,12 @@ public class GameClient_Model extends Model{
 					while (true) {
 						try {
 							inStream = new ObjectInputStream(socketObjectCom.getInputStream());
-							GameBoard gameboard = (GameBoard) inStream.readObject();
-							System.out.println("Object received ------ GameBoard -------- = " + gameboard);
-							sendGameBoardToServer(gameboard);
+							actGameBoard = (GameBoard) inStream.readObject();
+							System.out.println("Object received ------ GameBoard -------- ");
+						
+							
+							
+							
 						} catch (IOException | ClassNotFoundException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -142,6 +145,6 @@ public class GameClient_Model extends Model{
 	///Debug Methode um ein Lokales GameBoard zu erstellen.
 	public void createDummyBoard(int i) {
 		this.myDummyGameBoard = new GameBoard(i);
-		logger.info("DummyGameBoard erstellt für "+i+ " Spieler");
+		logger.info("DummyGameBoard erstellt fï¿½r "+i+ " Spieler");
 	}
 }

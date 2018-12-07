@@ -70,16 +70,6 @@ public class App_View extends View<App_Model> {
 	
 	   protected void updateTexts() {
 	       Translator t = ServiceLocator.getServiceLocator().getTranslator();
-	        // The menu entries
-/*	       menuFile.setText(t.getString("program.menu.file"));
-	       menuFileLanguage.setText(t.getString("program.menu.file.language"));
-	       menuGame.setText(t.getString("program.menu.game"));
-	       menuGameServer.setText(t.getString("program.menu.game.server"));
-           menuHelp.setText(t.getString("program.menu.help"));
-           GameServerStart.setText(t.getString("program.menu.game.server.start"));
-   	       GameServerSettings.setText(t.getString("program.menu.game.server.settings"));
-	        // Other controls
-           btnClick.setText(t.getString("button.clickme"));*/
 	    }
 
    public void showSettings() {

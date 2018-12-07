@@ -65,9 +65,11 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		// Aufrufendes Fenster: Button auf Home-Screen
 		// Diese Methode startet das Client Windows
 		Stage optionsStage = new Stage();
-	   	GameClient_Model clientModel = new GameClient_Model();
-	   	GameClient_View clientView = new GameClient_View(optionsStage, clientModel);
+	  	GameClient_Model clientModel = new GameClient_Model();
+	  	GameClient_View clientView = new GameClient_View(optionsStage, clientModel);
+		new GameClient_Controller(clientModel, clientView);
 		clientView.start();
+		
 	}    
 	public void openSettingWindow() {
 		// Aufrufendes Fenster: Button auf Home-Screen
