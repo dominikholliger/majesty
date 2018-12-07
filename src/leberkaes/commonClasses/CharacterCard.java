@@ -31,6 +31,8 @@ public class CharacterCard implements Serializable {
 		this.cardType2 = t2;
 		this.cardBack = b;
 		this.alive = true;
+		this.setFrontImgURL(t1, t2);
+		this.setBackImgURL(b);
 	}
 
 	public void setFrontImgURL(type t1, type t2) {
