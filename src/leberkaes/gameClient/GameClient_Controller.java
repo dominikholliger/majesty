@@ -97,18 +97,15 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 	}
 
 	public void connectToServer() {
-		view.get_Ctrl().txtName.setText("Test");
-
-		
 		// Daten aus GUI auslesen
-//		String name = view.get_Ctrl().txtName.getText();
-//		int chatPort = Integer.parseInt(view.get_Ctrl().txtChatPort.getText());
-//		int gamePort = Integer.parseInt(view.get_Ctrl().txtGamePort.getText());
-//		String ipAddress = 	view.get_Ctrl().txtIpAddress.getText();
+		String name = view.get_Ctrl().txtName.getText();
+		int chatPort = Integer.parseInt(view.get_Ctrl().txtChatPort.getText());
+		int gamePort = Integer.parseInt(view.get_Ctrl().txtGamePort.getText());
+		String ipAddress = 	view.get_Ctrl().txtIpAddress.getText();
 		// Connect for Chat Com
-		//model.connect(ipAddress, chatPort, name);
+		model.connect(ipAddress, chatPort, name);
 		// Connect for Object Com
-		//model.connectObjectCom(ipAddress, gamePort, name);
+		model.connectObjectCom(ipAddress, gamePort, name);
 	}
 
 }
