@@ -5,8 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import leberkaes.appClasses.App_Controller;
+import leberkaes.commonClasses.GameBoard;
 
 public class dummyFXMLControllerClient {
 
@@ -53,10 +56,69 @@ public class dummyFXMLControllerClient {
 	@FXML
 	public Button btnConnect;
 	@FXML
+	public ImageView openDeck5;
+	@FXML
+	public ImageView openDeck4;
+	@FXML
+	public ImageView openDeck3;
+	@FXML
+	public ImageView openDeck2;
+	@FXML
+	public ImageView openDeck1;
+	@FXML
+	public ImageView openDeck0;
+	@FXML
+	public ImageView deckBack;
+	
+	@FXML
 	public TextArea chatTextArea;
 	@FXML
 	public TextArea txtChatMessage;
 	
+<<<<<<< HEAD
+=======
+	
+
+	
+	
+	
+	
+	private void validateGamePortNumber(String newValue, String obsElement) {
+		
+		get_MvcCtrl().validateGamePortNumber();
+		
+	}
+
+	
+	private void validateChatPortNumber(String newValue, String obsElement) {
+//		boolean valid = model.isValidPortNumber(newValue);
+//		// Change text color
+//		if (valid) {
+//			this.txtChatPort.setStyle("-fx-text-inner-color: green;");
+//		} else {
+//			this.txtChatPort.setStyle("-fx-text-inner-color: red;");
+//		}
+//		// Save result
+//		portValid = valid;
+//		// Enable or disable button, as appropriate
+//		enableDisableButton();
+	}
+
+	private void validatePlayerCountNumber(String newValue, String obsElement) {
+//		boolean valid = model.isValidPlayerCountNumber(newValue);
+//
+//		// Change text color
+//		if (valid) {
+//			this.txtPlayerCount.setStyle("-fx-text-inner-color: green;");
+//		} else {
+//			this.txtPlayerCount.setStyle("-fx-text-inner-color: red;");
+//		}
+//		// Save result
+//		playerCountValid = valid;
+//		// Enable or disable button, as appropriate
+//		enableDisableButton();
+	}
+>>>>>>> branch 'BaseGUIIntegrationv1' of https://github.com/dominikholliger/majesty.git
 
 	/**
 	 * Enable or disable the Connect button, based on the validity of the two text
@@ -72,6 +134,24 @@ public class dummyFXMLControllerClient {
 	@FXML
 	protected void handleConnectClicked(ActionEvent event) throws Exception {
 		get_MvcCtrl().connectToServer();
+	}
+	
+	@FXML
+	public void setGameBoard (){
+		GameBoard g = new GameBoard(2);	
+		
+			this.openDeck0.setImage(new Image(g.getOpenDeck()[0].getFrontImgURL()));
+			this.openDeck1.setImage(new Image(g.getOpenDeck()[1].getFrontImgURL()));
+			this.openDeck2.setImage(new Image(g.getOpenDeck()[2].getFrontImgURL()));
+			this.openDeck3.setImage(new Image(g.getOpenDeck()[3].getFrontImgURL()));
+			this.openDeck4.setImage(new Image(g.getOpenDeck()[4].getFrontImgURL()));
+			this.openDeck5.setImage(new Image(g.getOpenDeck()[5].getFrontImgURL()));
+
+			
+			
+			
+		
+		
 	}
 
 

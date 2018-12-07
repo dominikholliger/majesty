@@ -74,26 +74,26 @@ public class GameBoard implements java.io.Serializable  {
 		// ____________________
 		// debug Karten zum Testen
 		// createCards(back.GREEN, type.SHIELD, null, 10);
-		createCards(back.GREEN, type.POTION, null, 10);
+		// createCards(back.GREEN, type.POTION, null, 10);
 		// createCards(back.GREEN, type.SWORD, null, 10);
 		// createCards(back.RED, type.SHIELD, null, 10);
-		createCards(back.RED, type.POTION, null, 10);
+		// createCards(back.RED, type.POTION, null, 10);
 		// createCards(back.RED, type.SWORD, null, 10);
 		// _________________________
 
-		/*
-		 * createCards(back.GREEN, type.GRAIN, null, 7); createCards(back.GREEN,
-		 * type.BARELL, null, 4); createCards(back.GREEN, type.KEY,null, 3);
-		 * createCards(back.GREEN, type.SHIELD,null, 3); createCards(back.GREEN,
-		 * type.POTION, null,3); createCards(back.GREEN, type.CUTLERY,null, 2);
-		 * createCards(back.GREEN, type.SWORD,null, 2);
-		 * 
-		 * createCards(back.RED, type.GRAIN,null, 2); createCards(back.RED,
-		 * type.BARELL,null, 2); createCards(back.RED, type.KEY,null, 2);
-		 * createCards(back.RED, type.SHIELD,null, 2); createCards(back.RED,
-		 * type.POTION,null, 2); createCards(back.RED, type.CUTLERY,null, 2);
-		 * createCards(back.RED, type.SWORD,null, 1);
-		 */
+		
+		 createCards(back.GREEN, type.GRAIN, null, 7); createCards(back.GREEN,
+		 type.BARELL, null, 4); createCards(back.GREEN, type.KEY,null, 3);
+		 createCards(back.GREEN, type.SHIELD,null, 3); createCards(back.GREEN,
+		 type.POTION, null,3); createCards(back.GREEN, type.CUTLERY,null, 2);
+		 createCards(back.GREEN, type.SWORD,null, 2);
+		  
+		 createCards(back.RED, type.GRAIN,null, 2); createCards(back.RED,
+		 type.BARELL,null, 2); createCards(back.RED, type.KEY,null, 2);
+		 createCards(back.RED, type.SHIELD,null, 2); createCards(back.RED,
+		 type.POTION,null, 2); createCards(back.RED, type.CUTLERY,null, 2);
+		 createCards(back.RED, type.SWORD,null, 1);
+		 
 		// TODO createSplitCards();
 
 		createDeck();
@@ -118,10 +118,10 @@ public class GameBoard implements java.io.Serializable  {
 
 	private void finishGame() {
 		this.gameEnd = true;
-		// Höchste Karte aus allen Locations finden
+		// Hï¿½chste Karte aus allen Locations finden
 
 		for (int i = 0; i < 7; i++) {
-			Player highestScorePlayer = null; // unschön aber egal
+			Player highestScorePlayer = null; // unschï¿½n aber egal
 			int tempScore = 0;
 
 			for (Player p : players) {
@@ -258,7 +258,7 @@ public class GameBoard implements java.io.Serializable  {
 	 **/
 	public void playCard(CharacterCard c, int location) {
 
-		// Sonderaktion ausführen
+		// Sonderaktion ausfï¿½hren
 		type type = this.getActivePlayer().getLocations()[location].getType();
 		switch (type) {
 		case SWORD:
