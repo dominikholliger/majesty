@@ -28,6 +28,7 @@ public class Game_ClientObjectCom {
 						inStream = new ObjectInputStream(socket.getInputStream());
 						GameBoard gameboard = (GameBoard) inStream.readObject();
 						System.out.println("Object received ------ GameBoard -------- = " + gameboard);
+						//hier muss send methode aufgerufen werden
 						
 					} catch (IOException | ClassNotFoundException e) {
 						// TODO Auto-generated catch block

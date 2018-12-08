@@ -151,6 +151,7 @@ public class GameClient_Model extends Model{
 	public void createDummyBoard(int i) {
 		this.myDummyGameBoard = new GameBoard(i);
 		logger.info("DummyGameBoard erstellt f�r "+i+ " Spieler");
+		
 	}
 	
 	

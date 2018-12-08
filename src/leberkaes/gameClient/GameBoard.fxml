@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -56,31 +54,31 @@
                <children>
                   <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="146.0" prefWidth="799.0">
                      <children>
-                        <ImageView fx:id="openDeck5" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="openDeck5" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#takeCard5" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="leberkaes.GUIsources/BackRed.jpg" />
                            </image></ImageView>
-                        <ImageView fx:id="openDeck4" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" >
+                        <ImageView fx:id="openDeck4" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                         <image>
                               <Image url="leberkaes.GUIsources/BackRed.jpg" />
                            </image></ImageView>
-                        <ImageView fx:id="openDeck3" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" >
+                        <ImageView fx:id="openDeck3" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                         <image>
                               <Image url="leberkaes.GUIsources/BackRed.jpg" />
                            </image></ImageView>
-                        <ImageView fx:id="openDeck2" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" >
+                        <ImageView fx:id="openDeck2" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                         <image>
                               <Image url="leberkaes.GUIsources/BackRed.jpg" />
                            </image></ImageView>
-                        <ImageView fx:id="openDeck1" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" >
+                        <ImageView fx:id="openDeck1" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                         <image>
                               <Image url="leberkaes.GUIsources/BackRed.jpg" />
                            </image></ImageView>
-                        <ImageView fx:id="openDeck0" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" >
+                        <ImageView fx:id="openDeck0" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                         <image>
                               <Image url="leberkaes.GUIsources/BackRed.jpg" />
                            </image></ImageView>
-                        <ImageView fx:id="deckBack" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" >
+                        <ImageView fx:id="deckBack" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      		<image>
                               <Image url="leberkaes.GUIsources/BackGreen.jpg" />
                            </image></ImageView>
@@ -115,9 +113,9 @@
                            <image>
                               <Image url="leberkaes.GUIsources/icon-money-bag.png" />
                            </image></ImageView>
-						<ImageView fx:id="iconmeeple" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" >
+						<ImageView fx:id="iconmeeple" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11">
                         <image>
-                              <Image url="leberkaes.GUIsources/meeple.png"/>
+                              <Image url="leberkaes.GUIsources/meeple.png" />
                            </image>
                         </ImageView>
                          
