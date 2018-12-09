@@ -17,27 +17,63 @@
                      <font>
                         <Font size="15.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
                   </Text>
                   <TextField fx:id="txtName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="130.0" />
                   <Text fx:id="labechatport" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat-Port" wrappingWidth="93.89724731445312">
                      <font>
                         <Font size="15.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin>
                   </Text>
                   <TextField fx:id="txtChatPort" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="66.0" />
                   <Text fx:id="labelgameport" strokeType="OUTSIDE" strokeWidth="0.0" text="Game-Port" wrappingWidth="93.89724731445312">
                      <font>
                         <Font size="15.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin>
                   </Text>
                   <TextField fx:id="txtGamePort" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="66.0" />
                   <Text fx:id="labelipaddress" strokeType="OUTSIDE" strokeWidth="0.0" text="IP-Addresse" wrappingWidth="93.89724731445312">
                      <font>
                         <Font size="15.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin>
                   </Text>
                   <TextField fx:id="txtIpAddress" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="114.0" />
                   <Button fx:id="btnConnect" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleConnectClicked" text="Verbinden" />
+                  <Text fx:id="labelRoundText" strokeType="OUTSIDE" strokeWidth="0.0" text="Runde" wrappingWidth="67.88211059570312">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" top="5.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Text fx:id="labelRoundCount" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="21.490264892578125">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Text fx:id="labelRounds" strokeType="OUTSIDE" strokeWidth="0.0" text="/ 12" wrappingWidth="52.512725830078125">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Text>
                </children>
             </HBox>
          </top>
