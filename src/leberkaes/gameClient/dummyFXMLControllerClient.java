@@ -166,7 +166,7 @@ public class dummyFXMLControllerClient {
 	protected void handleCardClicked5(MouseEvent event) throws Exception {
 		
 		this.get_MvcCtrl().takeCard(5);
-		setCardsDisabled();
+		//setCardsDisabled();
 		
 		
 	}
@@ -175,7 +175,7 @@ public class dummyFXMLControllerClient {
 	protected void handleCardClicked4(MouseEvent event) throws Exception {
 		
 		this.get_MvcCtrl().takeCard(4);
-		setCardsDisabled();
+		//setCardsDisabled();
 		
 	}
 	
@@ -183,7 +183,7 @@ public class dummyFXMLControllerClient {
 	protected void handleCardClicked3(MouseEvent event) throws Exception {
 		
 		this.get_MvcCtrl().takeCard(3);
-		setCardsDisabled();
+		//setCardsDisabled();
 		
 	}
 	
@@ -191,7 +191,7 @@ public class dummyFXMLControllerClient {
 	protected void handleCardClicked2(MouseEvent event) throws Exception {
 		
 		this.get_MvcCtrl().takeCard(2);
-		setCardsDisabled();
+		//setCardsDisabled();
 		
 	}
 	
@@ -199,7 +199,7 @@ public class dummyFXMLControllerClient {
 	protected void handleCardClicked1(MouseEvent event) throws Exception {
 		
 		this.get_MvcCtrl().takeCard(1);
-		setCardsDisabled();
+		//setCardsDisabled();
 		
 	}
 	
@@ -207,7 +207,7 @@ public class dummyFXMLControllerClient {
 	protected void handleCardClicked0(MouseEvent event) throws Exception {
 		
 		this.get_MvcCtrl().takeCard(0);
-		setCardsDisabled();
+		//setCardsDisabled();
 		
 	}
 	
@@ -226,7 +226,7 @@ public class dummyFXMLControllerClient {
 			this.openDeck5.setImage(new Image(g.getOpenDeck()[5].getFrontImgURL()));
 			this.deckBack.setImage(new Image(g.getDeck().peek().getBackImgURL()));
 			
-			// setCardsEnabled();
+			setCardsEnabled();
 			
 			// set correct RoundCount
 			this.labelRoundCount.setText(String.valueOf(g.getRoundCount()));
