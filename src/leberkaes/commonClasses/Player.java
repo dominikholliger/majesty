@@ -108,7 +108,7 @@ public class Player implements Serializable {
 		int coinEffect;
 		int coinSum = 0;
 
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 7; i++) {
 			System.out.println(this.locations[i]);
 			cards = this.locations[i].getCardCount();
 
