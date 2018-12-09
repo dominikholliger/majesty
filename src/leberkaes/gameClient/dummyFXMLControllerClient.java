@@ -2,11 +2,13 @@ package leberkaes.gameClient;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -148,8 +150,16 @@ public class dummyFXMLControllerClient {
 		get_MvcCtrl().connectToServer();
 	}
 	
+	@FXML
+	protected void takeCard5(MouseEvent event) throws Exception {
 		
-	public void setGameBoard (GameBoard g){
+		this.get_MvcCtrl().takeCard(5);
+		
+	}
+	
+	
+		
+	public void setGameBoard(GameBoard g){
 		
 		
 		
@@ -165,8 +175,11 @@ public class dummyFXMLControllerClient {
 			// get Number of Players in Game
 			int i = g.getPlayers().size();
 			
+
+			
+			
 			//set Numbers for Player 1 and Player 2
-			if (i<2){
+			if (i>=2){
 				this.p1name.setText(g.getPlayers().get(0).getName());
 				this.player1points.setText(String.valueOf(g.getPlayers().get(0).getScore()));
 				this.p1meeple.setText(String.valueOf(g.getPlayers().get(0).getMeeple()));
@@ -197,7 +210,7 @@ public class dummyFXMLControllerClient {
 			}
 			
 			// set Numbers for Player 3
-			if (i<3){
+			if (i>=3){
 				this.p3name.setText(g.getPlayers().get(2).getName());
 				this.player3points.setText(String.valueOf(g.getPlayers().get(2).getScore()));
 				this.p3meeple.setText(String.valueOf(g.getPlayers().get(0).getMeeple()));
@@ -214,7 +227,7 @@ public class dummyFXMLControllerClient {
 			}
 			
 			// set Numbers for Player 4
-			if (i<4){
+			if (i>=4){
 				this.p4name.setText(g.getPlayers().get(3).getName());
 				this.player4points.setText(String.valueOf(g.getPlayers().get(3).getScore()));			
 				this.p4meeple.setText(String.valueOf(g.getPlayers().get(0).getMeeple()));
@@ -230,6 +243,8 @@ public class dummyFXMLControllerClient {
 				this.p4HOSPITAL.setText(String.valueOf(g.getPlayers().get(3).getLocations()[7].getCardCount()));
 				
 			}
+			
+			
 			
 		
 			
