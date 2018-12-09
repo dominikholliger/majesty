@@ -185,35 +185,35 @@
                            
                         <ImageView fx:id="loc1" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA1.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc2" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA2.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc3" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA3.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc4" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA4.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc5" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA5.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc6" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA6.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc7" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA7.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc8" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA8.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                        
                         <ImageView fx:id="iconp1" fitHeight="60.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">

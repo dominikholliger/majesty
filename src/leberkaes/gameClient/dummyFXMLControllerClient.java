@@ -67,6 +67,18 @@ public class dummyFXMLControllerClient {
 	@FXML public ImageView openDeck0;
 	@FXML public ImageView deckBack;
 	
+	// Location Cards
+	@FXML public ImageView loc1;
+	@FXML public ImageView loc2;
+	@FXML public ImageView loc3;
+	@FXML public ImageView loc4;
+	@FXML public ImageView loc5;
+	@FXML public ImageView loc6;
+	@FXML public ImageView loc7;
+	@FXML public ImageView loc8;
+
+	
+	
 	// Chat-Controls
 	@FXML public TextArea chatTextArea;
 	@FXML public TextArea txtChatMessage;
@@ -212,7 +224,6 @@ public class dummyFXMLControllerClient {
 	}
 	
 	
-	
 		
 	public void setGameBoard(GameBoard g){
 		
@@ -235,13 +246,63 @@ public class dummyFXMLControllerClient {
 			String act = g.getActivePlayer().getName();
 			if (this.p1name.getText().equals(act)){
 				this.p1name.setFill(Color.GREEN);
+				
+				this.p2name.setFill(Color.BLACK);
+				this.p3name.setFill(Color.BLACK);
+				this.p4name.setFill(Color.BLACK);
+
 			}
 			
 			if (this.p2name.getText().equals(act)){
 				this.p2name.setFill(Color.GREEN);
+				
+				this.p1name.setFill(Color.BLACK);
+				this.p3name.setFill(Color.BLACK);
+				this.p4name.setFill(Color.BLACK);
+
 			}
 			
+			if (this.p3name.getText().equals(act)){
+				this.p3name.setFill(Color.GREEN);
+				
+				this.p1name.setFill(Color.BLACK);
+				this.p2name.setFill(Color.BLACK);
+				this.p4name.setFill(Color.BLACK);
+
+			}
 			
+			if (this.p4name.getText().equals(act)){
+				this.p4name.setFill(Color.GREEN);
+				
+				this.p1name.setFill(Color.BLACK);
+				this.p2name.setFill(Color.BLACK);
+				this.p3name.setFill(Color.BLACK);
+
+			}
+			
+			//set Locations for A-Side
+			if (g.isbSide() == false){
+				this.loc1.setImage(new Image ("leberkaes.GUIsources/locationA/SideA1.jpg"));
+				this.loc2.setImage(new Image ("leberkaes.GUIsources/locationA/SideA2.jpg"));
+				this.loc3.setImage(new Image ("leberkaes.GUIsources/locationA/SideA3.jpg"));
+				this.loc4.setImage(new Image ("leberkaes.GUIsources/locationA/SideA4.jpg"));
+				this.loc5.setImage(new Image ("leberkaes.GUIsources/locationA/SideA5.jpg"));
+				this.loc6.setImage(new Image ("leberkaes.GUIsources/locationA/SideA6.jpg"));
+				this.loc7.setImage(new Image ("leberkaes.GUIsources/locationA/SideA7.jpg"));
+				this.loc8.setImage(new Image ("leberkaes.GUIsources/locationA/SideA8.jpg"));
+			}
+			
+			//set Locations for B-Side
+			if (g.isbSide() == true){
+				this.loc1.setImage(new Image ("leberkaes.GUIsources/locationB/SideB1.jpg"));
+				this.loc2.setImage(new Image ("leberkaes.GUIsources/locationB/SideB2.jpg"));
+				this.loc3.setImage(new Image ("leberkaes.GUIsources/locationB/SideB3.jpg"));
+				this.loc4.setImage(new Image ("leberkaes.GUIsources/locationB/SideB4.jpg"));
+				this.loc5.setImage(new Image ("leberkaes.GUIsources/locationB/SideB5.jpg"));
+				this.loc6.setImage(new Image ("leberkaes.GUIsources/locationB/SideB6.jpg"));
+				this.loc7.setImage(new Image ("leberkaes.GUIsources/locationB/SideB7.jpg"));
+				this.loc8.setImage(new Image ("leberkaes.GUIsources/locationB/SideB8.jpg"));
+			}
 			
 			// get Number of Players in Game
 			int i = g.getPlayers().size();

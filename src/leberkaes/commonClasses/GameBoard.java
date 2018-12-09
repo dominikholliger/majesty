@@ -21,7 +21,9 @@ public class GameBoard implements java.io.Serializable {
 	// Spiel
 	private int roundCount;
 	private boolean gameEnd;
-	private boolean bSide;
+	private boolean bSide = false;
+	
+
 	private boolean meeple;
 
 	// Karten
@@ -119,7 +121,7 @@ public class GameBoard implements java.io.Serializable {
 
 	}
 
-	// Letzte Punktevergabe für SPieler mit der Höchsten Anzahl Karten Pro Location
+	// Letzte Punktevergabe fï¿½r SPieler mit der Hï¿½chsten Anzahl Karten Pro Location
 	private void finishGame() {
 		this.gameEnd = true;
 		// Hï¿½chste Karte aus allen Locations finden
@@ -136,7 +138,7 @@ public class GameBoard implements java.io.Serializable {
 			highestScorePlayer.setScore(highestScorePlayer.getLocations()[i].getFinalCoinEffect());
 
 		}
-		// PUnkteabzug für jede Karte im Lazarett
+		// PUnkteabzug fï¿½r jede Karte im Lazarett
 		for (Player p : players) {
 			int count = p.getLocations()[7].getCardCount();
 			int effect = p.getLocations()[7].getFinalCoinEffect();
@@ -299,7 +301,7 @@ public class GameBoard implements java.io.Serializable {
 				+ "\n" + "Deck=\n" + deck + "\n" + "openDeck=\n" + Arrays.toString(openDeck);
 	}
 
-	/* Sonderkationen ausführen */
+	/* Sonderkationen ausfï¿½hren */
 	public void attack() {
 		int offense = this.getActivePlayer().getOffenseValue() + 1; // Plus 1 da Karte noch nicht gelegt wurde
 
@@ -331,6 +333,10 @@ public class GameBoard implements java.io.Serializable {
 
 	public ArrayList<Player> getPlayers() {
 		return players;
+	}
+	
+	public boolean isbSide() {
+		return bSide;
 	}
 
 }
