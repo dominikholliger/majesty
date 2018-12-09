@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
@@ -15,14 +14,14 @@
                   <Image url="leberkaes.GUIsources/majesty-start.jpg" />
                </image>
             </ImageView>
-            <TableView fx:id="highscoretable" layoutX="128.0" layoutY="58.0" prefHeight="281.0" prefWidth="369.0">
+            <TableView fx:id="highscoretable" focusTraversable="false" layoutX="128.0" layoutY="58.0" prefHeight="281.0" prefWidth="369.0">
               <columns>
                   <TableColumn fx:id="rankcolumn" prefWidth="64.0" text="Rang" />
                 <TableColumn fx:id="playernamecolumn" prefWidth="134.0" text="Spielername" />
                 <TableColumn fx:id="highscorecolumn" prefWidth="192.0" text="Highscore" />
               </columns>
             </TableView>
-            <Button fx:id="back" layoutX="497.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBackClicked" text="Zurück" />
+            <Button fx:id="back" defaultButton="true" layoutX="497.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBackClicked" text="Zurück" />
          </children>
       </AnchorPane>
    </children>

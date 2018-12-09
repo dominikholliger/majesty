@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 
 public class GameSettings_Controller extends Controller<GameSettings_Model, GameSettings_View> {
 
@@ -35,6 +36,8 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 	public CheckBox meepleOption;
 	@FXML
 	public CheckBox splitCardOption;
+	@FXML
+	public CheckBox BSideOption;
 
 	@FXML
 	public TextField txtChatPort;
@@ -93,6 +96,11 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 			if (config.getOption("Meeple").equals("true")) {
 				this.meepleOption.setSelected(true);
 			}
+			
+			if (config.getOption("Bside").equals("true")) {
+				this.BSideOption.setSelected(true);
+			}
+			
 		} catch (Exception e) {
 			logger.warning("No Configuration Found!!!");;
 		}
@@ -177,6 +185,11 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 			config.setLocalOption("Meeple", "true");
 		} else {
 			config.setLocalOption("Meeple", "false");
+		}
+		if (this.BSideOption.isSelected()) {
+			config.setLocalOption("BSide", "true");
+		} else {
+			config.setLocalOption("BSide", "false");
 		}
 		view.stop();
 	}

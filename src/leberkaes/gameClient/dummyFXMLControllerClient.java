@@ -1,5 +1,7 @@
 package leberkaes.gameClient;
 
+import javax.swing.SwingUtilities;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -80,8 +82,9 @@ public class dummyFXMLControllerClient {
 	
 	
 	// Chat-Controls
+	@FXML public Button btnSend;
 	@FXML public TextArea chatTextArea;
-	@FXML public TextArea txtChatMessage;
+	@FXML public TextField txtChatMessage;
 	
 	// Player-Controls
 	@FXML public GridPane grid;
@@ -227,6 +230,7 @@ public class dummyFXMLControllerClient {
 		
 	public void setGameBoard(GameBoard g){
 		
+
 		
 		// set images of open deck and card back of next card to be drawn from stack
 			this.openDeck0.setImage(new Image(g.getOpenDeck()[0].getFrontImgURL()));

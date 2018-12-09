@@ -5,6 +5,8 @@ import java.nio.charset.Charset;
 import java.util.Random;
 import java.util.logging.Logger;
 
+import javax.swing.SwingUtilities;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -65,6 +67,8 @@ public class GameClient_View extends View <GameClient_Model>{
 		}
 		Scene scene = new Scene(parent, 1100, 800);
 		scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+		
+
         return scene;
 	}
 	
