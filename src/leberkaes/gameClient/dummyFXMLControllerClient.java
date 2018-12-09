@@ -189,6 +189,8 @@ public class dummyFXMLControllerClient {
 		
 	}
 	
+	
+	
 		
 	public void setGameBoard(GameBoard g){
 		
