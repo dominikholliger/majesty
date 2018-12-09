@@ -54,27 +54,27 @@
                <children>
                   <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="146.0" prefWidth="799.0">
                      <children>
-                        <ImageView fx:id="openDeck5" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#takeCard5" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="openDeck5" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#handleCardClicked5" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="leberkaes.GUIsources/BackRed.jpg" />
                            </image></ImageView>
-                        <ImageView fx:id="openDeck4" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="openDeck4" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#handleCardClicked4" pickOnBounds="true" preserveRatio="true">
                         <image>
                               <Image url="leberkaes.GUIsources/BackRed.jpg" />
                            </image></ImageView>
-                        <ImageView fx:id="openDeck3" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="openDeck3" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#handleCardClicked3" pickOnBounds="true" preserveRatio="true">
                         <image>
                               <Image url="leberkaes.GUIsources/BackRed.jpg" />
                            </image></ImageView>
-                        <ImageView fx:id="openDeck2" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="openDeck2" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#handleCardClicked2" pickOnBounds="true" preserveRatio="true">
                         <image>
                               <Image url="leberkaes.GUIsources/BackRed.jpg" />
                            </image></ImageView>
-                        <ImageView fx:id="openDeck1" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="openDeck1" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#handleCardClicked1" pickOnBounds="true" preserveRatio="true">
                         <image>
                               <Image url="leberkaes.GUIsources/BackRed.jpg" />
                            </image></ImageView>
-                        <ImageView fx:id="openDeck0" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="openDeck0" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#handleCardClicked0" pickOnBounds="true" preserveRatio="true">
                         <image>
                               <Image url="leberkaes.GUIsources/BackRed.jpg" />
                            </image></ImageView>
@@ -153,30 +153,30 @@
                               <Image url="leberkaes.GUIsources/locationA/SideA8.jpg" />
                            </image></ImageView>
                        
-                        <ImageView fx:id="iconp1" fitHeight="80.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <ImageView fx:id="iconp1" fitHeight="80.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <image>
                               <Image url="leberkaes.GUIsources/knight.png" />
                            </image></ImageView>
-                        <ImageView fx:id="iconp2" fitHeight="80.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <ImageView fx:id="iconp2" fitHeight="80.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <image>
                               <Image url="leberkaes.GUIsources/soldier.png" />
                            </image></ImageView>
-                        <ImageView fx:id="iconp3" fitHeight="80.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <ImageView fx:id="iconp3" fitHeight="80.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <image>
                               <Image url="leberkaes.GUIsources/king.png" />
                            </image></ImageView>
-                        <ImageView fx:id="iconp4" fitHeight="80.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <ImageView fx:id="iconp4" fitHeight="80.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <image>
                               <Image url="leberkaes.GUIsources/queen.png" />
                            </image></ImageView>
                            
 			
-		<Text fx:id="p1name" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1" textAlignment="CENTER" wrappingWidth="70" GridPane.rowIndex="1" />
-		<Text fx:id="p2name" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2" textAlignment="CENTER" wrappingWidth="70" GridPane.rowIndex="2" />
-		<Text fx:id="p3name" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3" textAlignment="CENTER" wrappingWidth="70" GridPane.rowIndex="3" />
-		<Text fx:id="p4name" strokeType="OUTSIDE" strokeWidth="0.0" text="Player4" textAlignment="CENTER" wrappingWidth="70" GridPane.rowIndex="4" />
+		<Text fx:id="p1name" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="70" GridPane.rowIndex="1" />
+		<Text fx:id="p2name" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="70" GridPane.rowIndex="2" />
+		<Text fx:id="p3name" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="70" GridPane.rowIndex="3" />
+		<Text fx:id="p4name" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="70" GridPane.rowIndex="4" />
 		
-		<Text fx:id="player1points" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+		<Text fx:id="player1points" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -184,7 +184,7 @@
                         <Insets />
                      </GridPane.margin>
                   </Text>
-        <Text fx:id="player2points" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
+        <Text fx:id="player2points" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -192,7 +192,7 @@
                         <Insets />
                      </GridPane.margin>
                   </Text>
-		<Text fx:id="player3points" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+		<Text fx:id="player3points" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -200,7 +200,7 @@
                         <Insets />
                      </GridPane.margin>
                   </Text>
-		<Text fx:id="player4points" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="4">
+		<Text fx:id="player4points" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="4">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -210,7 +210,7 @@
                   </Text>
 
 	
-				<Text fx:id="p1GRAIN" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
+				<Text fx:id="p1GRAIN" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -218,7 +218,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p1BARELL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                <Text fx:id="p1BARELL" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -226,7 +226,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p1POTION" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                <Text fx:id="p1POTION" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -234,7 +234,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p1SHIELD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                <Text fx:id="p1SHIELD" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -242,7 +242,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-				<Text fx:id="p1SWORD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="1">
+				<Text fx:id="p1SWORD" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -250,7 +250,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p1CUTLERY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="1">
+                <Text fx:id="p1CUTLERY" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -258,7 +258,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-			   	<Text fx:id="p1KEY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="1">
+			   	<Text fx:id="p1KEY" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -266,7 +266,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p1HOSPITAL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="10" GridPane.rowIndex="1">
+                <Text fx:id="p1HOSPITAL" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="10" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -277,7 +277,7 @@
 
 
 
-				<Text fx:id="p2GRAIN" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2">
+				<Text fx:id="p2GRAIN" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -285,7 +285,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text fx:id="p2BARELL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                  <Text fx:id="p2BARELL" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -293,7 +293,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text fx:id="p2POTION" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                  <Text fx:id="p2POTION" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="2">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -301,7 +301,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text fx:id="p2SHIELD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                  <Text fx:id="p2SHIELD" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="2">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -309,7 +309,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text fx:id="p2SWORD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                  <Text fx:id="p2SWORD" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="2">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -317,7 +317,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text fx:id="p2CUTLERY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="2">
+                  <Text fx:id="p2CUTLERY" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="2">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -325,7 +325,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>  
-                  <Text fx:id="p2KEY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="2">
+                  <Text fx:id="p2KEY" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="2">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -333,7 +333,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text fx:id="p2HOSPITAL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="10" GridPane.rowIndex="2">
+                  <Text fx:id="p2HOSPITAL" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="10" GridPane.rowIndex="2">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -343,7 +343,7 @@
                   </Text>
                   
                   
-				<Text fx:id="p3GRAIN" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3">
+				<Text fx:id="p3GRAIN" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -351,7 +351,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p3BARELL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                <Text fx:id="p3BARELL" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="3">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -359,7 +359,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p3POTION" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                <Text fx:id="p3POTION" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="3">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -367,7 +367,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p3SHIELD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                <Text fx:id="p3SHIELD" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="3">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -375,7 +375,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p3SWORD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="3">
+                <Text fx:id="p3SWORD" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="3">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -383,7 +383,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-				<Text fx:id="p3CUTLERY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="3">
+				<Text fx:id="p3CUTLERY" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="3">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -391,7 +391,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-				<Text fx:id="p3KEY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="3">
+				<Text fx:id="p3KEY" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="3">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -399,7 +399,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p3HOSPITAL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="10" GridPane.rowIndex="3">
+                <Text fx:id="p3HOSPITAL" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="10" GridPane.rowIndex="3">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -410,7 +410,7 @@
 
 
 
-				<Text fx:id="p4GRAIN" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="4">
+				<Text fx:id="p4GRAIN" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="4">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -418,7 +418,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p4BARELL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                <Text fx:id="p4BARELL" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="4">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -426,7 +426,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p4POTION" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                <Text fx:id="p4POTION" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="4">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -434,7 +434,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p4SHIELD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                <Text fx:id="p4SHIELD" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="4">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -442,7 +442,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p4SWORD" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="4">
+                <Text fx:id="p4SWORD" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="4">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -450,7 +450,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-				<Text fx:id="p4CUTLERY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="4">
+				<Text fx:id="p4CUTLERY" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="4">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -458,7 +458,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-				<Text fx:id="p4KEY" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="4">
+				<Text fx:id="p4KEY" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="4">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -466,7 +466,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Text>
-                <Text fx:id="p4HOSPITAL" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="10" GridPane.rowIndex="4">
+                <Text fx:id="p4HOSPITAL" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="10" GridPane.rowIndex="4">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -476,7 +476,7 @@
                   </Text>
                         
 
-                  <Text fx:id="p1meeple" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="1">
+                  <Text fx:id="p1meeple" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="1">
                            <font>
                               <Font size="40.0" />
                            </font>
@@ -484,7 +484,7 @@
                               <Insets left="20.0" />
                            </GridPane.margin>
                         </Text>
-                  <Text fx:id="p2meeple" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="2">
+                  <Text fx:id="p2meeple" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="2">
                            <font>
                               <Font size="40.0" />
                            </font>
@@ -492,7 +492,7 @@
                               <Insets left="20.0" />
                            </GridPane.margin>
                         </Text>
-                  <Text fx:id="p3meeple" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="3">
+                  <Text fx:id="p3meeple" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="3">
                            <font>
                               <Font size="40.0" />
                            </font>
@@ -500,7 +500,7 @@
                               <Insets left="20.0" />
                            </GridPane.margin>
                         </Text>
-                  <Text fx:id="p4meeple" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="4">
+                  <Text fx:id="p4meeple" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="4">
                            <font>
                               <Font size="40.0" />
                            </font>

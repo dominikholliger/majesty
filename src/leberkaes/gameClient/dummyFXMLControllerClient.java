@@ -49,39 +49,36 @@ public class dummyFXMLControllerClient {
 	}
 
 	// Top controls (Connection)
-	@FXML
-	public TextField txtName;
-	@FXML
-	public TextField txtChatPort;
-	@FXML
-	public TextField txtGamePort;
-	@FXML
-	public TextField txtIpAddress;
-	@FXML
-	public Button btnConnect;
-	@FXML
-	public ImageView openDeck5;
-	@FXML
-	public ImageView openDeck4;
-	@FXML
-	public ImageView openDeck3;
-	@FXML
-	public ImageView openDeck2;
-	@FXML
-	public ImageView openDeck1;
-	@FXML
-	public ImageView openDeck0;
+	@FXML public TextField txtName;
+	@FXML public TextField txtChatPort;
+	@FXML public TextField txtGamePort;
+	@FXML public TextField txtIpAddress;
+	@FXML public Button btnConnect;
+	
+	// Deck Cards
+	@FXML public ImageView openDeck5;
+	@FXML public ImageView openDeck4;
+	@FXML public ImageView openDeck3;
+	@FXML public ImageView openDeck2;
+	@FXML public ImageView openDeck1;
+	@FXML public ImageView openDeck0;
 	@FXML public ImageView deckBack;
 	
+	// Chat-Controls
 	@FXML public TextArea chatTextArea;
 	@FXML public TextArea txtChatMessage;
 	
-
+	// Player-Controls
 	@FXML public GridPane grid;
 	@FXML public Text p1name;
 	@FXML public Text p2name;
 	@FXML public Text p3name;
 	@FXML public Text p4name;
+	
+	@FXML public ImageView iconp1; 
+	@FXML public ImageView iconp2;
+	@FXML public ImageView iconp3;
+	@FXML public ImageView iconp4;
 	
 	@FXML public Text player1points;
 	@FXML public Text player2points;
@@ -151,12 +148,46 @@ public class dummyFXMLControllerClient {
 	}
 	
 	@FXML
-	protected void takeCard5(MouseEvent event) throws Exception {
+	protected void handleCardClicked5(MouseEvent event) throws Exception {
 		
 		this.get_MvcCtrl().takeCard(5);
 		
 	}
 	
+	@FXML
+	protected void handleCardClicked4(MouseEvent event) throws Exception {
+		
+		this.get_MvcCtrl().takeCard(4);
+		
+	}
+	
+	@FXML
+	protected void handleCardClicked3(MouseEvent event) throws Exception {
+		
+		this.get_MvcCtrl().takeCard(3);
+		
+	}
+	
+	@FXML
+	protected void handleCardClicked2(MouseEvent event) throws Exception {
+		
+		this.get_MvcCtrl().takeCard(2);
+		
+	}
+	
+	@FXML
+	protected void handleCardClicked1(MouseEvent event) throws Exception {
+		
+		this.get_MvcCtrl().takeCard(1);
+		
+	}
+	
+	@FXML
+	protected void handleCardClicked0(MouseEvent event) throws Exception {
+		
+		this.get_MvcCtrl().takeCard(0);
+		
+	}
 	
 		
 	public void setGameBoard(GameBoard g){
@@ -183,6 +214,8 @@ public class dummyFXMLControllerClient {
 				this.p1name.setText(g.getPlayers().get(0).getName());
 				this.player1points.setText(String.valueOf(g.getPlayers().get(0).getScore()));
 				this.p1meeple.setText(String.valueOf(g.getPlayers().get(0).getMeeple()));
+				this.iconp1.setVisible(true);
+				this.iconp2.setVisible(true);
 
 				// get Number of LocationCards for Player 1
 				this.p1GRAIN.setText(String.valueOf(g.getPlayers().get(0).getLocations()[0].getCardCount()));
@@ -196,7 +229,7 @@ public class dummyFXMLControllerClient {
 
 				this.p2name.setText(g.getPlayers().get(1).getName());
 				this.player2points.setText(String.valueOf(g.getPlayers().get(1).getScore()));
-				this.p2meeple.setText(String.valueOf(g.getPlayers().get(0).getMeeple()));
+				this.p2meeple.setText(String.valueOf(g.getPlayers().get(1).getMeeple()));
 
 				// get Number of LocationCards for Player 2
 				this.p2GRAIN.setText(String.valueOf(g.getPlayers().get(1).getLocations()[0].getCardCount()));
@@ -213,7 +246,9 @@ public class dummyFXMLControllerClient {
 			if (i>=3){
 				this.p3name.setText(g.getPlayers().get(2).getName());
 				this.player3points.setText(String.valueOf(g.getPlayers().get(2).getScore()));
-				this.p3meeple.setText(String.valueOf(g.getPlayers().get(0).getMeeple()));
+				this.p3meeple.setText(String.valueOf(g.getPlayers().get(2).getMeeple()));
+				this.iconp3.setVisible(true);
+
 
 				// get Number of LocationCards for Player 3
 				this.p3GRAIN.setText(String.valueOf(g.getPlayers().get(2).getLocations()[0].getCardCount()));
@@ -230,7 +265,9 @@ public class dummyFXMLControllerClient {
 			if (i>=4){
 				this.p4name.setText(g.getPlayers().get(3).getName());
 				this.player4points.setText(String.valueOf(g.getPlayers().get(3).getScore()));			
-				this.p4meeple.setText(String.valueOf(g.getPlayers().get(0).getMeeple()));
+				this.p4meeple.setText(String.valueOf(g.getPlayers().get(3).getMeeple()));
+				this.iconp4.setVisible(true);
+
 
 				// get Number of LocationCards for Player 4
 				this.p4GRAIN.setText(String.valueOf(g.getPlayers().get(3).getLocations()[0].getCardCount()));
