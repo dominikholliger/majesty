@@ -54,6 +54,7 @@ public class dummyFXMLControllerClient {
 	@FXML public TextField txtGamePort;
 	@FXML public TextField txtIpAddress;
 	@FXML public Button btnConnect;
+	@FXML public Text labelRoundCount;
 	
 	// Deck Cards
 	@FXML public ImageView openDeck5;
@@ -189,6 +190,8 @@ public class dummyFXMLControllerClient {
 		
 	}
 	
+	
+	
 		
 	public void setGameBoard(GameBoard g){
 		
@@ -202,6 +205,9 @@ public class dummyFXMLControllerClient {
 			this.openDeck4.setImage(new Image(g.getOpenDeck()[4].getFrontImgURL()));
 			this.openDeck5.setImage(new Image(g.getOpenDeck()[5].getFrontImgURL()));
 			this.deckBack.setImage(new Image(g.getDeck().peek().getBackImgURL()));
+			
+		// set correct RoundCount
+			this.labelRoundCount.setText(String.valueOf(g.getRoundCount()));
 		
 			// get Number of Players in Game
 			int i = g.getPlayers().size();
