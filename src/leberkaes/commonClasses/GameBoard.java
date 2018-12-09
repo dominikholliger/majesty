@@ -12,13 +12,11 @@ import javafx.collections.ObservableList;
 import leberkaes.commonClasses.CharacterCard;
 import leberkaes.commonClasses.CardType.*;
 
-public class GameBoard implements java.io.Serializable  {
+public class GameBoard implements java.io.Serializable {
 	// Spieler
 	private static int activePlayerIndex;
 	private int playerCount;
 	private ArrayList<Player> players;
-
-	
 
 	// Spiel
 	private int roundCount;
@@ -30,8 +28,6 @@ public class GameBoard implements java.io.Serializable  {
 	private Stack<CharacterCard> greenCards = new Stack<CharacterCard>();
 	private Stack<CharacterCard> redCards = new Stack<CharacterCard>();
 	private Stack<CharacterCard> deck = new Stack<CharacterCard>();
-	
-	
 
 	private CharacterCard[] openDeck = new CharacterCard[6];
 
@@ -42,9 +38,8 @@ public class GameBoard implements java.io.Serializable  {
 		g.addPlayer("Dani");
 		g.addPlayer("Sebi");
 		g.setActivePlayerIndex(); // Spieler 1 am Zug
-		
+
 		System.out.println(g.getOpenDeck()[0].getBackImgURL().toString());
-		
 
 		System.out.println(g.players.get(GameBoard.activePlayerIndex));
 
@@ -53,7 +48,7 @@ public class GameBoard implements java.io.Serializable  {
 		System.out.println("Gespielte Karte:");
 		System.out.println(c);
 		g.playCard(c, location);
-		
+
 		System.out.println(g.players.get(GameBoard.activePlayerIndex));
 
 		/*
@@ -86,19 +81,22 @@ public class GameBoard implements java.io.Serializable  {
 		// createCards(back.RED, type.SWORD, null, 10);
 		// _________________________
 
-		
-		 createCards(back.GREEN, type.GRAIN, null, 7); createCards(back.GREEN,
-		 type.BARELL, null, 4); createCards(back.GREEN, type.KEY,null, 3);
-		 createCards(back.GREEN, type.SHIELD,null, 3); createCards(back.GREEN,
-		 type.POTION, null,3); createCards(back.GREEN, type.CUTLERY,null, 2);
-		 createCards(back.GREEN, type.SWORD,null, 2);
-		  
-		 createCards(back.RED, type.GRAIN,null, 2); createCards(back.RED,
-		 type.BARELL,null, 2); createCards(back.RED, type.KEY,null, 2);
-		 createCards(back.RED, type.SHIELD,null, 2); createCards(back.RED,
-		 type.POTION,null, 2); createCards(back.RED, type.CUTLERY,null, 2);
-		 createCards(back.RED, type.SWORD,null, 1);
-		 
+		createCards(back.GREEN, type.GRAIN, null, 7);
+		createCards(back.GREEN, type.BARELL, null, 4);
+		createCards(back.GREEN, type.KEY, null, 3);
+		createCards(back.GREEN, type.SHIELD, null, 3);
+		createCards(back.GREEN, type.POTION, null, 3);
+		createCards(back.GREEN, type.CUTLERY, null, 2);
+		createCards(back.GREEN, type.SWORD, null, 2);
+
+		createCards(back.RED, type.GRAIN, null, 2);
+		createCards(back.RED, type.BARELL, null, 2);
+		createCards(back.RED, type.KEY, null, 2);
+		createCards(back.RED, type.SHIELD, null, 2);
+		createCards(back.RED, type.POTION, null, 2);
+		createCards(back.RED, type.CUTLERY, null, 2);
+		createCards(back.RED, type.SWORD, null, 1);
+
 		// TODO createSplitCards();
 
 		createDeck();
@@ -121,6 +119,7 @@ public class GameBoard implements java.io.Serializable  {
 
 	}
 
+	// Letzte Punktevergabe für SPieler mit der Höchsten Anzahl Karten Pro Location
 	private void finishGame() {
 		this.gameEnd = true;
 		// Hï¿½chste Karte aus allen Locations finden
@@ -137,14 +136,13 @@ public class GameBoard implements java.io.Serializable  {
 			highestScorePlayer.setScore(highestScorePlayer.getLocations()[i].getFinalCoinEffect());
 
 		}
+		// PUnkteabzug für jede Karte im Lazarett
 		for (Player p : players) {
 			int count = p.getLocations()[7].getCardCount();
 			int effect = p.getLocations()[7].getFinalCoinEffect();
 			p.setScore(count * effect);
 		}
 	}
-
-	
 
 	public int getRoundCount() {
 		return this.roundCount;
@@ -301,6 +299,7 @@ public class GameBoard implements java.io.Serializable  {
 				+ "\n" + "Deck=\n" + deck + "\n" + "openDeck=\n" + Arrays.toString(openDeck);
 	}
 
+	/* Sonderkationen ausführen */
 	public void attack() {
 		int offense = this.getActivePlayer().getOffenseValue() + 1; // Plus 1 da Karte noch nicht gelegt wurde
 
@@ -325,11 +324,11 @@ public class GameBoard implements java.io.Serializable  {
 	public Player getActivePlayer() {
 		return this.players.get(GameBoard.activePlayerIndex);
 	}
-	
+
 	public Stack<CharacterCard> getDeck() {
 		return deck;
 	}
-	
+
 	public ArrayList<Player> getPlayers() {
 		return players;
 	}

@@ -15,7 +15,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.WindowEvent;
 import leberkaes.abstractClasses.Controller;
+import leberkaes.commonClasses.CharacterCard;
 import leberkaes.commonClasses.Configuration;
+import leberkaes.commonClasses.Location;
 import leberkaes.commonClasses.Translator;
 import leberkaes.gameServer.GameServer_View;
 import leberkaes.jat2.ServiceLocator;
@@ -155,8 +157,14 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 	}
 	
 	public void takeCard(int pos) {
-		this.model.getActGameBoard().takeCard(pos);
+		CharacterCard c = this.model.getActGameBoard().takeCard(pos);
 		
+		int l = this.model.getActGameBoard().getActivePlayer().getLocation(c);
+		this.model.getActGameBoard().playCard(c, l);
+		
+		this.model.getActGameBoard().setNextPlayerIndex();
+		this.model.sendGameBoardToServer(this.model.getActGameBoard());
+		view.get_Ctrl().setGameBoard(this.model.getActGameBoard());
 	}
 
 }

@@ -29,6 +29,7 @@ public class Game_ClientObjectCom {
 						GameBoard gameboard = (GameBoard) inStream.readObject();
 						System.out.println("Object received ------ GameBoard -------- = " + gameboard);
 						//hier muss send methode aufgerufen werden
+						model.broadcastGameBoard(gameboard);
 						
 					} catch (IOException | ClassNotFoundException e) {
 						// TODO Auto-generated catch block
