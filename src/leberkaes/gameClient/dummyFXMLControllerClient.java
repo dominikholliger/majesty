@@ -6,10 +6,12 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.ColorInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import leberkaes.appClasses.App_Controller;
@@ -127,13 +129,25 @@ public class dummyFXMLControllerClient {
 	@FXML public Text p4KEY;
 	@FXML public Text p4HOSPITAL;
 	
+	@FXML
+	protected void setCardsDisabled(){
+		this.openDeck0.setDisable(true);
+		this.openDeck1.setDisable(true);
+		this.openDeck2.setDisable(true);
+		this.openDeck3.setDisable(true);
+		this.openDeck4.setDisable(true);
+		this.openDeck5.setDisable(true);
+	}
 	
-
-
-	/**
-	 * Enable or disable the Connect button, based on the validity of the two text
-	 * controls
-	 */
+	@FXML
+	protected void setCardsEnabled(){
+		this.openDeck0.setDisable(false);
+		this.openDeck1.setDisable(false);
+		this.openDeck2.setDisable(false);
+		this.openDeck3.setDisable(false);
+		this.openDeck4.setDisable(false);
+		this.openDeck5.setDisable(false);
+	}
 
 	@FXML
 	protected void handleSendClicked(ActionEvent event) throws Exception {
@@ -152,6 +166,8 @@ public class dummyFXMLControllerClient {
 	protected void handleCardClicked5(MouseEvent event) throws Exception {
 		
 		this.get_MvcCtrl().takeCard(5);
+		setCardsDisabled();
+		
 		
 	}
 	
@@ -159,6 +175,7 @@ public class dummyFXMLControllerClient {
 	protected void handleCardClicked4(MouseEvent event) throws Exception {
 		
 		this.get_MvcCtrl().takeCard(4);
+		setCardsDisabled();
 		
 	}
 	
@@ -166,6 +183,7 @@ public class dummyFXMLControllerClient {
 	protected void handleCardClicked3(MouseEvent event) throws Exception {
 		
 		this.get_MvcCtrl().takeCard(3);
+		setCardsDisabled();
 		
 	}
 	
@@ -173,6 +191,7 @@ public class dummyFXMLControllerClient {
 	protected void handleCardClicked2(MouseEvent event) throws Exception {
 		
 		this.get_MvcCtrl().takeCard(2);
+		setCardsDisabled();
 		
 	}
 	
@@ -180,6 +199,7 @@ public class dummyFXMLControllerClient {
 	protected void handleCardClicked1(MouseEvent event) throws Exception {
 		
 		this.get_MvcCtrl().takeCard(1);
+		setCardsDisabled();
 		
 	}
 	
@@ -187,6 +207,7 @@ public class dummyFXMLControllerClient {
 	protected void handleCardClicked0(MouseEvent event) throws Exception {
 		
 		this.get_MvcCtrl().takeCard(0);
+		setCardsDisabled();
 		
 	}
 	
@@ -194,7 +215,6 @@ public class dummyFXMLControllerClient {
 	
 		
 	public void setGameBoard(GameBoard g){
-		
 		
 		
 		// set images of open deck and card back of next card to be drawn from stack
@@ -206,14 +226,25 @@ public class dummyFXMLControllerClient {
 			this.openDeck5.setImage(new Image(g.getOpenDeck()[5].getFrontImgURL()));
 			this.deckBack.setImage(new Image(g.getDeck().peek().getBackImgURL()));
 			
-		// set correct RoundCount
+			// setCardsEnabled();
+			
+			// set correct RoundCount
 			this.labelRoundCount.setText(String.valueOf(g.getRoundCount()));
 		
+			// show active player
+			String act = g.getActivePlayer().getName();
+			if (this.p1name.getText().equals(act)){
+				this.p1name.setFill(Color.GREEN);
+			}
+			
+			if (this.p2name.getText().equals(act)){
+				this.p2name.setFill(Color.GREEN);
+			}
+			
+			
+			
 			// get Number of Players in Game
 			int i = g.getPlayers().size();
-			
-
-			
 			
 			//set Numbers for Player 1 and Player 2
 			if (i>=2){
