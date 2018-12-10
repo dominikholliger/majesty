@@ -22,7 +22,6 @@ public class GameBoard implements java.io.Serializable {
 	private int roundCount;
 	private boolean gameEnd;
 	private boolean bSide = false;
-	
 
 	private boolean meeple;
 
@@ -33,41 +32,38 @@ public class GameBoard implements java.io.Serializable {
 
 	private CharacterCard[] openDeck = new CharacterCard[6];
 
-	// Dies ist eine TestMain-Methode
-	public static void main(String[] args) {
-
-		GameBoard g = new GameBoard(2);
-		g.addPlayer("Dani");
-		g.addPlayer("Sebi");
-		g.setActivePlayerIndex(); // Spieler 1 am Zug
-
-		System.out.println(g.getOpenDeck()[0].getBackImgURL().toString());
-
-		System.out.println(g.players.get(GameBoard.activePlayerIndex));
-
-		CharacterCard c = g.takeCard(2);
-		int location = g.players.get(GameBoard.activePlayerIndex).getLocation(c);
-		System.out.println("Gespielte Karte:");
-		System.out.println(c);
-		g.playCard(c, location);
-
-		System.out.println(g.players.get(GameBoard.activePlayerIndex));
-
-		/*
-		 * for (int i = 0; i<3; i ++) { g.playCard(c, 0); System.out.println(c);
-		 * System.out.println(g.players.get(GameBoard.activePlayerIndex));
-		 * 
-		 * g.nextPlayer();
-		 * System.out.println(g.players.get(GameBoard.activePlayerIndex)); c =
-		 * g.takeCard(4); System.out.println(c); g.playCard(c, 2); }
-		 * 
-		 * System.out.println(); System.out.println(g.players.get(0));
-		 * System.out.println(g.players.get(1));
-		 */
-
-	}
-	// __________________________________________
-
+	/*
+	 * // Dies ist eine TestMain-Methode public static void main(String[] args)
+	 * {
+	 * 
+	 * GameBoard g = new GameBoard(2); g.addPlayer("Dani"); g.addPlayer("Sebi");
+	 * g.setActivePlayerIndex(); // Spieler 1 am Zug
+	 * 
+	 * System.out.println(g.getOpenDeck()[0].getBackImgURL().toString());
+	 * 
+	 * System.out.println(g.players.get(GameBoard.activePlayerIndex));
+	 * 
+	 * CharacterCard c = g.takeCard(2); int location =
+	 * g.players.get(GameBoard.activePlayerIndex).getLocation(c);
+	 * System.out.println("Gespielte Karte:"); System.out.println(c);
+	 * g.playCard(c, location);
+	 * 
+	 * System.out.println(g.players.get(GameBoard.activePlayerIndex));
+	 * 
+	 * 
+	 * for (int i = 0; i<3; i ++) { g.playCard(c, 0); System.out.println(c);
+	 * System.out.println(g.players.get(GameBoard.activePlayerIndex));
+	 * 
+	 * g.nextPlayer();
+	 * System.out.println(g.players.get(GameBoard.activePlayerIndex)); c =
+	 * g.takeCard(4); System.out.println(c); g.playCard(c, 2); }
+	 * 
+	 * System.out.println(); System.out.println(g.players.get(0));
+	 * System.out.println(g.players.get(1));
+	 * 
+	 * 
+	 * } // __________________________________________
+	 */
 	public GameBoard(int numOfP) {
 
 		this.playerCount = numOfP;
@@ -98,8 +94,8 @@ public class GameBoard implements java.io.Serializable {
 		createCards(back.RED, type.POTION, null, 2);
 		createCards(back.RED, type.CUTLERY, null, 2);
 		createCards(back.RED, type.SWORD, null, 1);
-		
-		//Dummy Cards because of missing split cards;
+
+		// Dummy Cards because of missing split cards;
 		createCards(back.GREEN, type.GRAIN, null, 7);
 		createCards(back.GREEN, type.BARELL, null, 4);
 		createCards(back.GREEN, type.KEY, null, 3);
@@ -115,7 +111,7 @@ public class GameBoard implements java.io.Serializable {
 		createCards(back.RED, type.POTION, null, 2);
 		createCards(back.RED, type.CUTLERY, null, 2);
 		createCards(back.RED, type.SWORD, null, 1);
-		
+
 		// TODO createSplitCards();
 
 		createDeck();
@@ -130,21 +126,38 @@ public class GameBoard implements java.io.Serializable {
 
 	}
 
-	public void nextRound() {
-		this.roundCount++;
-		if (this.roundCount == 13) {
-			this.finishGame();
-		}
-
-	}
-
-	// Letzte Punktevergabe fï¿½r SPieler mit der Hï¿½chsten Anzahl Karten Pro Location
+	// Spielende
 	private void finishGame() {
 		this.gameEnd = true;
-		// Hï¿½chste Karte aus allen Locations finden
+
+		// 1. Punkteabzug fï¿½r jede Karte im Lazarett
+		for (Player p : players) {
+			int count = p.getLocations()[7].getCardCount();
+			int effect = p.getLocations()[7].getFinalCoinEffect();
+			p.setScore(count * effect);
+		}
+
+		// 2. Punnkte für unterschiedliche Personen
+
+		for (Player p : players) {
+			int diffCards = 0;
+
+			for (int i = 0; i < 7; i++) {
+
+				if (!p.getLocations()[i].getCharacters().isEmpty()) {
+					diffCards++;
+				}
+			}
+			int diffScore = diffCards * diffCards;
+			p.setScore(diffScore);
+		}
+
+		// 3. Mehrheitenwertung Hï¿½chste Karte aus allen Locations finden
 
 		for (int i = 0; i < 7; i++) {
-			Player highestScorePlayer = null; // unschï¿½n aber egal
+			Player highestScorePlayer = null; // Diese Methode hat einen Fehler
+												// (Kartengleichstand nicht
+												// berücksichtigt)
 			int tempScore = 0;
 
 			for (Player p : players) {
@@ -155,16 +168,7 @@ public class GameBoard implements java.io.Serializable {
 			highestScorePlayer.setScore(highestScorePlayer.getLocations()[i].getFinalCoinEffect());
 
 		}
-		// PUnkteabzug fï¿½r jede Karte im Lazarett
-		for (Player p : players) {
-			int count = p.getLocations()[7].getCardCount();
-			int effect = p.getLocations()[7].getFinalCoinEffect();
-			p.setScore(count * effect);
-		}
-	}
 
-	public int getRoundCount() {
-		return this.roundCount;
 	}
 
 	/** Diese Methode erzeugt die Spiel-Karten-Objekte **/
@@ -201,9 +205,9 @@ public class GameBoard implements java.io.Serializable {
 		case 2: {
 
 			/*
-			 * 2Spieler Nimm nur die obersten 6 Karten vom gruenen Stapel, leg sie in der
-			 * Tischmitte aus und packe dann den restlichen gruenen Stapel ungesehen zurueck
-			 * in die Schachtel.
+			 * 2Spieler Nimm nur die obersten 6 Karten vom gruenen Stapel, leg
+			 * sie in der Tischmitte aus und packe dann den restlichen gruenen
+			 * Stapel ungesehen zurueck in die Schachtel.
 			 */
 
 			for (int i = 0; i < 6; i++) {
@@ -217,8 +221,9 @@ public class GameBoard implements java.io.Serializable {
 
 		case 3: {
 			/*
-			 * 3Spieler Gibt die ersten 19 Karten ungesehen zurï¿½ck und lege dann die
-			 * ersten 6 Karten wie in unserem Beispiel in der Tischmitte aus.
+			 * 3Spieler Gibt die ersten 19 Karten ungesehen zurï¿½ck und lege
+			 * dann die ersten 6 Karten wie in unserem Beispiel in der
+			 * Tischmitte aus.
 			 */
 
 			break;
@@ -226,8 +231,9 @@ public class GameBoard implements java.io.Serializable {
 		}
 		case 4: {
 			/*
-			 * Gib die ersten 7 Karten ungesehen zurï¿½ck in die Schachtel. Dann lege die
-			 * ersten 6 Karten wie in unserem Beispiel in der Tischmitte aus.
+			 * Gib die ersten 7 Karten ungesehen zurï¿½ck in die Schachtel. Dann
+			 * lege die ersten 6 Karten wie in unserem Beispiel in der
+			 * Tischmitte aus.
 			 */
 			for (int i = 0; i <= 6; i++) {
 				greenCards.pop();
@@ -266,12 +272,34 @@ public class GameBoard implements java.io.Serializable {
 
 	}
 
+	public void nextRound() {
+
+		if (roundCount == 12) {
+			this.finishGame();
+		} else {
+			this.roundCount++;
+		}
+	}
+
 	// 1. Zugbewegung: Karte vom Opendeck entfernen
 	public CharacterCard takeCard(int i) {
 		CharacterCard c = openDeck[i];
 		this.updateOpenDeck(i);
 		return c;
 
+	}
+
+	// 1.1 Oberste Karte aus dem Stapel einfügen und die restlichen Karten
+	// aufschliessen.
+	public void updateOpenDeck(int i) {
+
+		for (int o = i; o > 0; o--) {
+			this.openDeck[o] = this.openDeck[o - 1];
+		}
+
+		if (!this.deck.isEmpty()) {
+			this.openDeck[0] = deck.pop();
+		}
 	}
 
 	// 2. Zugbewegung: Karte in Location legen
@@ -295,15 +323,25 @@ public class GameBoard implements java.io.Serializable {
 		// Karte Spielen
 		this.getActivePlayer().makeMove(c, location);
 
-	}
+		// Auswirkungen auf Andere Spieler;
 
-	public void updateOpenDeck(int i) {
+		// aktuell nur A-Seite
+		switch (type) {
+		case BARELL:
+			for (Player p : players) {
+				if (!p.getLocations()[0].getCharacters().isEmpty()) {
+					p.setScore(2);
+				}
+			}
 
-		for (int o = i; o > 0; o--) {
-			this.openDeck[o] = this.openDeck[o - 1];
+		case CUTLERY:
+			for (Player p : players) {
+				if (!p.getLocations()[1].getCharacters().isEmpty()) {
+					p.setScore(2);
+				}
+			}
+
 		}
-
-		this.openDeck[0] = deck.pop();
 
 	}
 
@@ -320,7 +358,8 @@ public class GameBoard implements java.io.Serializable {
 
 	/* Sonderkationen ausfï¿½hren */
 	public void attack() {
-		int offense = this.getActivePlayer().getOffenseValue() + 1; // Plus 1 da Karte noch nicht gelegt wurde
+		int offense = this.getActivePlayer().getOffenseValue() + 1;
+		// Plus 1 da Karte noch nicht gelegt wurde
 
 		for (Player p : players) {
 			if (!(players.indexOf(p) == this.getActivePlayerIndex())) {
@@ -351,9 +390,13 @@ public class GameBoard implements java.io.Serializable {
 	public ArrayList<Player> getPlayers() {
 		return players;
 	}
-	
+
 	public boolean isbSide() {
 		return bSide;
+	}
+
+	public int getRoundCount() {
+		return this.roundCount;
 	}
 
 }

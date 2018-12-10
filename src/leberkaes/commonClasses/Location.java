@@ -17,13 +17,12 @@ import java.util.Stack;
 
 import leberkaes.commonClasses.CardType.*;
 
-public class Location implements Serializable{
+public class Location implements Serializable {
 
 	private type type;
 	private Stack<CharacterCard> characters;
 	private HashMap<type, Integer> coinEffects = new HashMap<type, Integer>();
-	private int finalCoinEffect; //noch implementieren
-	
+	private int finalCoinEffect; // noch implementieren
 
 	public void setFinalCoinEffect(int finalCoinEffect) {
 		this.finalCoinEffect = finalCoinEffect;
@@ -35,8 +34,8 @@ public class Location implements Serializable{
 		this.addCardEffects(t);
 
 	}
-	
-	//Inizialisierung der Karten Effekte auf eigene Karten
+
+	// Inizialisierung der Karten Effekte auf eigene Karten
 	public void addCardEffects(type t) {
 
 		// A-Side
@@ -44,10 +43,12 @@ public class Location implements Serializable{
 		case GRAIN:
 			coinEffects.put(GRAIN, 2);
 			this.setFinalCoinEffect(10);
+
 			break;
 		case BARELL:
 			coinEffects.put(BARELL, 2);
 			this.setFinalCoinEffect(11);
+
 			// Auswirkung auf andere
 			break;
 
@@ -55,6 +56,7 @@ public class Location implements Serializable{
 			coinEffects.put(GRAIN, 2);
 			coinEffects.put(BARELL, 2);
 			coinEffects.put(POTION, 2);
+
 			this.setFinalCoinEffect(12);
 			break;
 
@@ -63,6 +65,7 @@ public class Location implements Serializable{
 			coinEffects.put(SWORD, 2);
 			coinEffects.put(CUTLERY, 2);
 			this.setFinalCoinEffect(13);
+
 			break;
 
 		case SWORD:
@@ -73,22 +76,24 @@ public class Location implements Serializable{
 		case CUTLERY:
 			coinEffects.put(CUTLERY, 4);
 			this.setFinalCoinEffect(15);
-			// Auswirkung auf andere
+
 			break;
 		case KEY:
 			coinEffects.put(KEY, 5);
 			this.setFinalCoinEffect(16);
+
 			// plus meeple
 			break;
 		case HOSPITAL:
 			this.setFinalCoinEffect(-1);
+
 			break;
 
 		}
 	}
-	
+
 	public int getCardCount() {
-		
+
 		int i = this.characters.size();
 		return i;
 
@@ -96,22 +101,20 @@ public class Location implements Serializable{
 
 	public int getCoinEffect(type t) {
 		int coins;
-			
+
 		if (this.coinEffects.containsKey(t)) {
-			coins	= this.coinEffects.get(t);
-			System.out.println("Hat EFFEKT");
-		}else {
+			coins = this.coinEffects.get(t);
+
+		} else {
 			coins = 0;
-			System.out.println("Hat KEIN EFFEKT");
+
 		}
 		return coins;
 	}
 
-
 	public Stack<CharacterCard> getCharacters() {
 		return characters;
 	}
-
 
 	public HashMap<type, Integer> getCoinEffects() {
 		return coinEffects;
@@ -132,12 +135,12 @@ public class Location implements Serializable{
 	public void addCard(CharacterCard c) {
 		this.characters.push(c);
 	}
-	
-	public CharacterCard removeCard(){
+
+	public CharacterCard removeCard() {
 		return this.characters.pop();
-		
+
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Location [type=" + type + ", building=" + characters + "]";
@@ -146,11 +149,5 @@ public class Location implements Serializable{
 	public int getFinalCoinEffect() {
 		return finalCoinEffect;
 	}
-
-
-
-
-
-
 
 }

@@ -13,9 +13,7 @@ import leberkaes.jat2.ServiceLocator;
 import leberkaes.jat2.ServiceLocator;
 
 public class Player implements Serializable {
-	
 
-	
 	private String name;
 	private boolean active; // Brauchts das?
 
@@ -37,7 +35,6 @@ public class Player implements Serializable {
 
 	}
 
-
 	private void createLocations() {
 
 		locations[0] = new Location(type.GRAIN);
@@ -54,11 +51,10 @@ public class Player implements Serializable {
 	// 3.Zugbewegung: Ev redundandt?
 	public void makeMove(CharacterCard c, int location) {
 
-		type t = c.getCardType1();
-
 		Location l = this.locations[location];
 		l.addCard(c);
-		this.score += this.getCoins(l);
+
+		this.setScore(this.getCoins(l));
 
 	}
 
@@ -77,15 +73,15 @@ public class Player implements Serializable {
 		boolean cardFound = false;
 		int i = 0;
 		while (!cardFound) {
-			
+
 			if (!locations[i].getCharacters().isEmpty()) {
 				CharacterCard c = locations[i].removeCard();
 				this.locations[7].addCard(c);
 				cardFound = true;
 			}
-			if(i==6){
+			if (i == 6) {
 				cardFound = true;
-				
+
 			}
 			i++;
 		}
@@ -109,7 +105,7 @@ public class Player implements Serializable {
 		int coinSum = 0;
 
 		for (int i = 0; i < 7; i++) {
-			System.out.println(this.locations[i]);
+
 			cards = this.locations[i].getCardCount();
 
 			type t = this.locations[i].getType();
@@ -138,19 +134,19 @@ public class Player implements Serializable {
 	public Location[] getLocations() {
 		return locations;
 	}
-	
+
 	public void setScore(int coins) {
 		this.score += coins;
 	}
-	
+
 	public int getScore() {
 		return score;
 	}
-	
+
 	public int getMeeple() {
 		return meeple;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
