@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -185,35 +186,35 @@
                            
                         <ImageView fx:id="loc1" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA1.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc2" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA2.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc3" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA3.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc4" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA4.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc5" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA5.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc6" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA6.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc7" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA7.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                         <ImageView fx:id="loc8" fitHeight="115.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10">
                            <image>
-                              <Image url="leberkaes.GUIsources/locationA/SideA8.jpg" />
+                              <Image url="leberkaes.GUIsources/BackBlue.jpg" />
                            </image></ImageView>
                        
                         <ImageView fx:id="iconp1" fitHeight="60.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -594,5 +595,36 @@
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER" />
          </right>
       </BorderPane>
+      <Pane fx:id="WinnerPane" layoutX="260.0" layoutY="176.0" prefHeight="330.0" prefWidth="576.0" visible="false">
+         <children>
+            <ImageView fitHeight="360.0" fitWidth="580.0" layoutX="-4.0" layoutY="-1.0" opacity="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="leberkaes.GUIsources/majesty-start.jpg" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="122.0" layoutX="97.0" layoutY="172.0" opacity="0.6" stroke="BLACK" strokeType="INSIDE" width="386.0" />
+            <Text fx:id="WinnerName" layoutX="309.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler" wrappingWidth="134.23800659179688">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="132.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gewinner:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="128.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="WinnerPoints" layoutX="309.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl" wrappingWidth="117.55563354492188">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="BackButton" layoutX="202.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" text="Zurück zum Start-Menü" />
+         </children>
+      </Pane>
    </children>
 </Pane>

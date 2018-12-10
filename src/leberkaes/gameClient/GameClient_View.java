@@ -55,7 +55,7 @@ public class GameClient_View extends View <GameClient_Model>{
         stage.setTitle(t.getString("program.menu.game"));
      
 	}
-	
+
 	protected Scene create_GUI() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
 		loader.setController(get_Ctrl());

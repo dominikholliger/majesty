@@ -20,10 +20,12 @@ public class GameBoard implements java.io.Serializable {
 
 	// Spiel
 	private int roundCount;
-	private boolean gameEnd;
+	private boolean gameEnd = false;
+
 	private boolean bSide = false;
 
-	private boolean meeple;
+	private boolean meeple = false;
+
 
 	// Karten
 	private Stack<CharacterCard> greenCards = new Stack<CharacterCard>();
@@ -137,7 +139,7 @@ public class GameBoard implements java.io.Serializable {
 			p.setScore(count * effect);
 		}
 
-		// 2. Punnkte für unterschiedliche Personen
+		// 2. Punnkte fï¿½r unterschiedliche Personen
 
 		for (Player p : players) {
 			int diffCards = 0;
@@ -157,7 +159,7 @@ public class GameBoard implements java.io.Serializable {
 		for (int i = 0; i < 7; i++) {
 			Player highestScorePlayer = null; // Diese Methode hat einen Fehler
 												// (Kartengleichstand nicht
-												// berücksichtigt)
+												// berï¿½cksichtigt)
 			int tempScore = 0;
 
 			for (Player p : players) {
@@ -289,7 +291,7 @@ public class GameBoard implements java.io.Serializable {
 
 	}
 
-	// 1.1 Oberste Karte aus dem Stapel einfügen und die restlichen Karten
+	// 1.1 Oberste Karte aus dem Stapel einfï¿½gen und die restlichen Karten
 	// aufschliessen.
 	public void updateOpenDeck(int i) {
 
@@ -393,6 +395,14 @@ public class GameBoard implements java.io.Serializable {
 
 	public boolean isbSide() {
 		return bSide;
+	}
+	
+	public boolean isMeeple() {
+		return meeple;
+	}
+	
+	public boolean isGameEnd() {
+		return gameEnd;
 	}
 
 	public int getRoundCount() {

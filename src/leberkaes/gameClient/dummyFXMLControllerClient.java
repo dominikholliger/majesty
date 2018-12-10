@@ -5,6 +5,7 @@ import javax.swing.SwingUtilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -13,11 +14,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import leberkaes.appClasses.App_Controller;
 import leberkaes.commonClasses.GameBoard;
+import leberkaes.gameClient.*;
 
 public class dummyFXMLControllerClient {
 
@@ -79,7 +82,11 @@ public class dummyFXMLControllerClient {
 	@FXML public ImageView loc7;
 	@FXML public ImageView loc8;
 
-	
+	// Winners Screen Controls
+	@FXML public Pane WinnerPane;
+	@FXML public Button BackButton;
+	@FXML public Text WinnerName;
+	@FXML public Text WinnerPoints;
 	
 	// Chat-Controls
 	@FXML public Button btnSend;
@@ -97,6 +104,7 @@ public class dummyFXMLControllerClient {
 	@FXML public ImageView iconp2;
 	@FXML public ImageView iconp3;
 	@FXML public ImageView iconp4;
+	@FXML public ImageView iconmeeple;
 	
 	@FXML public Text player1points;
 	@FXML public Text player2points;
@@ -163,6 +171,14 @@ public class dummyFXMLControllerClient {
 		this.openDeck4.setDisable(false);
 		this.openDeck5.setDisable(false);
 	}
+	
+	protected void setMeepleInvisible(){
+		this.iconmeeple.setVisible(false);
+		this.p1meeple.setVisible(false);
+		this.p2meeple.setVisible(false);
+		this.p3meeple.setVisible(false);
+		this.p4meeple.setVisible(false);
+	}
 
 	@FXML
 	protected void handleSendClicked(ActionEvent event) throws Exception {
@@ -175,6 +191,7 @@ public class dummyFXMLControllerClient {
 	@FXML
 	protected void handleConnectClicked(ActionEvent event) throws Exception {
 		get_MvcCtrl().connectToServer();
+		this.btnConnect.setDisable(true);
 	}
 	
 	@FXML
@@ -223,6 +240,13 @@ public class dummyFXMLControllerClient {
 		
 		this.get_MvcCtrl().takeCard(0);
 		//setCardsDisabled();
+		
+	}
+	
+	@FXML
+	protected void handleBackButtonClicked(MouseEvent event) throws Exception{
+		// TODO: Close Window if this Button is clicked 
+		
 		
 	}
 	
@@ -308,6 +332,11 @@ public class dummyFXMLControllerClient {
 				this.loc8.setImage(new Image ("leberkaes.GUIsources/locationB/SideB8.jpg"));
 			}
 			
+			//set Meeple invisible if Meeple-Option is false
+			if(g.isMeeple() == false){
+				this.setMeepleInvisible();
+			}
+			
 			// get Number of Players in Game
 			int i = g.getPlayers().size();
 			
@@ -383,7 +412,11 @@ public class dummyFXMLControllerClient {
 				
 			}
 			
-			
+		if (g.isGameEnd() == true){
+			this.WinnerPane.setVisible(true);
+			this.WinnerName.setText("who won?");
+			this.WinnerPoints.setText("what score?");
+		}
 			
 		
 			
