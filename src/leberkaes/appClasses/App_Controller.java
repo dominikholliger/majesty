@@ -2,6 +2,7 @@ package leberkaes.appClasses;
 
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.Controller;
+import leberkaes.commonClasses.Highscore;
 import leberkaes.gameClient.GameClient_Controller;
 import leberkaes.gameClient.GameClient_Model;
 import leberkaes.gameClient.GameClient_View;
@@ -13,6 +14,7 @@ import leberkaes.settingsWindows.GameSettings_Model;
 import leberkaes.settingsWindows.GameSettings_View;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -21,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 /**
@@ -33,6 +36,10 @@ import javafx.stage.WindowEvent;
 public class App_Controller extends Controller<App_Model, App_View> {
     ServiceLocator serviceLocator;
     private GameServer_View _GameServerViewInstance;
+    
+    @FXML public TableView highscoretable;
+    
+    
     public App_Controller(App_Model model, App_View view) {
         super(model, view);
         // D.Holliger:
@@ -95,6 +102,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		Scene scene = new Scene(parent, 600,400);
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
 		view.getStage().setScene(scene);
+		setHighscore(10);
 	}
 	
 	public void showHomeWindow(){
@@ -135,6 +143,17 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		startNewClientProcess();
 	}
 	
+	protected void setHighscore(int a){
+		HashMap<Integer, String> hmap = Highscore.getInstance().getHighscore();
+		
+		for ( HashMap.Entry<Integer, String> entry : hmap.entrySet()) {
+		    int key = entry.getKey();
+		    String name = entry.getValue();
+		    
+		    
+
+		}
+	}
 	
 	
 	
