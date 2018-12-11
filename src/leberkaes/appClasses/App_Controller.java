@@ -143,6 +143,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		startNewClientProcess();
 	}
 	
+	
 	protected void setHighscore(int a){
 		HashMap<Integer, String> hmap = Highscore.getInstance().getHighscore();
 		
