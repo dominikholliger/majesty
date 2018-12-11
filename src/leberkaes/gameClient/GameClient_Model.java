@@ -36,11 +36,11 @@ public class GameClient_Model extends Model{
 	private Socket socketObjectCom;
 	private ObjectInputStream inStream = null;
 	private String name;
-	
+
 	//Dummy Variable für Debugging
 	private GameBoard myDummyGameBoard;
 
-	
+
 	public void connect(String ipAddress, int Port, String name) {
 		logger.info("Connect");
 		this.name = name;
@@ -77,7 +77,7 @@ public class GameClient_Model extends Model{
 			logger.warning(e.toString());
 		}
 	}
-	
+
 	// Eine zweite Verbindung für die Objektübertragung
 	public void connectObjectCom(String ipAddress, int Port, String name) {
 		logger.info("Connect to ObjectCom Server");
@@ -92,7 +92,8 @@ public class GameClient_Model extends Model{
 						try {
 							inStream = new ObjectInputStream(socketObjectCom.getInputStream());
 							actGameBoard = (GameBoard) inStream.readObject();
-							tmpInt = tmpInt ++;
+							tmpInt = tmpInt + 1;
+							//System.out.println("-----TMP Observer---------"+tmpInt);
 							moveCounter.set(String.valueOf(tmpInt));
 							System.out.println("Object received ------ GameBoard -------- ");
 						} catch (IOException | ClassNotFoundException e) {
@@ -108,8 +109,8 @@ public class GameClient_Model extends Model{
 			logger.warning(e.toString());
 		}
 	}
-	
-	
+
+
 
 	public void disconnect() {
 		logger.info("Disconnect");
@@ -131,10 +132,10 @@ public class GameClient_Model extends Model{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	}	
-	
-	
+
+	}
+
+
 	public void sendMessage(String message) {
 		logger.info("Send message");
 		Message msg = new ChatMsg(name, message);
@@ -145,16 +146,16 @@ public class GameClient_Model extends Model{
 		logger.info("Receive message");
 		return newestMessage.get();
 	}
-	
-	
+
+
 	///Debug Methode um ein Lokales GameBoard zu erstellen.
 	public void createDummyBoard(int i) {
 		this.myDummyGameBoard = new GameBoard(i);
 		logger.info("DummyGameBoard erstellt f�r "+i+ " Spieler");
-		
+
 	}
-	
-	
+
+
 	protected boolean isValidPortNumber(String newValue) {
 		boolean valid = true;
 
