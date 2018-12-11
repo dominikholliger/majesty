@@ -20,7 +20,7 @@ public class GameBoard implements java.io.Serializable {
 
 	// Spiel
 	private int roundCount;
-	private boolean gameEnd = false;
+	private boolean gameEnd;
 
 	private boolean bSide = false;
 
@@ -302,6 +302,7 @@ public class GameBoard implements java.io.Serializable {
 		if (!this.deck.isEmpty()) {
 			this.openDeck[0] = deck.pop();
 		}
+		
 	}
 
 	// 2. Zugbewegung: Karte in Location legen

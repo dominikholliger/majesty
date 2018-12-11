@@ -16,6 +16,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -30,6 +32,8 @@ public class GameSettings_View extends View<GameSettings_Model>{
     //private GameSettings_Model model;
     private Stage stage;
     protected Parent parent;
+    
+ 
 
 
 
@@ -57,6 +61,7 @@ public class GameSettings_View extends View<GameSettings_Model>{
 		Scene scene = new Scene(parent, 600,400);
         scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
         return scene;
+        
 	}
     
  

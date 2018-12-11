@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 
 public class GameSettings_Controller extends Controller<GameSettings_Model, GameSettings_View> {
 
@@ -48,6 +49,14 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 	public Button btnCancel;
 	@FXML
 	public Button btnSave;
+	
+	@FXML
+	public ToggleButton toggleEnglish;
+	@FXML
+	public ToggleButton toggleDeutsch;
+	
+
+	
 
 	public GameSettings_Controller(GameSettings_Model model, GameSettings_View view) {
 		super(model, view);
@@ -100,6 +109,11 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 			if (config.getOption("Bside").equals("true")) {
 				this.BSideOption.setSelected(true);
 			}
+			
+			ToggleGroup toggle = new ToggleGroup();
+			this.toggleDeutsch.setToggleGroup(toggle);
+			this.toggleEnglish.setToggleGroup(toggle);
+			
 			
 		} catch (Exception e) {
 			logger.warning("No Configuration Found!!!");;

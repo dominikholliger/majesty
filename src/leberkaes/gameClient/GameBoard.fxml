@@ -23,7 +23,7 @@
                      </HBox.margin>
                   </Text>
                   <TextField fx:id="txtName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="130.0" />
-                  <Text fx:id="labechatport" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat-Port" wrappingWidth="93.89724731445312">
+                  <Text fx:id="labelchatport" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat-Port" wrappingWidth="93.89724731445312">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -603,7 +603,7 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="122.0" layoutX="97.0" layoutY="172.0" opacity="0.6" stroke="BLACK" strokeType="INSIDE" width="386.0" />
-            <Text fx:id="WinnerName" layoutX="309.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler" wrappingWidth="134.23800659179688">
+            <Text fx:id="WinnerName" layoutX="309.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="134.23800659179688">
                <font>
                   <Font size="24.0" />
                </font>
@@ -618,7 +618,7 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text fx:id="WinnerPoints" layoutX="309.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl" wrappingWidth="117.55563354492188">
+            <Text fx:id="WinnerPoints" layoutX="309.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="117.55563354492188">
                <font>
                   <Font size="24.0" />
                </font>
