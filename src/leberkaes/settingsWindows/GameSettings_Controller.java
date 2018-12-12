@@ -106,17 +106,23 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 				this.meepleOption.setSelected(true);
 			}
 			
-			if (config.getOption("Bside").equals("true")) {
+			if (config.getOption("BSide").equals("true")) {
 				this.BSideOption.setSelected(true);
 			}
-			
+		
 			ToggleGroup toggle = new ToggleGroup();
 			this.toggleDeutsch.setToggleGroup(toggle);
 			this.toggleEnglish.setToggleGroup(toggle);
 			
+			if (config.getOption("Language").equals("de")) {
+				this.toggleDeutsch.setSelected(true);
+			}
+			if (config.getOption("Language").equals("en")) {
+				this.toggleEnglish.setSelected(true);
+			}
 			
 		} catch (Exception e) {
-			logger.warning("No Configuration Found!!!");;
+			logger.warning("a configuration entry was not found!");;
 		}
 
 	}
@@ -191,7 +197,6 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 
 	@FXML
 	private void handleSaveButtonClicked() {
-
 		config.setLocalOption("GamePort", this.txtGamePort.getText());
 		config.setLocalOption("ChatPort", this.txtChatPort.getText());
 		config.setLocalOption("PlayerCount", this.txtPlayerCount.getText());
@@ -205,9 +210,14 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 		} else {
 			config.setLocalOption("BSide", "false");
 		}
+		if (this.toggleDeutsch.isSelected()) {
+			config.setLocalOption("Language", "de");
+		}
+		if (this.toggleEnglish.isSelected()) {
+			config.setLocalOption("Language", "en");
+		}
 		view.stop();
 	}
-
 	@FXML
 	private void handleCancelButtonClicked() {
 
