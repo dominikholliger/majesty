@@ -626,5 +626,10 @@
             <Button fx:id="BackButton" layoutX="202.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" text="Zurück zum Start-Menü" />
          </children>
       </Pane>
+      <Pane fx:id="splitPane" layoutX="500.0" layoutY="300.0">
+         <children>
+            <ImageView fx:id="splitCardImg" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
    </children>
 </Pane>
