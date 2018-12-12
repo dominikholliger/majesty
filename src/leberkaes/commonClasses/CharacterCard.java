@@ -36,9 +36,9 @@ public class CharacterCard implements Serializable {
 	}
 
 	public void setFrontImgURL(type t1, type t2) {
-			
-			//Standard Cards
-		try {
+
+		// Standard Cards
+		if (t2 == null) {
 			switch (t1) {
 			case GRAIN:
 				frontImgURL = new String("leberkaes.GUIsources/characters/Orange.jpg");
@@ -61,15 +61,84 @@ public class CharacterCard implements Serializable {
 			case KEY:
 				frontImgURL = new String("leberkaes.GUIsources/characters/Violet.jpg");
 				break;
-			case HOSPITAL:
-				// No CharacterCard of this type
+			default:
 				break;
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
+		} else {
+			if (t1 == type.POTION) {
+				switch (t2) {
+				case KEY:
+					frontImgURL = new String("leberkaes.GUIsources/characters/GreenViolet.jpg");
+					break;
+				case SHIELD:
+					frontImgURL = new String("leberkaes.GUIsources/characters/GreenBlue.jpg");
+					break;
+				case BARELL:
+					frontImgURL = new String("leberkaes.GUIsources/characters/GreenBrown.jpg");
+					break;
+				case CUTLERY:
+					frontImgURL = new String("leberkaes.GUIsources/characters/GreenYellow.jpg");
+					break;
+				default:
+					break;
+
+				}
+			}
+			if (t1 == type.GRAIN) {
+				switch (t2) {
+				case BARELL:
+					frontImgURL = new String("leberkaes.GUIsources/characters/OrangeBrown.jpg");
+					break;
+				default:
+					break;
+
+				}
+			}
+
+			if (t1 == type.SWORD) {
+				switch (t2) {
+				case GRAIN:
+					frontImgURL = new String("leberkaes.GUIsources/characters/RedOrange.jpg");
+					break;
+				case SHIELD:
+					frontImgURL = new String("leberkaes.GUIsources/characters/RedBlue.jpg");
+					break;
+				case BARELL:
+					frontImgURL = new String("leberkaes.GUIsources/characters/RedBrown.jpg");
+					break;
+				case CUTLERY:
+					frontImgURL = new String("leberkaes.GUIsources/characters/RedYellow.jpg");
+					break;
+				default:
+					break;
+
+				}
+			}
+			if (t1 == type.KEY) {
+				switch (t2) {
+
+				case SHIELD:
+					frontImgURL = new String("leberkaes.GUIsources/characters/VioletBlue.jpg");
+					break;
+				case CUTLERY:
+					frontImgURL = new String("leberkaes.GUIsources/characters/VioletYellow.jpg");
+					break;
+				default:
+					break;
+
+				}
+			}
+			if (t1 == type.CUTLERY) {
+				switch (t2) {
+				case SHIELD:
+					frontImgURL = new String("leberkaes.GUIsources/characters/YellowBlue.jpg");
+					break;
+				default:
+					break;
+				}
+			}
+		}
 	}
 
 	public void setBackImgURL(back b) {
@@ -91,17 +160,10 @@ public class CharacterCard implements Serializable {
 		return cardType1;
 	}
 
-	public void setCardType1(type cardType1) {
-		this.cardType1 = cardType1;
-	}
-
 	public type getCardType2() {
 		return cardType2;
 	}
 
-	public void setCardType2(type cardType2) {
-		this.cardType2 = cardType2;
-	}
 
 	@Override
 	public String toString() {
@@ -116,6 +178,5 @@ public class CharacterCard implements Serializable {
 	public String getFrontImgURL() {
 		return frontImgURL;
 	}
-
 
 }

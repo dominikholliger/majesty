@@ -26,7 +26,6 @@ public class GameBoard implements java.io.Serializable {
 
 	private boolean meeple = false;
 
-
 	// Karten
 	private Stack<CharacterCard> greenCards = new Stack<CharacterCard>();
 	private Stack<CharacterCard> redCards = new Stack<CharacterCard>();
@@ -35,8 +34,7 @@ public class GameBoard implements java.io.Serializable {
 	private CharacterCard[] openDeck = new CharacterCard[6];
 
 	/*
-	 * // Dies ist eine TestMain-Methode public static void main(String[] args)
-	 * {
+	 * // Dies ist eine TestMain-Methode public static void main(String[] args) {
 	 * 
 	 * GameBoard g = new GameBoard(2); g.addPlayer("Dani"); g.addPlayer("Sebi");
 	 * g.setActivePlayerIndex(); // Spieler 1 am Zug
@@ -47,8 +45,8 @@ public class GameBoard implements java.io.Serializable {
 	 * 
 	 * CharacterCard c = g.takeCard(2); int location =
 	 * g.players.get(GameBoard.activePlayerIndex).getLocation(c);
-	 * System.out.println("Gespielte Karte:"); System.out.println(c);
-	 * g.playCard(c, location);
+	 * System.out.println("Gespielte Karte:"); System.out.println(c); g.playCard(c,
+	 * location);
 	 * 
 	 * System.out.println(g.players.get(GameBoard.activePlayerIndex));
 	 * 
@@ -97,24 +95,27 @@ public class GameBoard implements java.io.Serializable {
 		createCards(back.RED, type.CUTLERY, null, 2);
 		createCards(back.RED, type.SWORD, null, 1);
 
-		// Dummy Cards because of missing split cards;
-		createCards(back.GREEN, type.GRAIN, null, 7);
-		createCards(back.GREEN, type.BARELL, null, 4);
-		createCards(back.GREEN, type.KEY, null, 3);
-		createCards(back.GREEN, type.SHIELD, null, 3);
-		createCards(back.GREEN, type.POTION, null, 3);
-		createCards(back.GREEN, type.CUTLERY, null, 2);
-		createCards(back.GREEN, type.SWORD, null, 2);
+		// createSplitCard;
 
-		createCards(back.RED, type.GRAIN, null, 2);
-		createCards(back.RED, type.BARELL, null, 2);
-		createCards(back.RED, type.KEY, null, 2);
-		createCards(back.RED, type.SHIELD, null, 2);
-		createCards(back.RED, type.POTION, null, 2);
-		createCards(back.RED, type.CUTLERY, null, 2);
-		createCards(back.RED, type.SWORD, null, 1);
+		createCards(back.GREEN, type.POTION, type.SHIELD, 1);
+		createCards(back.GREEN, type.POTION, type.BARELL, 1);
+		createCards(back.GREEN, type.GRAIN, type.BARELL, 2);
+		createCards(back.GREEN, type.SWORD, type.GRAIN, 1);
+		createCards(back.GREEN, type.SWORD, type.CUTLERY, 1);
+		createCards(back.GREEN, type.KEY, type.SHIELD, 1);
+		createCards(back.GREEN, type.KEY, type.CUTLERY, 1);
+		createCards(back.GREEN, type.CUTLERY, type.SHIELD, 1);
 
-		// TODO createSplitCards();
+		createCards(back.RED, type.POTION, type.SHIELD, 2);
+		createCards(back.RED, type.POTION, type.BARELL, 2);
+		createCards(back.RED, type.POTION, type.KEY, 1);
+		createCards(back.RED, type.POTION, type.CUTLERY, 1);
+		createCards(back.RED, type.GRAIN, type.BARELL, 1);
+		createCards(back.RED, type.SWORD, type.SHIELD, 2);
+		createCards(back.RED, type.SWORD, type.BARELL, 1);
+		createCards(back.RED, type.SWORD, type.GRAIN, 1);
+		createCards(back.RED, type.SWORD, type.CUTLERY, 2);
+		createCards(back.RED, type.KEY, type.CUTLERY, 1);
 
 		createDeck();
 		this.gameEnd = false;
@@ -175,17 +176,17 @@ public class GameBoard implements java.io.Serializable {
 
 	/** Diese Methode erzeugt die Spiel-Karten-Objekte **/
 	public void createCards(back b, type t1, type t2, int count) {
-
+		
 		if (b == back.GREEN) {
 			for (int i = 1; i <= count; i++) {
-				CharacterCard c = new CharacterCard(t1, null, b);
+				CharacterCard c = new CharacterCard(t1, t2, b);
 				this.greenCards.push(c);
 			}
 		}
 
 		if (b == back.RED) {
 			for (int i = 1; i <= count; i++) {
-				CharacterCard c = new CharacterCard(t1, null, b);
+				CharacterCard c = new CharacterCard(t1, t2, b);
 				this.redCards.push(c);
 			}
 		}
@@ -207,9 +208,9 @@ public class GameBoard implements java.io.Serializable {
 		case 2: {
 
 			/*
-			 * 2Spieler Nimm nur die obersten 6 Karten vom gruenen Stapel, leg
-			 * sie in der Tischmitte aus und packe dann den restlichen gruenen
-			 * Stapel ungesehen zurueck in die Schachtel.
+			 * 2Spieler Nimm nur die obersten 6 Karten vom gruenen Stapel, leg sie in der
+			 * Tischmitte aus und packe dann den restlichen gruenen Stapel ungesehen zurueck
+			 * in die Schachtel.
 			 */
 
 			for (int i = 0; i < 6; i++) {
@@ -223,9 +224,8 @@ public class GameBoard implements java.io.Serializable {
 
 		case 3: {
 			/*
-			 * 3Spieler Gibt die ersten 19 Karten ungesehen zur�ck und lege
-			 * dann die ersten 6 Karten wie in unserem Beispiel in der
-			 * Tischmitte aus.
+			 * 3Spieler Gibt die ersten 19 Karten ungesehen zur�ck und lege dann die
+			 * ersten 6 Karten wie in unserem Beispiel in der Tischmitte aus.
 			 */
 
 			break;
@@ -233,9 +233,8 @@ public class GameBoard implements java.io.Serializable {
 		}
 		case 4: {
 			/*
-			 * Gib die ersten 7 Karten ungesehen zur�ck in die Schachtel. Dann
-			 * lege die ersten 6 Karten wie in unserem Beispiel in der
-			 * Tischmitte aus.
+			 * Gib die ersten 7 Karten ungesehen zur�ck in die Schachtel. Dann lege die
+			 * ersten 6 Karten wie in unserem Beispiel in der Tischmitte aus.
 			 */
 			for (int i = 0; i <= 6; i++) {
 				greenCards.pop();
@@ -302,7 +301,7 @@ public class GameBoard implements java.io.Serializable {
 		if (!this.deck.isEmpty()) {
 			this.openDeck[0] = deck.pop();
 		}
-		
+
 	}
 
 	// 2. Zugbewegung: Karte in Location legen
@@ -397,11 +396,11 @@ public class GameBoard implements java.io.Serializable {
 	public boolean isbSide() {
 		return bSide;
 	}
-	
+
 	public boolean isMeeple() {
 		return meeple;
 	}
-	
+
 	public boolean isGameEnd() {
 		return gameEnd;
 	}
