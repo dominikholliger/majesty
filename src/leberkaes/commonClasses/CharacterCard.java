@@ -13,6 +13,8 @@ public class CharacterCard implements Serializable {
 
 	private type cardType1;
 	private type cardType2;
+	private type choosenCardType;
+
 	private back cardBack;
 	private String backImgURL;
 	private String frontImgURL;
@@ -178,5 +180,11 @@ public class CharacterCard implements Serializable {
 	public String getFrontImgURL() {
 		return frontImgURL;
 	}
+	public type getChoosenCardType() {
+		return choosenCardType;
+	}
 
+	public void setChoosenCardType(type choosenCardType) {
+		this.choosenCardType = choosenCardType;
+	}
 }

@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.WindowEvent;
 import leberkaes.abstractClasses.Controller;
+import leberkaes.commonClasses.CardType.type;
 import leberkaes.commonClasses.CharacterCard;
 import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Location;
@@ -158,6 +159,15 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 	
 	public void takeCard(int pos) {
 		CharacterCard c = this.model.getActGameBoard().takeCard(pos);
+		if(c.getCardType2() != null) {
+			//Splitt-Card
+			type choosen = view.get_Ctrl().showSplitDialog(c);
+			c.setChoosenCardType(choosen);
+		} else {
+			//Normale Karte
+			c.setChoosenCardType(c.getCardType1());
+		}
+		
 		
 		int l = this.model.getActGameBoard().getActivePlayer().getLocation(c);
 		this.model.getActGameBoard().playCard(c, l);

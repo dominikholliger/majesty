@@ -122,7 +122,7 @@ public class Player implements Serializable {
 	public int getLocation(CharacterCard c) {
 		int position = 0;
 		for (int i = 0; i < locations.length; i++) {
-			if ((c.getCardType1() == locations[i].getType()) || (c.getCardType2() == locations[i].getType())) {
+			if ((c.getChoosenCardType() == locations[i].getType())) {
 				position = i;
 			}
 

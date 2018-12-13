@@ -3,6 +3,7 @@ package leberkaes.gameClient;
 import javax.swing.SwingUtilities;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -19,6 +20,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import leberkaes.appClasses.App_Controller;
+import leberkaes.commonClasses.CardType.type;
+import leberkaes.commonClasses.CharacterCard;
 import leberkaes.commonClasses.GameBoard;
 import leberkaes.gameClient.*;
 
@@ -63,6 +66,12 @@ public class dummyFXMLControllerClient {
 	@FXML public Button btnConnect;
 	@FXML public Text labelRoundCount;
 
+	// Split Cards PopUp
+	@FXML public ImageView splitCardImg;
+	@FXML public Pane splitPane;
+	private int choosenType;
+	
+	
 	// Deck Cards
 	@FXML public ImageView openDeck5;
 	@FXML public ImageView openDeck4;
@@ -515,6 +524,49 @@ public class dummyFXMLControllerClient {
 
 
 
+	}
+	
+	public type showSplitDialog(CharacterCard c){
+		type t = null;
+		splitPane.setVisible(true);
+		splitCardImg.setImage(new Image(c.getFrontImgURL()));
+		splitCardImg.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 	double x=event.getX();
+		    	 	double y=event.getY();
+		    	 	choosenType =  helperSlopePosition(x,y);
+		    	 	notifyAll();
+		     }
+		});
+		try {
+			this.wait();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(choosenType == 1) {
+			t = c.getCardType1();
+		} else {
+			t = c.getCardType2();
+		}
+		//splitPane.setVisible(false);
+		return t;
+	}
+	
+	private int helperSlopePosition (double x, double y) {
+		// Steigung
+		final double m = -0.5;
+		// Achsenabschnitt
+		final double c = 97;
+		int result = 0;
+		if(x*m+c > y){
+			result = 1;
+		} else {
+			result = 2;
+		}
+		return result;
 	}
 
 
