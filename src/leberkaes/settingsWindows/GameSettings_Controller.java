@@ -176,7 +176,7 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 
 	@FXML
 	private void handleMeepleOption() {
-
+		
 	}
 
 	@FXML

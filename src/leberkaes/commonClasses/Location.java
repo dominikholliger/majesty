@@ -28,67 +28,118 @@ public class Location implements Serializable {
 		this.finalCoinEffect = finalCoinEffect;
 	}
 
-	public Location(type t) {
+	public Location(type t, boolean bSide) {
 		this.type = t;
 		this.characters = new Stack<CharacterCard>();
-		this.addCardEffects(t);
+		this.addCardEffects(t , bSide);
 
 	}
 
 	// Inizialisierung der Karten Effekte auf eigene Karten
-	public void addCardEffects(type t) {
+	public void addCardEffects(type t, boolean bSide) {
 
-		// A-Side
-		switch (t) {
-		case GRAIN:
-			coinEffects.put(GRAIN, 2);
-			this.setFinalCoinEffect(10);
+		if (bSide) {
+			//Bside
+			switch (t) {
+			case GRAIN:
+				coinEffects.put(GRAIN, 2);
+				this.setFinalCoinEffect(14);
+				// effekt auf andere
+				break;
+			case BARELL:
+				// Pro Grain + Barell 1 Meeple
 
-			break;
-		case BARELL:
-			coinEffects.put(BARELL, 2);
-			this.setFinalCoinEffect(11);
+				// Auswirkung auf andere
+				break;
 
-			// Auswirkung auf andere
-			break;
+			case POTION:
+				coinEffects.put(POTION, 3);
+				this.setFinalCoinEffect(12);
+				break;
 
-		case POTION:
-			coinEffects.put(GRAIN, 2);
-			coinEffects.put(BARELL, 2);
-			coinEffects.put(POTION, 2);
+			case SHIELD:
+				coinEffects.put(BARELL, 2);
+				coinEffects.put(POTION, 2);
+				coinEffects.put(SHIELD, 2);
+				this.setFinalCoinEffect(8);
+				// auswirkung auf andere
 
-			this.setFinalCoinEffect(12);
-			break;
+				break;
 
-		case SHIELD:
-			coinEffects.put(SHIELD, 2);
-			coinEffects.put(SWORD, 2);
-			coinEffects.put(CUTLERY, 2);
-			this.setFinalCoinEffect(13);
+			case SWORD:
+				coinEffects.put(SWORD, 3);
+				coinEffects.put(CUTLERY, 3);
+				coinEffects.put(KEY, 3);
+				this.setFinalCoinEffect(8);
 
-			break;
+				break;
+			case CUTLERY:
+				// Was soll das Symbol heissen?
+				this.setFinalCoinEffect(12);
 
-		case SWORD:
-			coinEffects.put(SWORD, 3);
-			this.setFinalCoinEffect(14);
+				break;
+			case KEY:
+				// Was soll das heissen?
+				this.setFinalCoinEffect(16);
 
-			break;
-		case CUTLERY:
-			coinEffects.put(CUTLERY, 4);
-			this.setFinalCoinEffect(15);
+				break;
+			case HOSPITAL:
+				this.setFinalCoinEffect(-10);
+				break;
+			}
+		} else {
 
-			break;
-		case KEY:
-			coinEffects.put(KEY, 5);
-			this.setFinalCoinEffect(16);
+			// A-Side
+			switch (t) {
+			case GRAIN:
+				coinEffects.put(GRAIN, 2);
+				this.setFinalCoinEffect(10);
 
-			// plus meeple
-			break;
-		case HOSPITAL:
-			this.setFinalCoinEffect(-1);
+				break;
+			case BARELL:
+				coinEffects.put(BARELL, 2);
+				this.setFinalCoinEffect(11);
 
-			break;
+				// Auswirkung auf andere
+				break;
 
+			case POTION:
+				coinEffects.put(GRAIN, 2);
+				coinEffects.put(BARELL, 2);
+				coinEffects.put(POTION, 2);
+
+				this.setFinalCoinEffect(12);
+				break;
+
+			case SHIELD:
+				coinEffects.put(SHIELD, 2);
+				coinEffects.put(SWORD, 2);
+				coinEffects.put(CUTLERY, 2);
+				this.setFinalCoinEffect(13);
+
+				break;
+
+			case SWORD:
+				coinEffects.put(SWORD, 3);
+				this.setFinalCoinEffect(14);
+
+				break;
+			case CUTLERY:
+				coinEffects.put(CUTLERY, 4);
+				this.setFinalCoinEffect(15);
+
+				break;
+			case KEY:
+				coinEffects.put(KEY, 5);
+				this.setFinalCoinEffect(16);
+
+				break;
+			case HOSPITAL:
+				this.setFinalCoinEffect(0);
+
+				break;
+
+			}
 		}
 	}
 

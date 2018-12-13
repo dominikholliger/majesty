@@ -25,26 +25,26 @@ public class Player implements Serializable {
 
 	private Location[] locations = new Location[8];
 
-	public Player(String n) {
+	public Player(String n,boolean bSide) {
 		this.name = n;
 		this.active = false;
 		this.score = 0;
 		this.meeple = 0;
 
-		this.createLocations();
+		this.createLocations(bSide);
 
 	}
 
-	private void createLocations() {
+	private void createLocations(boolean bSide) {
 
-		locations[0] = new Location(type.GRAIN);
-		locations[1] = new Location(type.BARELL);
-		locations[2] = new Location(type.POTION);
-		locations[3] = new Location(type.SHIELD);
-		locations[4] = new Location(type.SWORD);
-		locations[5] = new Location(type.CUTLERY);
-		locations[6] = new Location(type.KEY);
-		locations[7] = new Location(type.HOSPITAL);
+		locations[0] = new Location(type.GRAIN, bSide);
+		locations[1] = new Location(type.BARELL, bSide);
+		locations[2] = new Location(type.POTION, bSide);
+		locations[3] = new Location(type.SHIELD, bSide);
+		locations[4] = new Location(type.SWORD, bSide);
+		locations[5] = new Location(type.CUTLERY, bSide);
+		locations[6] = new Location(type.KEY, bSide);
+		locations[7] = new Location(type.HOSPITAL, bSide);
 
 	}
 
