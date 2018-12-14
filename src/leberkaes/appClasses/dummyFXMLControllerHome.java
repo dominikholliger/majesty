@@ -1,9 +1,15 @@
 package leberkaes.appClasses;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
 
 public class dummyFXMLControllerHome {
 
@@ -37,12 +43,14 @@ public class dummyFXMLControllerHome {
 
 	@FXML
 	private Button newGame;
+	@ FXML
+	private ImageView musicImage;
 
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
 		// Server Prozess starten
 		get_MvcCtrl().startNewServerProcess();
-		newGame.setText("Arsch");
+		newGame.setText("Server gestartet");
 	}
 	@FXML protected void handleSettingsButtonClicked(ActionEvent event) throws Exception{
 		// Einstellungen öffnen
@@ -62,6 +70,23 @@ public class dummyFXMLControllerHome {
 		// Client Prozess starten
 		get_MvcCtrl().showHomeWindow();
 	}
+	
+	@FXML protected void handleMusicButtonClicked(ActionEvent event) throws Exception{
+		@SuppressWarnings("deprecation")
+		String musicUrl = musicImage.getImage().impl_getUrl();
+		// Musik starten wenn Musik-Icon = quiet
+		if (musicUrl == "leberkaes.GUIsources/speaker-loud.png"){
+			App_View.stopmusic();
+			musicImage.setImage(new Image("leberkaes.GUIsources/speaker-quiet.png"));
+		}
+		// Musik stoppen wenn Musik-Icon = loud
+		if (musicUrl == "leberkaes.GUIsources/speaker-quiet.png"){
+			App_View.music();
+			musicImage.setImage(new Image("leberkaes.GUIsources/speaker-loud.png"));
+		}
+	}
+	
+	
 
 
 

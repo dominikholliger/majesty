@@ -28,6 +28,11 @@
                </graphic></Button>
             <Button fx:id="highscore" layoutX="408.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleHighscoreButtonClicked" prefHeight="44.0" prefWidth="95.0" text="Highscores" />
             <Button fx:id="enterGame" layoutX="243.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleEnterGameButtonClicked" prefHeight="44.0" prefWidth="114.0" text="Client starten" />
+            <ImageView fx:id="musicImage" fitHeight="54.0" fitWidth="54.0" onMouseClicked="#handleMusicButtonClicked" layoutX="532.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" >
+				<image>
+                        <Image url="leberkaes.GUIsources/speaker-loud.png" />
+                </image>  
+           </ImageView>       
          </children>
       </AnchorPane>
    </children>

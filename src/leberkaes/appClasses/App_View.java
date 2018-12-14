@@ -1,11 +1,21 @@
 package leberkaes.appClasses;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.logging.Logger;
 
+import sun.audio.AudioData;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+import sun.audio.ContinuousAudioDataStream;
+
 import leberkaes.jat2.ServiceLocator;
+import sun.audio.AudioData;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+import sun.audio.ContinuousAudioDataStream;
 import leberkaes.abstractClasses.View;
 import leberkaes.commonClasses.Translator;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +39,11 @@ import javafx.stage.Stage;
  */
 public class App_View extends View<App_Model> {
     
+	// Audio Controls
+	static AudioPlayer MGP = AudioPlayer.player;
+    static AudioStream BGM;
+    static AudioData MD;
+    
     /**
      * Per Lazy Loading die ein DummyKontroller Objekt erstellen und per Getter zur verfügung Stellen
      * wird für den FXML Loader gebraucht.
@@ -47,7 +62,7 @@ public class App_View extends View<App_Model> {
         super(stage, model);
         stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
         ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
-        
+        music();
     }
 
 	@Override
@@ -66,6 +81,7 @@ public class App_View extends View<App_Model> {
 		Scene scene = new Scene(parent, 600,400);
         scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
         return scene;
+        
 	}
 	
 	   protected void updateTexts() {
@@ -78,5 +94,29 @@ public class App_View extends View<App_Model> {
 		
 		
 	}
+   
+   
+   public static void music()
+	{
+	    ContinuousAudioDataStream loop = null;
+
+	    try
+	    {
+	        BGM = new AudioStream(new FileInputStream("leberkaes.GUIsources/medieval-music.mp3"));
+	        MD = BGM.getData();
+	        loop = new ContinuousAudioDataStream(MD);
+	    }
+	    catch(IOException e)
+	    {
+	        System.out.println("cant find the file");
+	    }
+
+	    MGP.start(loop);
+	}
+   
+   public static void stopmusic(){
+	   MGP.stop(BGM);
+	   
+   }
 		
 }
