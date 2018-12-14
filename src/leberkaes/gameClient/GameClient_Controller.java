@@ -176,5 +176,9 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		this.model.sendGameBoardToServer(this.model.getActGameBoard());
 		view.get_Ctrl().setGameBoard(this.model.getActGameBoard());
 	}
+	
+	public void closeView(){
+		view.stop();
+	}
 
 }

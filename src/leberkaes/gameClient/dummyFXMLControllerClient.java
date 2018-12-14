@@ -255,7 +255,7 @@ public class dummyFXMLControllerClient {
 	@FXML
 	protected void handleBackButtonClicked(MouseEvent event) throws Exception{
 		// TODO: Close Window if this Button is clicked 
-
+		this.get_MvcCtrl().closeView();
 
 	}
 
