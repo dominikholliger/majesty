@@ -91,7 +91,8 @@ public class Player implements Serializable {
 	public void reviveCard() {
 
 		// revive card if available and put in correct location
-		// Anders als beim physischen Brettspiel, wird die Karte automatisch in Ihre
+		// Anders als beim physischen Brettspiel, wird die Karte automatisch in
+		// Ihre
 		// Ursprüngliche Location zurückgestellt
 		if (!this.locations[7].getCharacters().isEmpty()) {
 			CharacterCard c = this.locations[7].removeCard();
@@ -114,7 +115,8 @@ public class Player implements Serializable {
 			coinEffect = l.getCoinEffect(t);
 
 			coinSum += cards * coinEffect;
-
+			ServiceLocator.getServiceLocator().getLogger()
+					.info(this.getName() + " erhält " + cards * coinEffect + " für " + cards +" "+ t + "-Karten");
 		}
 		return coinSum;
 

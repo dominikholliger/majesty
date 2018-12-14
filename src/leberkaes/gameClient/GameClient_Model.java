@@ -126,7 +126,7 @@ public class GameClient_Model extends Model{
 		logger.info("Sending GameBoard Object.....");
 		try {
 			ObjectOutputStream outputStream = new ObjectOutputStream(socketObjectCom.getOutputStream());
-			System.out.println("Object written ------ GameBoard -------- = " + gameboard);
+			System.out.println("Object written ------ GameBoard -------- = ");
 			outputStream.writeObject(gameboard);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

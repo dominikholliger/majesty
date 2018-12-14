@@ -18,13 +18,13 @@ public class CharacterCard implements Serializable {
 	private back cardBack;
 	private String backImgURL;
 	private String frontImgURL;
-	private boolean alive;
+	
 
 	public CharacterCard(type t, back b) {
 
 		this.cardType1 = t;
 		this.cardBack = b;
-		this.alive = true;
+		
 
 	}
 
@@ -32,7 +32,7 @@ public class CharacterCard implements Serializable {
 		this.cardType1 = t1;
 		this.cardType2 = t2;
 		this.cardBack = b;
-		this.alive = true;
+		
 		this.setFrontImgURL(t1, t2);
 		this.setBackImgURL(b);
 	}
@@ -147,9 +147,9 @@ public class CharacterCard implements Serializable {
 		try {
 			switch (b) {
 			case GREEN:
-				backImgURL = new String("leberkaes.GUIsources/characters/Back 1.jpg");
+				backImgURL = new String("leberkaes.GUIsources/BackGreen.jpg");
 			case RED:
-				backImgURL = new String("leberkaes.GUIsources/characters/Back 2.jpg");
+				backImgURL = new String("leberkaes.GUIsources/BackRed.jpg");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -169,8 +169,7 @@ public class CharacterCard implements Serializable {
 
 	@Override
 	public String toString() {
-		return "CharacterCard cardType1=" + cardType1 + " cardType2=" + cardType2 + " cardBack=" + cardBack + " alive="
-				+ alive + "\n";
+		return "CharacterCard cardType1=" + cardType1 + " cardType2=" + cardType2 + " cardBack=" + cardBack +  "\n";
 	}
 
 	public String getBackImgURL() {

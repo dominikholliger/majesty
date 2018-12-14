@@ -27,7 +27,7 @@ public class Game_ClientObjectCom {
 					try {
 						inStream = new ObjectInputStream(socket.getInputStream());
 						GameBoard gameboard = (GameBoard) inStream.readObject();
-						System.out.println("Object received ------ GameBoard -------- = " + gameboard);
+						System.out.println("Object received ------ GameBoard -------- = ");
 						//hier muss send methode aufgerufen werden
 						model.broadcastGameBoard(gameboard);
 						
@@ -60,7 +60,7 @@ public class Game_ClientObjectCom {
 	public void send(GameBoard gameboard) {
 		try {
 			outputStream = new ObjectOutputStream(socket.getOutputStream());
-			System.out.println("Object written ------ GameBoard -------- = " + gameboard);
+			System.out.println("Object written ------ GameBoard -------- = ");
 			outputStream.writeObject(gameboard);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
