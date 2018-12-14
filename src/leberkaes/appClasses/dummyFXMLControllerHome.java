@@ -43,8 +43,9 @@ public class dummyFXMLControllerHome {
 
 	@FXML
 	private Button newGame;
-	@ FXML
-	private ImageView musicImage;
+	
+	 @FXML public Button ButtonMusicOn;
+	 @FXML public Button ButtonMusicOff;
 
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
@@ -71,20 +72,21 @@ public class dummyFXMLControllerHome {
 		get_MvcCtrl().showHomeWindow();
 	}
 	
-	@FXML protected void handleMusicButtonClicked(ActionEvent event) throws Exception{
-		@SuppressWarnings("deprecation")
-		String musicUrl = musicImage.getImage().impl_getUrl();
-		// Musik starten wenn Musik-Icon = quiet
-		if (musicUrl == "leberkaes.GUIsources/speaker-loud.png"){
-			App_View.stopmusic();
-			musicImage.setImage(new Image("leberkaes.GUIsources/speaker-quiet.png"));
-		}
-		// Musik stoppen wenn Musik-Icon = loud
-		if (musicUrl == "leberkaes.GUIsources/speaker-quiet.png"){
-			App_View.music();
-			musicImage.setImage(new Image("leberkaes.GUIsources/speaker-loud.png"));
-		}
+	@FXML protected void handleMusicOffClicked(ActionEvent event) throws Exception{
+		// stop Music
+		App_View.stopmusic();
+		ButtonMusicOn.setVisible(false);
+		ButtonMusicOff.setVisible(true);
+		
 	}
+	
+	@FXML protected void handleMusicOnClicked(ActionEvent event) throws Exception{
+		// start Music
+		App_View.music();
+		ButtonMusicOn.setVisible(true);
+		ButtonMusicOff.setVisible(false);
+	}
+
 	
 	
 

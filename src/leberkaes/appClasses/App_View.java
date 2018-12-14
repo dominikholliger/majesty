@@ -1,7 +1,9 @@
 package leberkaes.appClasses;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.logging.Logger;
 
 import sun.audio.AudioData;
@@ -83,27 +85,25 @@ public class App_View extends View<App_Model> {
 	}
    
    
-   public static void music()
-	{
-	    ContinuousAudioDataStream loop = null;
+   public static AudioStream audios;
+	
+	public static void music(){
 
-	    try
-	    {
-	        BGM = new AudioStream(new FileInputStream("Leberkaes/src/leberkaes.GUIsources/medieval-music.mp3"));
-	        MD = BGM.getData();
-	        loop = new ContinuousAudioDataStream(MD);
-	    }
-	    catch(IOException e)
-	    {
-	        System.out.println("cant find the file");
-	    }
+		try{
+			InputStream in = new FileInputStream(new File("./src/leberkaes.GUIsources/MedievalMusicShort.wav"));
+			audios = new AudioStream(in);
+			AudioPlayer.player.start(audios);
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}      
 
-	    MGP.start(loop);
 	}
-   
-   public static void stopmusic(){
-	   MGP.stop(BGM);
-	   
-   }
+	
+
+	public static void stopmusic(){
+		AudioPlayer.player.stop(audios);
+
+	}
 		
 }
