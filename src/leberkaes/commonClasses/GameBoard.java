@@ -4,15 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Stack;
-import java.util.logging.Logger;
-
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import leberkaes.commonClasses.CharacterCard;
 import leberkaes.commonClasses.CardType.*;
 import leberkaes.jat2.ServiceLocator;
-
+/**Daniel Räber*/
 public class GameBoard implements java.io.Serializable {
 	// Spieler
 	private static int activePlayerIndex;
@@ -205,7 +200,7 @@ public class GameBoard implements java.io.Serializable {
 
 		// Karte in Location legen
 		this.getActivePlayer().makeMove(c, location);
-
+	
 		// Auswirkungen auf Andere Spieler;
 		this.otherPlayerEffect(type);
 
@@ -247,7 +242,6 @@ public class GameBoard implements java.io.Serializable {
 	public void attack() {
 		int offense = this.getActivePlayer().getOffenseValue() + 1;
 		// Plus 1 da Karte noch nicht gelegt wurde
-
 		for (Player p : players) {
 			if (!(players.indexOf(p) == this.getActivePlayerIndex())) {
 				int defense = p.getDefenseValue();
@@ -262,9 +256,7 @@ public class GameBoard implements java.io.Serializable {
 
 	/** Sonderaktionen Heilung ausfühern */
 	public void heal() {
-
 		this.getActivePlayer().reviveCard();
-
 	}
 
 	/**
@@ -353,7 +345,7 @@ public class GameBoard implements java.io.Serializable {
 		}
 	}
 
-	/** Wenn alle spieler an der reihe wahren, beginnt eine neue Runde */
+	/** Wenn alle spieler an der reihe waren, beginnt eine neue Runde */
 	public void nextRound() {
 		if (roundCount == 12) {
 			this.finishGame();

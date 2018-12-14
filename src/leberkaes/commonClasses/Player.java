@@ -2,37 +2,21 @@ package leberkaes.commonClasses;
 
 import java.io.Serializable;
 import java.util.Arrays;
-import java.util.Deque;
-import java.util.LinkedList;
-
-import com.sun.media.jfxmedia.logging.Logger;
-
-import leberkaes.commonClasses.*;
 import leberkaes.commonClasses.CardType.type;
 import leberkaes.jat2.ServiceLocator;
-import leberkaes.jat2.ServiceLocator;
-
+/**Daniel Räber*/
 public class Player implements Serializable {
 
 	private String name;
-	private boolean active; // Brauchts das?
-
 	private int score;
-
 	private int meeple;
-
-	private int offense;
-
 	private Location[] locations = new Location[8];
 
 	public Player(String n, boolean bSide) {
 		this.name = n;
-		this.active = false;
 		this.score = 0;
 		this.meeple = 0;
-
 		this.createLocations(bSide);
-
 	}
 
 	private void createLocations(boolean bSide) {
@@ -48,26 +32,36 @@ public class Player implements Serializable {
 
 	}
 
-	// 3.Zugbewegung: Ev redundandt?
+	/**
+	 * die Karte wird in die richtige Location gelegt und die Münzen werden
+	 * ausbezahlt
+	 */
 	public void makeMove(CharacterCard c, int location) {
 
 		Location l = this.locations[location];
 		l.addCard(c);
-
-		this.setScore(this.getCoins(l));
-
+		int moveCoins = this.getCoins(l);
+		this.setScore(moveCoins);
 	}
 
-	public int getDefenseValue() {
-		int defense = this.locations[3].getCardCount();
-		return defense;
+	/** Die Münzen werden verdient */// TODO
+	public int getCoins(Location l) {
+		int cards;
+		int coinEffect;
+		int coinSum = 0;
+
+		for (int i = 0; i < 7; i++) {
+			cards = this.locations[i].getCardCount();
+			type t = this.locations[i].getType();
+			coinEffect = l.getCoinEffect(t);
+			coinSum += cards * coinEffect;
+			ServiceLocator.getServiceLocator().getLogger()
+					.info(this.getName() + " erhält " + cards * coinEffect + " für " + cards + " " + t + "-Karten");
+		}
+		return coinSum;
 	}
 
-	public int getOffenseValue() {
-		int defense = this.locations[4].getCardCount();
-		return defense;
-	}
-
+	/** Sucht die erste Karte von Links und legt diese ins Lazarett */
 	public void killCard() {
 
 		boolean cardFound = false;
@@ -81,19 +75,19 @@ public class Player implements Serializable {
 			}
 			if (i == 6) {
 				cardFound = true;
-
 			}
 			i++;
 		}
-
 	}
 
+	/**
+	 * Die Obeste Karte im Lazarett wird wiederbelebt und an Ihre ursprünliche
+	 * Position gelegt. Dies ist anders als beim Original Brettspiel, macht aber
+	 * Sinn da wir die ursprüngliche Position kennen. Beim Brettspiel ist dies
+	 * nicht immer der Fall.
+	 */
 	public void reviveCard() {
-
-		// revive card if available and put in correct location
-		// Anders als beim physischen Brettspiel, wird die Karte automatisch in
-		// Ihre
-		// Ursprüngliche Location zurückgestellt
+		//
 		if (!this.locations[7].getCharacters().isEmpty()) {
 			CharacterCard c = this.locations[7].removeCard();
 			int loc = this.getLocation(c);
@@ -102,37 +96,28 @@ public class Player implements Serializable {
 
 	}
 
-	public int getCoins(Location l) {
-		int cards;
-		int coinEffect;
-		int coinSum = 0;
-
-		for (int i = 0; i < 7; i++) {
-
-			cards = this.locations[i].getCardCount();
-
-			type t = this.locations[i].getType();
-			coinEffect = l.getCoinEffect(t);
-
-			coinSum += cards * coinEffect;
-			ServiceLocator.getServiceLocator().getLogger()
-					.info(this.getName() + " erhält " + cards * coinEffect + " für " + cards +" "+ t + "-Karten");
-		}
-		return coinSum;
-
-	}
-
-	/** Split-Card Handling fehlt **/
+	/**
+	 * Die Methode prüft in welche Location die Karte gelegt wird und gitb die
+	 * Position zurück
+	 */
 	public int getLocation(CharacterCard c) {
 		int position = 0;
 		for (int i = 0; i < locations.length; i++) {
 			if ((c.getChoosenCardType() == locations[i].getType())) {
 				position = i;
 			}
-
 		}
 		return position;
+	}
 
+	public int getDefenseValue() {
+		int defense = this.locations[3].getCardCount();
+		return defense;
+	}
+
+	public int getOffenseValue() {
+		int defense = this.locations[4].getCardCount();
+		return defense;
 	}
 
 	public Location[] getLocations() {
@@ -157,8 +142,8 @@ public class Player implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Player [name=" + name + "\nactive=" + active + "\n score=" + score + "\n meeple=" + meeple
-				+ "\n defense=" + "\n offense=" + offense + "\n locations=" + Arrays.toString(locations) + "]";
+		return "Player [name=" + name + "\n score=" + score + "\n meeple=" + meeple + "\n defense=" + "\n locations="
+				+ Arrays.toString(locations) + "]";
 	}
 
 }

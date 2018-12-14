@@ -3,12 +3,7 @@ package leberkaes.commonClasses;
 import static leberkaes.commonClasses.CardType.*;
 
 import java.io.Serializable;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import leberkaes.commonClasses.CardType.*;
-import leberkaes.jat2.ServiceLocator;
-
+/**Daniel Räber*/
 public class CharacterCard implements Serializable {
 
 	private type cardType1;
@@ -24,8 +19,7 @@ public class CharacterCard implements Serializable {
 
 		this.cardType1 = t;
 		this.cardBack = b;
-		
-
+	
 	}
 
 	public CharacterCard(type t1, type t2, back b) {

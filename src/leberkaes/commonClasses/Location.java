@@ -7,16 +7,11 @@ import static leberkaes.commonClasses.CardType.type.KEY;
 import static leberkaes.commonClasses.CardType.type.POTION;
 import static leberkaes.commonClasses.CardType.type.SHIELD;
 import static leberkaes.commonClasses.CardType.type.SWORD;
-
 import java.io.Serializable;
-import java.util.Deque;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Stack;
-
 import leberkaes.commonClasses.CardType.*;
-
+/**Daniel Räber*/
 public class Location implements Serializable {
 
 	private type type;
@@ -94,13 +89,11 @@ public class Location implements Serializable {
 			case GRAIN:
 				coinEffects.put(GRAIN, 2);
 				this.setFinalCoinEffect(10);
-
 				break;
+				
 			case BARELL:
 				coinEffects.put(BARELL, 2);
 				this.setFinalCoinEffect(11);
-
-				// Auswirkung auf andere
 				break;
 
 			case POTION:
@@ -116,27 +109,25 @@ public class Location implements Serializable {
 				coinEffects.put(SWORD, 2);
 				coinEffects.put(CUTLERY, 2);
 				this.setFinalCoinEffect(13);
-
 				break;
 
 			case SWORD:
 				coinEffects.put(SWORD, 3);
 				this.setFinalCoinEffect(14);
-
 				break;
+				
 			case CUTLERY:
 				coinEffects.put(CUTLERY, 4);
 				this.setFinalCoinEffect(15);
-
 				break;
+				
 			case KEY:
 				coinEffects.put(KEY, 5);
 				this.setFinalCoinEffect(16);
-
 				break;
+				
 			case HOSPITAL:
 				this.setFinalCoinEffect(0);
-
 				break;
 
 			}
