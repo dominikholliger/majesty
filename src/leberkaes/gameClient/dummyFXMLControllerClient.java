@@ -205,8 +205,9 @@ public class dummyFXMLControllerClient {
 
 	@FXML
 	protected void handleCardClicked5(MouseEvent event) throws Exception {
-
-		this.get_MvcCtrl().takeCard(5);
+		double y = event.getY();
+		double x = event.getX();
+		this.get_MvcCtrl().takeCard(5, x, y);
 		//setCardsDisabled();
 
 
@@ -214,40 +215,45 @@ public class dummyFXMLControllerClient {
 
 	@FXML
 	protected void handleCardClicked4(MouseEvent event) throws Exception {
-
-		this.get_MvcCtrl().takeCard(4);
+		double y = event.getY();
+		double x = event.getX();
+		this.get_MvcCtrl().takeCard(4, x, y);
 		//setCardsDisabled();
 
 	}
 
 	@FXML
 	protected void handleCardClicked3(MouseEvent event) throws Exception {
-
-		this.get_MvcCtrl().takeCard(3);
+		double y = event.getY();
+		double x = event.getX();
+		this.get_MvcCtrl().takeCard(3, x, y);
 		//setCardsDisabled();
 
 	}
 
 	@FXML
 	protected void handleCardClicked2(MouseEvent event) throws Exception {
-
-		this.get_MvcCtrl().takeCard(2);
+		double y = event.getY();
+		double x = event.getX();
+		this.get_MvcCtrl().takeCard(2, x, y);
 		//setCardsDisabled();
 
 	}
 
 	@FXML
 	protected void handleCardClicked1(MouseEvent event) throws Exception {
-
-		this.get_MvcCtrl().takeCard(1);
+		double y = event.getY();
+		double x = event.getX();
+		this.get_MvcCtrl().takeCard(1, x, y);
 		//setCardsDisabled();
 
 	}
 
 	@FXML
 	protected void handleCardClicked0(MouseEvent event) throws Exception {
-
-		this.get_MvcCtrl().takeCard(0);
+		double y = event.getY();
+		double x = event.getX();
+		this.get_MvcCtrl().takeCard(0, x, y);
 		//setCardsDisabled();
 
 	}
@@ -524,49 +530,6 @@ public class dummyFXMLControllerClient {
 
 
 
-	}
-	
-	public type showSplitDialog(CharacterCard c){
-		type t = null;
-		splitPane.setVisible(true);
-		splitCardImg.setImage(new Image(c.getFrontImgURL()));
-		splitCardImg.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-		     @Override
-		     public void handle(MouseEvent event) {
-		    	 	double x=event.getX();
-		    	 	double y=event.getY();
-		    	 	choosenType =  helperSlopePosition(x,y);
-		    	 	notifyAll();
-		     }
-		});
-		try {
-			this.wait();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		if(choosenType == 1) {
-			t = c.getCardType1();
-		} else {
-			t = c.getCardType2();
-		}
-		//splitPane.setVisible(false);
-		return t;
-	}
-	
-	private int helperSlopePosition (double x, double y) {
-		// Steigung
-		final double m = -0.5;
-		// Achsenabschnitt
-		final double c = 97;
-		int result = 0;
-		if(x*m+c > y){
-			result = 1;
-		} else {
-			result = 2;
-		}
-		return result;
 	}
 
 

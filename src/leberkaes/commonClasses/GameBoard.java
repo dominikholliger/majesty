@@ -109,9 +109,9 @@ public class GameBoard implements java.io.Serializable {
 
 		createCards(back.RED, type.POTION, type.SHIELD, 2);
 		createCards(back.RED, type.POTION, type.BARELL, 2);
-		createCards(back.RED, type.POTION, type.KEY, 1);
+		createCards(back.RED, type.POTION, type.KEY, 1); //Fehler
 		createCards(back.RED, type.POTION, type.CUTLERY, 1);
-		createCards(back.RED, type.GRAIN, type.BARELL, 1);
+		createCards(back.RED, type.GRAIN, type.BARELL, 1); //FEHLER
 		createCards(back.RED, type.SWORD, type.SHIELD, 2);
 		createCards(back.RED, type.SWORD, type.BARELL, 1);
 		createCards(back.RED, type.SWORD, type.GRAIN, 1);

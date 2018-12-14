@@ -157,12 +157,17 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		view.get_Ctrl().btnConnect.setDisable(!(valid || valid2));
 	}
 	
-	public void takeCard(int pos) {
+	public void takeCard(int pos, double x, double y) {
 		CharacterCard c = this.model.getActGameBoard().takeCard(pos);
 		if(c.getCardType2() != null) {
 			//Splitt-Card
-			type choosen = view.get_Ctrl().showSplitDialog(c);
-			c.setChoosenCardType(choosen);
+			int choosenType = this.helperSlopePosition(x, y);
+			if(choosenType == 1) {
+				c.setChoosenCardType(c.getCardType1());
+			} else {
+				c.setChoosenCardType(c.getCardType2());
+			}
+			
 		} else {
 			//Normale Karte
 			c.setChoosenCardType(c.getCardType1());
@@ -175,6 +180,20 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		this.model.getActGameBoard().setNextPlayerIndex();
 		this.model.sendGameBoardToServer(this.model.getActGameBoard());
 		view.get_Ctrl().setGameBoard(this.model.getActGameBoard());
+	}
+	
+	private int helperSlopePosition (double x, double y) {
+		// Steigung
+		final double m = -0.5;
+		// Achsenabschnitt
+		final double c = 97;
+		int result = 0;
+		if(x*m+c > y){
+			result = 1;
+		} else {
+			result = 2;
+		}
+		return result;
 	}
 	
 	public void closeView(){

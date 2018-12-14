@@ -25,7 +25,7 @@ public class Player implements Serializable {
 
 	private Location[] locations = new Location[8];
 
-	public Player(String n,boolean bSide) {
+	public Player(String n, boolean bSide) {
 		this.name = n;
 		this.active = false;
 		this.score = 0;
@@ -91,6 +91,8 @@ public class Player implements Serializable {
 	public void reviveCard() {
 
 		// revive card if available and put in correct location
+		// Anders als beim physischen Brettspiel, wird die Karte automatisch in Ihre
+		// Ursprüngliche Location zurückgestellt
 		if (!this.locations[7].getCharacters().isEmpty()) {
 			CharacterCard c = this.locations[7].removeCard();
 			int loc = this.getLocation(c);
