@@ -151,7 +151,7 @@ public class GameBoard implements java.io.Serializable {
 			}
 		}
 
-		// 2. Punnkte f�r unterschiedliche Personen
+		// 2. Punkte für unterschiedliche Personen
 
 		for (Player p : players) {
 			int diffCards = 0;
@@ -166,7 +166,7 @@ public class GameBoard implements java.io.Serializable {
 			p.setScore(diffScore);
 		}
 
-		// 3. Mehrheitenwertung H�chste Anzahl Karten aus allen Locations
+		// 3. Mehrheitenwertung Höchste Anzahl Karten aus allen Locations
 		// finden
 
 		for (int i = 0; i < 8; i++) {
@@ -306,7 +306,7 @@ public class GameBoard implements java.io.Serializable {
 
 	}
 
-	// 1.1 Oberste Karte aus dem Stapel einf�gen und die restlichen Karten
+	// 1.1 Oberste Karte aus dem Stapel einfügen und die restlichen Karten
 	// aufschliessen.
 	public void updateOpenDeck(int i) {
 
@@ -326,7 +326,7 @@ public class GameBoard implements java.io.Serializable {
 	 **/
 	public void playCard(CharacterCard c, int location) {
 
-		// Sonderaktion ausf�hren
+		// Sonderaktion ausführen
 		type type = this.getActivePlayer().getLocations()[location].getType();
 		switch (type) {
 		case SWORD:
@@ -377,7 +377,7 @@ public class GameBoard implements java.io.Serializable {
 				+ "\n" + "Deck=\n" + deck + "\n" + "openDeck=\n" + Arrays.toString(openDeck);
 	}
 
-	/* Sonderkationen ausf�hren */
+	/* Sonderaktionen ausführen */
 	public void attack() {
 		int offense = this.getActivePlayer().getOffenseValue() + 1;
 		// Plus 1 da Karte noch nicht gelegt wurde

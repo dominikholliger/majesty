@@ -208,7 +208,7 @@ public class dummyFXMLControllerClient {
 		double y = event.getY();
 		double x = event.getX();
 		this.get_MvcCtrl().takeCard(5, x, y);
-		//setCardsDisabled();
+		
 
 
 	}
@@ -218,7 +218,7 @@ public class dummyFXMLControllerClient {
 		double y = event.getY();
 		double x = event.getX();
 		this.get_MvcCtrl().takeCard(4, x, y);
-		//setCardsDisabled();
+		
 
 	}
 
@@ -227,7 +227,7 @@ public class dummyFXMLControllerClient {
 		double y = event.getY();
 		double x = event.getX();
 		this.get_MvcCtrl().takeCard(3, x, y);
-		//setCardsDisabled();
+		
 
 	}
 
@@ -236,7 +236,6 @@ public class dummyFXMLControllerClient {
 		double y = event.getY();
 		double x = event.getX();
 		this.get_MvcCtrl().takeCard(2, x, y);
-		//setCardsDisabled();
 
 	}
 
@@ -245,7 +244,6 @@ public class dummyFXMLControllerClient {
 		double y = event.getY();
 		double x = event.getX();
 		this.get_MvcCtrl().takeCard(1, x, y);
-		//setCardsDisabled();
 
 	}
 
@@ -254,7 +252,6 @@ public class dummyFXMLControllerClient {
 		double y = event.getY();
 		double x = event.getX();
 		this.get_MvcCtrl().takeCard(0, x, y);
-		//setCardsDisabled();
 
 	}
 
@@ -262,7 +259,6 @@ public class dummyFXMLControllerClient {
 	protected void handleBackButtonClicked(MouseEvent event) throws Exception{
 		// TODO: Close Window if this Button is clicked 
 		this.get_MvcCtrl().closeView();
-
 	}
 
 
@@ -291,6 +287,37 @@ public class dummyFXMLControllerClient {
 
 
 	public void setGameBoard(GameBoard g){
+		
+		if (g.isGameEnd() == true){
+			String winner = "";
+			int score;
+			int j = g.getPlayers().size();
+			score = this.getWinningScore(j);
+
+			if (j>=2){
+				if (score == Integer.parseInt(this.player1points.getText())) {
+					winner = this.p1name.getText();
+				}
+				if (score == Integer.parseInt(this.player2points.getText())) {
+					winner += " " + this.p2name.getText();
+				}
+			}
+
+			if (j == 4){
+				if (score == Integer.parseInt(this.player3points.getText())) {
+					winner += " " + this.p3name.getText();
+				}
+				if (score == Integer.parseInt(this.player4points.getText())) {
+					winner += " " + this.p4name.getText();
+				}
+			}
+
+			this.WinnerPane.setVisible(true);
+			this.WinnerName.setText(winner);
+			this.WinnerPoints.setText(String.valueOf(score));
+			this.BackButton.setDisable(false);
+			
+		}
 
 		//set cardback if not empty
 		if (g.getDeck().isEmpty()==true){
@@ -496,37 +523,10 @@ public class dummyFXMLControllerClient {
 
 		}
 
-		if (g.isGameEnd() == true){
-
-			String winner = "";
-			int score;
-			int j = g.getPlayers().size();
-			score = this.getWinningScore(j);
-
-			if (j>=2){
-				if (score == Integer.parseInt(this.player1points.getText())) {
-					winner = this.p1name.getText();
-				}
-				if (score == Integer.parseInt(this.player2points.getText())) {
-					winner += " " + this.p2name.getText();
-				}
-			}
-
-			if (j == 4){
-				if (score == Integer.parseInt(this.player3points.getText())) {
-					winner += " " + this.p3name.getText();
-				}
-				if (score == Integer.parseInt(this.player4points.getText())) {
-					winner += " " + this.p4name.getText();
-				}
-			}
-
-			this.WinnerPane.setVisible(true);
-			this.WinnerName.setText(winner);
-			this.WinnerPoints.setText(String.valueOf(score));
+		
 
 
-		}
+		
 
 
 

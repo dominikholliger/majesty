@@ -2,8 +2,6 @@ package leberkaes.appClasses;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Locale;
 import java.util.logging.Logger;
 
 import sun.audio.AudioData;
@@ -12,22 +10,11 @@ import sun.audio.AudioStream;
 import sun.audio.ContinuousAudioDataStream;
 
 import leberkaes.jat2.ServiceLocator;
-import sun.audio.AudioData;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
-import sun.audio.ContinuousAudioDataStream;
 import leberkaes.abstractClasses.View;
 import leberkaes.commonClasses.Translator;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
@@ -102,7 +89,7 @@ public class App_View extends View<App_Model> {
 
 	    try
 	    {
-	        BGM = new AudioStream(new FileInputStream("leberkaes.GUIsources/medieval-music.mp3"));
+	        BGM = new AudioStream(new FileInputStream("Leberkaes/src/leberkaes.GUIsources/medieval-music.mp3"));
 	        MD = BGM.getData();
 	        loop = new ContinuousAudioDataStream(MD);
 	    }
