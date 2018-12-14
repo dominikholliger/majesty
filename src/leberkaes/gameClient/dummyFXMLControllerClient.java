@@ -201,6 +201,10 @@ public class dummyFXMLControllerClient {
 	protected void handleConnectClicked(ActionEvent event) throws Exception {
 		get_MvcCtrl().connectToServer();
 		this.btnConnect.setDisable(true);
+		this.txtName.setDisable(true);
+		this.txtChatPort.setDisable(true);
+		this.txtGamePort.setDisable(true);
+		this.txtIpAddress.setDisable(true);
 	}
 
 	@FXML
@@ -288,36 +292,6 @@ public class dummyFXMLControllerClient {
 
 	public void setGameBoard(GameBoard g){
 		
-		if (g.isGameEnd() == true){
-			String winner = "";
-			int score;
-			int j = g.getPlayers().size();
-			score = this.getWinningScore(j);
-
-			if (j>=2){
-				if (score == Integer.parseInt(this.player1points.getText())) {
-					winner = this.p1name.getText();
-				}
-				if (score == Integer.parseInt(this.player2points.getText())) {
-					winner += " " + this.p2name.getText();
-				}
-			}
-
-			if (j == 4){
-				if (score == Integer.parseInt(this.player3points.getText())) {
-					winner += " " + this.p3name.getText();
-				}
-				if (score == Integer.parseInt(this.player4points.getText())) {
-					winner += " " + this.p4name.getText();
-				}
-			}
-
-			this.WinnerPane.setVisible(true);
-			this.WinnerName.setText(winner);
-			this.WinnerPoints.setText(String.valueOf(score));
-			this.BackButton.setDisable(false);
-			
-		}
 
 		//set cardback if not empty
 		if (g.getDeck().isEmpty()==true){
@@ -525,7 +499,36 @@ public class dummyFXMLControllerClient {
 
 		
 
+		if (g.isGameEnd() == true){
+			String winner = "";
+			int score;
+			int j = g.getPlayers().size();
+			score = this.getWinningScore(j);
 
+			if (j>=2){
+				if (score == Integer.parseInt(this.player1points.getText())) {
+					winner = this.p1name.getText();
+				}
+				if (score == Integer.parseInt(this.player2points.getText())) {
+					winner += " " + this.p2name.getText();
+				}
+			}
+
+			if (j == 4){
+				if (score == Integer.parseInt(this.player3points.getText())) {
+					winner += " " + this.p3name.getText();
+				}
+				if (score == Integer.parseInt(this.player4points.getText())) {
+					winner += " " + this.p4name.getText();
+				}
+			}
+
+			this.WinnerPane.setVisible(true);
+			this.WinnerName.setText(winner);
+			this.WinnerPoints.setText(String.valueOf(score));
+			this.BackButton.setDisable(false);
+			
+		}
 		
 
 

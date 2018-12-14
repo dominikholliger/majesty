@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -38,6 +39,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
     private GameServer_View _GameServerViewInstance;
     
     @FXML public TableView highscoretable;
+    @FXML public Button ButtonMusicOn;
+    @FXML public Button ButtonMusicOff;
     
     
     public App_Controller(App_Model model, App_View view) {
@@ -155,6 +158,22 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 		}
 	}
+	
+	@FXML protected void handleMusicOffClicked(ActionEvent event) throws Exception{
+		// stop Music
+		App_View.stopmusic();
+		ButtonMusicOn.setVisible(false);
+		ButtonMusicOff.setVisible(true);
+		
+	}
+	
+	@FXML protected void handleMusicOnClicked(ActionEvent event) throws Exception{
+		// start Music
+		App_View.music();
+		ButtonMusicOn.setVisible(true);
+		ButtonMusicOff.setVisible(false);
+	}
+
 	
 	
 	
