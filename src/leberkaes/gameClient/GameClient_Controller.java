@@ -1,27 +1,19 @@
 package leberkaes.gameClient;
 
-import java.io.File;
 import java.util.Random;
 import java.util.logging.Logger;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.WindowEvent;
 import leberkaes.abstractClasses.Controller;
-import leberkaes.commonClasses.CardType.type;
 import leberkaes.commonClasses.CharacterCard;
 import leberkaes.commonClasses.Configuration;
-import leberkaes.commonClasses.Location;
 import leberkaes.commonClasses.Translator;
-import leberkaes.gameServer.GameServer_View;
 import leberkaes.jat2.ServiceLocator;
+
+/** author: Dominik Holliger */
 
 public class GameClient_Controller extends Controller<GameClient_Model, GameClient_View> {
 	ServiceLocator serviceLocator;
@@ -75,19 +67,20 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 			validateChatPortNumber(newValue, "txtChatPort");
 		});
 
+		// Random-Name Generator
+				String SALTCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+				StringBuilder salt = new StringBuilder();
+				Random rnd = new Random();
+				while (salt.length() < 8) { // length of the random string.
+					int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+					salt.append(SALTCHARS.charAt(index));
+				}
+				String saltStr = salt.toString();
+				
 		// Set auto Values for Connecting
 		view.get_Ctrl().txtChatPort.setText(config.getOption("ChatPort"));
 		view.get_Ctrl().txtGamePort.setText(config.getOption("GamePort"));
 		view.get_Ctrl().txtChatPort.setText(config.getOption("ChatPort"));
-
-		String SALTCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-		StringBuilder salt = new StringBuilder();
-		Random rnd = new Random();
-		while (salt.length() < 8) { // length of the random string.
-			int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-			salt.append(SALTCHARS.charAt(index));
-		}
-		String saltStr = salt.toString();
 		view.get_Ctrl().txtName.setText(saltStr);
 		view.get_Ctrl().txtIpAddress.setText("127.0.0.1");
 
@@ -95,7 +88,6 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 
 	@FXML
 	public void initialize() {
-
 
 	}
 
@@ -156,7 +148,7 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		boolean valid2 = chatPortValid;
 		view.get_Ctrl().btnConnect.setDisable(!(valid || valid2));
 	}
-	
+
 	public void takeCard(int pos, double x, double y) {
 		CharacterCard c = this.model.getActGameBoard().takeCard(pos);
 		if(c.getCardType2() != null) {
@@ -167,21 +159,21 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 			} else {
 				c.setChoosenCardType(c.getCardType2());
 			}
-			
+
 		} else {
 			//Normale Karte
 			c.setChoosenCardType(c.getCardType1());
 		}
-		
-		
+
+
 		int l = this.model.getActGameBoard().getActivePlayer().getLocation(c);
 		this.model.getActGameBoard().playCard(c, l);
-		
+
 		this.model.getActGameBoard().setNextPlayerIndex();
 		this.model.sendGameBoardToServer(this.model.getActGameBoard());
 		view.get_Ctrl().setGameBoard(this.model.getActGameBoard());
 	}
-	
+
 	private int helperSlopePosition (double x, double y) {
 		// Steigung
 		final double m = -0.5;
@@ -195,7 +187,7 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		}
 		return result;
 	}
-	
+
 	public void closeView(){
 		view.stop();
 	}

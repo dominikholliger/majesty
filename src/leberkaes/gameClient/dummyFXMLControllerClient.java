@@ -1,16 +1,10 @@
 package leberkaes.gameClient;
 
-import javax.swing.SwingUtilities;
-
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.ColorInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -18,15 +12,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import leberkaes.appClasses.App_Controller;
-import leberkaes.commonClasses.CardType.back;
-import leberkaes.commonClasses.CardType.type;
-import leberkaes.commonClasses.CharacterCard;
 import leberkaes.commonClasses.GameBoard;
-import leberkaes.gameClient.*;
 
 public class dummyFXMLControllerClient {
+
+	/** @author: Sebrina Pedrossi including FXML for GUI*/
 
 	/**
 	 * Anmerkung D.Holliger:
@@ -70,9 +60,8 @@ public class dummyFXMLControllerClient {
 	// Split Cards PopUp
 	@FXML public ImageView splitCardImg;
 	@FXML public Pane splitPane;
-	private int choosenType;
-	
-	
+
+
 	// Deck Cards
 	@FXML public ImageView openDeck5;
 	@FXML public ImageView openDeck4;
@@ -162,6 +151,8 @@ public class dummyFXMLControllerClient {
 	@FXML public Text p4KEY;
 	@FXML public Text p4HOSPITAL;
 
+
+	// set all Character-Cards on GameBoard disabled (can't be clicked)
 	@FXML
 	protected void setCardsDisabled(){
 		this.openDeck0.setDisable(true);
@@ -172,6 +163,7 @@ public class dummyFXMLControllerClient {
 		this.openDeck5.setDisable(true);
 	}
 
+	// set all Character-Cards on GameBoard enabled (can be clicked again)
 	@FXML
 	protected void setCardsEnabled(){
 		this.openDeck0.setDisable(false);
@@ -182,6 +174,7 @@ public class dummyFXMLControllerClient {
 		this.openDeck5.setDisable(false);
 	}
 
+	// set Meeple-Controls invisible (preparation for Meeple-Option)
 	protected void setMeepleInvisible(){
 		this.iconmeeple.setVisible(false);
 		this.p1meeple.setVisible(false);
@@ -190,6 +183,7 @@ public class dummyFXMLControllerClient {
 		this.p4meeple.setVisible(false);
 	}
 
+	// Button Send: sends message and wipes textField
 	@FXML
 	protected void handleSendClicked(ActionEvent event) throws Exception {
 		get_MvcCtrl().sendMessage(this.txtChatMessage.getText());
@@ -198,6 +192,8 @@ public class dummyFXMLControllerClient {
 
 	}
 
+	// Button Connect: connects to Server and sets all TextFields and Connect-Button disabled
+	// so nothing can be changed after connected to server
 	@FXML
 	protected void handleConnectClicked(ActionEvent event) throws Exception {
 		get_MvcCtrl().connectToServer();
@@ -208,14 +204,13 @@ public class dummyFXMLControllerClient {
 		this.txtIpAddress.setDisable(true);
 	}
 
+	// Card clicked, takes this card
+	// reads position of mouse click (x, y) for Split cards
 	@FXML
 	protected void handleCardClicked5(MouseEvent event) throws Exception {
 		double y = event.getY();
 		double x = event.getX();
 		this.get_MvcCtrl().takeCard(5, x, y);
-		
-
-
 	}
 
 	@FXML
@@ -223,8 +218,6 @@ public class dummyFXMLControllerClient {
 		double y = event.getY();
 		double x = event.getX();
 		this.get_MvcCtrl().takeCard(4, x, y);
-		
-
 	}
 
 	@FXML
@@ -232,8 +225,6 @@ public class dummyFXMLControllerClient {
 		double y = event.getY();
 		double x = event.getX();
 		this.get_MvcCtrl().takeCard(3, x, y);
-		
-
 	}
 
 	@FXML
@@ -241,7 +232,6 @@ public class dummyFXMLControllerClient {
 		double y = event.getY();
 		double x = event.getX();
 		this.get_MvcCtrl().takeCard(2, x, y);
-
 	}
 
 	@FXML
@@ -249,7 +239,6 @@ public class dummyFXMLControllerClient {
 		double y = event.getY();
 		double x = event.getX();
 		this.get_MvcCtrl().takeCard(1, x, y);
-
 	}
 
 	@FXML
@@ -257,16 +246,17 @@ public class dummyFXMLControllerClient {
 		double y = event.getY();
 		double x = event.getX();
 		this.get_MvcCtrl().takeCard(0, x, y);
-
 	}
 
+	// Button Back: closes Window (Button is only visible when game is finished)
 	@FXML
 	protected void handleBackButtonClicked(MouseEvent event) throws Exception{
 		// TODO: Close Window if this Button is clicked 
 		this.get_MvcCtrl().closeView();
 	}
 
-
+	// calculate winning score by comparing the scores of connected players
+	// int j: how many players are connected?
 	protected int getWinningScore(int j){
 		int winscore = 0;
 
@@ -277,11 +267,14 @@ public class dummyFXMLControllerClient {
 			winscore = Math.max(a, b);
 		}
 
+		if (j>=3){
+			int c = Integer.parseInt(this.player3points.getText());
+			winscore = Math.max(winscore,  c);
+		}
+
 		if (j == 4){
 
-			int c = Integer.parseInt(this.player3points.getText());
 			int d = Integer.parseInt(this.player4points.getText());
-			winscore = Math.max(winscore,  c);
 			winscore = Math.max(winscore, d);
 		}
 
@@ -290,20 +283,18 @@ public class dummyFXMLControllerClient {
 	}
 
 
-
+	// Monster-Method for setting the Gameboard on the base of the GameBoard that is sent from server
 	public void setGameBoard(GameBoard g){
-		
 
-		//set cardback if not empty
+
+		//set cardback-color if not empty
 		if (g.getDeck().isEmpty()==true){
 			this.deckBack.setImage(null);
 		} else {
-			System.out.println(g.getDeck().peek().getBackImgURL());
 			this.deckBack.setImage(new Image(g.getDeck().peek().getBackImgURL()));
 		}
 
-		// TODO get Variable from GameBoard-Class that signifies 'place x is empty'
-		
+		// set images of cards in open Deck
 		this.openDeck0.setImage(new Image(g.getOpenDeck()[0].getFrontImgURL()));
 		this.openDeck1.setImage(new Image(g.getOpenDeck()[1].getFrontImgURL()));
 		this.openDeck2.setImage(new Image(g.getOpenDeck()[2].getFrontImgURL()));
@@ -311,7 +302,8 @@ public class dummyFXMLControllerClient {
 		this.openDeck4.setImage(new Image(g.getOpenDeck()[4].getFrontImgURL()));
 		this.openDeck5.setImage(new Image(g.getOpenDeck()[5].getFrontImgURL()));
 
-
+		// sets Character cards visible for the active player
+		// for all other players, cards are inactive and not clickablee
 		if(txtName.getText().equals(g.getActivePlayer().getName())){
 			setCardsEnabled();
 		} else {
@@ -321,8 +313,6 @@ public class dummyFXMLControllerClient {
 
 		// set correct RoundCount
 		this.labelRoundCount.setText(String.valueOf(g.getRoundCount()));
-
-
 
 		//set Locations for A-Side
 		if (g.isbSide() == false){
@@ -349,6 +339,7 @@ public class dummyFXMLControllerClient {
 		}
 
 		//set Meeple invisible if Meeple-Option is false
+		//Meeple-Option is not implemented, therefore right now it's always false
 		if(g.isMeeple() == false){
 			this.setMeepleInvisible();
 		}
@@ -358,11 +349,12 @@ public class dummyFXMLControllerClient {
 
 		//set Numbers for Player 1 and Player 2
 		if (i>=2){
+			this.iconp1.setVisible(true);
+			this.iconp2.setVisible(true);
+
 			this.p1name.setText(g.getPlayers().get(0).getName());
 			this.player1points.setText(String.valueOf(g.getPlayers().get(0).getScore()));
 			this.p1meeple.setText(String.valueOf(g.getPlayers().get(0).getMeeple()));
-			this.iconp1.setVisible(true);
-			this.iconp2.setVisible(true);
 
 			// get Number of LocationCards for Player 1
 			this.p1GRAIN.setText(String.valueOf(g.getPlayers().get(0).getLocations()[0].getCardCount()));
@@ -415,7 +407,6 @@ public class dummyFXMLControllerClient {
 			this.p4meeple.setText(String.valueOf(g.getPlayers().get(3).getMeeple()));
 			this.iconp4.setVisible(true);
 
-
 			// get Number of LocationCards for Player 4
 			this.p4GRAIN.setText(String.valueOf(g.getPlayers().get(3).getLocations()[0].getCardCount()));
 			this.p4BARELL.setText(String.valueOf(g.getPlayers().get(3).getLocations()[1].getCardCount()));
@@ -425,10 +416,9 @@ public class dummyFXMLControllerClient {
 			this.p4CUTLERY.setText(String.valueOf(g.getPlayers().get(3).getLocations()[5].getCardCount()));
 			this.p4KEY.setText(String.valueOf(g.getPlayers().get(3).getLocations()[6].getCardCount()));
 			this.p4HOSPITAL.setText(String.valueOf(g.getPlayers().get(3).getLocations()[7].getCardCount()));
-
 		}
 
-		// show active player
+		// show active player with font-color green
 		String act = g.getActivePlayer().getName();
 		if (this.p1name.getText().equals(act)){
 			this.p1name.setFill(Color.GREEN);
@@ -436,7 +426,6 @@ public class dummyFXMLControllerClient {
 			this.p2name.setFill(Color.BLACK);
 			this.p3name.setFill(Color.BLACK);
 			this.p4name.setFill(Color.BLACK);
-
 		}
 
 		if (this.p2name.getText().equals(act)){
@@ -445,7 +434,6 @@ public class dummyFXMLControllerClient {
 			this.p1name.setFill(Color.BLACK);
 			this.p3name.setFill(Color.BLACK);
 			this.p4name.setFill(Color.BLACK);
-
 		}
 
 		if (this.p3name.getText().equals(act)){
@@ -454,7 +442,6 @@ public class dummyFXMLControllerClient {
 			this.p1name.setFill(Color.BLACK);
 			this.p2name.setFill(Color.BLACK);
 			this.p4name.setFill(Color.BLACK);
-
 		}
 
 		if (this.p4name.getText().equals(act)){
@@ -466,8 +453,10 @@ public class dummyFXMLControllerClient {
 
 		}
 
-		
 
+		// show end-game screen with calculated winner-scores
+		// finds which player has the winning score and displays his name
+		// includes option if two players have same score (although then the layout is ugly)
 		if (g.isGameEnd() == true){
 			String winner = "";
 			int score;
@@ -483,10 +472,13 @@ public class dummyFXMLControllerClient {
 				}
 			}
 
-			if (j == 4){
+			if (j>=3){
 				if (score == Integer.parseInt(this.player3points.getText())) {
 					winner += " " + this.p3name.getText();
 				}
+			}
+
+			if (j == 4){
 				if (score == Integer.parseInt(this.player4points.getText())) {
 					winner += " " + this.p4name.getText();
 				}
@@ -496,13 +488,9 @@ public class dummyFXMLControllerClient {
 			this.WinnerName.setText(winner);
 			this.WinnerPoints.setText(String.valueOf(score));
 			this.BackButton.setDisable(false);
-			
+
 		}
-		
-
-
 
 	}
-
 
 }

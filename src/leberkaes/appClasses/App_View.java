@@ -27,38 +27,38 @@ import javafx.stage.Stage;
  * @author Brad Richards
  */
 public class App_View extends View<App_Model> {
-    
+
 	// Audio Controls
 	static AudioPlayer MGP = AudioPlayer.player;
-    static AudioStream BGM;
-    static AudioData MD;
-    
-    /**
-     * Per Lazy Loading die ein DummyKontroller Objekt erstellen und per Getter zur verfügung Stellen
-     * wird für den FXML Loader gebraucht.
-     */
-    private dummyFXMLControllerHome _Ctrl;
+	static AudioStream BGM;
+	static AudioData MD;
+
+	/**
+	 * Per Lazy Loading die ein DummyKontroller Objekt erstellen und per Getter zur verfügung Stellen
+	 * wird für den FXML Loader gebraucht.
+	 */
+	private dummyFXMLControllerHome _Ctrl;
 	public dummyFXMLControllerHome get_Ctrl() {
-    		if(_Ctrl == null) {
-    			_Ctrl = new dummyFXMLControllerHome();
-    		}
-    		return _Ctrl;    	
-    }
-    
-    protected Parent parent;
-    
+		if(_Ctrl == null) {
+			_Ctrl = new dummyFXMLControllerHome();
+		}
+		return _Ctrl;    	
+	}
+
+	protected Parent parent;
+
 	public App_View(Stage stage, App_Model model) {
-        super(stage, model);
-        stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
-        ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
-        music();
-    }
+		super(stage, model);
+		stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
+		ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
+		music();
+	}
 
 	@Override
 	protected Scene create_GUI() {
-	    ServiceLocator sl = ServiceLocator.getServiceLocator();  
-	    Logger logger = sl.getLogger();
-	    Translator t = sl.getTranslator();
+		ServiceLocator sl = ServiceLocator.getServiceLocator();  
+		Logger logger = sl.getLogger();
+		Translator t = sl.getTranslator();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
 		loader.setController(get_Ctrl());
 		try {
@@ -68,27 +68,20 @@ public class App_View extends View<App_Model> {
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(parent, 600,400);
-        scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
-        return scene;
-        
-	}
-	
-	   protected void updateTexts() {
-	       Translator t = ServiceLocator.getServiceLocator().getTranslator();
-	    }
+		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		return scene;
 
-   public void showSettings() {
-//	public Scene showSettings() {
-		
-		
-		
 	}
-   
-   
-   public static AudioStream audios;
-	
+
+	protected void updateTexts() {
+		Translator t = ServiceLocator.getServiceLocator().getTranslator();
+	}
+
+	/** @author Sebrina Pedrossi */
+	// Play music from audioStream, file in project explorer
+	public static AudioStream audios;
+
 	public static void music(){
-
 		try{
 			InputStream in = new FileInputStream(new File("./src/leberkaes.GUIsources/MedievalMusicShort.wav"));
 			audios = new AudioStream(in);
@@ -99,11 +92,10 @@ public class App_View extends View<App_Model> {
 		}      
 
 	}
-	
 
+	// stop Music that is played from audioStream
 	public static void stopmusic(){
 		AudioPlayer.player.stop(audios);
-
 	}
-		
+
 }

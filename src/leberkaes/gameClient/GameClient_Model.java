@@ -1,6 +1,7 @@
 package leberkaes.gameClient;
 
 import java.io.IOException;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -9,11 +10,12 @@ import java.util.logging.Logger;
 import leberkaes.abstractClasses.Model;
 import leberkaes.commonClasses.ChatMsg;
 import leberkaes.commonClasses.GameBoard;
-import leberkaes.commonClasses.GameMsg;
 import leberkaes.commonClasses.JoinMsg;
 import leberkaes.commonClasses.Message;
 import leberkaes.commonClasses.MessageType;
 import javafx.beans.property.SimpleStringProperty;
+
+/** author: Bradley Richards */
 
 /**
  * Note: One error in this implementation: The *display* of received messages is triggered
@@ -37,10 +39,6 @@ public class GameClient_Model extends Model{
 	private ObjectInputStream inStream = null;
 	private String name;
 
-	//Dummy Variable für Debugging
-	private GameBoard myDummyGameBoard;
-
-
 	public void connect(String ipAddress, int Port, String name) {
 		logger.info("Connect");
 		this.name = name;
@@ -51,23 +49,23 @@ public class GameClient_Model extends Model{
 				@Override
 				public void run() {
 					while (true) {
-							Message msgTemp = Message.receive(socket);
-							if(msgTemp.getType() == MessageType.Game) {
-								logger.info("GameMsg angekommen");
-								/**
+						Message msgTemp = Message.receive(socket);
+						if(msgTemp.getType() == MessageType.Game) {
+							logger.info("GameMsg angekommen");
+							/**
 								GameMsg msg = (GameMsg) msgTemp;
 								GameBoard gameBoard = msg.extractContent();
 								// Aus Spass kotzen wir das mal auf die Konsole
 								System.out.println(gameBoard.toString());
-								**/
-							} else if (msgTemp.getType() == MessageType.Chat) {
-								ChatMsg msg = (ChatMsg) msgTemp;
-								newestMessage.set(""); // erase previous message
-								newestMessage.set(msg.getName() + ": " + msg.getContent());
-							}
+							 **/
+						} else if (msgTemp.getType() == MessageType.Chat) {
+							ChatMsg msg = (ChatMsg) msgTemp;
+							newestMessage.set(""); // erase previous message
+							newestMessage.set(msg.getName() + ": " + msg.getContent());
 						}
 					}
-				};
+				}
+			};
 			Thread t = new Thread(r);
 			t.start();
 			// Send join message to the server
@@ -145,14 +143,6 @@ public class GameClient_Model extends Model{
 	public String receiveMessage() {
 		logger.info("Receive message");
 		return newestMessage.get();
-	}
-
-
-	///Debug Methode um ein Lokales GameBoard zu erstellen.
-	public void createDummyBoard(int i) {
-		this.myDummyGameBoard = new GameBoard(i);
-		logger.info("DummyGameBoard erstellt f�r "+i+ " Spieler");
-
 	}
 
 

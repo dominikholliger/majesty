@@ -603,24 +603,24 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="122.0" layoutX="97.0" layoutY="172.0" opacity="0.6" stroke="BLACK" strokeType="INSIDE" width="386.0" />
-            <Text fx:id="WinnerName" layoutX="309.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler" wrappingWidth="134.23800659179688">
+            <Text fx:id="WinnerName" layoutX="258.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler" wrappingWidth="220.04244995117188">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <Text layoutX="132.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gewinner:">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <Text layoutX="128.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl:">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
-            <Text fx:id="WinnerPoints" layoutX="309.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl" wrappingWidth="117.55563354492188">
+            <Text fx:id="WinnerPoints" layoutX="260.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl" wrappingWidth="118.81747436523438">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <Button fx:id="BackButton" layoutX="202.0" layoutY="255.0" mnemonicParsing="false" onMouseClicked="#handleBackButtonClicked" text="Zurück zum Start-Menü" />

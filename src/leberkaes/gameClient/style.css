@@ -7,3 +7,7 @@
 	-fx-padding: 10px 0px 10px 0px;
 	-fx-spacing: 10px;
 }
+
+* {
+ font-family: Arial;
+}

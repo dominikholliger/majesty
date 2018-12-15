@@ -73,7 +73,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}    
 	public void startNewClientProcess() {
 		// Aufrufendes Fenster: Button auf Home-Screen
-		// Diese Methode startet das Client Windows
+		// Diese Methode startet das Client Window
 		Stage optionsStage = new Stage();
 	  	GameClient_Model clientModel = new GameClient_Model();
 	  	GameClient_View clientView = new GameClient_View(optionsStage, clientModel);
@@ -81,9 +81,11 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		clientView.start();
 		
 	}    
+	
+	/** @author Sebrina Pedrossi */
 	public void openSettingWindow() {
 		// Aufrufendes Fenster: Button auf Home-Screen
-		// Diese Methode startet das Setting Windows
+		// Diese Methode startet das Setting Window
 		Stage optionsStage = new Stage();
 	   	GameSettings_Model settingsModel = new GameSettings_Model();
 	   	GameSettings_View settingsView = new GameSettings_View(optionsStage, settingsModel);
@@ -93,6 +95,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	protected Parent parent;
 	
 	public void openHighscoreWindow(){
+		// Aufrufendes Fenster: Button auf Home-Screen
+		// Diese Methode startet das Highscore Window
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Highscore.fxml"));
 		loader.setController(this);
 		try {
@@ -134,11 +138,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	@FXML protected void handleHighscoreButtonClicked(ActionEvent event) throws Exception{
 		// Highscore-Fenster oeffnet sich, nichts wird uebergeben
 		openHighscoreWindow();
-		
-	}
-	@FXML protected void handleBackClicked(ActionEvent event) throws Exception{
-		// Client Prozess starten
-		showHomeWindow();
 	}
 	
 	@FXML protected void handleEnterGameButtonClicked(ActionEvent event) throws Exception{
@@ -146,18 +145,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		startNewClientProcess();
 	}
 	
-	
-	protected void setHighscore(int a){
-		HashMap<Integer, String> hmap = Highscore.getInstance().getHighscore();
-		
-		for ( HashMap.Entry<Integer, String> entry : hmap.entrySet()) {
-		    int key = entry.getKey();
-		    String name = entry.getValue();
-		    
-		    
-
-		}
-	}
 	
 	@FXML protected void handleMusicOffClicked(ActionEvent event) throws Exception{
 		// stop Music
@@ -176,5 +163,18 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	
 	
+	@FXML protected void handleBackClicked(ActionEvent event) throws Exception{
+		// Client Prozess starten
+		showHomeWindow();
+	}
+	
+	protected void setHighscore(int a){
+		HashMap<Integer, String> hmap = Highscore.getInstance().getHighscore();
+		
+		for ( HashMap.Entry<Integer, String> entry : hmap.entrySet()) {
+		    int key = entry.getKey();
+		    String name = entry.getValue();
+		}
+	}
 	
 }

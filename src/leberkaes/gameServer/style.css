@@ -1,3 +1,7 @@
+* {
+ font-family: Arial;
+}
+
 .root {
 	-fx-padding: 0px 10px 10px 10px;
 	-fx-spacing: 10px;
@@ -7,3 +11,4 @@
 	-fx-padding: 10px 0px 10px 0px;
 	-fx-spacing: 10px;
 }
+

@@ -1,3 +1,7 @@
+* {
+ font-family: Arial;
+}
+
 .label {
   -fx-font-size: 24px;
   -fx-font-weight: bold;

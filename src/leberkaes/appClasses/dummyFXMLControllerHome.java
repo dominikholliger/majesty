@@ -1,18 +1,13 @@
 package leberkaes.appClasses;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 
 public class dummyFXMLControllerHome {
 
+	/** @author: Sebrina Pedrossi including FXML for all GUI*/
 	/**
 	 * Anmerkung D.Holliger:
 	 * Vorsicht: FXML Controller versus MVC Controller!
@@ -43,9 +38,9 @@ public class dummyFXMLControllerHome {
 
 	@FXML
 	private Button newGame;
-	
-	 @FXML public Button ButtonMusicOn;
-	 @FXML public Button ButtonMusicOff;
+
+	@FXML public Button ButtonMusicOn;
+	@FXML public Button ButtonMusicOff;
 
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
@@ -71,25 +66,20 @@ public class dummyFXMLControllerHome {
 		// Client Prozess starten
 		get_MvcCtrl().showHomeWindow();
 	}
-	
+
 	@FXML protected void handleMusicOffClicked(ActionEvent event) throws Exception{
 		// stop Music
 		App_View.stopmusic();
 		ButtonMusicOn.setVisible(false);
 		ButtonMusicOff.setVisible(true);
-		
+
 	}
-	
+
 	@FXML protected void handleMusicOnClicked(ActionEvent event) throws Exception{
 		// start Music
 		App_View.music();
 		ButtonMusicOn.setVisible(true);
 		ButtonMusicOff.setVisible(false);
 	}
-
-	
-	
-
-
 
 }
