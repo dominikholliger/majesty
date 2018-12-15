@@ -298,51 +298,19 @@ public class dummyFXMLControllerClient {
 		if (g.getDeck().isEmpty()==true){
 			this.deckBack.setImage(null);
 		} else {
+			System.out.println(g.getDeck().peek().getBackImgURL());
 			this.deckBack.setImage(new Image(g.getDeck().peek().getBackImgURL()));
 		}
 
 		// TODO get Variable from GameBoard-Class that signifies 'place x is empty'
-		//set Card 0 if not empty
-		if (g.getOpenDeck()[0] == null){
-			this.openDeck0.setImage(null);
-		} else {
-			this.openDeck0.setImage(new Image(g.getOpenDeck()[0].getFrontImgURL()));
-		}
+		
+		this.openDeck0.setImage(new Image(g.getOpenDeck()[0].getFrontImgURL()));
+		this.openDeck1.setImage(new Image(g.getOpenDeck()[1].getFrontImgURL()));
+		this.openDeck2.setImage(new Image(g.getOpenDeck()[2].getFrontImgURL()));
+		this.openDeck3.setImage(new Image(g.getOpenDeck()[3].getFrontImgURL()));
+		this.openDeck4.setImage(new Image(g.getOpenDeck()[4].getFrontImgURL()));
+		this.openDeck5.setImage(new Image(g.getOpenDeck()[5].getFrontImgURL()));
 
-		//set Card 1 if not empty
-		if (g.getOpenDeck()[1] == null){
-			this.openDeck1.setImage(null);
-		} else {
-			this.openDeck1.setImage(new Image(g.getOpenDeck()[1].getFrontImgURL()));
-		}
-
-		//set Card 2 if not empty
-		if (g.getOpenDeck()[2] == null){
-			this.openDeck2.setImage(null);
-		} else {
-			this.openDeck2.setImage(new Image(g.getOpenDeck()[2].getFrontImgURL()));
-		}
-
-		//set Card 3 if not empty
-		if (g.getOpenDeck()[3] == null){
-			this.openDeck3.setImage(null);
-		} else {
-			this.openDeck3.setImage(new Image(g.getOpenDeck()[3].getFrontImgURL()));
-		}
-
-		//set Card 4 if not empty
-		if (g.getOpenDeck()[4] == null){
-			this.openDeck4.setImage(null);
-		} else {
-			this.openDeck4.setImage(new Image(g.getOpenDeck()[4].getFrontImgURL()));
-		}
-
-		//set Card 5 if not empty
-		if (g.getOpenDeck()[5] == null){
-			this.openDeck5.setImage(null);
-		} else {
-			this.openDeck5.setImage(new Image(g.getOpenDeck()[5].getFrontImgURL()));
-		}
 
 		if(txtName.getText().equals(g.getActivePlayer().getName())){
 			setCardsEnabled();

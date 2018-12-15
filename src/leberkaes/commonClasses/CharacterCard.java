@@ -3,7 +3,7 @@ package leberkaes.commonClasses;
 import static leberkaes.commonClasses.CardType.*;
 
 import java.io.Serializable;
-/**Daniel Räber*/
+/**Daniel RÃ¤ber*/
 public class CharacterCard implements Serializable {
 
 	private type cardType1;
@@ -142,8 +142,10 @@ public class CharacterCard implements Serializable {
 			switch (b) {
 			case GREEN:
 				backImgURL = new String("leberkaes.GUIsources/BackGreen.jpg");
+				break;
 			case RED:
 				backImgURL = new String("leberkaes.GUIsources/BackRed.jpg");
+				break;
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

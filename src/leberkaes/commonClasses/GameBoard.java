@@ -7,7 +7,7 @@ import java.util.Stack;
 import leberkaes.commonClasses.CharacterCard;
 import leberkaes.commonClasses.CardType.*;
 import leberkaes.jat2.ServiceLocator;
-/**Daniel Räber*/
+/**Daniel Rï¿½ber*/
 public class GameBoard implements java.io.Serializable {
 	// Spieler
 	private static int activePlayerIndex;
@@ -25,7 +25,9 @@ public class GameBoard implements java.io.Serializable {
 	private Stack<CharacterCard> redCards = new Stack<CharacterCard>();
 	private Stack<CharacterCard> deck = new Stack<CharacterCard>();
 	private CharacterCard[] openDeck = new CharacterCard[6];
+	
 
+	
 	public GameBoard(int numOfP) {
 
 		this.playerCount = numOfP;
@@ -166,7 +168,7 @@ public class GameBoard implements java.io.Serializable {
 
 	}
 
-	/** Die offen liefenden aufschliessen und eine neue Karte ziehen. */
+	/** Die offen liegenden aufschliessen und eine neue Karte ziehen. */
 	public void updateOpenDeck(int i) {
 		for (int o = i; o > 0; o--) {
 			this.openDeck[o] = this.openDeck[o - 1];
@@ -175,10 +177,12 @@ public class GameBoard implements java.io.Serializable {
 		if (!this.deck.isEmpty()) {
 			this.openDeck[0] = deck.pop();
 		}
+		
+		
 	}
 
 	/**
-	 * 2. Zugbewegung: Die Karte wird gespielt und löst allfällige
+	 * 2. Zugbewegung: Die Karte wird gespielt und lÃ¶st allfÃ¤llige
 	 * Sonderaktionen aus
 	 **/
 	public void playCard(CharacterCard c, int location) {
@@ -206,7 +210,7 @@ public class GameBoard implements java.io.Serializable {
 
 	}
 
-	/** Effekte auf andere Spieler ausführen */
+	/** Effekte auf andere Spieler ausfï¿½hren */
 	public void otherPlayerEffect(type t) {
 		// aktuell nur A-Seite
 		if (bSide) {
@@ -220,7 +224,7 @@ public class GameBoard implements java.io.Serializable {
 					if (!p.getLocations()[0].getCharacters().isEmpty()) {
 						p.setScore(coins);
 						ServiceLocator.getServiceLocator().getLogger()
-								.info("Gruppeneffekt" + p.getName() + " erhählt " + coins + " Münzen");
+								.info("Gruppeneffekt" + p.getName() + " erhï¿½hlt " + coins + " Mï¿½nzen");
 					}
 				}
 			case CUTLERY:
@@ -229,7 +233,7 @@ public class GameBoard implements java.io.Serializable {
 					if (!p.getLocations()[1].getCharacters().isEmpty()) {
 						p.setScore(coins);
 						ServiceLocator.getServiceLocator().getLogger()
-								.info("Gruppeneffekt" + p.getName() + " erhählt " + coins + " Münzen");
+								.info("Gruppeneffekt" + p.getName() + " erhï¿½hlt " + coins + " Mï¿½nzen");
 					}
 				}
 			default:
@@ -238,7 +242,7 @@ public class GameBoard implements java.io.Serializable {
 		}
 	}
 
-	/** Sonderaktionen Angriff ausfühern */
+	/** Sonderaktionen Angriff ausfï¿½hern */
 	public void attack() {
 		int offense = this.getActivePlayer().getOffenseValue() + 1;
 		// Plus 1 da Karte noch nicht gelegt wurde
@@ -254,13 +258,13 @@ public class GameBoard implements java.io.Serializable {
 		}
 	}
 
-	/** Sonderaktionen Heilung ausfühern */
+	/** Sonderaktionen Heilung ausfï¿½hern */
 	public void heal() {
 		this.getActivePlayer().reviveCard();
 	}
 
 	/**
-	 * Diese Methode wird am Ende des Spiels ausgeführt und vergiebt die Letzten
+	 * Diese Methode wird am Ende des Spiels ausgefï¿½hrt und vergiebt die Letzten
 	 * Punkte
 	 */
 	private void finishGame() {
@@ -274,7 +278,7 @@ public class GameBoard implements java.io.Serializable {
 				int effect = -2;
 				p.setScore(count * effect);
 				ServiceLocator.getServiceLocator().getLogger()
-						.info("Punkteabzug Lazarett: " + p.getName() + " verliehrt " + (count * effect) + " Münzen");
+						.info("Punkteabzug Lazarett: " + p.getName() + " verliehrt " + (count * effect) + " Mï¿½nzen");
 			}
 		} else {
 			for (Player p : players) {
@@ -282,7 +286,7 @@ public class GameBoard implements java.io.Serializable {
 				int effect = -1;
 				p.setScore(count * effect);
 				ServiceLocator.getServiceLocator().getLogger()
-						.info("Punkteabzug Lazarett: " + p.getName() + " verliehrt " + (count * effect) + " Münzen");
+						.info("Punkteabzug Lazarett: " + p.getName() + " verliehrt " + (count * effect) + " Mï¿½nzen");
 			}
 		}
 
@@ -300,7 +304,7 @@ public class GameBoard implements java.io.Serializable {
 			int diffScore = diffCards * diffCards;
 			p.setScore(diffScore);
 			ServiceLocator.getServiceLocator().getLogger()
-					.info(p.getName() + " erhält " + diffScore + " Münzen für " + diffCards + " verschidene Karten");
+					.info(p.getName() + " erhï¿½lt " + diffScore + " Mï¿½nzen fï¿½r " + diffCards + " verschidene Karten");
 
 		}
 
@@ -323,19 +327,19 @@ public class GameBoard implements java.io.Serializable {
 					int finalCoinEffect = p.getLocations()[i].getFinalCoinEffect();
 					p.setScore(finalCoinEffect);
 					ServiceLocator.getServiceLocator().getLogger()
-							.info(p.getName() + " hat die Höchste anzahl Karten im" + p.getLocations()[i].getType()
-									+ " und erhält " + finalCoinEffect);
+							.info(p.getName() + " hat die Hï¿½chste anzahl Karten im" + p.getLocations()[i].getType()
+									+ " und erhï¿½lt " + finalCoinEffect);
 				}
 			}
 		}
 	}
 
-	/** Spieler wird dem GameBoard hinzugefügt */
+	/** Spieler wird dem GameBoard hinzugefï¿½gt */
 	public void addPlayer(String name) {
 		players.add(new Player(name, bSide));
 	}
 
-	/** Der nächste Spieler in der Liste wird als aktiver Spieler eingetragen */
+	/** Der nï¿½chste Spieler in der Liste wird als aktiver Spieler eingetragen */
 	public void setNextPlayerIndex() {
 		if (activePlayerIndex + 1 - players.size() == 0) {
 			activePlayerIndex = 0;
@@ -394,6 +398,9 @@ public class GameBoard implements java.io.Serializable {
 		return openDeck;
 	}
 
+	
+
+	
 	@Override
 	public String toString() {
 		return "GameBoard [playerCount=" + playerCount + ", players=" + players + ", roundCount=" + roundCount
