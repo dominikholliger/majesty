@@ -171,7 +171,10 @@ public class GameBoard implements java.io.Serializable {
 	/** Die offen liegenden aufschliessen und eine neue Karte ziehen. */
 	public void updateOpenDeck(int i) {
 		for (int o = i; o > 0; o--) {
+			if(!(this.openDeck[o-1]==null)){
 			this.openDeck[o] = this.openDeck[o - 1];
+			System.out.println(o);
+			}
 		}
 
 		if (!this.deck.isEmpty()) {
