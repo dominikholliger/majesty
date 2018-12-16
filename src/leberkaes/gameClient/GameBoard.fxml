@@ -623,7 +623,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button fx:id="BackButton" layoutX="767.0" layoutY="108.0" mnemonicParsing="false" onMouseClicked="#handleBackButtonClicked" text="Zurück zum Start-Menü" />
+            <Button fx:id="BackButton" layoutX="767.0" layoutY="108.0" mnemonicParsing="false" onMouseClicked="#handleBackButtonClicked" text="Spiel beenden" />
          </children>
       </Pane>
    </children>
