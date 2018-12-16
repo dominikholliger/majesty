@@ -43,7 +43,7 @@ public class dummyFXMLControllerHighScore {
 
 	@FXML protected void handleBackClicked(ActionEvent event) throws Exception{
 		// Client Prozess starten
-		get_MvcCtrl().
+		//get_MvcCtrl().view.stop();
 	}
 	public void writeToHighScore(String line){
 		// Schreibt die Highscore
