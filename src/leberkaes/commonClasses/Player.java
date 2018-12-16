@@ -4,13 +4,15 @@ import java.io.Serializable;
 import java.util.Arrays;
 import leberkaes.commonClasses.CardType.type;
 import leberkaes.jat2.ServiceLocator;
-/**Daniel Räber*/
+
+/** Daniel Räber */
 public class Player implements Serializable {
 
 	private String name;
 	private int score;
 	private int meeple;
 	private Location[] locations = new Location[8];
+	private String playerGameMessage;
 
 	public Player(String n, boolean bSide) {
 		this.name = n;
@@ -49,7 +51,7 @@ public class Player implements Serializable {
 		int cards;
 		int coinEffect;
 		int coinSum = 0;
-
+		this.playerGameMessage = "";
 		for (int i = 0; i < 7; i++) {
 			cards = this.locations[i].getCardCount();
 			type t = this.locations[i].getType();
@@ -57,6 +59,9 @@ public class Player implements Serializable {
 			coinSum += cards * coinEffect;
 			ServiceLocator.getServiceLocator().getLogger()
 					.info(this.getName() + " erhält " + cards * coinEffect + " für " + cards + " " + t + "-Karten");
+			if (cards *coinEffect > 0) {
+				this.setPlayerGameMessage(" + " + cards * coinEffect + " coins for " + cards + " x " + t + "-Card");
+			}
 		}
 		return coinSum;
 	}
@@ -105,6 +110,7 @@ public class Player implements Serializable {
 		for (int i = 0; i < locations.length; i++) {
 			if ((c.getChoosenCardType() == locations[i].getType())) {
 				position = i;
+				this.setPlayerGameMessage(" and revived a card ");
 			}
 		}
 		return position;
@@ -144,6 +150,14 @@ public class Player implements Serializable {
 	public String toString() {
 		return "Player [name=" + name + "\n score=" + score + "\n meeple=" + meeple + "\n defense=" + "\n locations="
 				+ Arrays.toString(locations) + "]";
+	}
+
+	public String getPlayerGameMessage() {
+		return playerGameMessage;
+	}
+
+	public void setPlayerGameMessage(String playerGameMessage) {
+		this.playerGameMessage += playerGameMessage;
 	}
 
 }
