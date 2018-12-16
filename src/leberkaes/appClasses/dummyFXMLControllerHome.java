@@ -66,14 +66,13 @@ public class dummyFXMLControllerHome {
 
 	@FXML protected void handleBackClicked(ActionEvent event) throws Exception{
 		get_MvcCtrl().showHomeWindow();
-		boolean musicStatus = get_MvcCtrl().isMusicPlaying();
-		if (musicStatus = true){
+
+		if (get_MvcCtrl().isMusicPlaying() == true){
 			ButtonMusicOn.setVisible(true);
 			ButtonMusicOff.setVisible(false);
-		} else{
+		} else {
 			ButtonMusicOn.setVisible(false);
-			ButtonMusicOff.setVisible(true);
-			
+			ButtonMusicOff.setVisible(true);	
 		}
 	}
 

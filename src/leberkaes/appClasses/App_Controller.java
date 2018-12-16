@@ -42,7 +42,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
     @FXML public Button ButtonMusicOn;
     @FXML public Button ButtonMusicOff;
     
-	public boolean musicPlaying = false;
+	public boolean musicPlaying = true;
 
     
 	public App_Controller(App_Model model, App_View view) {
@@ -167,8 +167,15 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	
 	@FXML protected void handleBackClicked(ActionEvent event) throws Exception{
-		// Client Prozess starten
 		showHomeWindow();
+
+		if (isMusicPlaying() == true){
+			ButtonMusicOn.setVisible(true);
+			ButtonMusicOff.setVisible(false);
+		} else {
+			ButtonMusicOn.setVisible(false);
+			ButtonMusicOff.setVisible(true);
+		}
 	}
 	
 	protected void setHighscore(int a){
