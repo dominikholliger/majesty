@@ -11,7 +11,7 @@ import leberkaes.jat2.ServiceLocator;
 /** Daniel R�ber */
 public class GameBoard implements java.io.Serializable {
 	// Spieler
-	private static int activePlayerIndex;
+	private int activePlayerIndex;
 	private int playerCount;
 	private ArrayList<Player> players;
 
@@ -392,11 +392,11 @@ public class GameBoard implements java.io.Serializable {
 	}
 
 	public void setActivePlayerIndex() {
-		GameBoard.activePlayerIndex = 0;
+		this.activePlayerIndex = 0;
 	}
 
 	public Player getActivePlayer() {
-		return this.players.get(GameBoard.activePlayerIndex);
+		return this.players.get(this.getActivePlayerIndex());
 	}
 
 	public Stack<CharacterCard> getDeck() {
