@@ -3,6 +3,7 @@ package leberkaes.appClasses;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.stage.WindowEvent;
 
 
@@ -92,13 +93,11 @@ public class dummyFXMLControllerHome {
 		ButtonMusicOff.setVisible(false);
 		get_MvcCtrl().setMusicPlaying(true);
 	}
-<<<<<<< HEAD
+
 	public void writeToHighScore(String line){
 		// Schreibt die Highscore
 		highScoreField.appendText("1");
 	}
-=======
-	
 
->>>>>>> branch 'BaseGUIIntegrationv1' of https://github.com/dominikholliger/majesty
+
 }
