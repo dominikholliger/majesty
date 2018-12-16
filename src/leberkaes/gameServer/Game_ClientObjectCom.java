@@ -6,7 +6,9 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import leberkaes.commonClasses.GameBoard;
+import leberkaes.commonClasses.Highscore;
 import leberkaes.commonClasses.Message;
+import leberkaes.commonClasses.Player;
 
 public class Game_ClientObjectCom {
 	private Socket socket;
@@ -29,23 +31,34 @@ public class Game_ClientObjectCom {
 						GameBoard gameboard = (GameBoard) inStream.readObject();
 						System.out.println("Object received ------ GameBoard -------- = ");
 						//hier muss send methode aufgerufen werden
+						//
+						// Das neue Objekt auf Spielschluss überprüfen
+						if(gameboard.isGameEnd()) {
+							// Spiel fertig, Highscores schreiben
+							for (int i = 0; i < gameboard.getPlayers().size(); i++) {
+								String pName = gameboard.getPlayers().get(i).getName();
+								int pScore = gameboard.getPlayers().get(i).getScore();
+								Highscore.getInstance().writeHighscore(pName, pScore);
+								System.out.println("-------------- Highscore written for "+pName+"  ---------------");
+							}
+						}
 						model.broadcastGameBoard(gameboard);
-						
+
 					} catch (IOException | ClassNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
+
 				}
 			}
 		};
 		Thread t = new Thread(r);
 		t.start();
 	}
-	
-	
-	
-	
+
+
+
+
 	public Socket getSocket() {
 		return socket;
 	}
@@ -66,9 +79,9 @@ public class Game_ClientObjectCom {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public void stop() {
 		try {
 			socket.close();

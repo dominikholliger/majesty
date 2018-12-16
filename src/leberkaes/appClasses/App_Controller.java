@@ -14,7 +14,10 @@ import leberkaes.settingsWindows.GameSettings_Model;
 import leberkaes.settingsWindows.GameSettings_View;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.TreeMap;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -24,25 +27,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code
  * is licensed under the terms of the BSD 3-clause license (see the file
  * license.txt).
- * 
+ *
  * @author Brad Richards
  */
 public class App_Controller extends Controller<App_Model, App_View> {
     ServiceLocator serviceLocator;
     private GameServer_View _GameServerViewInstance;
-    
-    @FXML public TableView highscoretable;
+
+
     @FXML public Button ButtonMusicOn;
     @FXML public Button ButtonMusicOff;
-    
-    
+
+
     public App_Controller(App_Model model, App_View view) {
         super(model, view);
         // D.Holliger:
@@ -56,7 +59,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
             	Platform.exit();
             }
         });
-        serviceLocator = ServiceLocator.getServiceLocator();        
+        serviceLocator = ServiceLocator.getServiceLocator();
         serviceLocator.getLogger().info("Application controller initialized");
     }
     /**
@@ -70,7 +73,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	   	GameServer_View serverView = new GameServer_View(optionsStage, serverModel);
 		new GameServer_Controller(serverModel, serverView);
 		serverView.start();
-	}    
+	}
 	public void startNewClientProcess() {
 		// Aufrufendes Fenster: Button auf Home-Screen
 		// Diese Methode startet das Client Window
@@ -79,9 +82,9 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	  	GameClient_View clientView = new GameClient_View(optionsStage, clientModel);
 		new GameClient_Controller(clientModel, clientView);
 		clientView.start();
-		
-	}    
-	
+
+	}
+
 	/** @author Sebrina Pedrossi */
 	public void openSettingWindow() {
 		// Aufrufendes Fenster: Button auf Home-Screen
@@ -90,43 +93,36 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	   	GameSettings_Model settingsModel = new GameSettings_Model();
 	   	GameSettings_View settingsView = new GameSettings_View(optionsStage, settingsModel);
 		settingsView.start();
-	}    
-	
-	protected Parent parent;
-	
-	public void openHighscoreWindow(){
-		// Aufrufendes Fenster: Button auf Home-Screen
-		// Diese Methode startet das Highscore Window
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("Highscore.fxml"));
-		loader.setController(this);
-		try {
-			parent = loader.load();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		Scene scene = new Scene(parent, 600,400);
-		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
-		view.getStage().setScene(scene);
-		setHighscore(10);
 	}
-	
+
+	protected Parent parent;
+
+	/**
+	 *  Aufrufendes Fenster: Button auf Home-Screen
+	 *  Diese Methode startet das Highscore Window
+	 *  @author D.Holliger
+	 */
+	public void openHighscoreWindow(){
+		Stage optionsStage = new Stage();
+		HighScore_Model highScoreModel = new HighScore_Model();
+		HighScore_View highScoreView = new HighScore_View(optionsStage, highScoreModel);
+		new HighScore_Controller(highScoreModel, highScoreView);
+		highScoreView.start();
+	}
+
 	public void showHomeWindow(){
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
 		loader.setController(this);
 		try {
 			parent = loader.load();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
 		Scene scene = new Scene(parent, 600,400);
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
 		view.getStage().setScene(scene);
 	}
-	
+
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
 		// Server Prozess starten
 		startNewServerProcess();
@@ -139,21 +135,21 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		// Highscore-Fenster oeffnet sich, nichts wird uebergeben
 		openHighscoreWindow();
 	}
-	
+
 	@FXML protected void handleEnterGameButtonClicked(ActionEvent event) throws Exception{
 		// Client Prozess starten
 		startNewClientProcess();
 	}
-	
-	
+
+
 	@FXML protected void handleMusicOffClicked(ActionEvent event) throws Exception{
 		// stop Music
 		App_View.stopmusic();
 		ButtonMusicOn.setVisible(false);
 		ButtonMusicOff.setVisible(true);
-		
+
 	}
-	
+
 	@FXML protected void handleMusicOnClicked(ActionEvent event) throws Exception{
 		// start Music
 		App_View.music();
@@ -161,20 +157,13 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		ButtonMusicOff.setVisible(false);
 	}
 
-	
-	
+
+
 	@FXML protected void handleBackClicked(ActionEvent event) throws Exception{
 		// Client Prozess starten
 		showHomeWindow();
 	}
-	
-	protected void setHighscore(int a){
-		HashMap<Integer, String> hmap = Highscore.getInstance().getHighscore();
-		
-		for ( HashMap.Entry<Integer, String> entry : hmap.entrySet()) {
-		    int key = entry.getKey();
-		    String name = entry.getValue();
-		}
-	}
-	
+
+
+
 }

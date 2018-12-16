@@ -14,14 +14,8 @@
                   <Image url="leberkaes.GUIsources/majesty-start.jpg" />
                </image>
             </ImageView>
-            <TableView fx:id="highscoretable" focusTraversable="false" layoutX="128.0" layoutY="58.0" prefHeight="281.0" prefWidth="369.0">
-              <columns>
-                  <TableColumn fx:id="rankcolumn" prefWidth="64.0" text="Rang" />
-                <TableColumn fx:id="playernamecolumn" prefWidth="134.0" text="Spielername" />
-                <TableColumn fx:id="highscorecolumn" prefWidth="192.0" text="Highscore" />
-              </columns>
-            </TableView>
             <Button fx:id="back" defaultButton="true" layoutX="497.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBackClicked" text="Zurück" />
+            <TextArea fx:id="highScoreField" editable="false" layoutX="96.0" layoutY="50.0" prefHeight="283.0" prefWidth="408.0" />
          </children>
       </AnchorPane>
    </children>

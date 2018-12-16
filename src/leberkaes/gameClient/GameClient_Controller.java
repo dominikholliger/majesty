@@ -76,7 +76,7 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 					salt.append(SALTCHARS.charAt(index));
 				}
 				String saltStr = salt.toString();
-				
+
 		// Set auto Values for Connecting
 		view.get_Ctrl().txtChatPort.setText(config.getOption("ChatPort"));
 		view.get_Ctrl().txtGamePort.setText(config.getOption("GamePort"));
@@ -159,7 +159,6 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 			} else {
 				c.setChoosenCardType(c.getCardType2());
 			}
-
 		} else {
 			//Normale Karte
 			c.setChoosenCardType(c.getCardType1());

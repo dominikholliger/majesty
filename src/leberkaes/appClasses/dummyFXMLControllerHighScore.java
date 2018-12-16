@@ -3,9 +3,11 @@ package leberkaes.appClasses;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 
-public class dummyFXMLControllerHome {
+public class dummyFXMLControllerHighScore {
 
 	/**
 	 * @author Dominik Holliger
@@ -28,62 +30,23 @@ public class dummyFXMLControllerHome {
 	 * - Theoretisch könnte man dies noch mit einer Abstrakten Klasse vereinfachen, aber ich glaube wir lassen es aus Zeitgründen.
 	 */
 
-	private App_Controller _MvcCtrl;
-	public App_Controller get_MvcCtrl() {
+	private HighScore_Controller _MvcCtrl;
+
+	public HighScore_Controller get_MvcCtrl() {
 		return _MvcCtrl;
 	}
-	public void set_MvcCtrl(App_Controller _MvcCtrl) {
+
+	public void set_MvcCtrl(HighScore_Controller _MvcCtrl) {
 		this._MvcCtrl = _MvcCtrl;
 	}
-
-	@FXML
-	private Button newGame;
-
-	@FXML public Button ButtonMusicOn;
-	@FXML public Button ButtonMusicOff;
-
-
-
-	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
-		// Server Prozess starten
-		get_MvcCtrl().startNewServerProcess();
-		newGame.setText("Server gestartet");
-	}
-	@FXML protected void handleSettingsButtonClicked(ActionEvent event) throws Exception{
-		// Einstellungen öffnen
-		get_MvcCtrl().openSettingWindow();
-	}
-	@FXML protected void handleHighscoreButtonClicked(ActionEvent event) throws Exception{
-		// Highscore-Fenster oeffnet sich, nichts wird uebergeben
-		get_MvcCtrl().openHighscoreWindow();
-
-	}
-	@FXML protected void handleEnterGameButtonClicked(ActionEvent event) throws Exception{
-		// Client Prozess starten
-		get_MvcCtrl().startNewClientProcess();
-	}
+    @FXML public TextArea highScoreField;
 
 	@FXML protected void handleBackClicked(ActionEvent event) throws Exception{
 		// Client Prozess starten
-		get_MvcCtrl().showHomeWindow();
-	}
-
-	@FXML protected void handleMusicOffClicked(ActionEvent event) throws Exception{
-		// stop Music
-		App_View.stopmusic();
-		ButtonMusicOn.setVisible(false);
-		ButtonMusicOff.setVisible(true);
-
-	}
-
-	@FXML protected void handleMusicOnClicked(ActionEvent event) throws Exception{
-		// start Music
-		App_View.music();
-		ButtonMusicOn.setVisible(true);
-		ButtonMusicOff.setVisible(false);
+		get_MvcCtrl().
 	}
 	public void writeToHighScore(String line){
 		// Schreibt die Highscore
-		highScoreField.appendText("1");
+		highScoreField.appendText(line);
 	}
 }
