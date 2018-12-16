@@ -38,17 +38,18 @@ public class dummyFXMLControllerHome {
 		this._MvcCtrl = _MvcCtrl;
 	}
 
-	@FXML
-	private Button newGame;
+	@FXML private Button newGame;
 
 	@FXML public Button ButtonMusicOn;
 	@FXML public Button ButtonMusicOff;
 
 
 
+
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
 		// Server Prozess starten
 		get_MvcCtrl().startNewServerProcess();
+		disableServerButton();
 	}
 
 	@FXML protected void handleSettingsButtonClicked(ActionEvent event) throws Exception{
@@ -93,7 +94,14 @@ public class dummyFXMLControllerHome {
 		ButtonMusicOff.setVisible(false);
 		get_MvcCtrl().setMusicPlaying(true);
 	}
-
+	/**
+	 * @author D.Holliger
+	 *
+	 * Buttons schön deaktivieren
+	 */
+	public void disableServerButton() {
+		newGame.setDisable(true);
+	}
 
 
 

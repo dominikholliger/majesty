@@ -43,6 +43,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
     @FXML public Button ButtonMusicOn;
     @FXML public Button ButtonMusicOff;
     public boolean musicPlaying = false;
+    private boolean serverrunning = false;
 
 
     public App_Controller(App_Model model, App_View view) {
@@ -67,11 +68,15 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	public void startNewServerProcess() {
 		// Aufrufendes Fenster: Button auf Home-Screen
 		// Diese Methode startet das Server Windows
-		Stage optionsStage = new Stage();
-	   	GameServer_Model serverModel = new GameServer_Model();
-	   	GameServer_View serverView = new GameServer_View(optionsStage, serverModel);
-		new GameServer_Controller(serverModel, serverView);
-		serverView.start();
+		if(!serverrunning) {
+			Stage optionsStage = new Stage();
+		   	GameServer_Model serverModel = new GameServer_Model();
+		   	GameServer_View serverView = new GameServer_View(optionsStage, serverModel);
+			new GameServer_Controller(serverModel, serverView);
+			serverView.start();
+			serverrunning = true;
+
+		}
 	}
 	public void startNewClientProcess() {
 		// Aufrufendes Fenster: Button auf Home-Screen

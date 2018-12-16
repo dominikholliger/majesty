@@ -99,7 +99,7 @@ public class dummyFXMLControllerClient {
 	@FXML public Text p3name;
 	@FXML public Text p4name;
 
-	@FXML public ImageView iconp1; 
+	@FXML public ImageView iconp1;
 	@FXML public ImageView iconp2;
 	@FXML public ImageView iconp3;
 	@FXML public ImageView iconp4;
@@ -251,7 +251,7 @@ public class dummyFXMLControllerClient {
 	// Button Back: closes Window (Button is only visible when game is finished)
 	@FXML
 	protected void handleBackButtonClicked(MouseEvent event) throws Exception{
-		// TODO: Close Window if this Button is clicked 
+		// TODO: Close Window if this Button is clicked
 		this.get_MvcCtrl().closeView();
 	}
 
@@ -403,7 +403,7 @@ public class dummyFXMLControllerClient {
 		// set Numbers for Player 4
 		if (i>=4){
 			this.p4name.setText(g.getPlayers().get(3).getName());
-			this.player4points.setText(String.valueOf(g.getPlayers().get(3).getScore()));			
+			this.player4points.setText(String.valueOf(g.getPlayers().get(3).getScore()));
 			this.p4meeple.setText(String.valueOf(g.getPlayers().get(3).getMeeple()));
 			this.iconp4.setVisible(true);
 
@@ -458,10 +458,10 @@ public class dummyFXMLControllerClient {
 		// finds which player has the winning score and displays his name
 		// includes option if two players have same score (although then the layout is ugly)
 		if (g.isGameEnd() == true){
-			
+
 			//set cards no longer clickable (because game is finished)
 			setCardsDisabled();
-			
+
 			String winner = "";
 			int score;
 			int j = g.getPlayers().size();
@@ -496,5 +496,6 @@ public class dummyFXMLControllerClient {
 		}
 
 	}
+
 
 }
