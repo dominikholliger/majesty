@@ -139,6 +139,12 @@ public class GameClient_Model extends Model{
 		Message msg = new ChatMsg(name, message);
 		msg.send(socket);
 	}
+	
+	public void sendGameMessage(String message) {
+		logger.info("Send game message");
+		Message msg = new ChatMsg("Game", message);
+		msg.send(socket);
+	}
 
 	public String receiveMessage() {
 		logger.info("Receive message");

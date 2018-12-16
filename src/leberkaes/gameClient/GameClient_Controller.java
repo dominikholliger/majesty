@@ -173,21 +173,26 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		// Message mit getätigten Spielzügen an Server schicken
 		String gameMessage = this.model.getActGameBoard().getActivePlayer().getPlayerGameMessage();
 		String gameBoardMessage = this.model.getActGameBoard().getGameMessage();
-		this.model.sendMessage(gameMessage);
-		this.model.sendMessage(gameBoardMessage);
+		this.model.sendGameMessage(gameMessage);
+		this.model.sendGameMessage(gameBoardMessage);
 
 		this.model.getActGameBoard().setNextPlayerIndex();
-		this.model.sendGameBoardToServer(this.model.getActGameBoard());
-
 		if (this.model.getActGameBoard().isGameEnd()) {
-
+			
 			ArrayList<String> finalScoreMessage = this.model.getActGameBoard().getFinalScoreMessage();
-			System.out.println(finalScoreMessage);
+			System.out.println(finalScoreMessage.toString());
 			Iterator<String> it = finalScoreMessage.iterator();
-			if (!finalScoreMessage.isEmpty())
+			
 				while (it.hasNext()) {
 					String msg = it.next();
-					this.model.sendMessage(msg);
+					System.out.println(msg);
+					this.model.sendGameMessage(msg);
+				    try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 		}
 

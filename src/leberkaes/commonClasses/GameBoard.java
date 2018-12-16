@@ -292,8 +292,8 @@ public class GameBoard implements java.io.Serializable {
 				ServiceLocator.getServiceLocator().getLogger()
 						.info("Punkteabzug Lazarett: " + p.getName() + " verliehrt " + (count * effect) + " M�nzen");
 				if ((count * effect) < 0) {
-					this.finalScoreMessages.add((
-							p.getName() + " loses " + (count * effect) + " coins for " + count + " cards in hospital"));
+					this.finalScoreMessages.add((p.getName() + " loses " + (count * effect) + " coins for " + count
+							+ " cards in hospital"));
 				}
 			}
 		} else {
@@ -304,8 +304,8 @@ public class GameBoard implements java.io.Serializable {
 				ServiceLocator.getServiceLocator().getLogger()
 						.info("Punkteabzug Lazarett: " + p.getName() + " verliehrt " + (count * effect) + " M�nzen");
 				if ((count * effect) < 0) {
-					this.finalScoreMessages.add((
-							p.getName() + " loses " + (count * effect) + " coins for " + count + " cards in hospital"));
+					this.finalScoreMessages.add((p.getName() + " loses " + (count * effect) + " coins for " + count
+							+ " cards in hospital"));
 				}
 			}
 		}
@@ -325,8 +325,8 @@ public class GameBoard implements java.io.Serializable {
 			p.setScore(diffScore);
 			ServiceLocator.getServiceLocator().getLogger().info(
 					p.getName() + " erh�lt " + diffScore + " M�nzen f�r " + diffCards + " verschidene Karten");
-			this.finalScoreMessages.add(
-					p.getName() + " receives " + diffScore + " coins for " + diffCards + " different cards");
+			this.finalScoreMessages
+					.add(p.getName() + " receives " + diffScore + " coins for " + diffCards + " different cards");
 
 		}
 
@@ -345,16 +345,17 @@ public class GameBoard implements java.io.Serializable {
 			}
 			for (Player p : players) {
 				tempPlayerScore = p.getLocations()[i].getCardCount();
-				if (tempHighScore == tempPlayerScore) {
-					int finalCoinEffect = p.getLocations()[i].getFinalCoinEffect();
-					p.setScore(finalCoinEffect);
-					ServiceLocator.getServiceLocator().getLogger()
-							.info(p.getName() + " hat die H�chste anzahl Karten im" + p.getLocations()[i].getType()
-									+ " und erh�lt " + finalCoinEffect);
-					
-					this.finalScoreMessages.add(
-							p.getName() + " has highest amount of cards in " + p.getLocations()[i].getType()
-							+ " and receives " + finalCoinEffect);
+				if (!(tempHighScore == 0)) {
+					if (tempHighScore == tempPlayerScore) {
+						int finalCoinEffect = p.getLocations()[i].getFinalCoinEffect();
+						p.setScore(finalCoinEffect);
+						ServiceLocator.getServiceLocator().getLogger()
+								.info(p.getName() + " hat die H�chste anzahl Karten im"
+										+ p.getLocations()[i].getType() + " und erh�lt " + finalCoinEffect);
+
+						this.finalScoreMessages.add(p.getName() + " has highest amount of cards in "
+								+ p.getLocations()[i].getType() + " and receives " + finalCoinEffect);
+					}
 				}
 			}
 		}
