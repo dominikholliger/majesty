@@ -595,35 +595,35 @@
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER" />
          </right>
       </BorderPane>
-      <Pane fx:id="WinnerPane" layoutX="260.0" layoutY="176.0" prefHeight="330.0" prefWidth="576.0" visible="false">
+      <Pane fx:id="WinnerPane" layoutX="-2.0" layoutY="30.0" prefHeight="196.0" prefWidth="1109.0" visible="false">
          <children>
-            <ImageView fitHeight="360.0" fitWidth="580.0" layoutX="-4.0" layoutY="-1.0" opacity="1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="190.0" fitWidth="1109.0" layoutY="1.0" opacity="1.0" pickOnBounds="true">
                <image>
                   <Image url="leberkaes.GUIsources/majesty-start.jpg" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="122.0" layoutX="97.0" layoutY="172.0" opacity="0.6" stroke="BLACK" strokeType="INSIDE" width="386.0" />
-            <Text fx:id="WinnerName" layoutX="258.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler" wrappingWidth="220.04244995117188">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="143.0" layoutX="128.0" layoutY="22.0" opacity="0.6" stroke="BLACK" strokeType="INSIDE" width="845.0" />
+            <Text fx:id="WinnerName" layoutX="306.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler" wrappingWidth="220.04244995117188">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="132.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gewinner:">
+            <Text layoutX="177.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gewinner:">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="128.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl:">
+            <Text layoutX="179.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl:">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text fx:id="WinnerPoints" layoutX="260.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl" wrappingWidth="118.81747436523438">
+            <Text fx:id="WinnerPoints" layoutX="307.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl" wrappingWidth="118.81747436523438">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button fx:id="BackButton" layoutX="202.0" layoutY="255.0" mnemonicParsing="false" onMouseClicked="#handleBackButtonClicked" text="Zurück zum Start-Menü" />
+            <Button fx:id="BackButton" layoutX="767.0" layoutY="108.0" mnemonicParsing="false" onMouseClicked="#handleBackButtonClicked" text="Zurück zum Start-Menü" />
          </children>
       </Pane>
    </children>

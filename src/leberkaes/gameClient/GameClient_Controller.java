@@ -70,14 +70,16 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		});
 
 		// Random-Name Generator
-				String SALTCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-				StringBuilder salt = new StringBuilder();
-				Random rnd = new Random();
-				while (salt.length() < 8) { // length of the random string.
-					int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-					salt.append(SALTCHARS.charAt(index));
-				}
-				String saltStr = salt.toString();
+
+
+		String SALTCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		StringBuilder salt = new StringBuilder();
+		Random rnd = new Random();
+		while (salt.length() < 8) { // length of the random string.
+			int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+			salt.append(SALTCHARS.charAt(index));
+		}
+		String saltStr = salt.toString();
 
 		// Set auto Values for Connecting
 		view.get_Ctrl().txtChatPort.setText(config.getOption("ChatPort"));
@@ -153,20 +155,19 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 
 	public void takeCard(int pos, double x, double y) {
 		CharacterCard c = this.model.getActGameBoard().takeCard(pos);
-		if(c.getCardType2() != null) {
-			//Splitt-Card
+		if (c.getCardType2() != null) {
+			// Splitt-Card
 			int choosenType = this.helperSlopePosition(x, y);
-			if(choosenType == 1) {
+			if (choosenType == 1) {
 				c.setChoosenCardType(c.getCardType1());
 			} else {
 				c.setChoosenCardType(c.getCardType2());
 			}
 
 		} else {
-			//Normale Karte
+			// Normale Karte
 			c.setChoosenCardType(c.getCardType1());
 		}
-
 
 		int l = this.model.getActGameBoard().getActivePlayer().getLocation(c);
 		this.model.getActGameBoard().playCard(c, l);
@@ -179,26 +180,32 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		this.model.getActGameBoard().setNextPlayerIndex();
 
 		if (this.model.getActGameBoard().isGameEnd()) {
- 			ArrayList<String> finalScoreMessage = this.model.getActGameBoard().getFinalScoreMessage();
+			ArrayList<String> finalScoreMessage = this.model.getActGameBoard().getFinalScoreMessage();
 			System.out.println(finalScoreMessage);
 			Iterator<String> it = finalScoreMessage.iterator();
 			if (!finalScoreMessage.isEmpty())
 				while (it.hasNext()) {
 					String msg = it.next();
 					this.model.sendMessage(msg);
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 		}
 		this.model.sendGameBoardToServer(this.model.getActGameBoard());
 		view.get_Ctrl().setGameBoard(this.model.getActGameBoard());
 	}
 
-	private int helperSlopePosition (double x, double y) {
+	private int helperSlopePosition(double x, double y) {
 		// Steigung
 		final double m = -0.5;
 		// Achsenabschnitt
 		final double c = 97;
 		int result = 0;
-		if(x*m+c > y){
+		if (x * m + c > y) {
 			result = 1;
 		} else {
 			result = 2;
@@ -206,7 +213,7 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		return result;
 	}
 
-	public void closeView(){
+	public void closeView() {
 		view.stop();
 	}
 
