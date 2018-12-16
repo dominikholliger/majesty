@@ -42,8 +42,10 @@ public class App_Controller extends Controller<App_Model, App_View> {
     @FXML public Button ButtonMusicOn;
     @FXML public Button ButtonMusicOff;
     
+	public boolean musicPlaying = false;
+
     
-    public App_Controller(App_Model model, App_View view) {
+	public App_Controller(App_Model model, App_View view) {
         super(model, view);
         // D.Holliger:
         // Vorbereiten für die Kommunikation Controller vs DummyController FXML
@@ -151,17 +153,18 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		App_View.stopmusic();
 		ButtonMusicOn.setVisible(false);
 		ButtonMusicOff.setVisible(true);
-		
+		musicPlaying = false;
+
 	}
-	
+
 	@FXML protected void handleMusicOnClicked(ActionEvent event) throws Exception{
 		// start Music
 		App_View.music();
 		ButtonMusicOn.setVisible(true);
 		ButtonMusicOff.setVisible(false);
+		musicPlaying = true;
 	}
 
-	
 	
 	@FXML protected void handleBackClicked(ActionEvent event) throws Exception{
 		// Client Prozess starten
@@ -175,6 +178,13 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		    int key = entry.getKey();
 		    String name = entry.getValue();
 		}
+	}
+	
+	public boolean isMusicPlaying() {
+		return musicPlaying;
+	}
+	public void setMusicPlaying(boolean musicPlaying) {
+		this.musicPlaying = musicPlaying;
 	}
 	
 }

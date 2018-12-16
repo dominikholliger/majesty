@@ -14,9 +14,11 @@ import sun.audio.ContinuousAudioDataStream;
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.View;
 import leberkaes.commonClasses.Translator;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
@@ -70,7 +72,7 @@ public class App_View extends View<App_Model> {
 		Scene scene = new Scene(parent, 600,400);
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
 		return scene;
-
+		
 	}
 
 	protected void updateTexts() {

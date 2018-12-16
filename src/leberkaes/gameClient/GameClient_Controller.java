@@ -212,6 +212,7 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 
 	public void closeView() {
 		view.stop();
+		model.disconnect();
 	}
 
 }
