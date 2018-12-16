@@ -43,19 +43,19 @@ public class dummyFXMLControllerHome {
 
 	@FXML public Button ButtonMusicOn;
 	@FXML public Button ButtonMusicOff;
-	
+
 
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
 		// Server Prozess starten
 		get_MvcCtrl().startNewServerProcess();
 	}
-	
+
 	@FXML protected void handleSettingsButtonClicked(ActionEvent event) throws Exception{
 		// Einstellungen öffnen
 		get_MvcCtrl().openSettingWindow();
 	}
-	
+
 	@FXML protected void handleHighscoreButtonClicked(ActionEvent event) throws Exception{
 		// Highscore-Fenster oeffnet sich, nichts wird uebergeben
 		get_MvcCtrl().openHighscoreWindow();
@@ -74,7 +74,7 @@ public class dummyFXMLControllerHome {
 			ButtonMusicOff.setVisible(false);
 		} else {
 			ButtonMusicOn.setVisible(false);
-			ButtonMusicOff.setVisible(true);	
+			ButtonMusicOff.setVisible(true);
 		}
 	}
 
@@ -94,10 +94,7 @@ public class dummyFXMLControllerHome {
 		get_MvcCtrl().setMusicPlaying(true);
 	}
 
-	public void writeToHighScore(String line){
-		// Schreibt die Highscore
-		highScoreField.appendText("1");
-	}
+
 
 
 }
