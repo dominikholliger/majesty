@@ -458,6 +458,10 @@ public class dummyFXMLControllerClient {
 		// finds which player has the winning score and displays his name
 		// includes option if two players have same score (although then the layout is ugly)
 		if (g.isGameEnd() == true){
+			
+			//set cards no longer clickable (because game is finished)
+			setCardsDisabled();
+			
 			String winner = "";
 			int score;
 			int j = g.getPlayers().size();

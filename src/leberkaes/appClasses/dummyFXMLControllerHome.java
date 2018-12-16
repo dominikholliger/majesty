@@ -3,6 +3,7 @@ package leberkaes.appClasses;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.stage.WindowEvent;
 
 
 public class dummyFXMLControllerHome {
@@ -41,18 +42,19 @@ public class dummyFXMLControllerHome {
 
 	@FXML public Button ButtonMusicOn;
 	@FXML public Button ButtonMusicOff;
-
+	
 
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
 		// Server Prozess starten
 		get_MvcCtrl().startNewServerProcess();
-		newGame.setText("Server gestartet");
 	}
+	
 	@FXML protected void handleSettingsButtonClicked(ActionEvent event) throws Exception{
 		// Einstellungen öffnen
 		get_MvcCtrl().openSettingWindow();
 	}
+	
 	@FXML protected void handleHighscoreButtonClicked(ActionEvent event) throws Exception{
 		// Highscore-Fenster oeffnet sich, nichts wird uebergeben
 		get_MvcCtrl().openHighscoreWindow();
@@ -64,8 +66,15 @@ public class dummyFXMLControllerHome {
 	}
 
 	@FXML protected void handleBackClicked(ActionEvent event) throws Exception{
-		// Client Prozess starten
 		get_MvcCtrl().showHomeWindow();
+
+		if (get_MvcCtrl().isMusicPlaying() == true){
+			ButtonMusicOn.setVisible(true);
+			ButtonMusicOff.setVisible(false);
+		} else {
+			ButtonMusicOn.setVisible(false);
+			ButtonMusicOff.setVisible(true);	
+		}
 	}
 
 	@FXML protected void handleMusicOffClicked(ActionEvent event) throws Exception{
@@ -73,7 +82,7 @@ public class dummyFXMLControllerHome {
 		App_View.stopmusic();
 		ButtonMusicOn.setVisible(false);
 		ButtonMusicOff.setVisible(true);
-
+		get_MvcCtrl().setMusicPlaying(false);
 	}
 
 	@FXML protected void handleMusicOnClicked(ActionEvent event) throws Exception{
@@ -81,9 +90,15 @@ public class dummyFXMLControllerHome {
 		App_View.music();
 		ButtonMusicOn.setVisible(true);
 		ButtonMusicOff.setVisible(false);
+		get_MvcCtrl().setMusicPlaying(true);
 	}
+<<<<<<< HEAD
 	public void writeToHighScore(String line){
 		// Schreibt die Highscore
 		highScoreField.appendText("1");
 	}
+=======
+	
+
+>>>>>>> branch 'BaseGUIIntegrationv1' of https://github.com/dominikholliger/majesty
 }

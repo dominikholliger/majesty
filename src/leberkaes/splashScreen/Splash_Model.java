@@ -49,6 +49,8 @@ public class Splash_Model extends Model {
             
             // ... more resources would go here...
             this.updateProgress(6,  6);
+            
+            Thread.sleep(2000);
 
             return null;
         }

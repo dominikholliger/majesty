@@ -25,9 +25,9 @@ public class GameBoard implements java.io.Serializable {
 	private Stack<CharacterCard> redCards = new Stack<CharacterCard>();
 	private Stack<CharacterCard> deck = new Stack<CharacterCard>();
 	private CharacterCard[] openDeck = new CharacterCard[6];
+	
 
-
-
+	
 	public GameBoard(int numOfP) {
 
 		this.playerCount = numOfP;
@@ -180,8 +180,8 @@ public class GameBoard implements java.io.Serializable {
 		if (!this.deck.isEmpty()) {
 			this.openDeck[0] = deck.pop();
 		}
-
-
+		
+		
 	}
 
 	/**
@@ -207,7 +207,7 @@ public class GameBoard implements java.io.Serializable {
 
 		// Karte in Location legen
 		this.getActivePlayer().makeMove(c, location);
-
+	
 		// Auswirkungen auf Andere Spieler;
 		this.otherPlayerEffect(type);
 
@@ -401,8 +401,9 @@ public class GameBoard implements java.io.Serializable {
 		return openDeck;
 	}
 
+	
 
-
+	
 	@Override
 	public String toString() {
 		return "GameBoard [playerCount=" + playerCount + ", players=" + players + ", roundCount=" + roundCount

@@ -117,6 +117,8 @@ public class JavaFX_App_Template extends Application {
      */
     @Override
     public void stop() {
+    	App_View.stopmusic();
+    	
         serviceLocator.getConfiguration().save();
         if (view != null) {
             // Make the view invisible
