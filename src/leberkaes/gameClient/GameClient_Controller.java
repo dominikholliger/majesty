@@ -170,8 +170,24 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 
 		int l = this.model.getActGameBoard().getActivePlayer().getLocation(c);
 		this.model.getActGameBoard().playCard(c, l);
-
+		// Message mit getätigten Spielzügen an Server schicken
+				String gameMessage = this.model.getActGameBoard().getActivePlayer().getPlayerGameMessage();
+				String gameBoardMessage = this.model.getActGameBoard().getGameMessage();
+				this.model.sendMessage(gameMessage);
+				this.model.sendMessage(gameBoardMessage);
+				
 		this.model.getActGameBoard().setNextPlayerIndex();
+		
+		if (this.model.getActGameBoard().isGameEnd()) {
+ 			ArrayList<String> finalScoreMessage = this.model.getActGameBoard().getFinalScoreMessage();
+			System.out.println(finalScoreMessage);
+			Iterator<String> it = finalScoreMessage.iterator();
+			if (!finalScoreMessage.isEmpty())
+				while (it.hasNext()) {
+					String msg = it.next();
+					this.model.sendMessage(msg);
+				}
+		}
 		this.model.sendGameBoardToServer(this.model.getActGameBoard());
 		view.get_Ctrl().setGameBoard(this.model.getActGameBoard());
 	}
