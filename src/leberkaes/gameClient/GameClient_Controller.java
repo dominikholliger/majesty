@@ -70,8 +70,6 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		});
 
 		// Random-Name Generator
-
-
 		String SALTCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		StringBuilder salt = new StringBuilder();
 		Random rnd = new Random();
@@ -172,10 +170,10 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		int l = this.model.getActGameBoard().getActivePlayer().getLocation(c);
 		this.model.getActGameBoard().playCard(c, l);
 		// Message mit get�tigten Spielz�gen an Server schicken
-				String gameMessage = this.model.getActGameBoard().getActivePlayer().getPlayerGameMessage();
-				String gameBoardMessage = this.model.getActGameBoard().getGameMessage();
-				this.model.sendMessage(gameMessage);
-				this.model.sendMessage(gameBoardMessage);
+		String gameMessage = this.model.getActGameBoard().getActivePlayer().getPlayerGameMessage();
+		String gameBoardMessage = this.model.getActGameBoard().getGameMessage();
+		this.model.sendGameMessage(gameMessage);
+		this.model.sendGameMessage(gameBoardMessage);
 
 		this.model.getActGameBoard().setNextPlayerIndex();
 
