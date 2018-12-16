@@ -10,19 +10,14 @@ import leberkaes.abstractClasses.Model;
  *
  * @author Dominik Holliger
  */
-public class App_Model extends Model {
+public class HighScore_Model extends Model {
     ServiceLocator serviceLocator;
     private int value;
 
-    public App_Model() {
-        value = 0;
-
+    public HighScore_Model() {
         serviceLocator = ServiceLocator.getServiceLocator();
         serviceLocator.getLogger().info("Application model initialized");
     }
-    
-    public int getValue() {
-        return value;
-    }
+
 
 }

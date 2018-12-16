@@ -11,8 +11,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.TimeZone;
+import java.util.TreeMap;
 
 public class Highscore {
 	/**
@@ -71,29 +78,39 @@ public class Highscore {
 		return isAlive;
 	}
 
-	public HashMap getHighscore() {
-		HashMap<Integer, String> hmap = new HashMap<Integer, String>();
+	public ArrayList<String> getHighscore() {
+		ArrayList<String> list = new ArrayList<String>();
 		Connection conn = makeConnection();
 		try {
 			Statement stmt = null;
-			String sql = "SELECT * FROM `majesty` order by count desc, timestamp asc LIMIT 100;";
+			String sql = "SELECT * FROM `majesty` order by count desc  LIMIT 10;";
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
+			int counter = 1;
 			while (rs.next()) {
 				int count = rs.getInt("count");
 				String name = rs.getString("name");
-				java.util.Date datetime = new java.util.Date();
-				datetime = rs.getTime("timestamp");
-				java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd.MM.yyyy HH:mm");
-				String dateTimeofEntry = sdf.format(datetime);
-				hmap.put(count, name + " - " + dateTimeofEntry);
+				//java.util.Date datetime = new java.util.Date();
+				//datetime = rs.getTime("timestamp");
+				java.util.Date date = new java.util.Date();
+				Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+				Timestamp timestamp = rs.getTimestamp("timestamp");
+				if (timestamp != null) {
+				    date = new java.util.Date(timestamp.getTime());
+				}
+				java.text.SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+				sdf.setTimeZone(TimeZone.getTimeZone("Europe/Zurich"));
+				String dateTimeofEntry = sdf.format(date);
+				//String dateTimeofEntry = datetime;
+				list.add("Rang: "+counter+" Punkte: "+count+" - "+name + " - " + dateTimeofEntry);
+				counter++;
 			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return hmap;
+		return list;
 	}
 
 	public void writeHighscore(String name, int count) {

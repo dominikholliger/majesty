@@ -8,8 +8,8 @@ import javafx.stage.WindowEvent;
 
 public class dummyFXMLControllerHome {
 
-	/** @author: Sebrina Pedrossi including FXML for all GUI*/
 	/**
+	 * @author Dominik Holliger
 	 * Anmerkung D.Holliger:
 	 * Vorsicht: FXML Controller versus MVC Controller!
 	 * Um den generierten Kontroller von FXML an das MVC Framework von Brad anzudocken habe ich einige Anpassungen vorgenommen Ausgangslage:
@@ -43,6 +43,7 @@ public class dummyFXMLControllerHome {
 	@FXML public Button ButtonMusicOn;
 	@FXML public Button ButtonMusicOff;
 	
+
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
 		// Server Prozess starten
@@ -91,6 +92,13 @@ public class dummyFXMLControllerHome {
 		ButtonMusicOff.setVisible(false);
 		get_MvcCtrl().setMusicPlaying(true);
 	}
+<<<<<<< HEAD
+	public void writeToHighScore(String line){
+		// Schreibt die Highscore
+		highScoreField.appendText("1");
+	}
+=======
 	
 
+>>>>>>> branch 'BaseGUIIntegrationv1' of https://github.com/dominikholliger/majesty
 }
