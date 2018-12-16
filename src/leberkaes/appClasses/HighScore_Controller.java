@@ -50,8 +50,8 @@ public class HighScore_Controller extends Controller<HighScore_Model, HighScore_
         view.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-            	System.out.println();
-            	Platform.exit();
+            	System.out.println("HighScore Screen schliessen");
+            	view.stop();
             }
         });
         serviceLocator = ServiceLocator.getServiceLocator();

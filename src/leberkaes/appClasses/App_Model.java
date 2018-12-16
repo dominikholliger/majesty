@@ -12,17 +12,12 @@ import leberkaes.abstractClasses.Model;
  */
 public class App_Model extends Model {
     ServiceLocator serviceLocator;
-    private int value;
 
     public App_Model() {
-        value = 0;
 
         serviceLocator = ServiceLocator.getServiceLocator();
         serviceLocator.getLogger().info("Application model initialized");
     }
-    
-    public int getValue() {
-        return value;
-    }
+
 
 }

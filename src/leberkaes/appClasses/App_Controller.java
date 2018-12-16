@@ -39,8 +39,8 @@ import javafx.stage.WindowEvent;
  */
 public class App_Controller extends Controller<App_Model, App_View> {
     ServiceLocator serviceLocator;
-    private GameServer_View _GameServerViewInstance;
-    @FXML public Button ButtonMusicOn;
+
+	@FXML public Button ButtonMusicOn;
     @FXML public Button ButtonMusicOff;
     public boolean musicPlaying = false;
     private boolean serverrunning = false;
@@ -55,7 +55,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
         view.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-            	System.out.println();
+            	System.out.println("Spiel wird komplett beendet.");
             	Platform.exit();
             }
         });

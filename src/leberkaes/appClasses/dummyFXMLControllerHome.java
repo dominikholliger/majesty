@@ -1,6 +1,8 @@
 package leberkaes.appClasses;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -30,6 +32,8 @@ public class dummyFXMLControllerHome {
 	 * - Theoretisch könnte man dies noch mit einer Abstrakten Klasse vereinfachen, aber ich glaube wir lassen es aus Zeitgründen.
 	 */
 
+
+
 	private App_Controller _MvcCtrl;
 	public App_Controller get_MvcCtrl() {
 		return _MvcCtrl;
@@ -39,11 +43,8 @@ public class dummyFXMLControllerHome {
 	}
 
 	@FXML private Button newGame;
-
 	@FXML public Button ButtonMusicOn;
 	@FXML public Button ButtonMusicOff;
-
-
 
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {

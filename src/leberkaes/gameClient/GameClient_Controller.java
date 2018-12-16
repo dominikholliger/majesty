@@ -47,7 +47,7 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 			@Override
 			public void handle(WindowEvent event) {
 				System.out.println();
-				Platform.exit();
+				view.stop();
 			}
 		});
 
@@ -78,7 +78,7 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 					salt.append(SALTCHARS.charAt(index));
 				}
 				String saltStr = salt.toString();
-				
+
 		// Set auto Values for Connecting
 		view.get_Ctrl().txtChatPort.setText(config.getOption("ChatPort"));
 		view.get_Ctrl().txtGamePort.setText(config.getOption("GamePort"));
@@ -170,14 +170,14 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 
 		int l = this.model.getActGameBoard().getActivePlayer().getLocation(c);
 		this.model.getActGameBoard().playCard(c, l);
-		// Message mit getätigten Spielzügen an Server schicken
+		// Message mit getï¿½tigten Spielzï¿½gen an Server schicken
 				String gameMessage = this.model.getActGameBoard().getActivePlayer().getPlayerGameMessage();
 				String gameBoardMessage = this.model.getActGameBoard().getGameMessage();
 				this.model.sendMessage(gameMessage);
 				this.model.sendMessage(gameBoardMessage);
-				
+
 		this.model.getActGameBoard().setNextPlayerIndex();
-		
+
 		if (this.model.getActGameBoard().isGameEnd()) {
  			ArrayList<String> finalScoreMessage = this.model.getActGameBoard().getFinalScoreMessage();
 			System.out.println(finalScoreMessage);
