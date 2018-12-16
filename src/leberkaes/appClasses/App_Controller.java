@@ -40,10 +40,9 @@ import javafx.stage.WindowEvent;
 public class App_Controller extends Controller<App_Model, App_View> {
     ServiceLocator serviceLocator;
     private GameServer_View _GameServerViewInstance;
-
-
     @FXML public Button ButtonMusicOn;
     @FXML public Button ButtonMusicOff;
+    public boolean musicPlaying = false;
 
 
     public App_Controller(App_Model model, App_View view) {
@@ -147,6 +146,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		App_View.stopmusic();
 		ButtonMusicOn.setVisible(false);
 		ButtonMusicOff.setVisible(true);
+		musicPlaying = false;
 
 	}
 
@@ -164,6 +164,12 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		showHomeWindow();
 	}
 
-
+	public void setMusicPlaying(boolean musicPlaying) {
+		this.musicPlaying = musicPlaying;
+	}
+	public boolean isMusicPlaying() {
+		// TODO Auto-generated method stub
+		return musicPlaying;
+	}
 
 }
