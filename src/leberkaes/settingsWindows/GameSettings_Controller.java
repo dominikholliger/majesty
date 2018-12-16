@@ -195,11 +195,7 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 		config.setLocalOption("GamePort", this.txtGamePort.getText());
 		config.setLocalOption("ChatPort", this.txtChatPort.getText());
 		config.setLocalOption("PlayerCount", this.txtPlayerCount.getText());
-		if (this.meepleOption.isSelected()) {
-			config.setLocalOption("Meeple", "true");
-		} else {
-			config.setLocalOption("Meeple", "false");
-		}
+		
 		if (this.BSideOption.isSelected()) {
 			config.setLocalOption("BSide", "true");
 		} else {

@@ -20,7 +20,6 @@ import javafx.stage.StageStyle;
  */
 public class Splash_View extends View<Splash_Model> {
     ProgressBar progress;
-    private Label lblStatus;
 
     public Splash_View(Stage stage, Splash_Model model) {
         super(stage, model);
@@ -31,9 +30,6 @@ public class Splash_View extends View<Splash_Model> {
     protected Scene create_GUI() {
         BorderPane root = new BorderPane();
         root.setId("splash");
-
-        lblStatus = new Label("Majesty wird gestartet");
-        root.setCenter(lblStatus);
         
         progress = new ProgressBar();
         HBox bottomBox = new HBox();
@@ -41,10 +37,11 @@ public class Splash_View extends View<Splash_Model> {
         bottomBox.getChildren().add(progress);
         root.setBottom(bottomBox);
 
-        Scene scene = new Scene(root, 300, 300, Color.TRANSPARENT);
+        Scene scene = new Scene(root, 600, 400, Color.TRANSPARENT);
         scene.getStylesheets().addAll(
                 this.getClass().getResource("splash.css").toExternalForm());
 
         return scene;
     }
+    
 }

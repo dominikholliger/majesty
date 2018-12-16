@@ -43,7 +43,7 @@ public class SplashScreen_Preloader extends Preloader {
         stage.initStyle(StageStyle.TRANSPARENT); // is also undecorated
         BorderPane root = new BorderPane();
         root.setId("splash");
-        Scene scene = new Scene(root, 300, 300);
+        Scene scene = new Scene(root, 600, 400);
         scene.getStylesheets().addAll(
                 this.getClass().getResource("splash.css").toExternalForm());
         stage.setScene(scene);
