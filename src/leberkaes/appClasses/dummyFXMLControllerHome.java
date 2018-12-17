@@ -42,9 +42,11 @@ public class dummyFXMLControllerHome {
 		this._MvcCtrl = _MvcCtrl;
 	}
 
-	@FXML private Button newGame;
+	@FXML public Button newGame;
 	@FXML public Button ButtonMusicOn;
 	@FXML public Button ButtonMusicOff;
+	@FXML public Button enterGame;
+	@FXML public Button highscore;
 
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {

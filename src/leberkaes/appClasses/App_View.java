@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code
  * is licensed under the terms of the BSD 3-clause license (see the file
  * license.txt).
- * 
+ *
  * @author Brad Richards
  */
 public class App_View extends View<App_Model> {
@@ -34,6 +34,8 @@ public class App_View extends View<App_Model> {
 	static AudioPlayer MGP = AudioPlayer.player;
 	static AudioStream BGM;
 	static AudioData MD;
+
+
 
 	/**
 	 * Per Lazy Loading die ein DummyKontroller Objekt erstellen und per Getter zur verfügung Stellen
@@ -44,7 +46,7 @@ public class App_View extends View<App_Model> {
 		if(_Ctrl == null) {
 			_Ctrl = new dummyFXMLControllerHome();
 		}
-		return _Ctrl;    	
+		return _Ctrl;
 	}
 
 	protected Parent parent;
@@ -58,7 +60,7 @@ public class App_View extends View<App_Model> {
 
 	@Override
 	protected Scene create_GUI() {
-		ServiceLocator sl = ServiceLocator.getServiceLocator();  
+		ServiceLocator sl = ServiceLocator.getServiceLocator();
 		Logger logger = sl.getLogger();
 		Translator t = sl.getTranslator();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
@@ -72,11 +74,16 @@ public class App_View extends View<App_Model> {
 		Scene scene = new Scene(parent, 600,400);
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
 		return scene;
-		
+
 	}
 
 	protected void updateTexts() {
 		Translator t = ServiceLocator.getServiceLocator().getTranslator();
+		// update Homescreen Buttons.....
+       get_Ctrl().highscore.setText(t.getString("home.btnHighScore"));
+       get_Ctrl().newGame.setText(t.getString("home.btnServerStart"));
+       get_Ctrl().enterGame.setText(t.getString("home.btnClientStart"));
+
 	}
 
 	/** @author Sebrina Pedrossi */
@@ -91,7 +98,7 @@ public class App_View extends View<App_Model> {
 		}
 		catch(Exception e){
 			System.out.println(e);
-		}      
+		}
 
 	}
 
