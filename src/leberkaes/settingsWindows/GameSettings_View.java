@@ -21,6 +21,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class GameSettings_View extends View<GameSettings_Model>{
@@ -28,28 +29,28 @@ public class GameSettings_View extends View<GameSettings_Model>{
 	Logger logger = sl.getLogger();
 	Translator t = sl.getTranslator();
 	Configuration config = sl.getConfiguration();
-	
+
     //private GameSettings_Model model;
     private Stage stage;
     protected Parent parent;
-    
- 
+
+  
 
 
 
     public GameSettings_View(Stage stage, GameSettings_Model model) {
         super (stage, model);
         stage.setTitle(t.getString("options.title"));
-        
+
         // Get current values
         //txtPort.setText(config.getOption("Port"));
         //txtPlayer.setText(config.getOption("PlayerCount"));
-        
+
     }
- 
-    
+
+
     protected Scene create_GUI() {
-	    
+
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
 		loader.setController(new GameSettings_Controller(model, this));
 		try {
@@ -61,8 +62,8 @@ public class GameSettings_View extends View<GameSettings_Model>{
 		Scene scene = new Scene(parent, 600,400);
         scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
         return scene;
-        
+
 	}
-    
- 
+
+
 }

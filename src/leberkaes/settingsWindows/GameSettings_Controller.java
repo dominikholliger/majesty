@@ -20,6 +20,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.text.Text;
 import javafx.stage.WindowEvent;
 
 public class GameSettings_Controller extends Controller<GameSettings_Model, GameSettings_View> {
@@ -57,8 +58,9 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 	public ToggleButton toggleEnglish;
 	@FXML
 	public ToggleButton toggleDeutsch;
-
-
+	@FXML private Text txtLabelPlayerNumber;
+	@FXML private Text txtLabelPort;
+	@FXML private Text textGamePort;
 
 
 	public GameSettings_Controller(GameSettings_Model model, GameSettings_View view) {
@@ -197,6 +199,20 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 	private void handleCancelButtonClicked() {
 
 		view.stop();
+	}
+
+
+	protected void updateTexts() {
+		Translator t = ServiceLocator.getServiceLocator().getTranslator();
+		// update Homescreen Buttons.....
+		txtLabelPlayerNumber.setText(t.getString("settings.lblPlayerCount"));
+		BSideOption.setText(t.getString("settings.lblBSide"));
+		txtLabelPort.setText(t.getString("settings.lblChatPort"));
+		textGamePort.setText(t.getString("settings.lblGamePort"));
+		toggleEnglish.setText(t.getString("settings.btnEnglish"));
+		toggleDeutsch.setText(t.getString("settings.btnGerman"));
+		btnSave.setText(t.getString("settings.btnSave"));
+
 	}
 
 }
