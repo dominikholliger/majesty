@@ -30,7 +30,7 @@ public class Location implements Serializable {
 
 	}
 
-	// Inizialisierung der Karten Effekte auf eigene Karten
+	// Inizialisierung der Karten Effekte auf die Location-Karten
 	public void addCardEffects(type t, boolean bSide) {
 
 		if (bSide) {
@@ -39,12 +39,9 @@ public class Location implements Serializable {
 			case GRAIN:
 				coinEffects.put(GRAIN, 2);
 				this.setFinalCoinEffect(14);
-				// effekt auf andere
 				break;
 			case BARELL:
-				// Pro Grain + Barell 1 Meeple
-
-				// Auswirkung auf andere
+				this.setFinalCoinEffect(12);
 				break;
 
 			case POTION:
@@ -57,8 +54,6 @@ public class Location implements Serializable {
 				coinEffects.put(POTION, 2);
 				coinEffects.put(SHIELD, 2);
 				this.setFinalCoinEffect(8);
-				// auswirkung auf andere
-
 				break;
 
 			case SWORD:
@@ -66,15 +61,13 @@ public class Location implements Serializable {
 				coinEffects.put(CUTLERY, 3);
 				coinEffects.put(KEY, 3);
 				this.setFinalCoinEffect(8);
-
 				break;
 			case CUTLERY:
-				// Was soll das Symbol heissen?
+				
 				this.setFinalCoinEffect(12);
 
 				break;
 			case KEY:
-				// Was soll das heissen?
 				this.setFinalCoinEffect(16);
 
 				break;
@@ -135,8 +128,12 @@ public class Location implements Serializable {
 	}
 
 	public int getCardCount() {
-
-		int i = this.characters.size();
+		int i;
+		if (this.characters.isEmpty()){
+			i = 0;
+		}else{
+			i = this.characters.size();
+		}
 		return i;
 
 	}

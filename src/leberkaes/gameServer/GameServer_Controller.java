@@ -23,7 +23,8 @@ public class GameServer_Controller {
 		int chatPort = Integer.parseInt(config.getOption("ChatPort"));
 		int gamePort = Integer.parseInt(config.getOption("GamePort"));
 		int playerCount = Integer.parseInt(config.getOption("PlayerCount"));
-		model.startServer(chatPort,playerCount);
+		boolean bside = Boolean.parseBoolean(config.getOption("BSide"));
+		model.startServer(chatPort,playerCount,bside);
 		// Muss noch aus der Konfig den Port nehmen
 		model.startServerObjectCom(gamePort);
 		view.stage.setOnCloseRequest(event -> model.stopServer());

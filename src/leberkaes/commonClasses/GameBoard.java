@@ -18,7 +18,7 @@ public class GameBoard implements java.io.Serializable {
 	// Spiel
 	private int roundCount;
 	private boolean gameEnd;
-	private boolean bSide = false;
+	private boolean bSide;
 	private boolean meeple = false;
 
 	// Karten
@@ -30,11 +30,11 @@ public class GameBoard implements java.io.Serializable {
 	private String gameBoardMessage;
 	private ArrayList<String> finalScoreMessages = new ArrayList<String>();
 
-	public GameBoard(int numOfP) {
+	public GameBoard(int numOfP, boolean bside) {
 
 		this.playerCount = numOfP;
 		this.players = new ArrayList<Player>();
-
+		this.bSide = bside;
 		// ____________________
 		// debug Karten zum Testen
 
@@ -80,6 +80,7 @@ public class GameBoard implements java.io.Serializable {
 		createDeck();
 		this.gameEnd = false;
 		this.roundCount = 1;
+		System.out.println(bside);
 
 	}
 
@@ -215,10 +216,41 @@ public class GameBoard implements java.io.Serializable {
 
 	/** Effekte auf andere Spieler ausf�hren */
 	public void otherPlayerEffect(type t) {
-		// aktuell nur A-Seite
+
 		if (bSide) {
-			// TODO bSide effects
-		} else {
+			int coins = 0;
+			switch (t) {
+			case GRAIN:
+				coins = 3;
+				this.gameBoardMessage = ("Group effect " + t + ": ");
+				for (Player p : players) {
+					if (!p.getLocations()[2].getCharacters().isEmpty()) {
+						p.setScore(coins);
+						ServiceLocator.getServiceLocator().getLogger()
+								.info("Gruppeneffekt" + p.getName() + " erh�hlt " + coins + " M�nzen");
+						setGameMessage((p.getName() + ": + " + coins + " coins "));
+					}
+				}
+				break;
+
+			case SHIELD:
+				coins = 3;
+				this.gameBoardMessage = ("Group effect " + t + ": ");
+				for (Player p : players) {
+					if (!p.getLocations()[5].getCharacters().isEmpty()) {
+						p.setScore(coins);
+						ServiceLocator.getServiceLocator().getLogger()
+								.info("Gruppeneffekt" + p.getName() + " erh�hlt " + coins + " M�nzen");
+						setGameMessage((p.getName() + ": + " + coins + " coins "));
+					}
+				}
+				break;
+			default:
+				setGameMessage("No group effect ");
+				break;
+			}
+
+		} else if(!bSide) {
 
 			int coins = 0;
 			switch (t) {

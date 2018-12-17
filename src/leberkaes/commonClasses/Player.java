@@ -13,11 +13,13 @@ public class Player implements Serializable {
 	private int meeple;
 	private Location[] locations = new Location[8];
 	private String playerGameMessage;
+	private boolean bSide;
 
 	public Player(String n, boolean bSide) {
 		this.name = n;
 		this.score = 0;
 		this.meeple = 0;
+		this.bSide = bSide;
 		this.createLocations(bSide);
 	}
 
@@ -39,7 +41,6 @@ public class Player implements Serializable {
 	 * ausbezahlt
 	 */
 	public void makeMove(CharacterCard c, int location) {
-
 		Location l = this.locations[location];
 		l.addCard(c);
 		int moveCoins = this.getCoins(l);
@@ -51,6 +52,7 @@ public class Player implements Serializable {
 		int cards;
 		int coinEffect;
 		int coinSum = 0;
+		type locationType = l.getType();
 		this.playerGameMessage = "";
 		for (int i = 0; i < 7; i++) {
 			cards = this.locations[i].getCardCount();
@@ -59,11 +61,68 @@ public class Player implements Serializable {
 			coinSum += cards * coinEffect;
 			ServiceLocator.getServiceLocator().getLogger()
 					.info(this.getName() + " erhält " + cards * coinEffect + " für " + cards + " " + t + "-Karten");
-			if (cards *coinEffect > 0) {
+			if (cards * coinEffect > 0) {
 				this.setPlayerGameMessage(" + " + cards * coinEffect + " coins for " + cards + " x " + t + "-Card");
+			}
+
+		}
+
+		/**
+		 * Spezialfälle für die B-Seite werden in diesem if-Statement bearbeitet
+		 */
+		if (bSide) {
+
+			int coins = 0;
+			switch (locationType) {
+			case BARELL:
+				// Für mindestens eine Karte in der Taverne sowie im Schloss
+				// erhält der Spieler 10 Münzen
+				this.playerGameMessage = ("Group effect " + locationType + ": ");
+				if ((!this.getLocations()[5].getCharacters().isEmpty())
+						&& (!this.getLocations()[6].getCharacters().isEmpty())) {
+					coins = 10;
+
+					ServiceLocator.getServiceLocator().getLogger()
+							.info(this.getName() + " erhält " + coins + " für mindestens eine Cutlery- und Key-Karte");
+					this.setPlayerGameMessage(" + " + coins + " coins for at least one card in Cutlery & Key");
+				}
+				coinSum += 10;
+				break;
+
+			case CUTLERY:
+				// Pro Karte in der Taverne x Höchste Anzahl Karten in einem
+				// Gebäude erhält der Spieler 2 Münzen
+				coins = 2;
+				int cutleryCardCount = this.getLocations()[5].getCardCount();
+				int maxCardCount = 0;
+				int tmpCardCount = 0;
+				for (int i = 0; i < 8; i++) {
+					tmpCardCount = this.getLocations()[i].getCardCount();
+					if (tmpCardCount > maxCardCount) {
+						maxCardCount = tmpCardCount;
+					}
+				}
+
+				coinSum += maxCardCount * coins * cutleryCardCount;
+				this.setPlayerGameMessage(" + " + coinSum + " coins for highest card count: " + maxCardCount + " and "
+						+ cutleryCardCount + " cutlery cards");
+				break;
+
+			case KEY:
+				// Pro Karte im Schloss sowie im Lazarett erhält der Spieler 4
+				// Münzen
+				coins = 4;
+				coinSum += (this.getLocations()[6].getCardCount() * coins);
+				coinSum += (this.getLocations()[7].getCardCount() * coins);
+				this.setPlayerGameMessage(" + " + coinSum + " coins for Key and Hospital cards ");
+				break;
+
+			default:
+				break;
 			}
 		}
 		return coinSum;
+
 	}
 
 	/** Sucht die erste Karte von Links und legt diese ins Lazarett */

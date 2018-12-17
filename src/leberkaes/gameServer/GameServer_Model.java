@@ -26,7 +26,7 @@ public class GameServer_Model {
 
 	
 
-	public void startServer(int port, int playerCount) {
+	public void startServer(int port, int playerCount, boolean bside) {
 		logger.info("Start server game thread base communication");
 		Highscore high = Highscore.getInstance();
 		high.getHighscore();
@@ -53,7 +53,7 @@ public class GameServer_Model {
 								broadcast(new ChatMsg("Server","Spiel wird gestartet."));
 								logger.info("Die erforderliche Anzahl Spieler sind verbunden, das Spiel wird gestartet.");
 								logger.info("Generieren des initialen Spielbretts...");
-								GameBoard gameboard = new GameBoard(playerCount);
+								GameBoard gameboard = new GameBoard(playerCount, bside);
 								for(Game_Client c : clients){
 									gameboard.addPlayer(c.getName());
 									ChatMsg msg = new ChatMsg("Server","Spieler "+c.getName()+" dem Gameboard hinzugefügt.");
