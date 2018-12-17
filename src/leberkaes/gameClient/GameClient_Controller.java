@@ -184,7 +184,7 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 			if (!finalScoreMessage.isEmpty())
 				while (it.hasNext()) {
 					String msg = it.next();
-					this.model.sendMessage(msg);
+					this.model.sendGameMessage(msg);
 					try {
 						Thread.sleep(10);
 					} catch (InterruptedException e) {
