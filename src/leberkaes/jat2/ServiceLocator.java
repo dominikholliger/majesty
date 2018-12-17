@@ -10,11 +10,11 @@ import leberkaes.commonClasses.Translator;
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code
  * is licensed under the terms of the BSD 3-clause license (see the file
  * license.txt).
- * 
+ *
  * The singleton instance of this class provide central storage for resources
  * used by the program. It also defines application-global constants, such as
  * the application name.
- * 
+ *
  * @author Brad Richards
  */
 public class ServiceLocator {
@@ -22,8 +22,8 @@ public class ServiceLocator {
 
     // Application-global constants
     final private Class<?> APP_CLASS = JavaFX_App_Template.class;
-    final private String APP_NAME = "JavaFX_App_Template";
-    
+    final private String APP_NAME = "majesty_fhnw";
+
     // Supported locales (for translations)
     final private Locale[] locales = new Locale[] { new Locale("en"), new Locale("de") };
 
@@ -55,7 +55,7 @@ public class ServiceLocator {
     public Class<?> getAPP_CLASS() {
         return APP_CLASS;
     }
-    
+
     public String getAPP_NAME() {
         return APP_NAME;
     }
@@ -83,7 +83,7 @@ public class ServiceLocator {
     public Translator getTranslator() {
         return translator;
     }
-    
+
     public void setTranslator(Translator translator) {
         this.translator = translator;
     }

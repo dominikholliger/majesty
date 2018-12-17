@@ -15,12 +15,12 @@ import leberkaes.jat2.ServiceLocator;
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code
  * is licensed under the terms of the BSD 3-clause license (see the file
  * license.txt).
- * 
+ *
  * This class provides basic functionality for loading and saving program
  * options. Default options may be delivered with the application; local options
  * (changed by the user) are saved to a file. Program constants can be defined
  * by defining options that the user has no way to change.
- * 
+ *
  * @author Brad Richards
  */
 public class Configuration {
@@ -34,6 +34,9 @@ public class Configuration {
         // Load default properties from wherever the code is
         defaultOptions = new Properties();
         String defaultFilename = sl.getAPP_NAME() + "_defaults.cfg";
+
+        System.out.println("Default Config:"+defaultFilename);
+
         InputStream inStream = sl.getAPP_CLASS().getResourceAsStream(defaultFilename);
         try {
             defaultOptions.load(inStream);
@@ -53,6 +56,7 @@ public class Configuration {
         // Load the local configuration file, if it exists.
         try {
             inStream = new FileInputStream(sl.getAPP_NAME() + ".cfg");
+            System.out.println("local Config:"+sl.getAPP_NAME() + ".cfg");
             localOptions.load(inStream);
         } catch (FileNotFoundException e) { // from opening the properties file
             logger.config("No local configuration file found");
@@ -64,13 +68,13 @@ public class Configuration {
             } catch (Exception ignore) {
             }
         }
-        
+
         for (Enumeration<Object> i = localOptions.keys(); i.hasMoreElements();) {
             String key = (String) i.nextElement();
             logger.config("Option: " + key + " = " + localOptions.getProperty(key));
         }
     }
-    
+
     public void save() {
         FileOutputStream propFile = null;
         try {
@@ -88,11 +92,11 @@ public class Configuration {
             }
         }
     }
-    
+
     public String getOption(String name) {
         return localOptions.getProperty(name);
     }
-    
+
     public void setLocalOption(String name, String value) {
         localOptions.setProperty(name, value);
     }

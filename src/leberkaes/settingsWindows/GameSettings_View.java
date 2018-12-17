@@ -29,22 +29,17 @@ public class GameSettings_View extends View<GameSettings_Model>{
 	Logger logger = sl.getLogger();
 	Translator t = sl.getTranslator();
 	Configuration config = sl.getConfiguration();
-
-    //private GameSettings_Model model;
     private Stage stage;
     protected Parent parent;
 
-  
+
 
 
 
     public GameSettings_View(Stage stage, GameSettings_Model model) {
         super (stage, model);
-        stage.setTitle(t.getString("options.title"));
-
+        stage.setTitle(t.getString("settings.windowTitle"));
         // Get current values
-        //txtPort.setText(config.getOption("Port"));
-        //txtPlayer.setText(config.getOption("PlayerCount"));
 
     }
 

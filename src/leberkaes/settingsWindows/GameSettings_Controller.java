@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
@@ -34,30 +35,17 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 	private boolean portValid = false;
 	private boolean playerCountValid = false;
 
-	@FXML
-	public TextField txtPlayerCount;
-
-	@FXML
-	public CheckBox meepleOption;
-	@FXML
-	public CheckBox splitCardOption;
-	@FXML
-	public CheckBox BSideOption;
-
-	@FXML
-	public TextField txtChatPort;
-	@FXML
-	public TextField txtGamePort;
-
-	@FXML
-	public Button btnCancel;
-	@FXML
-	public Button btnSave;
-
-	@FXML
-	public ToggleButton toggleEnglish;
-	@FXML
-	public ToggleButton toggleDeutsch;
+	@FXML public TextField txtPlayerCount;
+	@FXML public CheckBox meepleOption;
+	@FXML public CheckBox splitCardOption;
+	@FXML public CheckBox BSideOption;
+	@FXML public TextField txtChatPort;
+	@FXML public TextField txtGamePort;
+	@FXML public Button btnCancel;
+	@FXML public Button btnSave;
+	@FXML public ToggleGroup toggle;
+	@FXML public ToggleButton toggleEnglish;
+	@FXML public ToggleButton toggleDeutsch;
 	@FXML private Text txtLabelPlayerNumber;
 	@FXML private Text txtLabelPort;
 	@FXML private Text textGamePort;
@@ -74,10 +62,10 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
         });
 	}
 
-	@FXML
-	public void initialize() {
+	@FXML public void initialize() {
 
 		try {
+
 			this.txtPlayerCount.setText(config.getOption("PlayerCount"));
 			this.txtChatPort.setText(config.getOption("ChatPort"));
 			this.txtGamePort.setText(config.getOption("GamePort"));
@@ -88,23 +76,27 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 			txtChatPort.textProperty().addListener((observable, oldValue, newValue) -> {
 				validateChatPortNumber(newValue, "txtGamePort");
 			});
-
 			txtPlayerCount.textProperty().addListener((observable, oldValue, newValue) -> {
 				validatePlayerCountNumber(newValue, "txtPlayerCount");
 			});
 
-			if (config.getOption("Meeple").equals("true")) {
-				this.meepleOption.setSelected(true);
-			}
-
-			if (config.getOption("Bside").equals("true")) {
+			if (config.getOption("BSide").equals("true")) {
 				this.BSideOption.setSelected(true);
 			}
 
-			ToggleGroup toggle = new ToggleGroup();
+			System.out.println(config.getOption("Language"));
+
+
 			this.toggleDeutsch.setToggleGroup(toggle);
 			this.toggleEnglish.setToggleGroup(toggle);
 
+			if(config.getOption("Language").equalsIgnoreCase("de")) {
+				this.toggleDeutsch.setSelected(true);
+				this.toggleEnglish.setSelected(false);
+			} else {
+				this.toggleDeutsch.setSelected(false);
+				this.toggleEnglish.setSelected(true);
+			}
 
 		} catch (Exception e) {
 			logger.warning("No Configuration Found!!!");;
@@ -182,16 +174,21 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 
 	@FXML
 	private void handleSaveButtonClicked() {
-
 		config.setLocalOption("GamePort", this.txtGamePort.getText());
 		config.setLocalOption("ChatPort", this.txtChatPort.getText());
 		config.setLocalOption("PlayerCount", this.txtPlayerCount.getText());
-
 		if (this.BSideOption.isSelected()) {
 			config.setLocalOption("BSide", "true");
 		} else {
 			config.setLocalOption("BSide", "false");
 		}
+		if (this.toggleDeutsch.isSelected()) {
+			config.setLocalOption("Langugae", "de");
+		} else {
+			config.setLocalOption("Langugae", "en");
+		}
+
+
 		view.stop();
 	}
 
