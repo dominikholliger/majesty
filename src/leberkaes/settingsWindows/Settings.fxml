@@ -24,8 +24,8 @@
             <Text fx:id="textGamePort" layoutX="265.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game-Port" />
             <TextField fx:id="txtGamePort" layoutX="261.0" layoutY="228.0" prefHeight="27.0" prefWidth="82.0" />
             <Button fx:id="btnSave" defaultButton="true" layoutX="255.0" layoutY="315.0" mnemonicParsing="false" onAction="#handleSaveButtonClicked" prefHeight="49.0" prefWidth="96.0" text="Speichern" />
-            <ToggleButton fx:id="toggleEnglish" layoutX="233.0" layoutY="275.0" mnemonicParsing="false" text="Englisch" />
-            <ToggleButton fx:id="toggleDeutsch" layoutX="303.0" layoutY="275.0" mnemonicParsing="false" text="Deutsch" />
+            <ToggleButton fx:id="toggleEnglish" layoutX="233.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleLanguageEnglish" text="Englisch" />
+            <ToggleButton fx:id="toggleDeutsch" layoutX="303.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleLanguageGerman" text="Deutsch" />
             <CheckBox fx:id="BSideOption" layoutX="226.0" layoutY="110.0" mnemonicParsing="false" onAction="#handleMeepleOption" text="Mit B-Seite spielen" />
          </children></AnchorPane>
   </children>

@@ -84,12 +84,8 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 				this.BSideOption.setSelected(true);
 			}
 
-			System.out.println(config.getOption("Language"));
-
-
 			this.toggleDeutsch.setToggleGroup(toggle);
 			this.toggleEnglish.setToggleGroup(toggle);
-
 			if(config.getOption("Language").equalsIgnoreCase("de")) {
 				this.toggleDeutsch.setSelected(true);
 				this.toggleEnglish.setSelected(false);
@@ -157,6 +153,14 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 		this.btnSave.setDisable(!(valid || valid2));
 	}
 
+	@FXML private void handleLanguageEnglish() {
+
+	}
+	@FXML private void handleLanguageGerman() {
+
+	}
+
+
 	@FXML
 	private void handleMeepleOption() {
 
@@ -172,8 +176,8 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 
 	}
 
-	@FXML
-	private void handleSaveButtonClicked() {
+	@FXML private void handleSaveButtonClicked() {
+		System.out.println("Save Button clicked");
 		config.setLocalOption("GamePort", this.txtGamePort.getText());
 		config.setLocalOption("ChatPort", this.txtChatPort.getText());
 		config.setLocalOption("PlayerCount", this.txtPlayerCount.getText());
@@ -183,11 +187,12 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 			config.setLocalOption("BSide", "false");
 		}
 		if (this.toggleDeutsch.isSelected()) {
-			config.setLocalOption("Langugae", "de");
+			config.setLocalOption("Language", "de");
 		} else {
-			config.setLocalOption("Langugae", "en");
+			config.setLocalOption("Language", "en");
 		}
 
+		System.out.println(toggle.getSelectedToggle().getUserData());
 
 		view.stop();
 	}
