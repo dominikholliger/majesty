@@ -105,6 +105,9 @@ public class dummyFXMLControllerHome {
 	public void disableServerButton() {
 		newGame.setDisable(true);
 	}
+	public void enableServerButton() {
+		newGame.setDisable(false);
+	}
 
 
 

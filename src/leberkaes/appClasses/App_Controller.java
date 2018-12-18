@@ -72,7 +72,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			Stage optionsStage = new Stage();
 		   	GameServer_Model serverModel = new GameServer_Model();
 		   	GameServer_View serverView = new GameServer_View(optionsStage, serverModel);
-			new GameServer_Controller(serverModel, serverView);
+			new GameServer_Controller(serverModel, serverView, this);
 			serverView.start();
 			serverrunning = true;
 
@@ -175,6 +175,10 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	public boolean isMusicPlaying() {
 		// TODO Auto-generated method stub
 		return musicPlaying;
+	}
+	public void setNewGameServerActive() {
+		view.get_Ctrl().enableServerButton();
+
 	}
 
 }

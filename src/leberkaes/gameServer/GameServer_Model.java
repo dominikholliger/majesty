@@ -24,7 +24,7 @@ public class GameServer_Model {
 	private int listSize;
 	private boolean gameRunning = false;
 
-	
+
 
 	public void startServer(int port, int playerCount, boolean bside) {
 		logger.info("Start server game thread base communication");
@@ -103,10 +103,10 @@ public class GameServer_Model {
 			logger.info(e.toString());
 		}
 	}
-	
-	
-	
-	
+
+
+
+
 	public void stopServer() {
 		logger.info("Stop all clients");
 		for (Game_Client c : clients) c.stop();
@@ -139,7 +139,7 @@ public class GameServer_Model {
 			c.send(outMsg);
 		}
 	}
-	
 
-	
+
+
 }
