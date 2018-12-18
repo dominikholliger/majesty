@@ -5,7 +5,7 @@ import java.util.Arrays;
 import leberkaes.commonClasses.CardType.type;
 import leberkaes.jat2.ServiceLocator;
 
-/** Daniel Räber */
+/**@author Daniel RÃ¤ber*/
 public class Player implements Serializable {
 
 	private String name;

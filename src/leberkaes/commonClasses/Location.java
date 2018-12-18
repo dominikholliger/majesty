@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Stack;
 import leberkaes.commonClasses.CardType.*;
-/**Daniel Räber*/
+/**@author Daniel RÃ¤ber*/
 public class Location implements Serializable {
 
 	private type type;
