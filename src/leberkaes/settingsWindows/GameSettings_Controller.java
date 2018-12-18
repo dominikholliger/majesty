@@ -17,6 +17,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
@@ -43,9 +44,8 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 	@FXML public TextField txtGamePort;
 	@FXML public Button btnCancel;
 	@FXML public Button btnSave;
-	@FXML public ToggleGroup toggle;
-	@FXML public ToggleButton toggleEnglish;
-	@FXML public ToggleButton toggleDeutsch;
+	@FXML public RadioButton radioEnglish;
+	@FXML public RadioButton radioDeutsch;
 	@FXML private Text txtLabelPlayerNumber;
 	@FXML private Text txtLabelPort;
 	@FXML private Text textGamePort;
@@ -84,14 +84,13 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 				this.BSideOption.setSelected(true);
 			}
 
-			this.toggleDeutsch.setToggleGroup(toggle);
-			this.toggleEnglish.setToggleGroup(toggle);
+		
 			if(config.getOption("Language").equalsIgnoreCase("de")) {
-				this.toggleDeutsch.setSelected(true);
-				this.toggleEnglish.setSelected(false);
+				this.radioDeutsch.setSelected(true);
+				this.radioEnglish.setSelected(false);
 			} else {
-				this.toggleDeutsch.setSelected(false);
-				this.toggleEnglish.setSelected(true);
+				this.radioDeutsch.setSelected(false);
+				this.radioEnglish.setSelected(true);
 			}
 
 		} catch (Exception e) {
@@ -154,9 +153,10 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 	}
 
 	@FXML private void handleLanguageEnglish() {
-
+		this.radioDeutsch.setSelected(false);
 	}
 	@FXML private void handleLanguageGerman() {
+		this.radioEnglish.setSelected(false);
 
 	}
 
@@ -186,13 +186,13 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 		} else {
 			config.setLocalOption("BSide", "false");
 		}
-		if (this.toggleDeutsch.isSelected()) {
+		if (this.radioDeutsch.isSelected()) {
 			config.setLocalOption("Language", "de");
 		} else {
 			config.setLocalOption("Language", "en");
 		}
 
-		System.out.println(toggle.getSelectedToggle().getUserData());
+		// System.out.println(toggle.getSelectedToggle().getUserData());
 
 		view.stop();
 	}
@@ -211,8 +211,8 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 		BSideOption.setText(t.getString("settings.lblBSide"));
 		txtLabelPort.setText(t.getString("settings.lblChatPort"));
 		textGamePort.setText(t.getString("settings.lblGamePort"));
-		toggleEnglish.setText(t.getString("settings.btnEnglish"));
-		toggleDeutsch.setText(t.getString("settings.btnGerman"));
+		radioEnglish.setText(t.getString("settings.btnEnglish"));
+		radioDeutsch.setText(t.getString("settings.btnGerman"));
 		btnSave.setText(t.getString("settings.btnSave"));
 
 	}
