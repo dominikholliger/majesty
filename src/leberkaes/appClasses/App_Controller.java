@@ -178,6 +178,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 	public void setNewGameServerActive() {
 		view.get_Ctrl().enableServerButton();
+		this.serverrunning=false;
 
 	}
 

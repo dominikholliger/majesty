@@ -8,7 +8,7 @@ import leberkaes.commonClasses.CharacterCard;
 import leberkaes.commonClasses.CardType.*;
 import leberkaes.jat2.ServiceLocator;
 
-/** Daniel R�ber */
+/**@author Daniel Räber*/
 public class GameBoard implements java.io.Serializable {
 	// Spieler
 	private int activePlayerIndex;

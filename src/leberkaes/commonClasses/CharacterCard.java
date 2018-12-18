@@ -3,7 +3,7 @@ package leberkaes.commonClasses;
 import static leberkaes.commonClasses.CardType.*;
 
 import java.io.Serializable;
-/**Daniel Räber*/
+/**@author Daniel Räber*/
 public class CharacterCard implements Serializable {
 
 	private type cardType1;
