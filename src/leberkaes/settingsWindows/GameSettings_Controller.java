@@ -84,7 +84,7 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 				this.BSideOption.setSelected(true);
 			}
 
-		
+
 			if(config.getOption("Language").equalsIgnoreCase("de")) {
 				this.radioDeutsch.setSelected(true);
 				this.radioEnglish.setSelected(false);
@@ -194,6 +194,9 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 
 		// System.out.println(toggle.getSelectedToggle().getUserData());
 
+		view.getAppControlInstance().updateTexts();
+
+
 		view.stop();
 	}
 
@@ -206,6 +209,7 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 
 	protected void updateTexts() {
 		Translator t = ServiceLocator.getServiceLocator().getTranslator();
+		System.out.println(t.getCurrentLocale());
 		// update Homescreen Buttons.....
 		txtLabelPlayerNumber.setText(t.getString("settings.lblPlayerCount"));
 		BSideOption.setText(t.getString("settings.lblBSide"));

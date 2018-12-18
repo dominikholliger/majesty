@@ -77,14 +77,7 @@ public class App_View extends View<App_Model> {
 
 	}
 
-	protected void updateTexts() {
-		Translator t = ServiceLocator.getServiceLocator().getTranslator();
-		// update Homescreen Buttons.....
-       get_Ctrl().highscore.setText(t.getString("home.btnHighScore"));
-       get_Ctrl().newGame.setText(t.getString("home.btnServerStart"));
-       get_Ctrl().enterGame.setText(t.getString("home.btnHighScore"));
 
-	}
 
 	/** @author Sebrina Pedrossi */
 	// Play music from audioStream, file in project explorer

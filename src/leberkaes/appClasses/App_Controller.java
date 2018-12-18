@@ -2,6 +2,8 @@ package leberkaes.appClasses;
 
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.Controller;
+import leberkaes.abstractClasses.View;
+import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Highscore;
 import leberkaes.commonClasses.Translator;
 import leberkaes.gameClient.GameClient_Controller;
@@ -66,6 +68,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
         view.get_Ctrl().newGame.setText(t.getString("home.btnServerStart"));
         view.get_Ctrl().enterGame.setText(t.getString("home.btnClientStart"));
         view.get_Ctrl().highscore.setText(t.getString("home.btnHighScore"));
+        // View in unsere Liste laden für App Translator update Text...
+
 
     }
     /**
@@ -90,8 +94,9 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		Stage optionsStage = new Stage();
 	  	GameClient_Model clientModel = new GameClient_Model();
 	  	GameClient_View clientView = new GameClient_View(optionsStage, clientModel);
-		new GameClient_Controller(clientModel, clientView);
+	  	new GameClient_Controller(clientModel, clientView);
 		clientView.start();
+
 
 	}
 
@@ -102,6 +107,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		Stage optionsStage = new Stage();
 	   	GameSettings_Model settingsModel = new GameSettings_Model();
 	   	GameSettings_View settingsView = new GameSettings_View(optionsStage, settingsModel);
+	   	settingsView.setAppControlInstance(this);
 		settingsView.start();
 	}
 
@@ -118,6 +124,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		HighScore_View highScoreView = new HighScore_View(optionsStage, highScoreModel);
 		new HighScore_Controller(highScoreModel, highScoreView);
 		highScoreView.start();
+
+
 	}
 
 	public void showHomeWindow(){
@@ -188,4 +196,18 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	}
 
+
+
+	public void updateTexts() {
+		ServiceLocator sl = ServiceLocator.getServiceLocator();
+		Translator t = sl.getServiceLocator().getTranslator();
+		Configuration config = sl.getConfiguration();
+		t.setLocale(config.getOption("Language"));
+		System.out.println(t.getCurrentLocale());
+		// update Homescreen Buttons.....
+       view.get_Ctrl().highscore.setText(t.getString("home.btnHighScore"));
+       view.get_Ctrl().newGame.setText(t.getString("home.btnServerStart"));
+       view.get_Ctrl().enterGame.setText(t.getString("home.btnClientStart"));
+
+	}
 }

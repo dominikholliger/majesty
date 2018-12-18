@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.View;
+import leberkaes.appClasses.App_Controller;
 import leberkaes.appClasses.App_Model;
 import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
@@ -32,16 +33,37 @@ public class GameSettings_View extends View<GameSettings_Model>{
     private Stage stage;
     protected Parent parent;
 
+   private App_Controller appControlInstance;
 
 
 
 
-    public GameSettings_View(Stage stage, GameSettings_Model model) {
+
+    public App_Controller getAppControlInstance() {
+	return appControlInstance;
+}
+
+
+
+
+
+	public void setAppControlInstance(App_Controller appControlInstance) {
+	this.appControlInstance = appControlInstance;
+}
+
+
+
+
+
+	public GameSettings_View(Stage stage, GameSettings_Model model) {
         super (stage, model);
         stage.setTitle(t.getString("settings.windowTitle"));
         // Get current values
 
     }
+
+
+
 
 
     protected Scene create_GUI() {

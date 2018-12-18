@@ -10,7 +10,7 @@ import leberkaes.jat2.ServiceLocator;
 public class Translator {
     private ServiceLocator sl = ServiceLocator.getServiceLocator();
     private Logger logger = sl.getLogger();
-    
+
     protected Locale currentLocale;
     private ResourceBundle resourceBundle;
 
@@ -28,21 +28,38 @@ public class Translator {
                 }
             }
         }
-        
         // Load the resource strings
         resourceBundle = ResourceBundle.getBundle(sl.getAPP_CLASS().getName(), locale);
         Locale.setDefault(locale); // Change VM default (for dialogs, etc.)
         currentLocale = locale;
-        
         logger.info("Loaded resources for " + locale.getLanguage());
     }
-    
+
     /**
      * Return the current locale; this is useful for formatters, etc.
      */
     public Locale getCurrentLocale() {
         return currentLocale;
     }
+
+    public void setLocale(String localeString) {
+    	Locale locale = Locale.getDefault();
+    	Locale[] availableLocales = sl.getLocales();
+        for (int i = 0; i < availableLocales.length; i++) {
+            String tmpLang = availableLocales[i].getLanguage();
+            if (localeString.substring(0, tmpLang.length()).equals(tmpLang)) {
+                locale = availableLocales[i];
+                break;
+            }
+        }
+        // Load the resource strings
+        resourceBundle = ResourceBundle.getBundle(sl.getAPP_CLASS().getName(), locale);
+        Locale.setDefault(locale); // Change VM default (for dialogs, etc.)
+        currentLocale = locale;
+        logger.info("Loaded resources for " + locale.getLanguage());
+
+    }
+
 
     /**
      * Public method to get string resources, default to "--" *
