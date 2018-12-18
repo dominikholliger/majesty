@@ -82,7 +82,7 @@ public class App_View extends View<App_Model> {
 		// update Homescreen Buttons.....
        get_Ctrl().highscore.setText(t.getString("home.btnHighScore"));
        get_Ctrl().newGame.setText(t.getString("home.btnServerStart"));
-       get_Ctrl().enterGame.setText(t.getString("home.btnClientStart"));
+       get_Ctrl().enterGame.setText(t.getString("home.btnHighScore"));
 
 	}
 

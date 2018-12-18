@@ -3,6 +3,7 @@ package leberkaes.appClasses;
 import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.Controller;
 import leberkaes.commonClasses.Highscore;
+import leberkaes.commonClasses.Translator;
 import leberkaes.gameClient.GameClient_Controller;
 import leberkaes.gameClient.GameClient_Model;
 import leberkaes.gameClient.GameClient_View;
@@ -61,6 +62,11 @@ public class App_Controller extends Controller<App_Model, App_View> {
         });
         serviceLocator = ServiceLocator.getServiceLocator();
         serviceLocator.getLogger().info("Application controller initialized");
+        Translator t = serviceLocator.getTranslator();
+        view.get_Ctrl().newGame.setText(t.getString("home.btnServerStart"));
+        view.get_Ctrl().enterGame.setText(t.getString("home.btnClientStart"));
+        view.get_Ctrl().highscore.setText(t.getString("home.btnHighScore"));
+
     }
     /**
      * Die einzelnen Events werden an dieser Stelle aus dem Dummy Controller verarbeitet

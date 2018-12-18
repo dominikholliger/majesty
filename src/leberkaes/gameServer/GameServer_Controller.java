@@ -14,8 +14,6 @@ public class GameServer_Controller {
 	private GameServer_View view;
 	private App_Controller appControllerInstance;
 
-
-
 	ServiceLocator sl = ServiceLocator.getServiceLocator();
 	Logger logger = sl.getLogger();
 	Translator t = sl.getTranslator();
@@ -36,7 +34,6 @@ public class GameServer_Controller {
 		view.stage.setOnCloseRequest(event -> {
 			appControllerInstance.setNewGameServerActive();
 			model.stopServer();
-
 		});
 		model.clients.addListener((ListChangeListener) (event -> view.updateClients()));
 	}

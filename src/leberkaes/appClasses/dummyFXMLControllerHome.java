@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.WindowEvent;
+import leberkaes.commonClasses.Translator;
+import leberkaes.jat2.ServiceLocator;
 
 
 public class dummyFXMLControllerHome {
@@ -47,6 +49,8 @@ public class dummyFXMLControllerHome {
 	@FXML public Button ButtonMusicOff;
 	@FXML public Button enterGame;
 	@FXML public Button highscore;
+
+
 
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
