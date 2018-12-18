@@ -69,7 +69,10 @@ public class HighScore_Controller extends Controller<HighScore_Model, HighScore_
 			view.get_Ctrl().writeToHighScore(listIterator.next()+"\n");
 		}
 	}
-
+	public void closeHighScoreWindowFromButton() {
+		System.out.println("HighScore Screen schliessen");
+    	view.stop();
+	}
 
 
 
