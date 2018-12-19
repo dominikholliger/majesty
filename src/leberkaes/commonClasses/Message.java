@@ -27,7 +27,7 @@ public abstract class Message {
 			if(this.type == MessageType.Game) {
 				logger.info("Sending GameBoard Object as GameMsg");
 			} else {
-				logger.info("Sending message: " + this.toString());				
+				logger.info("Sending message: " + this.toString());
 			}
 			out.write(this.toString() + "\n");
 			out.flush();
@@ -35,11 +35,10 @@ public abstract class Message {
 			logger.warning(e.toString());
 		}
 	}
-	
-	public static Message receive(Socket socket) {
+
+	public static Message receive(Socket socket) throws Exception{
 		BufferedReader in;
 		Message msg = null;
-		try {
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			String msgText = in.readLine(); // Will wait here for complete line
 			// Parse message
@@ -58,12 +57,9 @@ public abstract class Message {
 				GameBoard tmpBoard = tmpGameMsg.extractContent();
 				System.out.println(tmpGameMsg.toString());
 				System.out.println(tmpBoard.toString());
-			}		
-		} catch (IOException e) {
-			logger.warning(e.toString());
-		}
+			}
 		return msg;
 	}
 
-	
+
 }
