@@ -30,8 +30,8 @@ public class Game_ClientObjectCom {
 						inStream = new ObjectInputStream(socket.getInputStream());
 						GameBoard gameboard = (GameBoard) inStream.readObject();
 						System.out.println("Object received ------ GameBoard -------- = ");
-						//hier muss send methode aufgerufen werden
-						//
+						model.broadcastGameBoard(gameboard);
+						
 						// Das neue Objekt auf Spielschluss überprüfen
 						if(gameboard.isGameEnd()) {
 							// Spiel fertig, Highscores schreiben
@@ -42,7 +42,6 @@ public class Game_ClientObjectCom {
 								System.out.println("-------------- Highscore written for "+pName+"  ---------------");
 							}
 						}
-						model.broadcastGameBoard(gameboard);
 
 					} catch (IOException | ClassNotFoundException e) {
 						// TODO Auto-generated catch block
