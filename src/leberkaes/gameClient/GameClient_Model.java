@@ -20,20 +20,21 @@ import leberkaes.commonClasses.MessageType;
 /** author: Bradley Richards */
 
 /**
- * Note: One error in this implementation: The *display* of received messages is triggered
- * by a ChangeListener attached to the SimpleStringProperty. If the newly received message
- * is *identical* to the current contents of the SimpleStringProperty, then there is no
- * change, and the new (duplicate) message is not displayed.
+ * Note: One error in this implementation: The *display* of received messages is
+ * triggered by a ChangeListener attached to the SimpleStringProperty. If the
+ * newly received message is *identical* to the current contents of the
+ * SimpleStringProperty, then there is no change, and the new (duplicate)
+ * message is not displayed.
  */
-public class GameClient_Model extends Model{
+public class GameClient_Model extends Model {
 	protected SimpleStringProperty newestMessage = new SimpleStringProperty();
 	protected SimpleStringProperty moveCounter = new SimpleStringProperty();
 	protected GameBoard actGameBoard = null;
 	private int tmpInt = 0;
+
 	public GameBoard getActGameBoard() {
 		return actGameBoard;
 	}
-
 
 	private Logger logger = Logger.getLogger("");
 	private Socket socket;
@@ -45,26 +46,25 @@ public class GameClient_Model extends Model{
 		Boolean success = false;
 		logger.info("Connect");
 		this.name = name;
-		final int Timeot = 2000;
-			try {
-				SocketAddress sockaddr = new InetSocketAddress(ipAddress, Port);
-				// Create your socket
-				socket = new Socket();
-				// Connect with 3 s timeout
-				socket.connect(sockaddr, 3000);
-				//socket = new Socket(ipAddress, Port);
-			} catch (UnknownHostException e1) {
-				// TODO Auto-generated catch block
+		try {
+			SocketAddress sockaddr = new InetSocketAddress(ipAddress, Port);
+			// Create your socket
+			socket = new Socket();
+			// Connect with 3 s timeout
+			socket.connect(sockaddr, 3000);
+			// socket = new Socket(ipAddress, Port);
+		} catch (UnknownHostException e1) {
+			// TODO Auto-generated catch block
 //				e1.printStackTrace();
-				System.out.println("Unknown Host Exception");
-				return success;
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-	//			e1.printStackTrace();
-				System.out.println("IO Exception");
-				return success;
-			}
-			// Create thread to read incoming messages
+			System.out.println("Unknown Host Exception");
+			return success;
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			// e1.printStackTrace();
+			System.out.println("IO Exception");
+			return success;
+		}
+		// Create thread to read incoming messages
 		try {
 			Runnable r = new Runnable() {
 				@Override
@@ -78,13 +78,12 @@ public class GameClient_Model extends Model{
 							e.printStackTrace();
 							break;
 						}
-						if(msgTemp.getType() == MessageType.Game) {
+						if (msgTemp.getType() == MessageType.Game) {
 							logger.info("GameMsg angekommen");
 							/**
-								GameMsg msg = (GameMsg) msgTemp;
-								GameBoard gameBoard = msg.extractContent();
-								// Aus Spass kotzen wir das mal auf die Konsole
-								System.out.println(gameBoard.toString());
+							 * GameMsg msg = (GameMsg) msgTemp; GameBoard gameBoard = msg.extractContent();
+							 * // Aus Spass kotzen wir das mal auf die Konsole
+							 * System.out.println(gameBoard.toString());
 							 **/
 						} else if (msgTemp.getType() == MessageType.Chat) {
 							ChatMsg msg = (ChatMsg) msgTemp;
@@ -106,7 +105,7 @@ public class GameClient_Model extends Model{
 		success = true;
 		return success;
 	}
-
+	/**@author Dominik Holliger*/
 	// Eine zweite Verbindung für die Objektübertragung
 	public Boolean connectObjectCom(String ipAddress, int Port, String name) {
 		Boolean success = false;
@@ -119,20 +118,18 @@ public class GameClient_Model extends Model{
 			// Connect with 3 s timeout
 			socketObjectCom.connect(sockaddr, 3000);
 
-
-			//socketObjectCom = new Socket(ipAddress, Port);
+			// socketObjectCom = new Socket(ipAddress, Port);
 		} catch (UnknownHostException e1) {
 			// TODO Auto-generated catch block
-			//e1.printStackTrace();
+			// e1.printStackTrace();
 			System.out.println("Unknown Host Exception");
 			return success;
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
-			//e1.printStackTrace();
+			// e1.printStackTrace();
 			System.out.println("IO Exception");
 			return success;
 		}
-
 
 		this.name = name;
 		try {
@@ -146,7 +143,7 @@ public class GameClient_Model extends Model{
 							inStream = new ObjectInputStream(socketObjectCom.getInputStream());
 							actGameBoard = (GameBoard) inStream.readObject();
 							tmpInt = tmpInt + 1;
-							//System.out.println("-----TMP Observer---------"+tmpInt);
+							// System.out.println("-----TMP Observer---------"+tmpInt);
 							moveCounter.set(String.valueOf(tmpInt));
 							System.out.println("Object received ------ GameBoard -------- ");
 						} catch (IOException | ClassNotFoundException e) {
@@ -166,8 +163,6 @@ public class GameClient_Model extends Model{
 		success = true;
 		return success;
 	}
-
-
 
 	public void disconnect() {
 		logger.info("Disconnect");
@@ -192,7 +187,6 @@ public class GameClient_Model extends Model{
 
 	}
 
-
 	public void sendMessage(String message) {
 		logger.info("Send message");
 		Message msg = new ChatMsg(name, message);
@@ -210,13 +204,13 @@ public class GameClient_Model extends Model{
 		return newestMessage.get();
 	}
 
-
 	protected boolean isValidPortNumber(String newValue) {
 		boolean valid = true;
 
 		try {
 			int value = Integer.parseInt(newValue);
-			if (value < 1 || value > 65535) valid = false;
+			if (value < 1 || value > 65535)
+				valid = false;
 		} catch (NumberFormatException e) {
 			// wasn't an integer
 			valid = false;

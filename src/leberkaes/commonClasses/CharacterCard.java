@@ -15,14 +15,6 @@ public class CharacterCard implements Serializable {
 	private String backImgURL;
 	private String frontImgURL;
 	
-
-	public CharacterCard(type t, back b) {
-
-		this.cardType1 = t;
-		this.cardBack = b;
-	
-	}
-
 	public CharacterCard(type t1, type t2, back b) {
 		this.cardType1 = t1;
 		this.cardType2 = t2;
@@ -34,7 +26,7 @@ public class CharacterCard implements Serializable {
 
 	public void setFrontImgURL(type t1, type t2) {
 
-		// Standard Cards
+		// Set Source Urls to Standard Cards
 		if (t2 == null) {
 			switch (t1) {
 			case GRAIN:
@@ -63,6 +55,7 @@ public class CharacterCard implements Serializable {
 			}
 
 		} else {
+			// Set Source Urls to Split-Cards
 			if (t1 == type.POTION) {
 				switch (t2) {
 				case KEY:
@@ -139,7 +132,8 @@ public class CharacterCard implements Serializable {
 	}
 
 	public void setBackImgURL(back b) {
-		try {
+		// Set Source Back Img-URLs to Cards
+	
 			switch (b) {
 			case GREEN:
 				backImgURL = new String("leberkaes.GUIsources/BackGreen.jpg");
@@ -148,11 +142,6 @@ public class CharacterCard implements Serializable {
 				backImgURL = new String("leberkaes.GUIsources/BackRed.jpg");
 				break;
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 	}
 
 	public type getCardType1() {
@@ -162,7 +151,6 @@ public class CharacterCard implements Serializable {
 	public type getCardType2() {
 		return cardType2;
 	}
-
 
 	@Override
 	public String toString() {

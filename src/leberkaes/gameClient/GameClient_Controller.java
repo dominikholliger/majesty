@@ -14,7 +14,7 @@ import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
 import leberkaes.jat2.ServiceLocator;
 
-/** author: Dominik Holliger */
+/** @author: Dominik Holliger */
 
 public class GameClient_Controller extends Controller<GameClient_Model, GameClient_View> {
 	ServiceLocator serviceLocator;
@@ -24,8 +24,6 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 
 	private boolean gamePortValid = false;
 	private boolean chatPortValid = false;
-
-	private GameClient_View _GameClientViewInstance;
 
 	public GameClient_Controller(GameClient_Model model, GameClient_View view) {
 		super(model, view);
@@ -67,8 +65,8 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		view.get_Ctrl().txtChatPort.textProperty().addListener((observable, oldValue, newValue) -> {
 			validateChatPortNumber(newValue, "txtChatPort");
 		});
-		
-		//Set Label Names from Translator
+
+		// Set Label Names from Translator
 		view.get_Ctrl().labelplayername.setText(t.getString("client.labelplayername"));
 		view.get_Ctrl().labelipaddress.setText(t.getString("client.labelipaddress"));
 		view.get_Ctrl().btnConnect.setText(t.getString("client.btnConnect"));
@@ -76,34 +74,28 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		view.get_Ctrl().lblScore.setText(t.getString("client.lblScore"));
 		view.get_Ctrl().lblWinner.setText(t.getString("client.lblWinner"));
 		view.get_Ctrl().BackButton.setText(t.getString("client.BackButton"));
-		
-		
-		//Adding Default Values for easy-connect
-		// Random-Name Generator
-		String SALTCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-		StringBuilder salt = new StringBuilder();
-		Random rnd = new Random();
-		while (salt.length() < 8) { // length of the random string.
-			int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-			salt.append(SALTCHARS.charAt(index));
+
+		// Adding Default Values for easy-connect
+		// Set to true in Config File to Use this function
+		if (Boolean.parseBoolean(config.getOption("autoFill"))) {
+			String SALTCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+			StringBuilder salt = new StringBuilder();
+			Random rnd = new Random();
+			while (salt.length() < 8) { // length of the random string.
+				int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+				salt.append(SALTCHARS.charAt(index));
+			}
+			String saltStr = salt.toString();
+
+			view.get_Ctrl().txtChatPort.setText(config.getOption("ChatPort"));
+			view.get_Ctrl().txtGamePort.setText(config.getOption("GamePort"));
+			view.get_Ctrl().txtChatPort.setText(config.getOption("ChatPort"));
+			view.get_Ctrl().txtName.setText(saltStr);
+			view.get_Ctrl().txtIpAddress.setText("127.0.0.1");
 		}
-		String saltStr = salt.toString();
-
-		// Set values from Setting file
-		view.get_Ctrl().txtChatPort.setText(config.getOption("ChatPort"));
-		view.get_Ctrl().txtGamePort.setText(config.getOption("GamePort"));
-		view.get_Ctrl().txtChatPort.setText(config.getOption("ChatPort"));
-		view.get_Ctrl().txtName.setText(saltStr);
-		view.get_Ctrl().txtIpAddress.setText("127.0.0.1");
-		
-		
 	}
 
-	@FXML
-	public void initialize() {
-
-	}
-
+	/** @author Brad Richards */
 	public void validateGamePortNumber(String newValue, String obsElement) {
 		// TODO Auto-generated method stub
 		boolean valid = model.isValidPortNumber(newValue);
@@ -119,7 +111,7 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		enableDisableButton();
 
 	}
-
+	/** @author Brad Richards */
 	public void validateChatPortNumber(String newValue, String obsElement) {
 		// TODO Auto-generated method stub
 		boolean valid = model.isValidPortNumber(newValue);
@@ -135,11 +127,12 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		enableDisableButton();
 
 	}
-
+	
+	/** @author Dominik Holliger */
 	public Boolean connectToServer() {
 		// Daten aus GUI auslesen
 		Boolean connectionStatus = false;
-		Boolean	succesCom = false;
+		Boolean succesCom = false;
 		String name = view.get_Ctrl().txtName.getText();
 		int chatPort = Integer.parseInt(view.get_Ctrl().txtChatPort.getText());
 		int gamePort = Integer.parseInt(view.get_Ctrl().txtGamePort.getText());
@@ -147,10 +140,10 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		// Connect for Chat Com
 		Boolean successChat = model.connect(ipAddress, chatPort, name);
 		// Connect for Object Com
-		if(successChat) {
+		if (successChat) {
 			succesCom = model.connectObjectCom(ipAddress, gamePort, name);
 		}
-		if(succesCom) {
+		if (succesCom) {
 			connectionStatus = true;
 		}
 		return connectionStatus;
@@ -161,8 +154,8 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 	}
 
 	/**
-	 * Enable or disable the Connect button, based on the validity of the two
-	 * text controls
+	 * Enable or disable the Connect button, based on the validity of the two text
+	 * controls
 	 */
 	private void enableDisableButton() {
 		boolean valid = gamePortValid;
@@ -170,6 +163,8 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		view.get_Ctrl().btnConnect.setDisable(!(valid || valid2));
 	}
 
+	
+	
 	public void takeCard(int pos, double x, double y) {
 		CharacterCard c = this.model.getActGameBoard().takeCard(pos);
 		if (c.getCardType2() != null) {
@@ -188,6 +183,8 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 
 		int l = this.model.getActGameBoard().getActivePlayer().getLocation(c);
 		this.model.getActGameBoard().playCard(c, l);
+		
+		/**@author Daniel Räber*/
 		// Message mit getï¿½tigten Spielzï¿½gen an Server schicken
 		String gameMessage = this.model.getActGameBoard().getActivePlayer().getPlayerGameMessage();
 		String gameBoardMessage = this.model.getActGameBoard().getGameMessage();
@@ -195,7 +192,7 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		this.model.sendGameMessage(gameBoardMessage);
 
 		this.model.getActGameBoard().setNextPlayerIndex();
-
+		
 		if (this.model.getActGameBoard().isGameEnd()) {
 			ArrayList<String> finalScoreMessage = this.model.getActGameBoard().getFinalScoreMessage();
 			System.out.println(finalScoreMessage);
@@ -205,6 +202,7 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 					String msg = it.next();
 					this.model.sendGameMessage(msg);
 					try {
+						//Thread muss schlafen, da sonst Messages verloren gehen
 						Thread.sleep(10);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
@@ -215,7 +213,8 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		this.model.sendGameBoardToServer(this.model.getActGameBoard());
 		view.get_Ctrl().setGameBoard(this.model.getActGameBoard());
 	}
-
+	
+	/**Methode zur bestimmung der Klick Position in der Split-Karte*/
 	private int helperSlopePosition(double x, double y) {
 		// Steigung
 		final double m = -0.5;

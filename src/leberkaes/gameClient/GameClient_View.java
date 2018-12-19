@@ -35,7 +35,6 @@ public class GameClient_View extends View <GameClient_Model>{
 	}
 
 	protected Parent parent;
-	private Stage stage;
 
 	public GameClient_View(Stage stage, GameClient_Model model) {
 		super (stage, model);

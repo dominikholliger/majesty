@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
 import leberkaes.jat2.ServiceLocator;
-
+/** @author Dominik Holliger */
 public class GameServer_View {
 	protected Stage stage;
 	private GameServer_Model model;

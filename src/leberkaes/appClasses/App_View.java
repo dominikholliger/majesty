@@ -31,15 +31,16 @@ public class App_View extends View<App_Model> {
 	static AudioStream BGM;
 	static AudioData MD;
 
-
-
 	/**
-	 * Per Lazy Loading die ein DummyKontroller Objekt erstellen und per Getter zur verfügung Stellen
-	 * wird für den FXML Loader gebraucht.
+	 * Per Lazy Loading die ein DummyKontroller Objekt erstellen und per Getter zur
+	 * verfügung Stellen wird für den FXML Loader gebraucht.
+	 * 
+	 * @author Dominik Holliger
 	 */
 	private dummyFXMLControllerHome _Ctrl;
+
 	public dummyFXMLControllerHome get_Ctrl() {
-		if(_Ctrl == null) {
+		if (_Ctrl == null) {
 			_Ctrl = new dummyFXMLControllerHome();
 		}
 		return _Ctrl;
@@ -67,32 +68,27 @@ public class App_View extends View<App_Model> {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Scene scene = new Scene(parent, 600,400);
+		Scene scene = new Scene(parent, 600, 400);
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
 		return scene;
-
 	}
-
-
 
 	/** @author Sebrina Pedrossi */
 	// Play music from audioStream, file in project explorer
 	public static AudioStream audios;
 
-	public static void music(){
-		try{
+	public static void music() {
+		try {
 			InputStream in = new FileInputStream(new File("./src/leberkaes.GUIsources/MedievalMusicShort.wav"));
 			audios = new AudioStream(in);
 			AudioPlayer.player.start(audios);
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			System.out.println(e);
 		}
-
 	}
 
 	// stop Music that is played from audioStream
-	public static void stopmusic(){
+	public static void stopmusic() {
 		AudioPlayer.player.stop(audios);
 	}
 

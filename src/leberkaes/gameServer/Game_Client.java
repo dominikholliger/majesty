@@ -12,7 +12,7 @@ public class Game_Client {
 	private Socket socket;
 	private String name = "<new>";
 	private GameServer_Model model;
-
+	/** @author Dominik Holliger */
 	protected Game_Client(GameServer_Model model, Socket socket) {
 		this.model = model;
 		this.socket = socket;
@@ -30,7 +30,7 @@ public class Game_Client {
 						} else if (msg instanceof JoinMsg) {
 							Game_Client.this.name = ((JoinMsg) msg).getName();
 						} else if (msg instanceof GameMsg) {
-							// Dies muss angepasst werden !!!!!!!!!
+							
 							model.broadcast(new ChatMsg(name,"Test: Spielbrett empfangen"));
 						}
 					} catch (Exception e) {

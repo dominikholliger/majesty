@@ -140,6 +140,7 @@ public class Location implements Serializable {
 
 	}
 
+	//Holt sich den Coin-Effekt auf andere LocationKarte
 	public int getCoinEffect(type t) {
 		int coins;
 

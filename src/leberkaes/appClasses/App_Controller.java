@@ -59,16 +59,14 @@ public class App_Controller extends Controller<App_Model, App_View> {
         view.get_Ctrl().newGame.setText(t.getString("home.btnServerStart"));
         view.get_Ctrl().enterGame.setText(t.getString("home.btnClientStart"));
         view.get_Ctrl().highscore.setText(t.getString("home.btnHighScore"));
-        // View in unsere Liste laden für App Translator update Text...
-
-
+      
     }
     /**
      * Die einzelnen Events werden an dieser Stelle aus dem Dummy Controller verarbeitet
      */
 	public void startNewServerProcess() {
 		// Aufrufendes Fenster: Button auf Home-Screen
-		// Diese Methode startet das Server Windows
+		// Diese Methode startet das Server Window
 		if(!serverrunning) {
 			Stage optionsStage = new Stage();
 		   	GameServer_Model serverModel = new GameServer_Model();
@@ -76,7 +74,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			new GameServer_Controller(serverModel, serverView, this);
 			serverView.start();
 			serverrunning = true;
-
 		}
 	}
 	public void startNewClientProcess() {
@@ -87,8 +84,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	  	GameClient_View clientView = new GameClient_View(optionsStage, clientModel);
 	  	new GameClient_Controller(clientModel, clientView);
 		clientView.start();
-
-
 	}
 
 	/** @author Sebrina Pedrossi */
@@ -115,8 +110,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		HighScore_View highScoreView = new HighScore_View(optionsStage, highScoreModel);
 		new HighScore_Controller(highScoreModel, highScoreView);
 		highScoreView.start();
-
-
 	}
 
 	public void showHomeWindow(){
@@ -132,48 +125,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.getStage().setScene(scene);
 	}
 
-	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
-		// Server Prozess starten
-		startNewServerProcess();
-	}
-	@FXML protected void handleSettingsButtonClicked(ActionEvent event) throws Exception{
-		// Einstellungen öffnen
-		openSettingWindow();
-	}
-	@FXML protected void handleHighscoreButtonClicked(ActionEvent event) throws Exception{
-		// Highscore-Fenster oeffnet sich, nichts wird uebergeben
-		openHighscoreWindow();
-	}
-
-	@FXML protected void handleEnterGameButtonClicked(ActionEvent event) throws Exception{
-		// Client Prozess starten
-		startNewClientProcess();
-	}
-
-
-	@FXML protected void handleMusicOffClicked(ActionEvent event) throws Exception{
-		// stop Music
-		App_View.stopmusic();
-		ButtonMusicOn.setVisible(false);
-		ButtonMusicOff.setVisible(true);
-		musicPlaying = false;
-
-	}
-
-	@FXML protected void handleMusicOnClicked(ActionEvent event) throws Exception{
-		// start Music
-		App_View.music();
-		ButtonMusicOn.setVisible(true);
-		ButtonMusicOff.setVisible(false);
-	}
-
-
-
-	@FXML protected void handleBackClicked(ActionEvent event) throws Exception{
-		// Client Prozess starten
-		showHomeWindow();
-	}
-
 	public void setMusicPlaying(boolean musicPlaying) {
 		this.musicPlaying = musicPlaying;
 	}
@@ -184,10 +135,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	public void setNewGameServerActive() {
 		view.get_Ctrl().enableServerButton();
 		this.serverrunning=false;
-
 	}
-
-
 
 	public void updateTexts() {
 		ServiceLocator sl = ServiceLocator.getServiceLocator();

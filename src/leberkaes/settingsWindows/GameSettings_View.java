@@ -12,7 +12,7 @@ import leberkaes.appClasses.App_Controller;
 import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
 import leberkaes.jat2.ServiceLocator;
-
+/** @author Sebrina Pedrossi*/
 public class GameSettings_View extends View<GameSettings_Model>{
 	ServiceLocator sl = ServiceLocator.getServiceLocator();
 	Logger logger = sl.getLogger();
@@ -23,36 +23,18 @@ public class GameSettings_View extends View<GameSettings_Model>{
 
    private App_Controller appControlInstance;
 
-
-
-
-
     public App_Controller getAppControlInstance() {
 	return appControlInstance;
 }
 
-
-
-
-
 	public void setAppControlInstance(App_Controller appControlInstance) {
 	this.appControlInstance = appControlInstance;
 }
-
-
-
-
-
 	public GameSettings_View(Stage stage, GameSettings_Model model) {
         super (stage, model);
         stage.setTitle(t.getString("settings.windowTitle"));
         // Get current values
-
     }
-
-
-
-
 
     protected Scene create_GUI() {
 
@@ -67,8 +49,5 @@ public class GameSettings_View extends View<GameSettings_Model>{
 		Scene scene = new Scene(parent, 600,400);
         scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
         return scene;
-
 	}
-
-
 }

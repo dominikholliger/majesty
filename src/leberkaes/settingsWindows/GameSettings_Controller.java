@@ -15,6 +15,8 @@ import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
 import leberkaes.jat2.ServiceLocator;
 
+/** @author Dominik Holliger / Sebrina Pedrossi / Daniel Räber*/
+
 public class GameSettings_Controller extends Controller<GameSettings_Model, GameSettings_View> {
 
 	ServiceLocator sl = ServiceLocator.getServiceLocator();
@@ -156,18 +158,15 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 	}
 	@FXML private void handleLanguageGerman() {
 		this.radioEnglish.setSelected(false);
-
 	}
 
-
+	//Not used
 	@FXML
 	private void handleMeepleOption() {
-
 	}
-
+	//Not used
 	@FXML
 	private void handleSplitCardOption() {
-
 	}
 
 	@FXML
@@ -190,12 +189,8 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 		} else {
 			config.setLocalOption("Language", "en");
 		}
-
 		// System.out.println(toggle.getSelectedToggle().getUserData());
-
 		view.getAppControlInstance().updateTexts();
-
-
 		view.stop();
 	}
 
@@ -204,7 +199,6 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 
 		view.stop();
 	}
-
 
 	protected void updateTexts() {
 		Translator t = ServiceLocator.getServiceLocator().getTranslator();

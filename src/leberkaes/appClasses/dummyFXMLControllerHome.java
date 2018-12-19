@@ -28,8 +28,6 @@ public class dummyFXMLControllerHome {
 	 * - Theoretisch könnte man dies noch mit einer Abstrakten Klasse vereinfachen, aber ich glaube wir lassen es aus Zeitgründen.
 	 */
 
-
-
 	private App_Controller _MvcCtrl;
 	public App_Controller get_MvcCtrl() {
 		return _MvcCtrl;
@@ -43,9 +41,6 @@ public class dummyFXMLControllerHome {
 	@FXML public Button ButtonMusicOff;
 	@FXML public Button enterGame;
 	@FXML public Button highscore;
-
-
-
 
 	@FXML protected void handleNewGameButtonClicked(ActionEvent event) throws Exception {
 		// Server Prozess starten
@@ -97,8 +92,7 @@ public class dummyFXMLControllerHome {
 	}
 	/**
 	 * @author D.Holliger
-	 *
-	 * Buttons schön deaktivieren
+	 * Buttons schoen deaktivieren
 	 */
 	public void disableServerButton() {
 		newGame.setDisable(true);

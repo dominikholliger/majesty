@@ -36,10 +36,7 @@ public class GameBoard implements java.io.Serializable {
 		this.playerCount = numOfP;
 		this.players = new ArrayList<Player>();
 		this.bSide = bside;
-		// ____________________
-		// debug Karten zum Testen
-
-		// _________________________
+	
 		// Standard Karten
 		createCards(back.GREEN, type.GRAIN, null, 7);
 		createCards(back.GREEN, type.BARELL, null, 4);
@@ -217,7 +214,7 @@ public class GameBoard implements java.io.Serializable {
 
 	/** Effekte auf andere Spieler ausf�hren */
 	public void otherPlayerEffect(type t) {
-
+		//Effekte der B-Seite
 		if (bSide) {
 			int coins = 0;
 			switch (t) {
@@ -252,7 +249,7 @@ public class GameBoard implements java.io.Serializable {
 			}
 
 		} else if(!bSide) {
-
+			//Effekte der A-Seite
 			int coins = 0;
 			switch (t) {
 			case BARELL:
@@ -305,7 +302,6 @@ public class GameBoard implements java.io.Serializable {
 	/** Sonderaktionen Heilung ausf�hern */
 	public void heal() {
 		this.getActivePlayer().reviveCard();
-
 	}
 
 	/**

@@ -7,7 +7,7 @@ import java.net.Socket;
 
 import leberkaes.commonClasses.GameBoard;
 import leberkaes.commonClasses.Highscore;
-
+/** @author Dominik Holliger */
 public class Game_ClientObjectCom {
 	private Socket socket;
 	private String name = "<new>";

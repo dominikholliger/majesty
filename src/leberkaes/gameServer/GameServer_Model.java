@@ -22,7 +22,7 @@ public class GameServer_Model {
 	private boolean gameRunning = false;
 
 
-
+	/** @author Dominik Holliger */
 	public void startServer(int port, int playerCount, boolean bside) {
 		logger.info("Start server game thread base communication");
 		try {

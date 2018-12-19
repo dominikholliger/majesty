@@ -16,6 +16,7 @@ public class GameServer_Controller {
 	Logger logger = sl.getLogger();
 	Translator t = sl.getTranslator();
 	Configuration config = sl.getConfiguration();
+	/** @author Dominik Holliger */
 
 	public GameServer_Controller(GameServer_Model model, GameServer_View view, App_Controller appControl) {
 		this.appControllerInstance = appControl;

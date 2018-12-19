@@ -16,9 +16,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+/** @author Dominik Holliger */
 public class Highscore {
 	/**
-	 * Highscore Schisseln
+	 * Highscore KLasse - Kommuniziert mit externer Datenbank
 	 */
 
 	// Highscore Singleton
@@ -85,19 +86,19 @@ public class Highscore {
 			while (rs.next()) {
 				int count = rs.getInt("count");
 				String name = rs.getString("name");
-				//java.util.Date datetime = new java.util.Date();
-				//datetime = rs.getTime("timestamp");
+				// java.util.Date datetime = new java.util.Date();
+				// datetime = rs.getTime("timestamp");
 				java.util.Date date = new java.util.Date();
 				Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
 				Timestamp timestamp = rs.getTimestamp("timestamp");
 				if (timestamp != null) {
-				    date = new java.util.Date(timestamp.getTime());
+					date = new java.util.Date(timestamp.getTime());
 				}
 				java.text.SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 				sdf.setTimeZone(TimeZone.getTimeZone("Europe/Zurich"));
 				String dateTimeofEntry = sdf.format(date);
-				//String dateTimeofEntry = datetime;
-				list.add("Rang: "+counter+" Punkte: "+count+" - "+name + " - " + dateTimeofEntry);
+				// String dateTimeofEntry = datetime;
+				list.add("Rang: " + counter + " Punkte: " + count + " - " + name + " - " + dateTimeofEntry);
 				counter++;
 			}
 
