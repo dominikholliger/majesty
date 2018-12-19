@@ -22,25 +22,33 @@ public class Game_Client {
 			@Override
 			public void run() {
 				while(true) {
-					Message msg = Message.receive(socket);
-					if (msg instanceof ChatMsg) {				
-						model.broadcast((ChatMsg) msg);
-					} else if (msg instanceof JoinMsg) {
-						Game_Client.this.name = ((JoinMsg) msg).getName();
-					} else if (msg instanceof GameMsg) {
-						// Dies muss angepasst werden !!!!!!!!!
-						model.broadcast(new ChatMsg(name,"Test: Spielbrett empfangen"));
+					Message msg;
+					try {
+						msg = Message.receive(socket);
+						if (msg instanceof ChatMsg) {
+							model.broadcast((ChatMsg) msg);
+						} else if (msg instanceof JoinMsg) {
+							Game_Client.this.name = ((JoinMsg) msg).getName();
+						} else if (msg instanceof GameMsg) {
+							// Dies muss angepasst werden !!!!!!!!!
+							model.broadcast(new ChatMsg(name,"Test: Spielbrett empfangen"));
+						}
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						//break;
 					}
+
 				}
 			}
 		};
 		Thread t = new Thread(r);
 		t.start();
 	}
-	
-	
-	
-	
+
+
+
+
 	public Socket getSocket() {
 		return socket;
 	}

@@ -71,7 +71,14 @@ public class GameClient_Model extends Model{
 				@Override
 				public void run() {
 					while (true) {
-						Message msgTemp = Message.receive(socket);
+						Message msgTemp;
+						try {
+							msgTemp = Message.receive(socket);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							break;
+						}
 						if(msgTemp.getType() == MessageType.Game) {
 							logger.info("GameMsg angekommen");
 							/**
@@ -95,6 +102,7 @@ public class GameClient_Model extends Model{
 			msg.send(socket);
 		} catch (Exception e) {
 			logger.warning(e.toString());
+			System.out.println("Marker 1");
 		}
 		success = true;
 		return success;
@@ -104,15 +112,15 @@ public class GameClient_Model extends Model{
 	public Boolean connectObjectCom(String ipAddress, int Port, String name) {
 		Boolean success = false;
 		logger.info("Connect to ObjectCom Server");
-		
+
 		try {
 			SocketAddress sockaddr = new InetSocketAddress(ipAddress, Port);
 			// Create your socket
 			socketObjectCom = new Socket();
 			// Connect with 3 s timeout
 			socketObjectCom.connect(sockaddr, 3000);
-			
-			
+
+
 			//socketObjectCom = new Socket(ipAddress, Port);
 		} catch (UnknownHostException e1) {
 			// TODO Auto-generated catch block
@@ -125,11 +133,11 @@ public class GameClient_Model extends Model{
 			System.out.println("IO Exception");
 			return success;
 		}
-		
-		
+
+
 		this.name = name;
 		try {
-			
+
 			// Create thread to read incoming messages
 			Runnable r = new Runnable() {
 				@Override
@@ -145,6 +153,7 @@ public class GameClient_Model extends Model{
 						} catch (IOException | ClassNotFoundException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+							break;
 						}
 					}
 				}
@@ -153,6 +162,7 @@ public class GameClient_Model extends Model{
 			t.start();
 		} catch (Exception e) {
 			logger.warning(e.toString());
+			System.out.println("Marker 2");
 		}
 		success = true;
 		return success;
@@ -189,7 +199,7 @@ public class GameClient_Model extends Model{
 		Message msg = new ChatMsg(name, message);
 		msg.send(socket);
 	}
-	
+
 	public void sendGameMessage(String message) {
 		logger.info("Send game message");
 		Message msg = new ChatMsg("Game", message);
