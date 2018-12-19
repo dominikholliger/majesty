@@ -28,11 +28,6 @@ public class GameServer_Model {
 
 	public void startServer(int port, int playerCount, boolean bside) {
 		logger.info("Start server game thread base communication");
-		Highscore high = Highscore.getInstance();
-		high.getHighscore();
-		high.writeHighscore("Dominik",23);
-		high.writeHighscore("Dominik",34);
-		high.writeHighscore("Dominik",99);
 		try {
 			listener = new ServerSocket(port, 10, null);
 			Runnable r = new Runnable() {
