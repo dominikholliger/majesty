@@ -196,7 +196,11 @@ public class dummyFXMLControllerClient {
 	// so nothing can be changed after connected to server
 	@FXML
 	protected void handleConnectClicked(ActionEvent event) throws Exception {
-		get_MvcCtrl().connectToServer();
+		Boolean connectionStatus = get_MvcCtrl().connectToServer();
+		if(!connectionStatus) {
+			System.out.println("Verbindungsaufbau nicht möglich. Angaben prüfen.");
+			return;
+		}
 		this.btnConnect.setDisable(true);
 		this.txtName.setDisable(true);
 		this.txtChatPort.setDisable(true);

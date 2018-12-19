@@ -4,7 +4,10 @@ import java.io.IOException;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.UnknownHostException;
 import java.util.logging.Logger;
 
 import leberkaes.abstractClasses.Model;
@@ -39,12 +42,31 @@ public class GameClient_Model extends Model{
 	private ObjectInputStream inStream = null;
 	private String name;
 
-	public void connect(String ipAddress, int Port, String name) {
+	public Boolean connect(String ipAddress, int Port, String name) {
+		Boolean success = false;
 		logger.info("Connect");
 		this.name = name;
-		try {
-			socket = new Socket(ipAddress, Port);
+		final int Timeot = 2000;
+			try {
+				SocketAddress sockaddr = new InetSocketAddress(ipAddress, Port);
+				// Create your socket
+				socket = new Socket();
+				// Connect with 3 s timeout
+				socket.connect(sockaddr, 3000);
+				//socket = new Socket(ipAddress, Port);
+			} catch (UnknownHostException e1) {
+				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+				System.out.println("Unknown Host Exception");
+				return success;
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+	//			e1.printStackTrace();
+				System.out.println("IO Exception");
+				return success;
+			}
 			// Create thread to read incoming messages
+		try {
 			Runnable r = new Runnable() {
 				@Override
 				public void run() {
@@ -74,14 +96,40 @@ public class GameClient_Model extends Model{
 		} catch (Exception e) {
 			logger.warning(e.toString());
 		}
+		success = true;
+		return success;
 	}
 
 	// Eine zweite Verbindung für die Objektübertragung
-	public void connectObjectCom(String ipAddress, int Port, String name) {
+	public Boolean connectObjectCom(String ipAddress, int Port, String name) {
+		Boolean success = false;
 		logger.info("Connect to ObjectCom Server");
+		
+		try {
+			SocketAddress sockaddr = new InetSocketAddress(ipAddress, Port);
+			// Create your socket
+			socketObjectCom = new Socket();
+			// Connect with 3 s timeout
+			socketObjectCom.connect(sockaddr, 3000);
+			
+			
+			//socketObjectCom = new Socket(ipAddress, Port);
+		} catch (UnknownHostException e1) {
+			// TODO Auto-generated catch block
+			//e1.printStackTrace();
+			System.out.println("Unknown Host Exception");
+			return success;
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			//e1.printStackTrace();
+			System.out.println("IO Exception");
+			return success;
+		}
+		
+		
 		this.name = name;
 		try {
-			socketObjectCom = new Socket(ipAddress, Port);
+			
 			// Create thread to read incoming messages
 			Runnable r = new Runnable() {
 				@Override
@@ -106,6 +154,8 @@ public class GameClient_Model extends Model{
 		} catch (Exception e) {
 			logger.warning(e.toString());
 		}
+		success = true;
+		return success;
 	}
 
 

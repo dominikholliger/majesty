@@ -125,16 +125,24 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 
 	}
 
-	public void connectToServer() {
+	public Boolean connectToServer() {
 		// Daten aus GUI auslesen
+		Boolean connectionStatus = false;
+		Boolean	succesCom = false;
 		String name = view.get_Ctrl().txtName.getText();
 		int chatPort = Integer.parseInt(view.get_Ctrl().txtChatPort.getText());
 		int gamePort = Integer.parseInt(view.get_Ctrl().txtGamePort.getText());
 		String ipAddress = view.get_Ctrl().txtIpAddress.getText();
 		// Connect for Chat Com
-		model.connect(ipAddress, chatPort, name);
+		Boolean successChat = model.connect(ipAddress, chatPort, name);
 		// Connect for Object Com
-		model.connectObjectCom(ipAddress, gamePort, name);
+		if(successChat) {
+			succesCom = model.connectObjectCom(ipAddress, gamePort, name);
+		}
+		if(succesCom) {
+			connectionStatus = true;
+		}
+		return connectionStatus;
 	}
 
 	public void sendMessage(String messageText) {
