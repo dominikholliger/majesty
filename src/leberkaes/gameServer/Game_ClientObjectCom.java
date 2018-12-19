@@ -7,8 +7,6 @@ import java.net.Socket;
 
 import leberkaes.commonClasses.GameBoard;
 import leberkaes.commonClasses.Highscore;
-import leberkaes.commonClasses.Message;
-import leberkaes.commonClasses.Player;
 
 public class Game_ClientObjectCom {
 	private Socket socket;

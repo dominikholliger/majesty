@@ -5,11 +5,11 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import leberkaes.jat2.ServiceLocator;
+import javafx.concurrent.Task;
 import leberkaes.abstractClasses.Model;
 import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
-import javafx.concurrent.Task;
+import leberkaes.jat2.ServiceLocator;
 
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code

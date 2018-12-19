@@ -1,7 +1,6 @@
 package leberkaes.gameClient;
 
 import java.io.IOException;
-
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
@@ -10,13 +9,13 @@ import java.net.SocketAddress;
 import java.net.UnknownHostException;
 import java.util.logging.Logger;
 
+import javafx.beans.property.SimpleStringProperty;
 import leberkaes.abstractClasses.Model;
 import leberkaes.commonClasses.ChatMsg;
 import leberkaes.commonClasses.GameBoard;
 import leberkaes.commonClasses.JoinMsg;
 import leberkaes.commonClasses.Message;
 import leberkaes.commonClasses.MessageType;
-import javafx.beans.property.SimpleStringProperty;
 
 /** author: Bradley Richards */
 

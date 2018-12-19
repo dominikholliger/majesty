@@ -1,13 +1,11 @@
 package leberkaes.gameServer;
-import leberkaes.appClasses.App_Controller;
-import leberkaes.commonClasses.Configuration;
-import leberkaes.jat2.ServiceLocator;
-import leberkaes.commonClasses.Configuration;
-import leberkaes.commonClasses.Translator;
-
 import java.util.logging.Logger;
 
 import javafx.collections.ListChangeListener;
+import leberkaes.appClasses.App_Controller;
+import leberkaes.commonClasses.Configuration;
+import leberkaes.commonClasses.Translator;
+import leberkaes.jat2.ServiceLocator;
 
 public class GameServer_Controller {
 	private GameServer_Model model;

@@ -1,7 +1,5 @@
 package leberkaes.commonClasses;
 
-import java.util.LinkedList;
-
 public class CardType {
 	/**@author Daniel Räber*/
 public enum type {

@@ -1,7 +1,7 @@
 package leberkaes.appClasses;
 
-import leberkaes.jat2.ServiceLocator;
 import leberkaes.abstractClasses.Model;
+import leberkaes.jat2.ServiceLocator;
 
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code

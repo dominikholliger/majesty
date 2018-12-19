@@ -35,8 +35,9 @@ public class Game_Client {
 						}
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
-						//break;
+						break;
 					}
 
 				}

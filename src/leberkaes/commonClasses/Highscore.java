@@ -7,19 +7,14 @@ import java.net.SocketAddress;
 import java.net.SocketTimeoutException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.TimeZone;
-import java.util.TreeMap;
 
 public class Highscore {
 	/**

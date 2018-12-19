@@ -1,14 +1,8 @@
 package leberkaes.appClasses;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.stage.WindowEvent;
-import leberkaes.commonClasses.Translator;
-import leberkaes.jat2.ServiceLocator;
 
 
 public class dummyFXMLControllerHome {

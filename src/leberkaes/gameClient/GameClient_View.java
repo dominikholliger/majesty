@@ -39,7 +39,7 @@ public class GameClient_View extends View <GameClient_Model>{
 
 	public GameClient_View(Stage stage, GameClient_Model model) {
 		super (stage, model);
-		stage.setTitle(t.getString("program.menu.game"));
+		stage.setTitle(t.getString("client.windowTitle"));
 	}
 
 	protected Scene create_GUI() {

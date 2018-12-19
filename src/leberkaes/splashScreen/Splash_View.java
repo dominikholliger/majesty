@@ -1,15 +1,14 @@
 package leberkaes.splashScreen;
 
 
-import leberkaes.abstractClasses.View;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import leberkaes.abstractClasses.View;
 
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code

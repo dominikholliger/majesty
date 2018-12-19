@@ -1,14 +1,14 @@
 package leberkaes.jat2;
 
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.stage.Stage;
 import leberkaes.appClasses.App_Controller;
 import leberkaes.appClasses.App_Model;
 import leberkaes.appClasses.App_View;
 import leberkaes.splashScreen.Splash_Controller;
 import leberkaes.splashScreen.Splash_Model;
 import leberkaes.splashScreen.Splash_View;
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.stage.Stage;
 
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code

@@ -6,20 +6,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
-import sun.audio.AudioData;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
-import sun.audio.ContinuousAudioDataStream;
-
-import leberkaes.jat2.ServiceLocator;
-import leberkaes.abstractClasses.View;
-import leberkaes.commonClasses.Translator;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import leberkaes.abstractClasses.View;
+import leberkaes.commonClasses.Translator;
+import leberkaes.jat2.ServiceLocator;
+import sun.audio.AudioData;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code

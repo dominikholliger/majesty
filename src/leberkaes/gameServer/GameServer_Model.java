@@ -3,15 +3,12 @@ package leberkaes.gameServer;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.ResultSet;
 import java.util.logging.Logger;
 
-
-import leberkaes.commonClasses.ChatMsg;
-import leberkaes.commonClasses.GameBoard;
-import leberkaes.commonClasses.Highscore;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import leberkaes.commonClasses.ChatMsg;
+import leberkaes.commonClasses.GameBoard;
 
 public class GameServer_Model {
 	protected final ObservableList<Game_Client> clients = FXCollections.observableArrayList();

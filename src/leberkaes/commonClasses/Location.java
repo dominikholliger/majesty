@@ -7,10 +7,12 @@ import static leberkaes.commonClasses.CardType.type.KEY;
 import static leberkaes.commonClasses.CardType.type.POTION;
 import static leberkaes.commonClasses.CardType.type.SHIELD;
 import static leberkaes.commonClasses.CardType.type.SWORD;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Stack;
-import leberkaes.commonClasses.CardType.*;
+
+import leberkaes.commonClasses.CardType.type;
 /**@author Daniel Räber*/
 public class Location implements Serializable {
 

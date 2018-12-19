@@ -1,36 +1,13 @@
 package leberkaes.appClasses;
 
-import leberkaes.jat2.ServiceLocator;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import javafx.event.EventHandler;
+import javafx.stage.WindowEvent;
 import leberkaes.abstractClasses.Controller;
 import leberkaes.commonClasses.Highscore;
-import leberkaes.gameClient.GameClient_Controller;
-import leberkaes.gameClient.GameClient_Model;
-import leberkaes.gameClient.GameClient_View;
-import leberkaes.gameServer.GameServer_Controller;
-import leberkaes.gameServer.GameServer_Model;
-import leberkaes.gameServer.GameServer_View;
-import leberkaes.settingsWindows.GameSettings_Controller;
-import leberkaes.settingsWindows.GameSettings_Model;
-import leberkaes.settingsWindows.GameSettings_View;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.TreeMap;
-
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+import leberkaes.jat2.ServiceLocator;
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code
  * is licensed under the terms of the BSD 3-clause license (see the file

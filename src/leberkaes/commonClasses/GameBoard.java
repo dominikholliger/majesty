@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Stack;
-import leberkaes.commonClasses.CharacterCard;
-import leberkaes.commonClasses.CardType.*;
+
+import leberkaes.commonClasses.CardType.back;
+import leberkaes.commonClasses.CardType.type;
 import leberkaes.jat2.ServiceLocator;
 
 /**@author Daniel Räber*/

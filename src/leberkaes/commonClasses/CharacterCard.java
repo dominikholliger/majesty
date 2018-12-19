@@ -1,8 +1,9 @@
 package leberkaes.commonClasses;
 
-import static leberkaes.commonClasses.CardType.*;
-
 import java.io.Serializable;
+
+import leberkaes.commonClasses.CardType.back;
+import leberkaes.commonClasses.CardType.type;
 /**@author Daniel Räber*/
 public class CharacterCard implements Serializable {
 

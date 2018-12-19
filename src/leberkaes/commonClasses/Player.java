@@ -2,6 +2,7 @@ package leberkaes.commonClasses;
 
 import java.io.Serializable;
 import java.util.Arrays;
+
 import leberkaes.commonClasses.CardType.type;
 import leberkaes.jat2.ServiceLocator;
 
