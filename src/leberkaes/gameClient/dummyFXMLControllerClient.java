@@ -56,6 +56,11 @@ public class dummyFXMLControllerClient {
 	@FXML public TextField txtIpAddress;
 	@FXML public Button btnConnect;
 	@FXML public Text labelRoundCount;
+	// Top Labels
+
+	@FXML public Text labelplayername;
+	@FXML public Text labelRoundText;
+	@FXML public Text labelipaddress;
 
 	// Split Cards PopUp
 	@FXML public ImageView splitCardImg;
@@ -86,6 +91,8 @@ public class dummyFXMLControllerClient {
 	@FXML public Button BackButton;
 	@FXML public Text WinnerName;
 	@FXML public Text WinnerPoints;
+	@FXML public Text lblScore;
+	@FXML public Text lblWinner;
 
 	// Chat-Controls
 	@FXML public Button btnSend;

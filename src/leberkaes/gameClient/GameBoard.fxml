@@ -608,12 +608,12 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="177.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gewinner:">
+            <Text fx:id="lblWinner" layoutX="177.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gewinner:">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="179.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl:">
+            <Text fx:id="lblScore" layoutX="179.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punktzahl:">
                <font>
                   <Font size="18.0" />
                </font>

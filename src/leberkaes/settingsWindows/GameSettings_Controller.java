@@ -63,28 +63,27 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 	}
 
 	@FXML public void initialize() {
-
+		
+		//Labels setzen mit Translator
+		this.txtLabelPlayerNumber.setText(t.getString("settings.lblPlayerCount"));
+		this.BSideOption.setText(t.getString("settings.lblBSide"));
+		this.txtLabelPort.setText(t.getString("settings.lblChatPort"));
+		this.textGamePort.setText(t.getString("settings.lblGamePort"));
+		this.BSideOption.setText(t.getString("settings.lblBSide"));
+		
+		this.radioDeutsch.setText(t.getString("settings.btnGerman"));
+		this.radioEnglish.setText(t.getString("settings.btnEnglish"));
+		this.btnSave.setText(t.getString("settings.btnSave"));
+		
+		
+		//Werte aus Config einlesen
 		try {
-
 			this.txtPlayerCount.setText(config.getOption("PlayerCount"));
 			this.txtChatPort.setText(config.getOption("ChatPort"));
 			this.txtGamePort.setText(config.getOption("GamePort"));
-
-			txtGamePort.textProperty().addListener((observable, oldValue, newValue) -> {
-				validateGamePortNumber(newValue, "txtChatPort");
-			});
-			txtChatPort.textProperty().addListener((observable, oldValue, newValue) -> {
-				validateChatPortNumber(newValue, "txtGamePort");
-			});
-			txtPlayerCount.textProperty().addListener((observable, oldValue, newValue) -> {
-				validatePlayerCountNumber(newValue, "txtPlayerCount");
-			});
-
 			if (config.getOption("BSide").equals("true")) {
 				this.BSideOption.setSelected(true);
 			}
-
-
 			if(config.getOption("Language").equalsIgnoreCase("de")) {
 				this.radioDeutsch.setSelected(true);
 				this.radioEnglish.setSelected(false);
@@ -92,10 +91,20 @@ public class GameSettings_Controller extends Controller<GameSettings_Model, Game
 				this.radioDeutsch.setSelected(false);
 				this.radioEnglish.setSelected(true);
 			}
-
 		} catch (Exception e) {
 			logger.warning("No Configuration Found!!!");;
 		}
+
+		//Listener auf Labels erzeugen
+		txtGamePort.textProperty().addListener((observable, oldValue, newValue) -> {
+			validateGamePortNumber(newValue, "txtChatPort");
+		});
+		txtChatPort.textProperty().addListener((observable, oldValue, newValue) -> {
+			validateChatPortNumber(newValue, "txtGamePort");
+		});
+		txtPlayerCount.textProperty().addListener((observable, oldValue, newValue) -> {
+			validatePlayerCountNumber(newValue, "txtPlayerCount");
+		});
 
 	}
 

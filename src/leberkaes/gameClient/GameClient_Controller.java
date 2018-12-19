@@ -68,7 +68,18 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		view.get_Ctrl().txtChatPort.textProperty().addListener((observable, oldValue, newValue) -> {
 			validateChatPortNumber(newValue, "txtChatPort");
 		});
-
+		
+		//Set Label Names from Translator
+		view.get_Ctrl().labelplayername.setText(t.getString("client.labelplayername"));
+		view.get_Ctrl().labelipaddress.setText(t.getString("client.labelipaddress"));
+		view.get_Ctrl().btnConnect.setText(t.getString("client.btnConnect"));
+		view.get_Ctrl().labelRoundText.setText(t.getString("client.labelRoundText"));
+		view.get_Ctrl().lblScore.setText(t.getString("client.lblScore"));
+		view.get_Ctrl().lblWinner.setText(t.getString("client.lblWinner"));
+		view.get_Ctrl().BackButton.setText(t.getString("client.BackButton"));
+		
+		
+		//Adding Default Values for easy-connect
 		// Random-Name Generator
 		String SALTCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		StringBuilder salt = new StringBuilder();
@@ -79,13 +90,14 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		}
 		String saltStr = salt.toString();
 
-		// Set auto Values for Connecting
+		// Set values from Setting file
 		view.get_Ctrl().txtChatPort.setText(config.getOption("ChatPort"));
 		view.get_Ctrl().txtGamePort.setText(config.getOption("GamePort"));
 		view.get_Ctrl().txtChatPort.setText(config.getOption("ChatPort"));
 		view.get_Ctrl().txtName.setText(saltStr);
 		view.get_Ctrl().txtIpAddress.setText("127.0.0.1");
-
+		
+		
 	}
 
 	@FXML
