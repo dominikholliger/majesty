@@ -74,7 +74,8 @@ public class GameClient_Controller extends Controller<GameClient_Model, GameClie
 		view.get_Ctrl().lblScore.setText(t.getString("client.lblScore"));
 		view.get_Ctrl().lblWinner.setText(t.getString("client.lblWinner"));
 		view.get_Ctrl().BackButton.setText(t.getString("client.BackButton"));
-
+		view.get_Ctrl().btnSend.setText(t.getString("client.btnSend"));
+		
 		// Adding Default Values for easy-connect
 		// Set to true in Config File to Use this function
 		if (Boolean.parseBoolean(config.getOption("autoFill"))) {

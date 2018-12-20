@@ -2,6 +2,7 @@ package leberkaes.appClasses;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 
@@ -27,6 +28,8 @@ public class dummyFXMLControllerHighScore {
 	 * Ausbau:
 	 * - Theoretisch könnte man dies noch mit einer Abstrakten Klasse vereinfachen, aber ich glaube wir lassen es aus Zeitgründen.
 	 */
+	
+	@FXML Button back;
 
 	private HighScore_Controller _MvcCtrl;
 

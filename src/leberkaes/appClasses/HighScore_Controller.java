@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
 import leberkaes.abstractClasses.Controller;
 import leberkaes.commonClasses.Highscore;
+import leberkaes.commonClasses.Translator;
 import leberkaes.jat2.ServiceLocator;
 /**
  * @author Dominik Holliger
@@ -29,7 +30,8 @@ public class HighScore_Controller extends Controller<HighScore_Model, HighScore_
         });
         serviceLocator = ServiceLocator.getServiceLocator();
         serviceLocator.getLogger().info("Application controller initialized");
-        //
+        Translator t = serviceLocator.getTranslator();
+        view.get_Ctrl().back.setText(t.getString("highscore.back"));
         writeHighScoreListFromDB();
     }
     /**

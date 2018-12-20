@@ -92,12 +92,12 @@ public class App_View extends View<App_Model> {
 	}*/
 	
 	// Try with Stream so it works with jar-file
-	public void music() {
+	public static void music() {
 		try {
-	        stream = this.getClass().getResourceAsStream("/leberkaes.GUIsources/MedievalMusicShort.wav");
+	        stream = App_View.class.getResourceAsStream("/leberkaes.GUIsources/MedievalMusicShort.wav");
 	        AudioPlayer.player.start(stream);
 	    } catch (Exception e) {
-	        System.out.println("Problem playing file MedievalMusicShort.wav");
+	    	System.out.println("Problem playing file MedievalMusicShort.wav");
 	        System.out.println(e);
 	    }
 	}
