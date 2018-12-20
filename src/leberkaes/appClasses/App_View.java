@@ -1,9 +1,11 @@
 package leberkaes.appClasses;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXMLLoader;
@@ -16,6 +18,7 @@ import leberkaes.jat2.ServiceLocator;
 import sun.audio.AudioData;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
+
 
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code
@@ -75,9 +78,10 @@ public class App_View extends View<App_Model> {
 
 	/** @author Sebrina Pedrossi */
 	// Play music from audioStream, file in project explorer
-	public static AudioStream audios;
+	public static InputStream stream;
 
-	public static void music() {
+	//Try with File for Music
+	/*public static void music() {
 		try {
 			InputStream in = new FileInputStream(new File("./src/leberkaes.GUIsources/MedievalMusicShort.wav"));
 			audios = new AudioStream(in);
@@ -85,11 +89,22 @@ public class App_View extends View<App_Model> {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+	}*/
+	
+	// Try with Stream so it works with jar-file
+	public void music() {
+		try {
+	        stream = this.getClass().getResourceAsStream("/leberkaes.GUIsources/MedievalMusicShort.wav");
+	        AudioPlayer.player.start(stream);
+	    } catch (Exception e) {
+	        System.out.println("Problem playing file MedievalMusicShort.wav");
+	        System.out.println(e);
+	    }
 	}
 
 	// stop Music that is played from audioStream
 	public static void stopmusic() {
-		AudioPlayer.player.stop(audios);
+		AudioPlayer.player.stop(stream);
 	}
 
 }
