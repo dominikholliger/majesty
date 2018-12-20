@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import leberkaes.abstractClasses.View;
+import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
 import leberkaes.jat2.ServiceLocator;
 import sun.audio.AudioData;
@@ -29,6 +30,11 @@ import sun.audio.AudioStream;
  */
 public class App_View extends View<App_Model> {
 
+	ServiceLocator sl = ServiceLocator.getServiceLocator();
+	Logger logger = sl.getLogger();
+	Translator t = sl.getTranslator();
+	Configuration config = sl.getConfiguration();
+	
 	// Audio Controls
 	static AudioPlayer MGP = AudioPlayer.player;
 	static AudioStream BGM;
@@ -53,16 +59,14 @@ public class App_View extends View<App_Model> {
 
 	public App_View(Stage stage, App_Model model) {
 		super(stage, model);
-		stage.setTitle("Majesty - FHNW Gruppe Leberkaes");
+		stage.setTitle(t.getString("home.windowTitle"));
 		ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
 		music();
 	}
 
 	@Override
 	protected Scene create_GUI() {
-		ServiceLocator sl = ServiceLocator.getServiceLocator();
-		Logger logger = sl.getLogger();
-		Translator t = sl.getTranslator();
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
 		loader.setController(get_Ctrl());
 		try {

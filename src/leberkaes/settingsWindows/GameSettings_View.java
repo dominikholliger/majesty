@@ -18,7 +18,6 @@ public class GameSettings_View extends View<GameSettings_Model>{
 	Logger logger = sl.getLogger();
 	Translator t = sl.getTranslator();
 	Configuration config = sl.getConfiguration();
-    private Stage stage;
     protected Parent parent;
 
    private App_Controller appControlInstance;

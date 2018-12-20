@@ -3,7 +3,6 @@ package leberkaes.appClasses;
 import java.io.IOException;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -147,6 +146,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
        view.get_Ctrl().highscore.setText(t.getString("home.btnHighScore"));
        view.get_Ctrl().newGame.setText(t.getString("home.btnServerStart"));
        view.get_Ctrl().enterGame.setText(t.getString("home.btnClientStart"));
+       view.getStage().setTitle(t.getString("home.windowTitle"));
 
 	}
 }

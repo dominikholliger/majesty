@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import leberkaes.abstractClasses.View;
+import leberkaes.commonClasses.Configuration;
 import leberkaes.commonClasses.Translator;
 import leberkaes.jat2.ServiceLocator;
 
@@ -20,7 +21,10 @@ import leberkaes.jat2.ServiceLocator;
  */
 public class HighScore_View extends View<HighScore_Model> {
 
-
+	ServiceLocator sl = ServiceLocator.getServiceLocator();
+	Logger logger = sl.getLogger();
+	Translator t = sl.getTranslator();
+	Configuration config = sl.getConfiguration();
 	/**
 	 * @author D.Holliger
 	 * Per Lazy Loading die ein DummyKontroller Objekt erstellen und per Getter zur verfügung Stellen
@@ -37,7 +41,7 @@ public class HighScore_View extends View<HighScore_Model> {
 	protected Parent parent;
 	public HighScore_View(Stage stage, HighScore_Model model) {
 		super(stage, model);
-		stage.setTitle("Majesty - Highscore");
+		stage.setTitle(t.getString("highscore.windowTitle"));
 		ServiceLocator.getServiceLocator().getLogger().info("HighScore view initialized");
 	}
 
