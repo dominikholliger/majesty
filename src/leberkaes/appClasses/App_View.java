@@ -1,11 +1,7 @@
 package leberkaes.appClasses;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXMLLoader;
@@ -34,7 +30,7 @@ public class App_View extends View<App_Model> {
 	Logger logger = sl.getLogger();
 	Translator t = sl.getTranslator();
 	Configuration config = sl.getConfiguration();
-	
+
 	// Audio Controls
 	static AudioPlayer MGP = AudioPlayer.player;
 	static AudioStream BGM;
@@ -66,13 +62,12 @@ public class App_View extends View<App_Model> {
 
 	@Override
 	protected Scene create_GUI() {
-		
+
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
 		loader.setController(get_Ctrl());
 		try {
 			parent = loader.load();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		Scene scene = new Scene(parent, 600, 400);
@@ -80,30 +75,19 @@ public class App_View extends View<App_Model> {
 		return scene;
 	}
 
-	/** @author Sebrina Pedrossi */
-	// Play music from audioStream, file in project explorer
+	/** @author Sebrina Pedrossi*/
+	// Play music from InputStream, file in project explorer
 	public static InputStream stream;
 
-	//Try with File for Music
-	/*public static void music() {
-		try {
-			InputStream in = new FileInputStream(new File("./src/leberkaes.GUIsources/MedievalMusicShort.wav"));
-			audios = new AudioStream(in);
-			AudioPlayer.player.start(audios);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}*/
-	
-	// Try with Stream so it works with jar-file
+	// Stream so it works with jar-file
 	public static void music() {
 		try {
-	        stream = App_View.class.getResourceAsStream("/leberkaes.GUIsources/MedievalMusicShort.wav");
-	        AudioPlayer.player.start(stream);
-	    } catch (Exception e) {
-	    	System.out.println("Problem playing file MedievalMusicShort.wav");
-	        System.out.println(e);
-	    }
+			stream = App_View.class.getResourceAsStream("/leberkaes.GUIsources/MedievalMusicShort.wav");
+			AudioPlayer.player.start(stream);
+		} catch (Exception e) {
+			System.out.println("Problem playing file MedievalMusicShort.wav");
+			System.out.println(e);
+		}
 	}
 
 	// stop Music that is played from audioStream
